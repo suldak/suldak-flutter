@@ -6,7 +6,7 @@ class SplashController extends GetxController {
 
   void navigateSplash() async {
     await Future.delayed(const Duration(milliseconds: 3000));
-    Get.offAllNamed(Routes.splash);
+    Get.offAllNamed(Routes.login);
   }
 
   @override
