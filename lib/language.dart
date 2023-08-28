@@ -37,6 +37,7 @@ class Languages extends Translations {
     'program_info': '프로그램 정보',
     'logout': '로그아웃',
     'login': '로그인',
+    'my_profile': '내 프로필',
   };
 
   Map<String, String> en = {
@@ -69,5 +70,6 @@ class Languages extends Translations {
     'program_info': 'Program Info',
     'logout': 'Logout',
     'login': 'Login',
+    'my_profile': 'My Profile',
   };
 }

@@ -52,6 +52,7 @@ class MyApp extends StatelessWidget with AppPagesGenerator {
     textSelectionTheme: const TextSelectionThemeData(
       cursorColor: Colors.black,
     ),
+    fontFamily: 'Pretendard',
   );
 }
 
