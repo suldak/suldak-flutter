@@ -9,8 +9,54 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsFontGen {
+  const $AssetsFontGen();
+
+  /// File path: assets/font/Pretendard-Black.ttf
+  String get pretendardBlack => 'assets/font/Pretendard-Black.ttf';
+
+  /// File path: assets/font/Pretendard-Bold.ttf
+  String get pretendardBold => 'assets/font/Pretendard-Bold.ttf';
+
+  /// File path: assets/font/Pretendard-ExtraBold.ttf
+  String get pretendardExtraBold => 'assets/font/Pretendard-ExtraBold.ttf';
+
+  /// File path: assets/font/Pretendard-ExtraLight.ttf
+  String get pretendardExtraLight => 'assets/font/Pretendard-ExtraLight.ttf';
+
+  /// File path: assets/font/Pretendard-Light.ttf
+  String get pretendardLight => 'assets/font/Pretendard-Light.ttf';
+
+  /// File path: assets/font/Pretendard-Medium.ttf
+  String get pretendardMedium => 'assets/font/Pretendard-Medium.ttf';
+
+  /// File path: assets/font/Pretendard-Regular.ttf
+  String get pretendardRegular => 'assets/font/Pretendard-Regular.ttf';
+
+  /// File path: assets/font/Pretendard-SemiBold.ttf
+  String get pretendardSemiBold => 'assets/font/Pretendard-SemiBold.ttf';
+
+  /// File path: assets/font/Pretendard-Thin.ttf
+  String get pretendardThin => 'assets/font/Pretendard-Thin.ttf';
+
+  /// List of all assets
+  List<String> get values => [
+        pretendardBlack,
+        pretendardBold,
+        pretendardExtraBold,
+        pretendardExtraLight,
+        pretendardLight,
+        pretendardMedium,
+        pretendardRegular,
+        pretendardSemiBold,
+        pretendardThin
+      ];
+}
+
 class Assets {
   Assets._();
+
+  static const $AssetsFontGen font = $AssetsFontGen();
 }
 
 class AssetGenImage {

@@ -5,6 +5,8 @@ import '../presentation/home/home_controller.dart';
 import '../presentation/home/home_page.dart';
 import '../presentation/login/login_controller.dart';
 import '../presentation/login/login_page.dart';
+import '../presentation/profile/profile_controller.dart';
+import '../presentation/profile/profile_page.dart';
 import '../presentation/splash/splash_controller.dart';
 import '../presentation/splash/splash_page.dart';
 import 'routes.dart';
@@ -28,6 +30,12 @@ mixin AppPagesGenerator on StatelessWidget {
       name: Routes.login,
       page: () => const LoginPage(),
       binding: BindingsBuilder.put(() => LoginController()),
+    ),
+
+    GetPage(
+      name: Routes.profile,
+      page: () => const ProfilePage(),
+      binding: BindingsBuilder.put(() => ProfileController()),
     ),
   ];
 }

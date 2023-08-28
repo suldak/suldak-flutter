@@ -26,6 +26,18 @@ abstract class AppColors {
     },
   );
 
+  static const grey = MaterialColor(
+    0xFF3C3C3C,
+    {
+      70: Color(0xFF8E8E8E),
+      60: Color(0xFF8E8E8E),
+      50: Color(0xFFBEBEBE),
+      40: Color(0xFFE1E1E1),
+      30: Color(0xFFE8E8E8),
+      20: Color(0xFFF6F6F6),
+    },
+  );
+
   static const alertPrimary = Color(0xFFE45141);
 
   static const alertSecondary = Color(0xFFF8A8A5);
