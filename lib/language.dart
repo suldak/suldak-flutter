@@ -52,6 +52,10 @@ class Languages extends Translations {
     'app_version': '앱 버전 ',
     'withdraw': '탈퇴하기',
     'terms_and_conditions': '이용약관',
+    'my_drink_taste': '내 술 취향은 이것!',
+    'prefer_mood': '저는 00한 분위기에서 마시는 걸 좋아해요',
+    'my_snack_taste': '제 안주 취향은요...',
+    'save_changes': '수정사항 저장하기',
   };
 
   Map<String, String> en = {
@@ -99,5 +103,9 @@ class Languages extends Translations {
     'app_version': 'app version ',
     'withdraw': 'withdraw',
     'terms_and_conditions': 'Terms and Conditions',
+    'my_drink_taste': 'My drink taste!',
+    'prefer_mood': 'I like to drink in a 00 atmosphere',
+    'my_snack_taste': 'My snack preference is...',
+    'save_changes': 'Save changes',
   };
 }

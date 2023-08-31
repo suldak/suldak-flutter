@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../config/colors.dart';
+import '../../config/routes.dart';
 import '../../gen/assets.gen.dart';
 import '../../widget/tag_widget.dart';
 import 'profile_controller.dart';
@@ -27,7 +28,7 @@ class ProfilePage extends GetView<ProfileController> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Divider(thickness: 1, height: 1, color: Colors.grey.shade200),
+            Divider(thickness: 1, height: 1, color: Colors.grey[20]),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
@@ -266,32 +267,29 @@ class ProfilePage extends GetView<ProfileController> {
         Text(
           'introduce_me'.tr,
           style: const TextStyle(
-            color: Colors.black,
+            color: AppColors.grey,
             fontSize: 13,
             fontWeight: FontWeight.w500,
           ),
         ),
         const SizedBox(height: 12),
-        TextField(
-          maxLines: 3,
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
+        Container(
+          padding: const EdgeInsets.all(14),
+          decoration: BoxDecoration(
+            border: Border.all(
+              width: 1,
+              color: AppColors.grey[30] ?? AppColors.grey,
+            ),
+            borderRadius: BorderRadius.circular(15),
           ),
-          decoration: InputDecoration(
-            hintText: 'introduce_me_hint'.tr,
-            hintStyle: TextStyle(
-              color: AppColors.grey[30],
+          child: Text(
+            'introduce_me_hint'.tr,
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+              color: AppColors.grey,
               fontSize: 16,
               fontWeight: FontWeight.w500,
-            ),
-            border: OutlineInputBorder(
-              borderSide: BorderSide(
-                width: 1,
-                color: AppColors.grey[30] ?? AppColors.grey,
-              ),
-              borderRadius: BorderRadius.circular(15),
             ),
           ),
         ),
@@ -300,19 +298,24 @@ class ProfilePage extends GetView<ProfileController> {
   }
 
   Widget buildProfileSettingButton() {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      decoration: BoxDecoration(
-        color: AppColors.grey[20],
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Center(
-        child: Text(
-          'profile_setting'.tr,
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed(Routes.profileSetting);
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        decoration: BoxDecoration(
+          color: AppColors.grey[20],
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Center(
+          child: Text(
+            'profile_setting'.tr,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ),
       ),

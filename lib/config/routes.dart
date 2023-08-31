@@ -16,4 +16,7 @@ abstract class Routes {
 
   /// 프로필 화면
   static const profile = '/profile';
+
+  /// 프로필 설정 화면
+  static const profileSetting = '/profile_setting';
 }

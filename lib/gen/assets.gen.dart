@@ -55,8 +55,28 @@ class $AssetsFontGen {
       ];
 }
 
+class $AssetsPngGen {
+  const $AssetsPngGen();
+
+  /// File path: assets/png/cocktail.png
+  AssetGenImage get cocktail => const AssetGenImage('assets/png/cocktail.png');
+
+  /// File path: assets/png/night_bridge.png
+  AssetGenImage get nightBridge =>
+      const AssetGenImage('assets/png/night_bridge.png');
+
+  /// File path: assets/png/pot.png
+  AssetGenImage get pot => const AssetGenImage('assets/png/pot.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [cocktail, nightBridge, pot];
+}
+
 class $AssetsSvgGen {
   const $AssetsSvgGen();
+
+  /// File path: assets/svg/arrow_back.svg
+  SvgGenImage get arrowBack => const SvgGenImage('assets/svg/arrow_back.svg');
 
   /// File path: assets/svg/arrow_next.svg
   SvgGenImage get arrowNext => const SvgGenImage('assets/svg/arrow_next.svg');
@@ -71,13 +91,14 @@ class $AssetsSvgGen {
   SvgGenImage get user => const SvgGenImage('assets/svg/user.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [arrowNext, camera, info, user];
+  List<SvgGenImage> get values => [arrowBack, arrowNext, camera, info, user];
 }
 
 class Assets {
   Assets._();
 
   static const $AssetsFontGen font = $AssetsFontGen();
+  static const $AssetsPngGen png = $AssetsPngGen();
   static const $AssetsSvgGen svg = $AssetsSvgGen();
 }
 
