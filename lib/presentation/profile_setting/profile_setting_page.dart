@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suldak_suldak/widget/tag_widget.dart';
 
 import '../../config/colors.dart';
 import '../../gen/assets.gen.dart';
+import '../../widget/base_app_bar.dart';
+import '../../widget/tag_widget.dart';
 import 'profile_setting_controller.dart';
 
 class ProfileSettingPage extends GetView<ProfileSettingController> {
@@ -12,55 +13,30 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
+      appBar: BaseAppBar(title: 'profile_setting'.tr, showBackButton: true),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Divider(thickness: 1, height: 1, color: Colors.grey[20]),
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 40,
-                left: 20,
-                right: 20,
-                bottom: 70,
-              ),
-              child: Column(
-                children: [
-                  buildMyIntro(),
-                  const SizedBox(height: 90),
-                  buildMyDrinkTaste(),
-                  const SizedBox(height: 44),
-                  buildPreferMood(),
-                  const SizedBox(height: 44),
-                  buildMySnackTaste(),
-                  const SizedBox(height: 40),
-                  buildSaveButton(),
-                  const SizedBox(height: 70),
-                ],
-              ),
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.only(
+            top: 40,
+            left: 20,
+            right: 20,
+            bottom: 70,
+          ),
+          child: Column(
+            children: [
+              buildMyIntro(),
+              const SizedBox(height: 90),
+              buildMyDrinkTaste(),
+              const SizedBox(height: 44),
+              buildPreferMood(),
+              const SizedBox(height: 44),
+              buildMySnackTaste(),
+              const SizedBox(height: 40),
+              buildSaveButton(),
+              const SizedBox(height: 70),
+            ],
+          ),
         ),
-      ),
-    );
-  }
-
-  PreferredSizeWidget buildAppBar() {
-    return AppBar(
-      centerTitle: true,
-      title: Text(
-        'profile_setting'.tr,
-        style: const TextStyle(
-          color: Colors.black,
-          fontSize: 18,
-          fontWeight: FontWeight.w700,
-        ),
-      ),
-      leading: IconButton(
-        icon: Assets.svg.arrowBack.svg(),
-        onPressed: () {
-          Get.back();
-        },
       ),
     );
   }

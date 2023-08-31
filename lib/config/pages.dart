@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../presentation/account_manage/account_manage_controller.dart';
+import '../presentation/account_manage/account_manage_page.dart';
 import '../presentation/home/home_controller.dart';
 import '../presentation/home/home_page.dart';
 import '../presentation/login/login_controller.dart';
@@ -40,6 +42,11 @@ mixin AppPagesGenerator on StatelessWidget {
           name: Routes.profileSetting,
           page: () => const ProfileSettingPage(),
           binding: BindingsBuilder.put(() => ProfileSettingController()),
+        ),
+        GetPage(
+          name: Routes.accountSetting,
+          page: () => const AccountManagePage(),
+          binding: BindingsBuilder.put(() => AccountManageController()),
         ),
       ];
 }

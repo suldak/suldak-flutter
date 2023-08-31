@@ -19,4 +19,7 @@ abstract class Routes {
 
   /// 프로필 설정 화면
   static const profileSetting = '/profile_setting';
+
+  /// 계정 설정 화면
+  static const accountSetting = '/account_setting';
 }

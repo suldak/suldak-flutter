@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../../config/colors.dart';
 import '../../config/routes.dart';
 import '../../gen/assets.gen.dart';
+import '../../widget/base_app_bar.dart';
 import '../../widget/tag_widget.dart';
 import 'profile_controller.dart';
 
@@ -14,21 +15,11 @@ class ProfilePage extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          'my_profile'.tr,
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.w700,
-            color: Colors.black,
-          ),
-        ),
-      ),
+      appBar: BaseAppBar(title: 'my_profile'.tr),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Divider(thickness: 1, height: 1, color: Colors.grey[20]),
+            // Divider(thickness: 1, height: 1, color: Colors.grey[20]),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
@@ -46,7 +37,9 @@ class ProfilePage extends GetView<ProfileController> {
               ),
             ),
             Divider(thickness: 1, height: 1, color: Colors.grey.shade200),
-            buildMenuItem(title: 'change_personal_info'.tr, onTap: () {}),
+            buildMenuItem(title: 'change_personal_info'.tr, onTap: () {
+              Get.toNamed(Routes.accountSetting);
+            }),
             buildMenuItem(title: 'self_certification'.tr, onTap: () {}),
             buildMenuItem(title: 'app_push_setting'.tr, onTap: () {}),
             buildMenuItem(title: 'report'.tr, onTap: () {}),

@@ -56,6 +56,10 @@ class Languages extends Translations {
     'prefer_mood': '저는 00한 분위기에서 마시는 걸 좋아해요',
     'my_snack_taste': '제 안주 취향은요...',
     'save_changes': '수정사항 저장하기',
+    'manage_my_account': '내 계정 관리하기',
+    'nickname': '닉네임',
+    'prev_nickname': '이전 닉네임',
+    'duplication_check': '중복확인',
   };
 
   Map<String, String> en = {
@@ -107,5 +111,9 @@ class Languages extends Translations {
     'prefer_mood': 'I like to drink in a 00 atmosphere',
     'my_snack_taste': 'My snack preference is...',
     'save_changes': 'Save changes',
+    'manage_my_account': 'Manage my account',
+    'nickname': 'nickname',
+    'prev_nickname': 'previous nickname',
+    'duplication_check': 'check',
   };
 }
