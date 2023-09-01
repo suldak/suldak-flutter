@@ -60,6 +60,9 @@ class Languages extends Translations {
     'nickname': '닉네임',
     'prev_nickname': '이전 닉네임',
     'duplication_check': '중복확인',
+    'save': '저장하기',
+    'male': '남성',
+    'female': '여성',
   };
 
   Map<String, String> en = {
@@ -115,5 +118,8 @@ class Languages extends Translations {
     'nickname': 'nickname',
     'prev_nickname': 'previous nickname',
     'duplication_check': 'check',
+    'save': 'save',
+    'male': 'male',
+    'female': 'female',
   };
 }
