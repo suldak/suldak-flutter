@@ -20,7 +20,6 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
             top: 40,
             left: 20,
             right: 20,
-            bottom: 70,
           ),
           child: Column(
             children: [
