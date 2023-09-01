@@ -25,15 +25,19 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
           child: Column(
             children: [
               buildMyIntro(),
-              const SizedBox(height: 90),
+              const SizedBox(height: 55),
               buildMyDrinkTaste(),
               const SizedBox(height: 44),
               buildPreferMood(),
               const SizedBox(height: 44),
               buildMySnackTaste(),
               const SizedBox(height: 40),
+              buildMyDrinkFlavor(),
+              const SizedBox(height: 40),
+              buildMyDrinkCapacity(),
+              const SizedBox(height: 40),
               buildSaveButton(),
-              const SizedBox(height: 70),
+              const SizedBox(height: 42),
             ],
           ),
         ),
@@ -54,46 +58,51 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
           ),
         ),
         const SizedBox(height: 22),
-        TextField(
-          maxLines: 3,
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-          ),
-          decoration: InputDecoration(
-            hintText: 'introduce_me_hint'.tr,
-            hintStyle: TextStyle(
-              color: AppColors.grey[30],
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                width: 1,
-                color: AppColors.grey[30] ?? AppColors.grey,
-              ),
-              borderRadius: BorderRadius.circular(15),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(
-                width: 1,
-                color: AppColors.primary,
-              ),
-              borderRadius: BorderRadius.circular(15),
-            ),
-          ),
-        ),
-        const SizedBox(height: 30),
-        Row(
+        Stack(
           children: [
-            const Expanded(child: SizedBox()),
-            Text(
-              '0/100자',
-              style: TextStyle(
-                color: AppColors.grey[50],
-                fontSize: 12,
+            TextField(
+              maxLines: 3,
+              maxLength: 100,
+              scrollPhysics: const NeverScrollableScrollPhysics(),
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 16,
                 fontWeight: FontWeight.w500,
+              ),
+              decoration: InputDecoration(
+                counterText: '',
+                hintText: 'introduce_me_hint'.tr,
+                hintStyle: TextStyle(
+                  color: AppColors.grey[30],
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    width: 1,
+                    color: AppColors.grey[30] ?? AppColors.grey,
+                  ),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: const BorderSide(
+                    width: 1,
+                    color: AppColors.primary,
+                  ),
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+            ),
+            Positioned(
+              right: 10,
+              bottom: 10,
+              child: Text(
+                '0/100자',
+                style: TextStyle(
+                  color: AppColors.grey[50],
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
           ],
@@ -106,13 +115,15 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
     return buildTagSelectionWidget(
       title: 'my_drink_taste'.tr,
       image: Assets.png.cocktail.image(width: 18),
+      activeEveryThing: true,
       tags: [
-        TagWidget(tag: '소주파'),
-        TagWidget(tag: '맥주파'),
-        TagWidget(tag: '소맥이 진리'),
-        TagWidget(tag: '와인'),
+        TagWidget(tag: '소주'),
+        TagWidget(tag: '맥주'),
         TagWidget(tag: '칵테일'),
-        TagWidget(tag: '술이라면 다 잘먹어요'),
+        TagWidget(tag: '하이볼'),
+        TagWidget(tag: '와인'),
+        TagWidget(tag: '양주'),
+        TagWidget(tag: '전통주'),
       ],
     );
   }
@@ -121,12 +132,12 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
     return buildTagSelectionWidget(
       title: 'prefer_mood'.tr,
       image: Assets.png.nightBridge.image(width: 18),
+      activeEveryThing: true,
       tags: [
         TagWidget(tag: '왁자지껄 회식 분위기'),
         TagWidget(tag: '도란도란 조용한 분위기'),
         TagWidget(tag: '감성넘치는 펍'),
         TagWidget(tag: '술게임과 함께'),
-        TagWidget(tag: '술과 함께라면 다 좋아요'),
       ],
     );
   }
@@ -135,9 +146,43 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
     return buildTagSelectionWidget(
       title: 'my_snack_taste'.tr,
       image: Assets.png.pot.image(width: 18),
+      activeEveryThing: true,
       tags: [
-        TagWidget(tag: '안주라면 역시 마른 안주죠'),
-        TagWidget(tag: '안주는 꼭 있어야 하는 강경안주파'),
+        TagWidget(tag: '계속 들어가는 마른안주'),
+        TagWidget(tag: '새콤달콤 과일안주'),
+        TagWidget(tag: '해장도 함께하는 국물안주'),
+        TagWidget(tag: '고소+짭조름 치즈안주'),
+        TagWidget(tag: '바삭한 튀김안주'),
+      ],
+    );
+  }
+
+  Widget buildMyDrinkFlavor() {
+    return buildTagSelectionWidget(
+      title: 'prefer_alcohol_flavor'.tr,
+      image: Assets.png.beer.image(width: 18),
+      tags: [
+        TagWidget(tag: '술맛 나는 술'),
+        TagWidget(tag: '달달한 술'),
+        TagWidget(tag: '상큼한 술'),
+        TagWidget(tag: '끝맛이 깔끔한 술'),
+        TagWidget(tag: '여운이 오래가는 술'),
+        TagWidget(tag: '탄산이 들어간 술'),
+        TagWidget(tag: '부드러운 술'),
+      ],
+    );
+  }
+
+  Widget buildMyDrinkCapacity() {
+    return buildTagSelectionWidget(
+      title: 'alcohol_capacity'.tr,
+      image: Assets.png.thinkingFace.image(width: 18),
+      tags: [
+        TagWidget(tag: '잘 못 마셔요'),
+        TagWidget(tag: '반 병 ~ 1병'),
+        TagWidget(tag: '1병 ~ 2병'),
+        TagWidget(tag: '2병 이상'),
+        TagWidget(tag: '잘 모르겠어요'),
       ],
     );
   }
@@ -146,6 +191,7 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
     required String title,
     required Widget image,
     required List<Widget> tags,
+    bool activeEveryThing = false,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -169,16 +215,38 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
           runSpacing: 12,
           alignment: WrapAlignment.start,
           children: tags,
-        )
+        ),
+        if (activeEveryThing) ...[
+          const SizedBox(height: 18),
+          GestureDetector(
+            onTap: () {},
+            child: Container(
+              width: 100,
+              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+              decoration: BoxDecoration(
+                color: AppColors.grey[20],
+                borderRadius: BorderRadius.circular(6),
+              ),
+              child: Center(
+                child: Text(
+                  'like_all'.tr,
+                  style: TextStyle(
+                    color: AppColors.grey[70],
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ]
       ],
     );
   }
 
   Widget buildSaveButton() {
     return GestureDetector(
-      onTap: () {
-
-      },
+      onTap: () {},
       child: Container(
         height: 60,
         decoration: BoxDecoration(

@@ -64,6 +64,9 @@ class Languages extends Translations {
     'save': '저장하기',
     'male': '남성',
     'female': '여성',
+    'like_all': '다 좋아해요!',
+    'prefer_alcohol_flavor': '선호하는 술 맛이 있다면?',
+    'alcohol_capacity': '솔직히 말씀드리면 제 주량은...(소주 기준)',
   };
 
   Map<String, String> en = {
@@ -123,5 +126,8 @@ class Languages extends Translations {
     'save': 'save',
     'male': 'male',
     'female': 'female',
+    'like_all': 'I like them all!',
+    'prefer_alcohol_flavor': 'What\'s your favorite alcohol flavor?',
+    'alcohol_capacity': 'To be honest, my drinking capacity is...(Based on soju)',
   };
 }

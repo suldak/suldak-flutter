@@ -58,6 +58,9 @@ class $AssetsFontGen {
 class $AssetsPngGen {
   const $AssetsPngGen();
 
+  /// File path: assets/png/beer.png
+  AssetGenImage get beer => const AssetGenImage('assets/png/beer.png');
+
   /// File path: assets/png/cocktail.png
   AssetGenImage get cocktail => const AssetGenImage('assets/png/cocktail.png');
 
@@ -68,8 +71,13 @@ class $AssetsPngGen {
   /// File path: assets/png/pot.png
   AssetGenImage get pot => const AssetGenImage('assets/png/pot.png');
 
+  /// File path: assets/png/thinking_face.png
+  AssetGenImage get thinkingFace =>
+      const AssetGenImage('assets/png/thinking_face.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [cocktail, nightBridge, pot];
+  List<AssetGenImage> get values =>
+      [beer, cocktail, nightBridge, pot, thinkingFace];
 }
 
 class $AssetsSvgGen {
