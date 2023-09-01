@@ -92,14 +92,63 @@ class $AssetsSvgGen {
   /// File path: assets/svg/camera.svg
   SvgGenImage get camera => const SvgGenImage('assets/svg/camera.svg');
 
+  /// File path: assets/svg/find_friend.svg
+  SvgGenImage get findFriend => const SvgGenImage('assets/svg/find_friend.svg');
+
+  /// File path: assets/svg/find_friend_tap.svg
+  SvgGenImage get findFriendTap =>
+      const SvgGenImage('assets/svg/find_friend_tap.svg');
+
+  /// File path: assets/svg/home.svg
+  SvgGenImage get home => const SvgGenImage('assets/svg/home.svg');
+
+  /// File path: assets/svg/home_tap.svg
+  SvgGenImage get homeTap => const SvgGenImage('assets/svg/home_tap.svg');
+
   /// File path: assets/svg/info.svg
   SvgGenImage get info => const SvgGenImage('assets/svg/info.svg');
+
+  /// File path: assets/svg/my_history.svg
+  SvgGenImage get myHistory => const SvgGenImage('assets/svg/my_history.svg');
+
+  /// File path: assets/svg/my_history_tap.svg
+  SvgGenImage get myHistoryTap =>
+      const SvgGenImage('assets/svg/my_history_tap.svg');
+
+  /// File path: assets/svg/my_page.svg
+  SvgGenImage get myPage => const SvgGenImage('assets/svg/my_page.svg');
+
+  /// File path: assets/svg/my_page_tap.svg
+  SvgGenImage get myPageTap => const SvgGenImage('assets/svg/my_page_tap.svg');
+
+  /// File path: assets/svg/not_defined.svg
+  SvgGenImage get notDefined => const SvgGenImage('assets/svg/not_defined.svg');
+
+  /// File path: assets/svg/not_defined_tap.svg
+  SvgGenImage get notDefinedTap =>
+      const SvgGenImage('assets/svg/not_defined_tap.svg');
 
   /// File path: assets/svg/user.svg
   SvgGenImage get user => const SvgGenImage('assets/svg/user.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [arrowBack, arrowNext, camera, info, user];
+  List<SvgGenImage> get values => [
+        arrowBack,
+        arrowNext,
+        camera,
+        findFriend,
+        findFriendTap,
+        home,
+        homeTap,
+        info,
+        myHistory,
+        myHistoryTap,
+        myPage,
+        myPageTap,
+        notDefined,
+        notDefinedTap,
+        user
+      ];
 }
 
 class Assets {

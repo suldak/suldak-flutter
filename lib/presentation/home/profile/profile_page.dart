@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../config/colors.dart';
-import '../../gen/assets.gen.dart';
-import '../../widget/base_app_bar.dart';
-import '../../widget/tag_widget.dart';
+
+import '../../../config/colors.dart';
+import '../../../gen/assets.gen.dart';
+import '../../../widget/base_app_bar.dart';
+import '../../../widget/tag_widget.dart';
 import 'profile_controller.dart';
 
 class ProfilePage extends GetView<ProfileController> {

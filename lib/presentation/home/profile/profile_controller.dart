@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../config/routes.dart';
+import '../../../config/routes.dart';
 
 class ProfileController extends GetxController {
   static ProfileController get to => Get.find();

@@ -14,9 +14,6 @@ abstract class Routes {
   /// 로그인 화면
   static const login = '/login';
 
-  /// 프로필 화면
-  static const profile = '/profile';
-
   /// 프로필 설정 화면
   static const profileSetting = '/profile_setting';
 

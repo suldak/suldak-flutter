@@ -67,6 +67,11 @@ class Languages extends Translations {
     'like_all': '다 좋아해요!',
     'prefer_alcohol_flavor': '선호하는 술 맛이 있다면?',
     'alcohol_capacity': '솔직히 말씀드리면 제 주량은...(소주 기준)',
+    'find_friend': '친구 찾기',
+    'not_defined': '미정',
+    'home': '홈',
+    'my_history': '내 기록',
+    'my_page': '마이페이지',
   };
 
   Map<String, String> en = {
@@ -129,5 +134,10 @@ class Languages extends Translations {
     'like_all': 'I like them all!',
     'prefer_alcohol_flavor': 'What\'s your favorite alcohol flavor?',
     'alcohol_capacity': 'To be honest, my drinking capacity is...(Based on soju)',
+    'find_friend': 'friend',
+    'not_defined': 'no',
+    'home': 'home',
+    'my_history': 'history',
+    'my_page': 'profile',
   };
 }

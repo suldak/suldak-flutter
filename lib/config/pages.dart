@@ -5,10 +5,9 @@ import '../presentation/account_manage/account_manage_controller.dart';
 import '../presentation/account_manage/account_manage_page.dart';
 import '../presentation/home/home_controller.dart';
 import '../presentation/home/home_page.dart';
+import '../presentation/home/profile/profile_controller.dart';
 import '../presentation/login/login_controller.dart';
 import '../presentation/login/login_page.dart';
-import '../presentation/profile/profile_controller.dart';
-import '../presentation/profile/profile_page.dart';
 import '../presentation/profile_setting/profile_setting_controller.dart';
 import '../presentation/profile_setting/profile_setting_page.dart';
 import '../presentation/splash/splash_controller.dart';
@@ -26,17 +25,15 @@ mixin AppPagesGenerator on StatelessWidget {
         GetPage(
           name: Routes.home,
           page: () => const HomePage(),
-          binding: BindingsBuilder.put(() => HomeController()),
+          binding: BindingsBuilder(() {
+            Get.put(HomeController());
+            Get.lazyPut(() => ProfileController());
+          }),
         ),
         GetPage(
           name: Routes.login,
           page: () => const LoginPage(),
           binding: BindingsBuilder.put(() => LoginController()),
-        ),
-        GetPage(
-          name: Routes.profile,
-          page: () => const ProfilePage(),
-          binding: BindingsBuilder.put(() => ProfileController()),
         ),
         GetPage(
           name: Routes.profileSetting,
