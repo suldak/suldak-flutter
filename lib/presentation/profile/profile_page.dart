@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
 import '../../config/colors.dart';
-import '../../config/routes.dart';
 import '../../gen/assets.gen.dart';
 import '../../widget/base_app_bar.dart';
 import '../../widget/tag_widget.dart';
@@ -37,29 +35,47 @@ class ProfilePage extends GetView<ProfileController> {
               ),
             ),
             Divider(thickness: 1, height: 1, color: Colors.grey.shade200),
-            buildMenuItem(title: 'change_personal_info'.tr, onTap: () {
-              Get.toNamed(Routes.accountSetting);
-            }),
-            buildMenuItem(title: 'self_certification'.tr, onTap: () {}),
-            buildMenuItem(title: 'app_push_setting'.tr, onTap: () {}),
-            buildMenuItem(title: 'report'.tr, onTap: () {}),
-            buildMenuItem(title: 'inquiry'.tr, onTap: () {}),
             buildMenuItem(
-                title: 'app_version'.tr, showArrow: false, onTap: () {}),
-            buildMenuItem(title: 'logout'.tr, showArrow: false, onTap: () {}),
-            buildMenuItem(title: 'withdraw'.tr, showArrow: false, onTap: () {}),
-            const SizedBox(height: 22),
-            buildContactAndTerms(),
-            const SizedBox(height: 22),
-            const Text(
-              'Copyright 2023 by 술닥술닥, all rights reserved',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 11,
-                fontWeight: FontWeight.w400,
+              title: 'manage_my_account'.tr,
+              onTap: controller.onTapManageMyAccount,
+            ),
+            buildMenuItem(title: 'self_certification'.tr, onTap: () {}),
+            buildMenuItem(title: 'notification_setting'.tr, onTap: () {}),
+            buildMenuItem(title: 'block_manage'.tr, onTap: () {}),
+            buildMenuItem(title: 'inquiry'.tr, onTap: () {}),
+            buildMenuItem(title: 'logout'.tr, onTap: () {}),
+            buildMenuItem(title: 'withdraw'.tr, onTap: () {}),
+            buildMenuItem(
+              title: 'app_version'.tr,
+              rightWidget: const Text(
+                '1.0',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
-            const SizedBox(height: 36),
+            const SizedBox(height: 42),
+            Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  buildContactAndTerms(),
+                  const SizedBox(height: 16),
+                  Text(
+                    'Copyright © 술닥술닥 all rights reserved',
+                    style: TextStyle(
+                      color: AppColors.grey[60],
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 40),
           ],
         ),
       ),
@@ -292,9 +308,7 @@ class ProfilePage extends GetView<ProfileController> {
 
   Widget buildProfileSettingButton() {
     return GestureDetector(
-      onTap: () {
-        Get.toNamed(Routes.profileSetting);
-      },
+      onTap: controller.onTapProfileSetting,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
@@ -317,8 +331,9 @@ class ProfilePage extends GetView<ProfileController> {
 
   Widget buildMenuItem({
     required String title,
-    required void Function() onTap,
+    void Function()? onTap,
     bool showArrow = true,
+    Widget? rightWidget,
   }) {
     return GestureDetector(
       onTap: onTap,
@@ -343,7 +358,9 @@ class ProfilePage extends GetView<ProfileController> {
               ),
             ),
             const Expanded(child: SizedBox()),
-            if (showArrow) ...[
+            if (rightWidget != null) ...[
+              rightWidget,
+            ] else if (showArrow) ...[
               Assets.svg.arrowNext.svg(width: 20),
             ],
           ],
@@ -355,7 +372,7 @@ class ProfilePage extends GetView<ProfileController> {
   Widget buildContactAndTerms() {
     return IntrinsicHeight(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           buildTabTextWidget(text: 'Contact', onTap: () {}),
           const VerticalDivider(color: Colors.black),
@@ -375,11 +392,11 @@ class ProfilePage extends GetView<ProfileController> {
       onTap: onTap,
       child: Text(
         text,
-        style: const TextStyle(
-            color: Colors.black,
-            fontSize: 11,
-            fontWeight: FontWeight.w400,
-            decoration: TextDecoration.underline),
+        style: TextStyle(
+          color: AppColors.grey[70],
+          fontSize: 11,
+          fontWeight: FontWeight.w400,
+        ),
       ),
     );
   }

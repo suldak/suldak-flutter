@@ -29,7 +29,7 @@ abstract class AppColors {
   static const grey = MaterialColor(
     0xFF3C3C3C,
     {
-      70: Color(0xFF8E8E8E),
+      70: Color(0xFF646464),
       60: Color(0xFF8E8E8E),
       50: Color(0xFFBEBEBE),
       40: Color(0xFFE1E1E1),
