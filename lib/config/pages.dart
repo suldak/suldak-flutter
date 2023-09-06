@@ -12,6 +12,9 @@ import '../presentation/profile_setting/profile_setting_controller.dart';
 import '../presentation/profile_setting/profile_setting_page.dart';
 import '../presentation/splash/splash_controller.dart';
 import '../presentation/splash/splash_page.dart';
+import '../sign_up_info_input/sign_up_info_input_controller.dart';
+import '../sign_up_info_input/sign_up_info_input_page.dart';
+import '../sign_up_info_input/social_step_1/social_step_1_controller.dart';
 import 'routes.dart';
 
 mixin AppPagesGenerator on StatelessWidget {
@@ -34,6 +37,14 @@ mixin AppPagesGenerator on StatelessWidget {
           name: Routes.login,
           page: () => const LoginPage(),
           binding: BindingsBuilder.put(() => LoginController()),
+        ),
+        GetPage(
+          name: Routes.signUpInfo,
+          page: () => const SignUpInfoInputPage(),
+          binding: BindingsBuilder(() {
+            Get.put(SignUpInfoInputController());
+            Get.lazyPut(() => SocialStep1Controller());
+          }),
         ),
         GetPage(
           name: Routes.profileSetting,

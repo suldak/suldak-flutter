@@ -14,6 +14,9 @@ abstract class Routes {
   /// 로그인 화면
   static const login = '/login';
 
+  /// 회원 정보 입력 화면
+  static const signUpInfo = '/sign_up_info';
+
   /// 프로필 설정 화면
   static const profileSetting = '/profile_setting';
 
