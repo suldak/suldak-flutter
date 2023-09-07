@@ -72,6 +72,12 @@ class Languages extends Translations {
     'home': '홈',
     'my_history': '내 기록',
     'my_page': '마이페이지',
+    'input_nickname': '닉네임을 입력해주세요',
+    'step1_title': '친구되기 STEP 01',
+    'agree_all': '전체동의',
+    'agree_terms': '(필수)이용약관에 동의',
+    'agree_personal_info': '(필수)개인정보 수집 및 이용에 동의',
+    'agree_ad_push': '(선택)광고성 정보 수신(알림)에 동의',
   };
 
   Map<String, String> en = {
@@ -139,5 +145,11 @@ class Languages extends Translations {
     'home': 'home',
     'my_history': 'history',
     'my_page': 'profile',
+    'input_nickname': 'enter your nickname',
+    'step1_title': 'Being friends STEP 01',
+    'agree_all': 'Agree all',
+    'agree_terms': '(Required) Accept the Terms and Conditions',
+    'agree_personal_info': '(Required) Agree to collect and use personal information',
+    'agree_ad_push': '(Optional) Agree to receive (notify) advertising information',
   };
 }

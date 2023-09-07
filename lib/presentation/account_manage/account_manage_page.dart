@@ -12,7 +12,11 @@ class AccountManagePage extends GetView<AccountManageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BaseAppBar(title: 'manage_my_account'.tr, showBackButton: true),
+      appBar: BaseAppBar(
+        title: 'manage_my_account'.tr,
+        showBackButton: true,
+        showBottomLine: true,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
