@@ -5,22 +5,30 @@ import '../config/colors.dart';
 import '../gen/assets.gen.dart';
 
 class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const BaseAppBar({super.key, required this.title, this.showBackButton = false});
+  const BaseAppBar({
+    super.key,
+    required this.title,
+    this.showBackButton = false,
+    this.showBottomLine = false,
+  });
 
   final String title;
   final bool showBackButton;
+  final bool showBottomLine;
 
   @override
   PreferredSizeWidget build(BuildContext context) {
     return AppBar(
       centerTitle: true,
-      bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(1),
-        child: Container(
-          height: 1,
-          color: AppColors.grey[20],
-        ),
-      ),
+      bottom: showBottomLine
+          ? PreferredSize(
+              preferredSize: const Size.fromHeight(1),
+              child: Container(
+                height: 1,
+                color: AppColors.grey[20],
+              ),
+            )
+          : null,
       title: Text(
         title,
         style: const TextStyle(
@@ -29,12 +37,14 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
           fontWeight: FontWeight.w700,
         ),
       ),
-      leading: showBackButton ? IconButton(
-        icon: Assets.svg.arrowBack.svg(),
-        onPressed: () {
-          Get.back();
-        },
-      ) : const SizedBox(),
+      leading: showBackButton
+          ? IconButton(
+              icon: Assets.svg.arrowBack.svg(),
+              onPressed: () {
+                Get.back();
+              },
+            )
+          : const SizedBox(),
     );
   }
 

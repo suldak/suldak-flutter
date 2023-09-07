@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../config/colors.dart';
-import '../widget/base_app_bar.dart';
+import '../../config/colors.dart';
+import '../../widget/base_app_bar.dart';
 import 'sign_up_info_input_controller.dart';
 
 class SignUpInfoInputPage extends GetView<SignUpInfoInputController> {
@@ -19,6 +19,7 @@ class SignUpInfoInputPage extends GetView<SignUpInfoInputController> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const SizedBox(height: 28),
           Obx(
             () => Padding(
               padding: const EdgeInsets.only(left: 20),
