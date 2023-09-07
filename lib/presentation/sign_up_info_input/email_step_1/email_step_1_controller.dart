@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SocialStep1Controller extends GetxController {
-  static SocialStep1Controller get to => Get.find();
+class EmailStep1Controller extends GetxController {
+  static EmailStep1Controller get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
 

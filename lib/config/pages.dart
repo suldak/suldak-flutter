@@ -10,6 +10,7 @@ import '../presentation/login/login_controller.dart';
 import '../presentation/login/login_page.dart';
 import '../presentation/profile_setting/profile_setting_controller.dart';
 import '../presentation/profile_setting/profile_setting_page.dart';
+import '../presentation/sign_up_info_input/email_step_1/email_step_1_controller.dart';
 import '../presentation/sign_up_info_input/sign_up_info_input_controller.dart';
 import '../presentation/sign_up_info_input/sign_up_info_input_page.dart';
 import '../presentation/sign_up_info_input/social_step_1/social_step_1_controller.dart';
@@ -44,6 +45,7 @@ mixin AppPagesGenerator on StatelessWidget {
           binding: BindingsBuilder(() {
             Get.put(SignUpInfoInputController());
             Get.lazyPut(() => SocialStep1Controller());
+            Get.lazyPut(() => EmailStep1Controller());
           }),
         ),
         GetPage(
