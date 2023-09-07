@@ -14,7 +14,7 @@ class SocialStep1Controller extends GetxController {
   // Functions ▼ ------------------------------------------------------
 
   void checkAgreementAllConfirmed() {
-    if (isTermAgree.value || isPersonalInfoAgree.value || isAdPushAgree.value) {
+    if (isTermAgree.value && isPersonalInfoAgree.value && isAdPushAgree.value) {
       isAllAgree.value = true;
     } else {
       isAllAgree.value = false;

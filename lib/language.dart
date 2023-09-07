@@ -148,8 +148,8 @@ class Languages extends Translations {
     'input_nickname': 'enter your nickname',
     'step1_title': 'Being friends STEP 01',
     'agree_all': 'Agree all',
-    'agree_terms': '(Required) Accept the Terms and Conditions',
-    'agree_personal_info': '(Required) Agree to collect and use personal information',
-    'agree_ad_push': '(Optional) Agree to receive (notify) advertising information',
+    'agree_terms': '(REQ) Accept the Terms and Conditions',
+    'agree_personal_info': '(REQ) Agree to collect and use personal info',
+    'agree_ad_push': '(OPT) Agree to receive (notify) ad info',
   };
 }
