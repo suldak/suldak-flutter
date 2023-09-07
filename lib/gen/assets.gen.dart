@@ -64,6 +64,9 @@ class $AssetsPngGen {
   /// File path: assets/png/cocktail.png
   AssetGenImage get cocktail => const AssetGenImage('assets/png/cocktail.png');
 
+  /// File path: assets/png/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/png/logo.png');
+
   /// File path: assets/png/night_bridge.png
   AssetGenImage get nightBridge =>
       const AssetGenImage('assets/png/night_bridge.png');
@@ -77,7 +80,7 @@ class $AssetsPngGen {
 
   /// List of all assets
   List<AssetGenImage> get values =>
-      [beer, cocktail, nightBridge, pot, thinkingFace];
+      [beer, cocktail, logo, nightBridge, pot, thinkingFace];
 }
 
 class $AssetsSvgGen {
@@ -99,6 +102,9 @@ class $AssetsSvgGen {
   SvgGenImage get findFriendTap =>
       const SvgGenImage('assets/svg/find_friend_tap.svg');
 
+  /// File path: assets/svg/google.svg
+  SvgGenImage get google => const SvgGenImage('assets/svg/google.svg');
+
   /// File path: assets/svg/home.svg
   SvgGenImage get home => const SvgGenImage('assets/svg/home.svg');
 
@@ -107,6 +113,9 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/info.svg
   SvgGenImage get info => const SvgGenImage('assets/svg/info.svg');
+
+  /// File path: assets/svg/kakao.svg
+  SvgGenImage get kakao => const SvgGenImage('assets/svg/kakao.svg');
 
   /// File path: assets/svg/my_history.svg
   SvgGenImage get myHistory => const SvgGenImage('assets/svg/my_history.svg');
@@ -120,6 +129,9 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/my_page_tap.svg
   SvgGenImage get myPageTap => const SvgGenImage('assets/svg/my_page_tap.svg');
+
+  /// File path: assets/svg/naver.svg
+  SvgGenImage get naver => const SvgGenImage('assets/svg/naver.svg');
 
   /// File path: assets/svg/not_defined.svg
   SvgGenImage get notDefined => const SvgGenImage('assets/svg/not_defined.svg');
@@ -138,13 +150,16 @@ class $AssetsSvgGen {
         camera,
         findFriend,
         findFriendTap,
+        google,
         home,
         homeTap,
         info,
+        kakao,
         myHistory,
         myHistoryTap,
         myPage,
         myPageTap,
+        naver,
         notDefined,
         notDefinedTap,
         user

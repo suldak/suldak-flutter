@@ -14,7 +14,7 @@ class ProfilePage extends GetView<ProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BaseAppBar(title: 'my_profile'.tr),
+      appBar: BaseAppBar(title: 'my_profile'.tr, showBottomLine: true),
       body: SingleChildScrollView(
         child: Column(
           children: [

@@ -13,7 +13,11 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BaseAppBar(title: 'profile_setting'.tr, showBackButton: true),
+      appBar: BaseAppBar(
+        title: 'profile_setting'.tr,
+        showBackButton: true,
+        showBottomLine: true,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(
