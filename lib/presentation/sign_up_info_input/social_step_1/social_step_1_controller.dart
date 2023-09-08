@@ -24,6 +24,7 @@ class SocialStep1Controller extends GetxController {
 
   /// 닉네임 사용가능 여부
   Rx<bool> isNicknameAvailable = false.obs;
+
   // -----------------------------------------------
 
   // Functions ▼ ------------------------------------------------------
@@ -36,7 +37,7 @@ class SocialStep1Controller extends GetxController {
   /// 모든 체크박스가 활성화되었는지 확인하는 함수
   /// [isTermAgree]값을 업데이트함
   void checkAgreementAllConfirmed() {
-    if(isTermAgree.value && isPersonalInfoAgree.value) {
+    if (isTermAgree.value && isPersonalInfoAgree.value) {
       isAllReqAgree.value = true;
     } else {
       isAllReqAgree.value = false;
@@ -92,8 +93,34 @@ class SocialStep1Controller extends GetxController {
 
   /// 약관등 동의 항목 내용 보여주는 bottomSheet
   void showTermsInfoBottomSheet(String type) {
-    Get.bottomSheet(Container(height: 60,));
+    Get.bottomSheet(
+      Container(
+        height: 300,
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(15),
+            topRight: Radius.circular(15),
+          ),
+        ),
+        child: Stack(
+          children: [
+            Column(
+              children: [
+                Row(
+                  children: [
+                    Text('terms_and_conditions'.tr),
+                    const SizedBox(width: 8),
+                    Text('terms_and_conditions'.tr),
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
-  // Life Cycle ▼ ------------------------------------------------------
+// Life Cycle ▼ ------------------------------------------------------
 }
