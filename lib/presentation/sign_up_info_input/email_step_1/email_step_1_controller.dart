@@ -11,9 +11,21 @@ class EmailStep1Controller extends GetxController {
   Rx<bool> isPersonalInfoAgree = false.obs;
   Rx<bool> isAdPushAgree = false.obs;
 
+  Rx<bool> isAllReqAgree = false.obs;
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController nicknameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController passwordCheckController = TextEditingController();
+
   // Functions ▼ ------------------------------------------------------
 
   void checkAgreementAllConfirmed() {
+    if(isTermAgree.value && isPersonalInfoAgree.value) {
+      isAllReqAgree.value = true;
+    } else {
+      isAllReqAgree.value = false;
+    }
     if (isTermAgree.value && isPersonalInfoAgree.value && isAdPushAgree.value) {
       isAllAgree.value = true;
     } else {
@@ -29,10 +41,12 @@ class EmailStep1Controller extends GetxController {
       isTermAgree.value = true;
       isPersonalInfoAgree.value = true;
       isAdPushAgree.value = true;
+      isAllReqAgree.value = true;
     } else {
       isTermAgree.value = false;
       isPersonalInfoAgree.value = false;
       isAdPushAgree.value = false;
+      isAllReqAgree.value = false;
     }
   }
 

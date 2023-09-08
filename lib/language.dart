@@ -78,6 +78,10 @@ class Languages extends Translations {
     'agree_terms': '(필수)이용약관에 동의',
     'agree_personal_info': '(필수)개인정보 수집 및 이용에 동의',
     'agree_ad_push': '(선택)광고성 정보 수신(알림)에 동의',
+    'include_english': '영문 포함',
+    'include_number': '숫자 포함',
+    'between_8_20': '8~20자',
+    'input_email': '이메일을 입력해주세요',
   };
 
   Map<String, String> en = {
@@ -151,5 +155,9 @@ class Languages extends Translations {
     'agree_terms': '(REQ) Accept the Terms and Conditions',
     'agree_personal_info': '(REQ) Agree to collect and use personal info',
     'agree_ad_push': '(OPT) Agree to receive (notify) ad info',
+    'include_english': 'contain english',
+    'include_number': 'contain number',
+    'between_8_20': 'between 8~20 char',
+    'input_email': 'enter your email',
   };
 }

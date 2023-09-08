@@ -14,6 +14,7 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Obx(
         () => SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -26,10 +27,14 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
                 ),
               ),
               const SizedBox(height: 40),
-              buildAccountWidget(),
+              buildEmailWidget(),
               const SizedBox(height: 40),
               buildNicknameWidget(),
-              //todo add some widget here
+              const SizedBox(height: 40),
+              buildPasswordWidget(),
+              const SizedBox(height: 14),
+              buildPasswordCheckWidget(),
+              const SizedBox(height: 56),
               buildCheckboxWidget(
                 text: 'agree_all'.tr,
                 showButton: false,
@@ -67,7 +72,7 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
     );
   }
 
-  Widget buildAccountWidget() {
+  Widget buildEmailWidget() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -89,19 +94,16 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
             ),
             borderRadius: BorderRadius.circular(15),
           ),
-          child: Row(
-            children: [
-              Text(
-                'sample@sample.com',
-                style: TextStyle(
-                  color: AppColors.grey[50],
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              const Expanded(child: SizedBox()),
-              Container(height: 24, width: 24, color: Colors.yellow),
-            ],
+          child: TextField(
+            controller: controller.emailController,
+            maxLines: 1,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+            ),
+            decoration:
+            InputDecoration.collapsed(hintText: 'input_email'.tr),
           ),
         ),
       ],
@@ -131,6 +133,7 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
             borderRadius: BorderRadius.circular(15),
           ),
           child: TextField(
+            controller: controller.nicknameController,
             maxLines: 1,
             style: const TextStyle(
               color: Colors.black,
@@ -142,6 +145,103 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget buildPasswordWidget() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'password'.tr,
+          style: TextStyle(
+            color: AppColors.grey[50],
+            fontSize: 13,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        const SizedBox(height: 12),
+        Container(
+          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+          decoration: BoxDecoration(
+            border: Border.all(
+              width: 1,
+              color: AppColors.grey[40] ?? AppColors.grey,
+            ),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: TextField(
+            controller: controller.passwordController,
+            maxLines: 1,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+            ),
+            decoration:
+                InputDecoration.collapsed(hintText: 'input_nickname'.tr),
+          ),
+        ),
+        const SizedBox(height: 10),
+        Row(
+          children: [
+            buildPasswordRuleWidget(text: 'include_english'.tr, isPass: true),
+            const SizedBox(width: 12),
+            buildPasswordRuleWidget(text: 'include_number'.tr, isPass: false),
+            const SizedBox(width: 12),
+            buildPasswordRuleWidget(text: 'between_8_20'.tr, isPass: true),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget buildPasswordRuleWidget({
+    required String text,
+    required bool isPass,
+  }) {
+    return Row(
+      children: [
+        Assets.svg.check.svg(
+          colorFilter: ColorFilter.mode(
+            isPass ? AppColors.primary : AppColors.grey[30] ?? AppColors.grey,
+            BlendMode.srcIn,
+          ),
+        ),
+        const SizedBox(width: 4),
+        Text(
+          text,
+          style: TextStyle(
+            color: isPass ? AppColors.primary : AppColors.grey[30],
+            fontSize: 12,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget buildPasswordCheckWidget() {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 1,
+          color: AppColors.grey[40] ?? AppColors.grey,
+        ),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: TextField(
+        controller: controller.passwordCheckController,
+        maxLines: 1,
+        style: const TextStyle(
+          color: Colors.black,
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+        ),
+        decoration:
+        InputDecoration.collapsed(hintText: 'input_nickname'.tr),
+      ),
     );
   }
 

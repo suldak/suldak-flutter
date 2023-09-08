@@ -95,6 +95,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/camera.svg
   SvgGenImage get camera => const SvgGenImage('assets/svg/camera.svg');
 
+  /// File path: assets/svg/check.svg
+  SvgGenImage get check => const SvgGenImage('assets/svg/check.svg');
+
   /// File path: assets/svg/find_friend.svg
   SvgGenImage get findFriend => const SvgGenImage('assets/svg/find_friend.svg');
 
@@ -148,6 +151,7 @@ class $AssetsSvgGen {
         arrowBack,
         arrowNext,
         camera,
+        check,
         findFriend,
         findFriendTap,
         google,
