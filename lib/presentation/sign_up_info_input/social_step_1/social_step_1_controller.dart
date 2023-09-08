@@ -6,15 +6,35 @@ class SocialStep1Controller extends GetxController {
 
   // Variable ▼ ------------------------------------------------------
 
+  /// 전체 동의 여부
   Rx<bool> isAllAgree = false.obs;
+
+  /// 이용약관 동의 여부
   Rx<bool> isTermAgree = false.obs;
+
+  /// 개인정보 처리방침 동의 여부
   Rx<bool> isPersonalInfoAgree = false.obs;
+
+  /// 푸시 알림 동의 여부
   Rx<bool> isAdPushAgree = false.obs;
 
+  // next 버튼 활성화 조건 변수 -------------------------
+  /// 필수 체크박스 동의 여부
   Rx<bool> isAllReqAgree = false.obs;
+
+  /// 닉네임 사용가능 여부
+  Rx<bool> isNicknameAvailable = false.obs;
+  // -----------------------------------------------
 
   // Functions ▼ ------------------------------------------------------
 
+  /// nickname text input 문자열 변경시 호출 함수
+  void onNickNameTextChanged(String text) {
+    isNicknameAvailable.value = text.length > 3;
+  }
+
+  /// 모든 체크박스가 활성화되었는지 확인하는 함수
+  /// [isTermAgree]값을 업데이트함
   void checkAgreementAllConfirmed() {
     if(isTermAgree.value && isPersonalInfoAgree.value) {
       isAllReqAgree.value = true;
@@ -28,6 +48,7 @@ class SocialStep1Controller extends GetxController {
     }
   }
 
+  /// 전체동의 체크박스 선택시 호출 함수
   void onAllAgreeSelected(bool? value) {
     if (value == null) return;
 
@@ -45,6 +66,7 @@ class SocialStep1Controller extends GetxController {
     }
   }
 
+  /// 이용약관 동의 체크박스 선택시 호출 함수
   void onTermSelected(bool? value) {
     if (value == null) return;
 
@@ -52,6 +74,7 @@ class SocialStep1Controller extends GetxController {
     checkAgreementAllConfirmed();
   }
 
+  /// 개인정보처리방침 동의 체크박스 선택시 호출 함수
   void onPersonalInfoSelected(bool? value) {
     if (value == null) return;
 
@@ -59,6 +82,7 @@ class SocialStep1Controller extends GetxController {
     checkAgreementAllConfirmed();
   }
 
+  /// 알림 동의 체크박스 선택시 호출 함수
   void onAdPushSelected(bool? value) {
     if (value == null) return;
 
@@ -66,6 +90,7 @@ class SocialStep1Controller extends GetxController {
     checkAgreementAllConfirmed();
   }
 
+  /// 약관등 동의 항목 내용 보여주는 bottomSheet
   void showTermsInfoBottomSheet(String type) {
     Get.bottomSheet(Container(height: 60,));
   }

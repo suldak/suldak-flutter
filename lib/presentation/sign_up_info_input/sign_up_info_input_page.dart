@@ -47,34 +47,6 @@ class SignUpInfoInputPage extends GetView<SignUpInfoInputController> {
                 children: controller.pages,
               ),
             ),
-            Obx(
-              () => Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: GestureDetector(
-                  onTap: controller.step1NextAvailable.value ? () {} : null,
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 20),
-                    decoration: BoxDecoration(
-                      color: controller.step1NextAvailable.value
-                          ? AppColors.primary
-                          : AppColors.primary.withOpacity(0.5),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'next'.tr,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 42),
           ],
         ),
       ),
