@@ -27,6 +27,12 @@ class SocialStep1Controller extends GetxController {
 
   // -----------------------------------------------
 
+  /// 닉네임 입력창 활성화 여부
+  Rx<bool> isNicknameInputFocused = false.obs;
+
+  /// 닉네임 입력창 focus node
+  FocusNode nicknameFocusNode = FocusNode();
+
   // Functions ▼ ------------------------------------------------------
 
   /// nickname text input 문자열 변경시 호출 함수
@@ -123,4 +129,17 @@ class SocialStep1Controller extends GetxController {
   }
 
   // Life Cycle ▼ ------------------------------------------------------
+
+@override
+  void onInit() {
+    super.onInit();
+
+    nicknameFocusNode.addListener(() {
+      if (nicknameFocusNode.hasFocus) {
+        isNicknameInputFocused.value = true;
+      } else {
+        isNicknameInputFocused.value = false;
+      }
+    });
+  }
 }
