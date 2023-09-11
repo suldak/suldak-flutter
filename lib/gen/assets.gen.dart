@@ -89,6 +89,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/arrow_back.svg
   SvgGenImage get arrowBack => const SvgGenImage('assets/svg/arrow_back.svg');
 
+  /// File path: assets/svg/arrow_down.svg
+  SvgGenImage get arrowDown => const SvgGenImage('assets/svg/arrow_down.svg');
+
   /// File path: assets/svg/arrow_next.svg
   SvgGenImage get arrowNext => const SvgGenImage('assets/svg/arrow_next.svg');
 
@@ -149,6 +152,7 @@ class $AssetsSvgGen {
   /// List of all assets
   List<SvgGenImage> get values => [
         arrowBack,
+        arrowDown,
         arrowNext,
         camera,
         check,

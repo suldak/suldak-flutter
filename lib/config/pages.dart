@@ -14,6 +14,7 @@ import '../presentation/sign_up_info_input/email_step_1/email_step_1_controller.
 import '../presentation/sign_up_info_input/sign_up_info_input_controller.dart';
 import '../presentation/sign_up_info_input/sign_up_info_input_page.dart';
 import '../presentation/sign_up_info_input/social_step_1/social_step_1_controller.dart';
+import '../presentation/sign_up_info_input/step_2/step_2_controller.dart';
 import '../presentation/splash/splash_controller.dart';
 import '../presentation/splash/splash_page.dart';
 import 'routes.dart';
@@ -46,6 +47,7 @@ mixin AppPagesGenerator on StatelessWidget {
             Get.put(SignUpInfoInputController());
             Get.lazyPut(() => SocialStep1Controller());
             Get.lazyPut(() => EmailStep1Controller());
+            Get.lazyPut(() => Step2Controller());
           }),
         ),
         GetPage(

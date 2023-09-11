@@ -82,6 +82,9 @@ class Languages extends Translations {
     'input_password_check': '비밀번호 재입력',
     'required': '필수',
     'option': '선택',
+    'gender': '성별',
+    'step2_title': '친구되기 STEP 02',
+    'age': '연령',
   };
 
   Map<String, String> en = {
@@ -159,5 +162,8 @@ class Languages extends Translations {
     'input_password_check': 'enter your password again',
     'required': 'required',
     'option': 'option',
+    'gender': 'gender',
+    'step2_title': 'Being friends STEP 01',
+    'age': 'age',
   };
 }

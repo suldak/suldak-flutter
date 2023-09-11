@@ -158,5 +158,5 @@ class EmailStep1Controller extends GetxController {
     ));
   }
 
-// Life Cycle ▼ ------------------------------------------------------
+  // Life Cycle ▼ ------------------------------------------------------
 }

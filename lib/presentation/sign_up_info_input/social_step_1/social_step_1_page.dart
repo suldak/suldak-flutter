@@ -6,7 +6,9 @@ import '../../../gen/assets.gen.dart';
 import 'social_step_1_controller.dart';
 
 class SocialStep1Page extends GetView<SocialStep1Controller> {
-  const SocialStep1Page({super.key});
+  const SocialStep1Page({required this.onNextPage, super.key});
+
+  final void Function() onNextPage;
 
   @override
   Widget build(BuildContext context) {
@@ -223,26 +225,23 @@ class SocialStep1Page extends GetView<SocialStep1Controller> {
 
         bool isActive = isAllAgree && isNicknameAvailable;
 
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: GestureDetector(
-            onTap: isActive ? () {} : null,
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 20),
-              decoration: BoxDecoration(
-                color: isActive
-                    ? AppColors.primary
-                    : AppColors.primary.withOpacity(0.5),
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Center(
-                child: Text(
-                  'next'.tr,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                  ),
+        return GestureDetector(
+          onTap: isActive ? onNextPage : null,
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: 20),
+            decoration: BoxDecoration(
+              color: isActive
+                  ? AppColors.primary
+                  : AppColors.primary.withOpacity(0.5),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Center(
+              child: Text(
+                'next'.tr,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
             ),

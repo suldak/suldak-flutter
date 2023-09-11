@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import 'email_step_1/email_step_1_page.dart';
 import 'social_step_1/social_step_1_page.dart';
+import 'step_2/step_2_page.dart';
 
 class SignUpInfoInputController extends GetxController {
   static SignUpInfoInputController get to => Get.find();
@@ -12,14 +13,18 @@ class SignUpInfoInputController extends GetxController {
 
   bool isSocial = true;
 
-  RxList<Widget> pages = <Widget>[
-    SizedBox(),
-    SizedBox(),
-  ].obs;
+  RxList<Widget> pages = <Widget>[].obs;
 
   final pageViewController = PageController(initialPage: 0);
 
   // Functions ▼ ------------------------------------------------------
+
+  void onNextPage() {
+    pageViewController.nextPage(
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.ease,
+    );
+  }
 
   // Life Cycle ▼ ------------------------------------------------------
 
@@ -30,10 +35,12 @@ class SignUpInfoInputController extends GetxController {
     if (Get.arguments != null) {
       final isSocial = Get.arguments['isSocial'];
       if (isSocial) {
-        pages.insert(0, const SocialStep1Page());
+        pages.add(SocialStep1Page(onNextPage: onNextPage));
       } else {
-        pages.insert(0, const EmailStep1Page());
+        pages.add(EmailStep1Page(onNextPage: onNextPage));
       }
     }
+    pages.add(Step2Page(onNextPage: onNextPage));
+    pages.add(const SizedBox());
   }
 }

@@ -122,5 +122,5 @@ class SocialStep1Controller extends GetxController {
     );
   }
 
-// Life Cycle ▼ ------------------------------------------------------
+  // Life Cycle ▼ ------------------------------------------------------
 }
