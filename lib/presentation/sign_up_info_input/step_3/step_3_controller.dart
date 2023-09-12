@@ -7,7 +7,26 @@ class Step3Controller extends GetxController {
 
   // Variable ▼ ------------------------------------------------------
 
-  // Functions ▼ ------------------------------------------------------
+  List<String> drinkTags = [
+    '소주',
+    '맥주',
+    '칵테일',
+    '하이볼',
+    '와인',
+    '양주',
+    '전통주',
+  ];
+  RxList<bool> drinkTagsSelection = [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ].obs;
 
-  // Life Cycle ▼ ------------------------------------------------------
+// Functions ▼ ------------------------------------------------------
+
+// Life Cycle ▼ ------------------------------------------------------
 }
