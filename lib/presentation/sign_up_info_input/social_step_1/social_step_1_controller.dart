@@ -32,14 +32,22 @@ class SocialStep1Controller extends GetxController {
   /// 닉네임 입력창 활성화 여부
   Rx<bool> isNicknameInputFocused = false.obs;
 
+  /// 닉네임 입력 에러 메세지
+  Rxn<String?> nicknameErrorMessage = Rxn<String?>();
+
+  /// 닉네임 입력 텍스트
+  String nickname = '';
+
   /// 닉네임 입력창 focus node
   FocusNode nicknameFocusNode = FocusNode();
 
+  /// text field decoration
   final InputBorder textFieldBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(15),
     borderSide: BorderSide(color: AppColors.grey[40] ?? AppColors.grey),
   );
 
+  /// text field focused decoration
   final InputBorder focusedTextFieldBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(15),
     borderSide: const BorderSide(color: AppColors.primary),
@@ -48,8 +56,15 @@ class SocialStep1Controller extends GetxController {
   // Functions ▼ ------------------------------------------------------
 
   /// nickname text input 문자열 변경시 호출 함수
-  void onNickNameTextChanged(String text) {
-    isNicknameAvailable.value = text.length > 3;
+  void onChangeNickname(String text) {
+    nickname = text;
+    if (nickname.length > 3) {
+      isNicknameAvailable.value = true;
+      nicknameErrorMessage.value = null;
+    } else {
+      isNicknameAvailable.value = false;
+      nicknameErrorMessage.value = '닉네임이 너무 짧습니다';
+    }
   }
 
   /// 모든 체크박스가 활성화되었는지 확인하는 함수
@@ -140,9 +155,19 @@ class SocialStep1Controller extends GetxController {
     );
   }
 
+  Color getHighlightColor() {
+    if (nicknameErrorMessage.value != null) {
+      return Colors.red;
+    }
+    if (isNicknameInputFocused.value) {
+      return AppColors.primary;
+    }
+    return AppColors.grey[50] ?? AppColors.grey;
+  }
+
   // Life Cycle ▼ ------------------------------------------------------
 
-@override
+  @override
   void onInit() {
     super.onInit();
 

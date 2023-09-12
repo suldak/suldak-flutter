@@ -85,9 +85,7 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
           Text(
             'email'.tr,
             style: TextStyle(
-              color: controller.isEmailFocused.value
-                  ? AppColors.primary
-                  : AppColors.grey[50],
+              color: controller.getEmailWidgetColor(),
               fontSize: 13,
               fontWeight: FontWeight.w500,
             ),
@@ -105,6 +103,7 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
               border: controller.textFieldBorder,
               enabledBorder: controller.textFieldBorder,
               focusedBorder: controller.focusedTextFieldBorder,
+              errorText: controller.emailErrorMessage.value,
               hintText: 'input_email'.tr,
             ),
             onChanged: controller.onEmailTextChanged,
@@ -123,9 +122,7 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
           Text(
             'nickname'.tr,
             style: TextStyle(
-              color: controller.isNicknameFocused.value
-                  ? AppColors.primary
-                  : AppColors.grey[50],
+              color: controller.getNicknameWidgetColor(),
               fontSize: 13,
               fontWeight: FontWeight.w500,
             ),
@@ -143,6 +140,7 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
               border: controller.textFieldBorder,
               enabledBorder: controller.textFieldBorder,
               focusedBorder: controller.focusedTextFieldBorder,
+              errorText: controller.nicknameErrorMessage.value,
               hintText: 'input_nickname'.tr,
             ),
             onChanged: controller.onNickNameTextChanged,
@@ -161,9 +159,7 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
           Text(
             'password'.tr,
             style: TextStyle(
-              color: controller.isPasswordFocused.value
-                  ? AppColors.primary
-                  : AppColors.grey[50],
+              color: controller.getPasswordWidgetColor(),
               fontSize: 13,
               fontWeight: FontWeight.w500,
             ),
@@ -181,6 +177,7 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
               border: controller.textFieldBorder,
               enabledBorder: controller.textFieldBorder,
               focusedBorder: controller.focusedTextFieldBorder,
+              errorText: controller.passwordErrorMessage.value,
               hintText: 'input_password'.tr,
             ),
             onChanged: controller.onPasswordTextChanged,
@@ -250,6 +247,7 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
         border: controller.textFieldBorder,
         enabledBorder: controller.textFieldBorder,
         focusedBorder: controller.focusedTextFieldBorder,
+        errorText: controller.passwordCheckErrorMessage.value,
         hintText: 'input_password_check'.tr,
       ),
       onChanged: controller.onPasswordCheckTextChanged,

@@ -119,9 +119,7 @@ class SocialStep1Page extends GetView<SocialStep1Controller> {
         Text(
           'nickname'.tr,
           style: TextStyle(
-            color: controller.isNicknameInputFocused.value
-                ? AppColors.primary
-                : AppColors.grey[50],
+            color: controller.getHighlightColor(),
             fontSize: 13,
             fontWeight: FontWeight.w500,
           ),
@@ -130,6 +128,7 @@ class SocialStep1Page extends GetView<SocialStep1Controller> {
         TextField(
           focusNode: controller.nicknameFocusNode,
           maxLines: 1,
+          onChanged: controller.onChangeNickname,
           style: const TextStyle(
             color: Colors.black,
             fontSize: 16,
@@ -139,9 +138,9 @@ class SocialStep1Page extends GetView<SocialStep1Controller> {
             border: controller.textFieldBorder,
             enabledBorder: controller.textFieldBorder,
             focusedBorder: controller.focusedTextFieldBorder,
+            errorText: controller.nicknameErrorMessage.value,
             hintText: 'input_nickname'.tr,
           ),
-          onChanged: controller.onNickNameTextChanged,
         ),
       ],
     );
