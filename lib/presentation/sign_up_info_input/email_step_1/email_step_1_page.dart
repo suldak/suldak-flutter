@@ -78,138 +78,136 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
 
   /// 이메일 입력 text input 위젯
   Widget buildEmailWidget() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'email'.tr,
-          style: TextStyle(
-            color: AppColors.grey[50],
-            fontSize: 13,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        const SizedBox(height: 12),
-        Container(
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-          decoration: BoxDecoration(
-            border: Border.all(
-              width: 1,
-              color: AppColors.grey[40] ?? AppColors.grey,
+    return Obx(
+      () => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'email'.tr,
+            style: TextStyle(
+              color: controller.isEmailFocused.value
+                  ? AppColors.primary
+                  : AppColors.grey[50],
+              fontSize: 13,
+              fontWeight: FontWeight.w500,
             ),
-            borderRadius: BorderRadius.circular(15),
           ),
-          child: TextField(
+          const SizedBox(height: 12),
+          TextField(
+            focusNode: controller.emailFocusNode,
             maxLines: 1,
             style: const TextStyle(
               color: Colors.black,
               fontSize: 16,
               fontWeight: FontWeight.w500,
             ),
-            decoration: InputDecoration.collapsed(hintText: 'input_email'.tr),
+            decoration: InputDecoration(
+              border: controller.textFieldBorder,
+              enabledBorder: controller.textFieldBorder,
+              focusedBorder: controller.focusedTextFieldBorder,
+              hintText: 'input_email'.tr,
+            ),
             onChanged: controller.onEmailTextChanged,
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
   /// 닉네임 설정 text input 위젯
   Widget buildNicknameWidget() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'nickname'.tr,
-          style: TextStyle(
-            color: AppColors.grey[50],
-            fontSize: 13,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        const SizedBox(height: 12),
-        Container(
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-          decoration: BoxDecoration(
-            border: Border.all(
-              width: 1,
-              color: AppColors.grey[40] ?? AppColors.grey,
+    return Obx(
+      () => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'nickname'.tr,
+            style: TextStyle(
+              color: controller.isNicknameFocused.value
+                  ? AppColors.primary
+                  : AppColors.grey[50],
+              fontSize: 13,
+              fontWeight: FontWeight.w500,
             ),
-            borderRadius: BorderRadius.circular(15),
           ),
-          child: TextField(
+          const SizedBox(height: 12),
+          TextField(
+            focusNode: controller.nicknameFocusNode,
             maxLines: 1,
             style: const TextStyle(
               color: Colors.black,
               fontSize: 16,
               fontWeight: FontWeight.w500,
             ),
-            decoration:
-                InputDecoration.collapsed(hintText: 'input_nickname'.tr),
+            decoration: InputDecoration(
+              border: controller.textFieldBorder,
+              enabledBorder: controller.textFieldBorder,
+              focusedBorder: controller.focusedTextFieldBorder,
+              hintText: 'input_nickname'.tr,
+            ),
             onChanged: controller.onNickNameTextChanged,
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
   /// 비밀번호 입력 text input 위젯
   Widget buildPasswordWidget() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'password'.tr,
-          style: TextStyle(
-            color: AppColors.grey[50],
-            fontSize: 13,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        const SizedBox(height: 12),
-        Container(
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-          decoration: BoxDecoration(
-            border: Border.all(
-              width: 1,
-              color: AppColors.grey[40] ?? AppColors.grey,
+    return Obx(
+      () => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'password'.tr,
+            style: TextStyle(
+              color: controller.isPasswordFocused.value
+                  ? AppColors.primary
+                  : AppColors.grey[50],
+              fontSize: 13,
+              fontWeight: FontWeight.w500,
             ),
-            borderRadius: BorderRadius.circular(15),
           ),
-          child: TextField(
+          const SizedBox(height: 12),
+          TextField(
+            focusNode: controller.passwordFocusNode,
             maxLines: 1,
             style: const TextStyle(
               color: Colors.black,
               fontSize: 16,
               fontWeight: FontWeight.w500,
             ),
-            decoration:
-                InputDecoration.collapsed(hintText: 'input_password'.tr),
+            decoration: InputDecoration(
+              border: controller.textFieldBorder,
+              enabledBorder: controller.textFieldBorder,
+              focusedBorder: controller.focusedTextFieldBorder,
+              hintText: 'input_password'.tr,
+            ),
             onChanged: controller.onPasswordTextChanged,
           ),
-        ),
-        const SizedBox(height: 10),
-        Obx(
-          () => Row(
-            children: [
-              buildPasswordRuleWidget(
-                text: 'include_english'.tr,
-                isPass: controller.hasEnglish.value,
-              ),
-              const SizedBox(width: 12),
-              buildPasswordRuleWidget(
-                text: 'include_number'.tr,
-                isPass: controller.hasDigits.value,
-              ),
-              const SizedBox(width: 12),
-              buildPasswordRuleWidget(
-                text: 'between_8_20'.tr,
-                isPass: controller.hasMaxMinLength.value,
-              ),
-            ],
+          const SizedBox(height: 10),
+          Obx(
+            () => Row(
+              children: [
+                buildPasswordRuleWidget(
+                  text: 'include_english'.tr,
+                  isPass: controller.hasEnglish.value,
+                ),
+                const SizedBox(width: 12),
+                buildPasswordRuleWidget(
+                  text: 'include_number'.tr,
+                  isPass: controller.hasDigits.value,
+                ),
+                const SizedBox(width: 12),
+                buildPasswordRuleWidget(
+                  text: 'between_8_20'.tr,
+                  isPass: controller.hasMaxMinLength.value,
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -241,26 +239,20 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
 
   /// 비밀번호 확인 text input 위젯
   Widget buildPasswordCheckWidget() {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-      decoration: BoxDecoration(
-        border: Border.all(
-          width: 1,
-          color: AppColors.grey[40] ?? AppColors.grey,
-        ),
-        borderRadius: BorderRadius.circular(15),
+    return TextField(
+      maxLines: 1,
+      style: const TextStyle(
+        color: Colors.black,
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
       ),
-      child: TextField(
-        maxLines: 1,
-        style: const TextStyle(
-          color: Colors.black,
-          fontSize: 16,
-          fontWeight: FontWeight.w500,
-        ),
-        decoration:
-            InputDecoration.collapsed(hintText: 'input_password_check'.tr),
-        onChanged: controller.onPasswordCheckTextChanged,
+      decoration: InputDecoration(
+        border: controller.textFieldBorder,
+        enabledBorder: controller.textFieldBorder,
+        focusedBorder: controller.focusedTextFieldBorder,
+        hintText: 'input_password_check'.tr,
       ),
+      onChanged: controller.onPasswordCheckTextChanged,
     );
   }
 

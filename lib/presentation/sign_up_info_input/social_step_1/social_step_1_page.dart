@@ -127,29 +127,21 @@ class SocialStep1Page extends GetView<SocialStep1Controller> {
           ),
         ),
         const SizedBox(height: 12),
-        Container(
-          padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
-          decoration: BoxDecoration(
-            border: Border.all(
-              width: 1,
-              color: controller.isNicknameInputFocused.value
-                  ? AppColors.primary
-                  : AppColors.grey[40] ?? AppColors.grey,
-            ),
-            borderRadius: BorderRadius.circular(15),
+        TextField(
+          focusNode: controller.nicknameFocusNode,
+          maxLines: 1,
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
           ),
-          child: TextField(
-            focusNode: controller.nicknameFocusNode,
-            maxLines: 1,
-            style: const TextStyle(
-              color: Colors.black,
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-            ),
-            decoration:
-                InputDecoration.collapsed(hintText: 'input_nickname'.tr),
-            onChanged: controller.onNickNameTextChanged,
+          decoration: InputDecoration(
+            border: controller.textFieldBorder,
+            enabledBorder: controller.textFieldBorder,
+            focusedBorder: controller.focusedTextFieldBorder,
+            hintText: 'input_nickname'.tr,
           ),
+          onChanged: controller.onNickNameTextChanged,
         ),
       ],
     );

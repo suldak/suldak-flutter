@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../config/colors.dart';
+
 class EmailStep1Controller extends GetxController {
   static EmailStep1Controller get to => Get.find();
 
@@ -48,7 +50,35 @@ class EmailStep1Controller extends GetxController {
 
   // -----------------------------------------------
 
+  /// 이메일 입력창 focus 여부
+  Rx<bool> isEmailFocused = false.obs;
+
+  /// 닉네임 입력창 focus 여부
+  Rx<bool> isNicknameFocused = false.obs;
+
+  /// 비밀번호 입력창 focus 여부
+  Rx<bool> isPasswordFocused = false.obs;
+
+  /// 이메일 입력창 focus node
+  FocusNode emailFocusNode = FocusNode();
+
+  /// 닉네임 입력창 focus node
+  FocusNode nicknameFocusNode = FocusNode();
+
+  /// 비밀번호 입력창 focus node
+  FocusNode passwordFocusNode = FocusNode();
+
   String password = '';
+
+  final InputBorder textFieldBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(15),
+    borderSide: BorderSide(color: AppColors.grey[40] ?? AppColors.grey),
+  );
+
+  final InputBorder focusedTextFieldBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(15),
+    borderSide: const BorderSide(color: AppColors.primary),
+  );
 
   // Functions ▼ ------------------------------------------------------
 
@@ -159,4 +189,33 @@ class EmailStep1Controller extends GetxController {
   }
 
   // Life Cycle ▼ ------------------------------------------------------
+
+  @override
+  void onInit() {
+    super.onInit();
+
+    emailFocusNode.addListener(() {
+      if (emailFocusNode.hasFocus) {
+        isEmailFocused.value = true;
+      } else {
+        isEmailFocused.value = false;
+      }
+    });
+
+    nicknameFocusNode.addListener(() {
+      if (nicknameFocusNode.hasFocus) {
+        isNicknameFocused.value = true;
+      } else {
+        isNicknameFocused.value = false;
+      }
+    });
+
+    passwordFocusNode.addListener(() {
+      if (passwordFocusNode.hasFocus) {
+        isPasswordFocused.value = true;
+      } else {
+        isPasswordFocused.value = false;
+      }
+    });
+  }
 }

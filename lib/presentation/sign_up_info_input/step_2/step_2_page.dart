@@ -159,36 +159,28 @@ class Step2Page extends GetView<Step2Controller> {
   /// [isNicknameAvailable] 사용 가능 닉네임 여부 확인
   Widget buildNextButton() {
     return Obx(
-      () {
-        bool isActive = controller.isActive.value;
-        // final isAllAgree = controller.isAllReqAgree.value;
-        // final isNicknameAvailable = controller.isNicknameAvailable.value;
-        //
-        // bool isActive = isAllAgree && isNicknameAvailable;
-
-        return GestureDetector(
-          onTap: isActive ? onNextPage : null,
-          child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            decoration: BoxDecoration(
-              color: isActive
-                  ? AppColors.primary
-                  : AppColors.primary.withOpacity(0.5),
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Center(
-              child: Text(
-                'next'.tr,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                ),
+      () => GestureDetector(
+        onTap: controller.isActive.value ? onNextPage : null,
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 20),
+          decoration: BoxDecoration(
+            color: controller.isActive.value
+                ? AppColors.primary
+                : AppColors.primary.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Center(
+            child: Text(
+              'next'.tr,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
               ),
             ),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

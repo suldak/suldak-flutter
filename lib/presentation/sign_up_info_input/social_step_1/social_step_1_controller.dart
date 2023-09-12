@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../config/colors.dart';
+
 class SocialStep1Controller extends GetxController {
   static SocialStep1Controller get to => Get.find();
 
@@ -32,6 +34,16 @@ class SocialStep1Controller extends GetxController {
 
   /// 닉네임 입력창 focus node
   FocusNode nicknameFocusNode = FocusNode();
+
+  final InputBorder textFieldBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(15),
+    borderSide: BorderSide(color: AppColors.grey[40] ?? AppColors.grey),
+  );
+
+  final InputBorder focusedTextFieldBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(15),
+    borderSide: const BorderSide(color: AppColors.primary),
+  );
 
   // Functions ▼ ------------------------------------------------------
 
