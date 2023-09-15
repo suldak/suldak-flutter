@@ -8,6 +8,9 @@ import '../presentation/home/home_page.dart';
 import '../presentation/home/profile/profile_controller.dart';
 import '../presentation/login/login_controller.dart';
 import '../presentation/login/login_page.dart';
+import '../presentation/onboard/onboardController.dart';
+import '../presentation/onboard/onboard.dart';
+import '../presentation/onboard/onboard_last.dart';
 import '../presentation/profile_setting/profile_setting_controller.dart';
 import '../presentation/profile_setting/profile_setting_page.dart';
 import '../presentation/sign_up_info_input/sign_up_info_input_controller.dart';
@@ -24,6 +27,17 @@ mixin AppPagesGenerator on StatelessWidget {
           name: Routes.splash,
           page: () => const SplashPage(),
           binding: BindingsBuilder.put(() => SplashController()),
+        ),
+        GetPage(
+          name: Routes.onboarding,
+          page: () => Onboard(),
+          binding: BindingsBuilder.put(() => OnboardController()),
+        ),
+        GetPage(
+          name: "${Routes.onboarding}/lastpage",
+          page: () => OnboardLastPage(),
+          transition: Transition.zoom,
+          binding: BindingsBuilder.put(() => OnboardController()),
         ),
         GetPage(
           name: Routes.home,
