@@ -16,6 +16,7 @@ class Step3Page extends GetView<Step3Controller> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             buildMyDrinkTaste(),
@@ -157,12 +158,15 @@ class Step3Page extends GetView<Step3Controller> {
           children: [
             image,
             const SizedBox(width: 8),
-            Text(
-              title,
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 16,
-                fontWeight: FontWeight.w700,
+            Expanded(
+              child: Text(
+                title,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
           ],

@@ -16,6 +16,7 @@ class ProfilePage extends GetView<ProfileController> {
     return Scaffold(
       appBar: BaseAppBar(title: 'my_profile'.tr, showBottomLine: true),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             // Divider(thickness: 1, height: 1, color: Colors.grey[20]),
