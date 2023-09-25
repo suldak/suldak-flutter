@@ -43,7 +43,7 @@ class LoginPage extends GetView<LoginController> {
               backgroundColor: const Color(0xFFFCEC4E),
               textColor: Colors.black,
               onTap: () {
-                controller.navigateSignUpInfo(true);
+                controller.kakaoLogin();
               },
             ),
             const SizedBox(height: 12),
