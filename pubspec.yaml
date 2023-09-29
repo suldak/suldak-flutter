@@ -42,6 +42,8 @@ dependencies:
 
   # login
   kakao_flutter_sdk: ^1.5.0
+  flutter_naver_login: ^1.8.0
+  google_sign_in: ^6.1.5
 
   # util
   get_storage: ^2.0.3
