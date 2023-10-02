@@ -1,13 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:suldak_suldak/config/colors.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'onboardController.dart';
 
-class OnboardLastPage extends StatelessWidget {
+class OnboardLastPage extends StatefulWidget {
   OnboardLastPage({Key? key}) : super(key: key);
 
+  @override
+  _OnboardLastPageState createState() => _OnboardLastPageState();
+}
+
+class _OnboardLastPageState extends State<OnboardLastPage> {
+  late SharedPreferences prefs;
   final OnboardController onboardController = OnboardController();
+
+  @override
+  void initState() {
+    super.initState();
+    initSharedPreferences();
+  }
+
+  Future<void> initSharedPreferences() async {
+    prefs = await SharedPreferences.getInstance();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +36,7 @@ class OnboardLastPage extends StatelessWidget {
           pages: [
             // page 4
             onboardController.onboardPage(context, "\n", "나의 술취향은 무엇일까요?\n ",
-                "함께 분석해봐요!\n", "assets/svg/beer_friend_illustrator.svg"),
+                "함께 분석해봐요!\n", "assets/svg/bird_illustrator.svg"),
           ],
           showDoneButton: false,
           showNextButton: false,
@@ -31,6 +48,7 @@ class OnboardLastPage extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {
                 onboardController.navigateLogin();
+                prefs.setString('onboard', "true");
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primary,
@@ -42,8 +60,8 @@ class OnboardLastPage extends StatelessWidget {
               child: const Text(
                 "시작하기",
                 style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w900,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
                     color: Colors.white),
               ),
             ),
