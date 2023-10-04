@@ -47,5 +47,14 @@
                     android:scheme="kakao70a060e599c0641598be32da0f6790fc" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.naver.sdk.clientId"
+            android:value="@string/client_id" />
+        <meta-data
+            android:name="com.naver.sdk.clientSecret"
+            android:value="@string/client_secret" />
+        <meta-data
+            android:name="com.naver.sdk.clientName"
+            android:value="@string/client_name" />
     </application>
 </manifest>

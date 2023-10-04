@@ -60,7 +60,7 @@ class LoginPage extends GetView<LoginController> {
               backgroundColor: const Color(0xFF56CA5D),
               textColor: Colors.white,
               onTap: () {
-                controller.navigateSignUpInfo(true);
+                controller.naverLogin();
               },
             ),
             const SizedBox(height: 12),
@@ -70,7 +70,7 @@ class LoginPage extends GetView<LoginController> {
               backgroundColor: const Color(0xFFF5F5F5),
               textColor: Colors.black,
               onTap: () {
-                controller.navigateSignUpInfo(true);
+                controller.googleLogin();
               },
             ),
             const SizedBox(height: 44),
