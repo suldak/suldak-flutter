@@ -17,9 +17,9 @@ part './api_interceptor.dart';
 /// 서버에서 예외 처리가 진행되었음을 의미한다.
 ///
 /// 이 경우 개별 repo 에서 콜백을 통해 예외처리를 진행한다.
-typedef OnServerException = void Function(String? msg);
+typedef OnServerException = void Function(String? msg, int? code);
 
-abstract class API extends GetxService {
+mixin API on GetxService {
   /// ## 모든 통신에서 기초가 되는 [Dio] instance
   static final _dio = Dio();
 
@@ -151,10 +151,10 @@ extension ResponseValidator on Response<Map> {
   /// 아무런 문제가 없는 경우에만 response의 data를 반환한다.
   Map? validateData(OnServerException? onServerException) {
     if (statusCode == 200 && data != null) {
-      if (data?['result'] == 1) {
+      if (data?['success']) {
         return data;
       }
-      onServerException?.call(data?['msg']);
+      onServerException?.call(data?['message'], data?['errorCode']);
     }
     return null;
   }
