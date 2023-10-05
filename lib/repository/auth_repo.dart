@@ -17,55 +17,55 @@ class AuthRepository extends GetxService with API {
   static const _emailLoginEp = '/auth/login';
   static const _logoutEp = '/auth/logout';
 
-  Future<User?> loginWithGoogle(
+  Future<UserModel?> loginWithGoogle(
     String accessToken, {
     OnServerException? onServerException,
   }) async {
-    final res = await post(
+    final res = await get(
       _googleLoginEp,
-      queries: {'accessToken': accessToken},
+      data: {'accessToken': accessToken},
     );
     final data = res.validateData(onServerException);
 
     if (data != null) {
-      return User.fromJson(data);
+      return UserModel.fromJson(data);
     }
     return null;
   }
 
-  Future<User?> loginWithKakao(
+  Future<UserModel?> loginWithKakao(
     String accessToken, {
     OnServerException? onServerException,
   }) async {
-    final res = await post(
+    final res = await get(
       _kakaoLoginEp,
-      queries: {'accessToken': accessToken},
+      data: {'accessToken': accessToken},
     );
     final data = res.validateData(onServerException);
 
     if (data != null) {
-      return User.fromJson(data);
+      return UserModel.fromJson(data);
     }
     return null;
   }
 
-  Future<User?> loginWithNaver(
+  Future<UserModel?> loginWithNaver(
     String accessToken, {
     OnServerException? onServerException,
   }) async {
-    final res = await post(
+    final res = await get(
       _naverLoginEp,
-      queries: {'accessToken': accessToken},
+      data: {'accessToken': accessToken},
     );
     final data = res.validateData(onServerException);
 
     if (data != null) {
-      return User.fromJson(data);
+      return UserModel.fromJson(data);
     }
     return null;
   }
 
-  Future<User?> loginWithEmail(
+  Future<UserModel?> loginWithEmail(
     String email,
     String password, {
     OnServerException? onServerException,
@@ -80,7 +80,7 @@ class AuthRepository extends GetxService with API {
     final data = res.validateData(onServerException);
 
     if (data != null) {
-      return User.fromJson(data);
+      return UserModel.fromJson(data);
     }
     return null;
   }

@@ -6,32 +6,17 @@ class _DioInterceptor extends Interceptor {
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     final data = response.data as Map?;
     if (data != null) {
-      // 남은 정지 시간 기본값 0
-      final suspendedTime = int.tryParse(data['seconds'] ?? '') ?? 0;
-      // 탈퇴 후 재가입 가능 여부 기본값 null
-      // 1은 재가입 불가, 0은 재가입 가능
-      // null 은 탈퇴 안함...
-      final ableToJoin = int.tryParse(data['done'] ?? '');
-
-      if (suspendedTime > 0 || ableToJoin != null) {
-        // TODO: 계정 복구 화면으로 이동
-        handler.resolve(Response(
-          requestOptions: response.requestOptions,
-          statusCode: response.statusCode,
-        ));
-        return;
-      }
-
-      // result code에 따라 error interceptor 로 전달
-      if (data['result'] != 1) {
+      // success 상태에 따라 error interceptor 로 전달
+      if (!data['success']) {
         handler.reject(DioException(
           requestOptions: response.requestOptions,
-          message: data['msg'],
+          message: data['message'],
           response: response,
           type: DioExceptionType.unknown,
           error: {
-            'result': data['result'],
-            'msg': data['msg'],
+            'success': data['success'],
+            'errorCode': data['errorCode'],
+            'msg': data['message'],
           },
         ));
       }

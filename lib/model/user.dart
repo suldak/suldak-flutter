@@ -1,4 +1,4 @@
-class User {
+class UserModel {
   int? birthdayYear;
   String? createdAt;
   String? gender;
@@ -10,7 +10,7 @@ class User {
   String? registration;
   String? userEmail;
 
-  User._({
+  UserModel._({
     this.birthdayYear,
     this.createdAt,
     this.gender,
@@ -23,8 +23,8 @@ class User {
     this.userEmail,
   });
 
-  factory User.fromJson(Map json) {
-    return User._(
+  factory UserModel.fromJson(Map json) {
+    return UserModel._(
       birthdayYear: json['birthdayYear']?.toInt(),
       createdAt: json['createdAt']?.toString(),
       gender: json['gender']?.toString(),

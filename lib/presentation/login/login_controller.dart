@@ -2,10 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_naver_login/flutter_naver_login.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart' as kakao;
 
+import '../../config/keys.dart';
 import '../../config/routes.dart';
+import '../../model/user.dart';
+import '../../repository/auth_repo.dart';
 
 class LoginController extends GetxController {
   static LoginController get to => Get.find();
@@ -17,8 +21,8 @@ class LoginController extends GetxController {
   void kakaoLogin() async {
     if (await kakao.isKakaoTalkInstalled()) {
       try {
-        await kakao.UserApi.instance.loginWithKakaoTalk();
-        requestKakaoUserInfo();
+        final res = await kakao.UserApi.instance.loginWithKakaoTalk();
+        requestKakaoUserInfo(res);
         print('카카오톡으로 로그인 성공');
       } catch (error) {
         print('카카오톡으로 로그인 실패 $error');
@@ -30,8 +34,8 @@ class LoginController extends GetxController {
         }
         // 카카오톡에 연결된 카카오계정이 없는 경우, 카카오계정으로 로그인
         try {
-          await kakao.UserApi.instance.loginWithKakaoAccount();
-          requestKakaoUserInfo();
+          final res = await kakao.UserApi.instance.loginWithKakaoAccount();
+          requestKakaoUserInfo(res);
           print('카카오계정으로 로그인 성공');
         } catch (error) {
           print('카카오계정으로 로그인 실패 $error');
@@ -39,8 +43,8 @@ class LoginController extends GetxController {
       }
     } else {
       try {
-        await kakao.UserApi.instance.loginWithKakaoAccount();
-        requestKakaoUserInfo();
+        final res = await kakao.UserApi.instance.loginWithKakaoAccount();
+        requestKakaoUserInfo(res);
         print('카카오계정으로 로그인 성공');
       } catch (error) {
         print('카카오계정으로 로그인 실패 $error');
@@ -51,12 +55,14 @@ class LoginController extends GetxController {
   void naverLogin() async {
     final NaverLoginResult result = await FlutterNaverLogin.logIn();
     if (result.status == NaverLoginStatus.loggedIn) {
-      print('accessToken = ${result.accessToken}');
-      print('id = ${result.account.id}');
-      print('email = ${result.account.email}');
-      print('name = ${result.account.name}');
+      NaverAccessToken token = await FlutterNaverLogin.currentAccessToken;
 
-      navigateSignUpInfo(true);
+      final userData =
+          await AuthRepository.to.loginWithNaver(token.accessToken);
+      if (userData != null) {
+        await saveUserInfo(userData);
+        navigateSignUpInfo(true);
+      }
     }
   }
 
@@ -83,9 +89,18 @@ class LoginController extends GetxController {
     // https://velog.io/@tygerhwang/Flutter-Firebase-Authentication-%EC%82%AC%EC%9A%A9%ED%95%B4-%EB%B3%B4%EA%B8%B0-1%ED%8E%B8
     UserCredential userCredential =
         await FirebaseAuth.instance.signInWithCredential(credential);
+
+    if (credential.accessToken != null) {
+      final userData =
+          await AuthRepository.to.loginWithGoogle(credential.accessToken!);
+      if (userData != null) {
+        await saveUserInfo(userData);
+        navigateSignUpInfo(true);
+      }
+    }
   }
 
-  void requestKakaoUserInfo() async {
+  void requestKakaoUserInfo(kakao.OAuthToken userToken) async {
     kakao.User user;
 
     try {
@@ -148,7 +163,26 @@ class LoginController extends GetxController {
         print('사용자 정보 요청 실패 $error');
       }
     }
-    navigateSignUpInfo(true);
+
+    final userData = await AuthRepository.to.loginWithKakao(userToken.accessToken);
+    if (userData != null) {
+      await saveUserInfo(userData);
+      navigateSignUpInfo(true);
+    }
+  }
+
+  Future<void> saveUserInfo(UserModel userModel) async {
+    String? refreshToken = userModel.refreshToken;
+    String? userEmail = userModel.userEmail;
+    String? registration = userModel.registration;
+
+    final storage = GetStorage();
+    await Future.wait([
+      storage.write(Keys.refreshToken, refreshToken),
+      storage.write(Keys.userEmail, userEmail),
+      storage.write(Keys.registration, registration),
+    ]);
+    return;
   }
 
   void navigateSignUpInfo(bool isSocial) {

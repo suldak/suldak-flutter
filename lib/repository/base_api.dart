@@ -79,6 +79,56 @@ mixin API on GetxService {
     );
   }
 
+  /// ### [Dio().get]의 wrapper
+  /// get 의 데이터는 모두 [data]로 전달한다
+  ///   소요시간을 확인하기 위해서는 [checkDuration]을 [true]로 하면 콘솔에 소요시간을 표시한다.
+  ///
+  /// 또한 [printQuery]에 [true]를 전달하면, 쿼리로 전달되는 데이터를 log에 표시한다.
+  @nonVirtual
+  Future<Response<Map<String, dynamic>>> get(
+    String path, {
+    Map<String, dynamic>? data,
+    bool checkDuration = false,
+    bool printQuery = kDebugMode,
+  }) async {
+    if (!_isInitialized.isCompleted) {
+      await _isInitialized.future;
+    }
+
+    // null인 값 제거
+    data?.removeWhere((k, v) => v == null);
+
+    // 디버깅용 세팅
+    DateTime? startTime;
+    if (kDebugMode) {
+      startTime = checkDuration ? DateTime.now() : null;
+      if (printQuery) {
+        debugPrintParams(path, data);
+      }
+    }
+
+    final Map<String, dynamic> header = {
+      'Content-Type': 'Application/json',
+    };
+
+    // user token 추가
+    final token = GetStorage().read<String>(Keys.refreshToken);
+    if (token != null) {
+      header['Authorization'] = token;
+      log('🔑 유저 토큰을 함께 전송합니다. end point: $path', name: apiName);
+    }
+
+    return _dio.get<Map<String, dynamic>>(
+      path,
+      queryParameters: data,
+      options: Options(
+        headers: header,
+      ),
+    )..whenComplete(() {
+        _logTurnaroundTime(path, startTime);
+      });
+  }
+
   /// ### [Dio().post]의 wrapper
   /// post 의 데이터는 모두 [data]로 전달허고, 동시에 get 방식으로 데이터를 전달하는 부분은
   /// [queries]에 [Map]으로 전달하여 사용할 수 있다. 소요시간을 확인하기 위해서는
@@ -91,24 +141,17 @@ mixin API on GetxService {
   /// 또한 [printQuery]에 [true]를 전달하면, 쿼리로 전달되는 데이터를 log에 표시한다.
   @nonVirtual
   Future<Response<Map<String, dynamic>>> post(
-      String path, {
-        Map<String, dynamic>? data,
-        Map<String, dynamic> queries = const {},
-        bool checkDuration = false,
-        bool printQuery = kDebugMode,
-      }) async {
+    String path, {
+    Map<String, dynamic>? data,
+    Map<String, dynamic> queries = const {},
+    bool checkDuration = false,
+    bool printQuery = kDebugMode,
+  }) async {
     if (!_isInitialized.isCompleted) {
       await _isInitialized.future;
     }
 
-    // 기본 parameter 추가
-    data?['mobile'] = 1;
-    // user token 추가
-    final token = GetStorage().read<String>(Keys.fbTokenId);
-    if (token != null) {
-      data?.putIfAbsent('user_token', () => token);
-      log('🔑 유저 토큰을 함께 전송합니다. end point: $path', name: apiName);
-    }
+    // null인 값 제거
     data?.removeWhere((k, v) => v == null);
 
     // 디버깅용 세팅
@@ -128,19 +171,35 @@ mixin API on GetxService {
       }
     });
 
+    final Map<String, dynamic> header = {};
+
+    if (hasMultiPartFile) {
+      header['Content-Type'] = 'multipart/form-data';
+    } else {
+      header['Content-Type'] = 'Application/json';
+    }
+
+    // user token 추가
+    final token = GetStorage().read<String>(Keys.refreshToken);
+    if (token != null) {
+      header['Authorization'] = token;
+      log('🔑 유저 토큰을 함께 전송합니다. end point: $path', name: apiName);
+    }
+
     return _dio.post<Map<String, dynamic>>(
       path,
       data: data != null ? FormData.fromMap(data) : null,
       queryParameters: queries,
-      options: hasMultiPartFile ? Options(
-        contentType: 'multipart/form-data',
-      ) : null,
+      options: Options(
+        contentType:
+            hasMultiPartFile ? 'multipart/form-data' : 'Application/json',
+        headers: header,
+      ),
     )..whenComplete(() {
-      _logTurnaroundTime(path, startTime);
-    });
+        _logTurnaroundTime(path, startTime);
+      });
   }
 }
-
 
 extension ResponseValidator on Response<Map> {
   /// ## 서버 예외 상황 여부 확인
