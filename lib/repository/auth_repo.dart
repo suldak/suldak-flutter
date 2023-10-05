@@ -28,7 +28,7 @@ class AuthRepository extends GetxService with API {
     final data = res.validateData(onServerException);
 
     if (data != null) {
-      return UserModel.fromJson(data);
+      return UserModel.fromJson(data['data']);
     }
     return null;
   }
@@ -44,7 +44,7 @@ class AuthRepository extends GetxService with API {
     final data = res.validateData(onServerException);
 
     if (data != null) {
-      return UserModel.fromJson(data);
+      return UserModel.fromJson(data['data']);
     }
     return null;
   }
@@ -60,7 +60,7 @@ class AuthRepository extends GetxService with API {
     final data = res.validateData(onServerException);
 
     if (data != null) {
-      return UserModel.fromJson(data);
+      return UserModel.fromJson(data['data']);
     }
     return null;
   }
@@ -80,7 +80,7 @@ class AuthRepository extends GetxService with API {
     final data = res.validateData(onServerException);
 
     if (data != null) {
-      return UserModel.fromJson(data);
+      return UserModel.fromJson(data['data']);
     }
     return null;
   }

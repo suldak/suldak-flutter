@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 
 import '../presentation/account_manage/account_manage_controller.dart';
 import '../presentation/account_manage/account_manage_page.dart';
+import '../presentation/email_login/email_login_controller.dart';
+import '../presentation/email_login/email_login_page.dart';
 import '../presentation/home/home_controller.dart';
 import '../presentation/home/home_page.dart';
 import '../presentation/home/profile/profile_controller.dart';
@@ -40,6 +42,11 @@ mixin AppPagesGenerator on StatelessWidget {
           name: Routes.login,
           page: () => const LoginPage(),
           binding: BindingsBuilder.put(() => LoginController()),
+        ),
+        GetPage(
+          name: Routes.emailLogin,
+          page: () => const EmailLoginPage(),
+          binding: BindingsBuilder.put(() => EmailLoginController()),
         ),
         GetPage(
           name: Routes.signUpInfo,

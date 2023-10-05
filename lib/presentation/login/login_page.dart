@@ -21,7 +21,7 @@ class LoginPage extends GetView<LoginController> {
                 child: Stack(
                   alignment: Alignment.topCenter,
                   children: [
-                    Positioned(
+                    const Positioned(
                       top: 20,
                       child: Text(
                         '마음 맞는 술친구 찾기',
@@ -39,7 +39,7 @@ class LoginPage extends GetView<LoginController> {
             ),
             buildSocialLoginButton(
               image: Assets.svg.kakao.svg(width: 20, height: 20),
-              text: '카카오로 3초만에 시작하기',
+              text: 'login_kakao'.tr,
               backgroundColor: const Color(0xFFFCEC4E),
               textColor: Colors.black,
               onTap: () {
@@ -56,7 +56,7 @@ class LoginPage extends GetView<LoginController> {
                   BlendMode.srcIn,
                 ),
               ),
-              text: '네이버로 계속하기',
+              text: 'login_naver'.tr,
               backgroundColor: const Color(0xFF56CA5D),
               textColor: Colors.white,
               onTap: () {
@@ -66,7 +66,7 @@ class LoginPage extends GetView<LoginController> {
             const SizedBox(height: 12),
             buildSocialLoginButton(
               image: Assets.svg.google.svg(width: 20, height: 20),
-              text: '구글로 계속하기',
+              text: 'login_google'.tr,
               backgroundColor: const Color(0xFFF5F5F5),
               textColor: Colors.black,
               onTap: () {
@@ -76,7 +76,7 @@ class LoginPage extends GetView<LoginController> {
             const SizedBox(height: 44),
             GestureDetector(
               onTap: () {
-                controller.navigateSignUpInfo(false);
+                controller.navigateEmailLogin();
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -88,7 +88,7 @@ class LoginPage extends GetView<LoginController> {
                   ),
                 ),
                 child: Text(
-                  '이메일로 로그인',
+                  'login_email'.tr,
                   style: TextStyle(
                     color: AppColors.grey[70],
                     fontSize: 14,

@@ -2,13 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_naver_login/flutter_naver_login.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kakao_flutter_sdk/kakao_flutter_sdk.dart' as kakao;
 
-import '../../config/keys.dart';
 import '../../config/routes.dart';
-import '../../model/user.dart';
+import '../../global_controller.dart';
 import '../../repository/auth_repo.dart';
 
 class LoginController extends GetxController {
@@ -60,7 +58,7 @@ class LoginController extends GetxController {
       final userData =
           await AuthRepository.to.loginWithNaver(token.accessToken);
       if (userData != null) {
-        await saveUserInfo(userData);
+        await GlobalController.to.saveUserInfo(userData);
         navigateSignUpInfo(true);
       }
     }
@@ -94,7 +92,7 @@ class LoginController extends GetxController {
       final userData =
           await AuthRepository.to.loginWithGoogle(credential.accessToken!);
       if (userData != null) {
-        await saveUserInfo(userData);
+        await GlobalController.to.saveUserInfo(userData);
         navigateSignUpInfo(true);
       }
     }
@@ -166,27 +164,17 @@ class LoginController extends GetxController {
 
     final userData = await AuthRepository.to.loginWithKakao(userToken.accessToken);
     if (userData != null) {
-      await saveUserInfo(userData);
+      await GlobalController.to.saveUserInfo(userData);
       navigateSignUpInfo(true);
     }
   }
 
-  Future<void> saveUserInfo(UserModel userModel) async {
-    String? refreshToken = userModel.refreshToken;
-    String? userEmail = userModel.userEmail;
-    String? registration = userModel.registration;
-
-    final storage = GetStorage();
-    await Future.wait([
-      storage.write(Keys.refreshToken, refreshToken),
-      storage.write(Keys.userEmail, userEmail),
-      storage.write(Keys.registration, registration),
-    ]);
-    return;
-  }
-
   void navigateSignUpInfo(bool isSocial) {
     Get.toNamed(Routes.signUpInfo, arguments: {'isSocial': isSocial});
+  }
+
+  void navigateEmailLogin() {
+    Get.toNamed(Routes.emailLogin);
   }
 
 // Life Cycle ▼ ------------------------------------------------------

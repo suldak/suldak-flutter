@@ -186,9 +186,15 @@ mixin API on GetxService {
       log('🔑 유저 토큰을 함께 전송합니다. end point: $path', name: apiName);
     }
 
+
+
     return _dio.post<Map<String, dynamic>>(
       path,
-      data: data != null ? FormData.fromMap(data) : null,
+      data: data != null
+          ? hasMultiPartFile
+              ? FormData.fromMap(data)
+              : data
+          : null,
       queryParameters: queries,
       options: Options(
         contentType:

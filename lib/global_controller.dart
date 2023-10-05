@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'config/keys.dart';
+import 'model/user.dart';
 
 class GlobalController extends GetxController {
   static GlobalController get to => Get.find<GlobalController>();
@@ -48,6 +49,20 @@ class GlobalController extends GetxController {
       //   // not signed
       // }
     }
+  }
+
+  Future<void> saveUserInfo(UserModel userModel) async {
+    String? refreshToken = userModel.refreshToken;
+    String? userEmail = userModel.userEmail;
+    String? registration = userModel.registration;
+
+    final storage = GetStorage();
+    await Future.wait([
+      storage.write(Keys.refreshToken, refreshToken),
+      storage.write(Keys.userEmail, userEmail),
+      storage.write(Keys.registration, registration),
+    ]);
+    return;
   }
 
   /// 현재 사용자 logout 함수

@@ -85,6 +85,12 @@ class Languages extends Translations {
     'gender': '성별',
     'step2_title': '친구되기 STEP 02',
     'age': '연령',
+    'login_kakao': '카카오로 3초만에 시작하기',
+    'login_naver': '네이버로 계속하기',
+    'login_google': '구글로 계속하기',
+    'login_email': '이메일로 로그인',
+    'sign_up_email': '이메일로 회원가입',
+    'find_password': '비밀번호 찾기',
   };
 
   Map<String, String> en = {
@@ -165,5 +171,11 @@ class Languages extends Translations {
     'gender': 'gender',
     'step2_title': 'Being friends STEP 01',
     'age': 'age',
+    'login_kakao': 'login with kakao',
+    'login_naver': 'login with naver',
+    'login_google': 'login with google',
+    'login_email': 'Login with email',
+    'sign_up_email': 'Sign up with email',
+    'find_password': 'Find password',
   };
 }
