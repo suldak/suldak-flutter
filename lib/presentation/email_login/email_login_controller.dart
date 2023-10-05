@@ -29,6 +29,10 @@ class EmailLoginController extends GetxController {
     }
   }
 
+  void navigateSignUpInfo() {
+    Get.toNamed(Routes.signUpInfo, arguments: {'isSocial': false});
+  }
+
   void navigateHome() {
     Get.toNamed(Routes.home);
   }
