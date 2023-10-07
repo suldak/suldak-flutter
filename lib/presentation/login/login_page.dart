@@ -75,6 +75,12 @@ class LoginPage extends GetView<LoginController> {
             ),
             const SizedBox(height: 44),
             GestureDetector(
+              onTap: controller.navigateToHome,
+              child: Container(
+                width: 40, height: 40, color: Colors.orange,
+              ),
+            ),
+            GestureDetector(
               onTap: () {
                 controller.navigateEmailLogin();
               },

@@ -177,5 +177,9 @@ class LoginController extends GetxController {
     Get.toNamed(Routes.emailLogin);
   }
 
+  void navigateToHome() {
+    Get.toNamed(Routes.home);
+  }
+
 // Life Cycle ▼ ------------------------------------------------------
 }
