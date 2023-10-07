@@ -90,10 +90,10 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/lottie/
     - assets/svg/
     - assets/png/
     - assets/font/
+    - assets/jpg/
 
 
   fonts:
