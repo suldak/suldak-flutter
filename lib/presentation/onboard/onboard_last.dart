@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:suldak_suldak/config/colors.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'onboardController.dart';
 
@@ -13,7 +14,7 @@ class OnboardLastPage extends StatefulWidget {
 }
 
 class _OnboardLastPageState extends State<OnboardLastPage> {
-  late SharedPreferences prefs;
+  final storage = GetStorage();
   final OnboardController onboardController = OnboardController();
 
   @override
@@ -23,7 +24,6 @@ class _OnboardLastPageState extends State<OnboardLastPage> {
   }
 
   Future<void> initSharedPreferences() async {
-    prefs = await SharedPreferences.getInstance();
   }
 
   @override
@@ -35,8 +35,8 @@ class _OnboardLastPageState extends State<OnboardLastPage> {
         child: IntroductionScreen(
           pages: [
             // page 4
-            onboardController.onboardPage(context, "\n", "나의 술취향은 무엇일까요?\n ",
-                "함께 분석해봐요!\n", "assets/svg/bird_illustrator.svg"),
+            onboardController.onboardPage(context, 'onboard_last1', 'onboard_last2',
+                'onboard_last3', 'assets/svg/bird_illustrator.svg'),
           ],
           showDoneButton: false,
           showNextButton: false,
@@ -47,8 +47,8 @@ class _OnboardLastPageState extends State<OnboardLastPage> {
             height: 90,
             child: ElevatedButton(
               onPressed: () {
+                onboardController.saveBoolData('onboard', true);
                 onboardController.navigateLogin();
-                prefs.setString('onboard', "true");
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primary,
@@ -57,9 +57,9 @@ class _OnboardLastPageState extends State<OnboardLastPage> {
                   borderRadius: BorderRadius.circular(15),
                 ),
               ),
-              child: const Text(
-                "시작하기",
-                style: TextStyle(
+              child: Text(
+                'start'.tr,
+                style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
                     color: Colors.white),
