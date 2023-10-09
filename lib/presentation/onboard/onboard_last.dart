@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:suldak_suldak/config/colors.dart';
@@ -6,25 +7,10 @@ import 'package:get_storage/get_storage.dart';
 
 import 'onboardController.dart';
 
-class OnboardLastPage extends StatefulWidget {
-  OnboardLastPage({Key? key}) : super(key: key);
+class OnboardLastPage extends GetView<OnboardController> {
+  OnboardLastPage({super.key});
 
-  @override
-  _OnboardLastPageState createState() => _OnboardLastPageState();
-}
-
-class _OnboardLastPageState extends State<OnboardLastPage> {
   final storage = GetStorage();
-  final OnboardController onboardController = OnboardController();
-
-  @override
-  void initState() {
-    super.initState();
-    initSharedPreferences();
-  }
-
-  Future<void> initSharedPreferences() async {
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +21,7 @@ class _OnboardLastPageState extends State<OnboardLastPage> {
         child: IntroductionScreen(
           pages: [
             // page 4
-            onboardController.onboardPage(context, 'onboard_last1', 'onboard_last2',
+            onboardPage(context, 'onboard_last1', 'onboard_last2',
                 'onboard_last3', 'assets/svg/bird_illustrator.svg'),
           ],
           showDoneButton: false,
@@ -47,8 +33,8 @@ class _OnboardLastPageState extends State<OnboardLastPage> {
             height: 90,
             child: ElevatedButton(
               onPressed: () {
-                onboardController.saveBoolData('onboard', true);
-                onboardController.navigateLogin();
+                controller.saveBoolData('onboard', true);
+                controller.navigateLogin();
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primary,
@@ -67,6 +53,50 @@ class _OnboardLastPageState extends State<OnboardLastPage> {
             ),
           ),
         ),
+      ),
+    );
+  }
+  PageViewModel onboardPage(BuildContext context, String title,
+      String boldTitle, String lastTitle, String imagePath) {
+    return PageViewModel(
+      titleWidget: Container(
+        padding: MediaQuery
+            .of(context)
+            .padding * 2,
+        child: RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            // 공통스타일
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 24,
+            ),
+            children: [
+              TextSpan(text: title.tr),
+              TextSpan(
+                text: boldTitle.tr,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+              TextSpan(text: lastTitle.tr)
+            ],
+          ),
+        ),
+      ),
+
+      // 이미지 부분
+      bodyWidget: Stack(
+        children: [
+          CircleAvatar(
+            radius: 126.5,
+            backgroundColor: Colors.black.withOpacity(0.8),
+            child: SvgPicture.asset(
+              imagePath,
+              width: 188,
+              height: 161,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ],
       ),
     );
   }

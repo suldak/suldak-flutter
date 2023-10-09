@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:suldak_suldak/presentation/onboard/onboardController.dart';
 
 import '../../config/colors.dart';
 
-class Onboard extends StatelessWidget {
-  Onboard({super.key});
-
-  final OnboardController onboardController = OnboardController();
+class Onboard extends GetView<OnboardController> {
+  const Onboard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +18,11 @@ class Onboard extends StatelessWidget {
         child: IntroductionScreen(
           pages: [
             // page 1
-            onboardController.onboardPage(context, 'onboard_first1', 'onboard_first2',
+            onboardPage(context, 'onboard_first1', 'onboard_first2',
                 'onboard_first3', "assets/svg/beer_illustrator.svg"),
 
             // page 2
-            onboardController.onboardPage(
+            onboardPage(
                 context,
                 'onboard_second1',
                 'onboard_second2',
@@ -31,7 +30,7 @@ class Onboard extends StatelessWidget {
                 "assets/svg/beer_friend_illustrator.svg"),
 
             // page 3
-            onboardController.onboardPage(context, 'onboard_third1', 'onboard_third2',
+            onboardPage(context, 'onboard_third1', 'onboard_third2',
                 'onboard_third3', "assets/svg/invite_illustrator.svg"),
           ],
           animationDuration: 300,
@@ -64,6 +63,51 @@ class Onboard extends StatelessWidget {
             OnboardController.to.navigateOnboardToLastPage();
           },
         ),
+      ),
+    );
+  }
+
+  PageViewModel onboardPage(BuildContext context, String title,
+      String boldTitle, String lastTitle, String imagePath) {
+    return PageViewModel(
+      titleWidget: Container(
+        padding: MediaQuery
+            .of(context)
+            .padding * 2,
+        child: RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            // 공통스타일
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 24,
+            ),
+            children: [
+              TextSpan(text: title.tr),
+              TextSpan(
+                text: boldTitle.tr,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+              TextSpan(text: lastTitle.tr)
+            ],
+          ),
+        ),
+      ),
+
+      // 이미지 부분
+      bodyWidget: Stack(
+        children: [
+          CircleAvatar(
+            radius: 126.5,
+            backgroundColor: Colors.black.withOpacity(0.8),
+            child: SvgPicture.asset(
+              imagePath,
+              width: 188,
+              height: 161,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ],
       ),
     );
   }
