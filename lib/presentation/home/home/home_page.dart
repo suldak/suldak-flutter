@@ -19,34 +19,9 @@ class HomePage extends GetView<HomeController> {
             const SizedBox(height: 10),
             buildSearchBar(),
             const SizedBox(height: 16),
-            SizedBox(
-              height: 174,
-              child: Stack(
-                alignment: Alignment.bottomCenter,
-                children: [
-                  PageView.builder(
-                    controller: controller.pageController,
-                    itemCount: controller.sampleImageList.length,
-                    itemBuilder: (context, index) {
-                      return controller.sampleImageList[index];
-                    },
-                  ),
-                  Positioned(
-                    bottom: 14,
-                    child: SmoothPageIndicator(
-                      controller: controller.pageController,
-                      count: controller.sampleImageList.length,
-                      effect: const ScaleEffect(
-                        dotColor: Colors.white70,
-                        activeDotColor: Colors.white,
-                        dotWidth: 8,
-                        dotHeight: 8
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            buildBanner(),
+            const SizedBox(height: 16),
+            buildDrinkCategory(),
           ],
         ),
       ),
@@ -96,6 +71,78 @@ class HomePage extends GetView<HomeController> {
             style: TextStyle(
               color: AppColors.grey[50],
               fontSize: 16,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildBanner() {
+    return SizedBox(
+      height: 174,
+      child: Stack(
+        alignment: Alignment.bottomCenter,
+        children: [
+          PageView.builder(
+            controller: controller.pageController,
+            itemCount: controller.sampleImageList.length,
+            itemBuilder: (context, index) {
+              return controller.sampleImageList[index];
+            },
+          ),
+          Positioned(
+            bottom: 14,
+            child: SmoothPageIndicator(
+              controller: controller.pageController,
+              count: controller.sampleImageList.length,
+              effect: const ScaleEffect(
+                  dotColor: Colors.white70,
+                  activeDotColor: Colors.white,
+                  dotWidth: 8,
+                  dotHeight: 8),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildDrinkCategory() {
+    return SizedBox(
+      height: 78,
+      child: ListView.builder(
+        padding: const EdgeInsets.only(left: 20),
+        scrollDirection: Axis.horizontal,
+        itemCount: controller.sampleCategoryList.length,
+        itemBuilder: (context, index) {
+          return buildDrinkCategoryItem(text: controller.sampleCategoryList[index]);
+        },
+      ),
+    );
+  }
+
+  Widget buildDrinkCategoryItem({required String text}) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            width: 56,
+            height: 56,
+            decoration: BoxDecoration(
+              color: AppColors.grey[20],
+              borderRadius: BorderRadius.circular(99),
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            text,
+            style: const TextStyle(
+              color: AppColors.grey,
+              fontSize: 12,
               fontWeight: FontWeight.w500,
             ),
           ),

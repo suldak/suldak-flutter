@@ -23,6 +23,18 @@ class HomeController extends GetxController {
     Assets.jpg.soju.image(height: 174, fit: BoxFit.cover),
   ];
 
+  List<String> sampleCategoryList = [
+    '소주',
+    '맥주',
+    '칵테일',
+    '하이',
+    '양주',
+    '와인',
+    '전통주',
+    '기타',
+    '무알콜',
+  ];
+
 // Functions ▼ ------------------------------------------------------
 
 // Life Cycle ▼ ------------------------------------------------------
