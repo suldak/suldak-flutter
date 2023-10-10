@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -15,6 +17,7 @@ class HomePage extends GetView<HomeController> {
       appBar: buildAppBar(),
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 10),
             buildSearchBar(),
@@ -22,6 +25,9 @@ class HomePage extends GetView<HomeController> {
             buildBanner(),
             const SizedBox(height: 16),
             buildDrinkCategory(),
+            const SizedBox(height: 40),
+            buildRecommendTitle(nickname: '김술닥'),
+            buildRecommendDrinks(),
           ],
         ),
       ),
@@ -117,7 +123,8 @@ class HomePage extends GetView<HomeController> {
         scrollDirection: Axis.horizontal,
         itemCount: controller.sampleCategoryList.length,
         itemBuilder: (context, index) {
-          return buildDrinkCategoryItem(text: controller.sampleCategoryList[index]);
+          return buildDrinkCategoryItem(
+              text: controller.sampleCategoryList[index]);
         },
       ),
     );
@@ -145,6 +152,84 @@ class HomePage extends GetView<HomeController> {
               fontSize: 12,
               fontWeight: FontWeight.w500,
             ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildRecommendTitle({required String nickname}) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 20),
+      child: RichText(
+        text: TextSpan(
+          children: [
+            TextSpan(
+              text: nickname,
+              style: const TextStyle(
+                color: AppColors.primary,
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            TextSpan(
+              text: 'recommend_title_text'.tr,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildRecommendDrinks() {
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: ListView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: 3,
+        itemBuilder: (context, index) {
+          return buildRecommendDrinksItem();
+        },
+      ),
+    );
+  }
+
+  Widget buildRecommendDrinksItem({
+    required Image image,
+    required String alc,
+    required String name,
+    required String content,
+    required List<String> tags,
+  }) {
+    return Card(
+      child: Row(
+        children: [
+          Container(
+            width: 90,
+            height: 90,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(99),
+              color: AppColors.grey,
+            ),
+          ),
+          const SizedBox(width: 16),
+          Column(
+            children: [
+              Text('ALC $alc%'),
+              const SizedBox(height: 6),
+              Text(name),
+              Text(content),
+              const SizedBox(height: 14),
+              ListView.builder(itemBuilder: (context, index) {
+                return Container();
+              },),
+            ],
           ),
         ],
       ),

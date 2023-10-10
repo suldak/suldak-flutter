@@ -92,6 +92,7 @@ class Languages extends Translations {
     'sign_up_email': '이메일로 회원가입',
     'find_password': '비밀번호 찾기',
     'search_your_drink':'원하는 술을 바로 검색해보세요!',
+    'recommend_title_text': '님!\n오늘은 이런 술 어떠신가요?'
   };
 
   Map<String, String> en = {
@@ -179,5 +180,6 @@ class Languages extends Translations {
     'sign_up_email': 'Sign up with email',
     'find_password': 'Find password',
     'search_your_drink':'Search your drink!',
+    'recommend_title_text': '!\nHow about these drink today?'
   };
 }
