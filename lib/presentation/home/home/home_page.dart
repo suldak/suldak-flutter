@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -194,7 +192,8 @@ class HomePage extends GetView<HomeController> {
         physics: const NeverScrollableScrollPhysics(),
         itemCount: 3,
         itemBuilder: (context, index) {
-          return buildRecommendDrinksItem();
+          // return buildRecommendDrinksItem();
+          return Container();
         },
       ),
     );
