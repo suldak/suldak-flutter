@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'config/keys.dart';
+import 'model/user.dart';
 
 class GlobalController extends GetxController {
   static GlobalController get to => Get.find<GlobalController>();
@@ -24,7 +25,7 @@ class GlobalController extends GetxController {
   /// 로그인 상태 확인 메서드
   Future<void> checkSignIn() async {
     // firebase login + server login 된 상태에서 token 이 저장된다
-    String? token = GetStorage().read(Keys.fbTokenId);
+    String? token = GetStorage().read(Keys.refreshToken);
     if (token != null && token.isNotEmpty) {
       // signed
     } else {
@@ -50,6 +51,20 @@ class GlobalController extends GetxController {
     }
   }
 
+  Future<void> saveUserInfo(UserModel userModel) async {
+    String? refreshToken = userModel.refreshToken;
+    String? userEmail = userModel.userEmail;
+    String? registration = userModel.registration;
+
+    final storage = GetStorage();
+    await Future.wait([
+      storage.write(Keys.refreshToken, refreshToken),
+      storage.write(Keys.userEmail, userEmail),
+      storage.write(Keys.registration, registration),
+    ]);
+    return;
+  }
+
   /// 현재 사용자 logout 함수
   Future<void> signOut() async {
     // User? currentUser = FirebaseAuth.instance.currentUser;
@@ -73,11 +88,9 @@ class GlobalController extends GetxController {
 
     final storage = GetStorage();
     await Future.wait([
-      storage.remove(Keys.fbTokenId),
-      storage.remove(Keys.fbProvider),
-      storage.remove(Keys.fbUserEmail),
-      storage.remove(Keys.fbUserProfile),
-      storage.remove(Keys.fcmToken),
+      storage.remove(Keys.refreshToken),
+      storage.remove(Keys.userEmail),
+      storage.remove(Keys.registration),
     ]);
     isLogin.value = false;
   }

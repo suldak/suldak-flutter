@@ -26,12 +26,12 @@ class HomePage extends GetView<HomeController> {
           ),
         ),
         child: BottomAppBar(
+          height: kBottomNavigationBarHeight,
           color: Colors.white,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               buildBottomAppBarButton(item: HomeBottomItem.findFriend),
-              buildBottomAppBarButton(item: HomeBottomItem.notDefined),
               buildBottomAppBarButton(item: HomeBottomItem.home),
               buildBottomAppBarButton(item: HomeBottomItem.myHistory),
               buildBottomAppBarButton(item: HomeBottomItem.myPage),
@@ -43,25 +43,25 @@ class HomePage extends GetView<HomeController> {
   Widget buildBottomAppBarButton({required HomeBottomItem item}) {
     return Expanded(child: Obx(() {
       final isSelected = item == controller.currentTabItem.value;
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          IconButton(
-            onPressed: () => controller.onTapBottomIcon(item),
-            icon: isSelected
-                ? item.selectedIcon.svg()
-                : item.unselectedIcon.svg(),
-          ),
-          Text(
-            item.pageTitle,
-            style: TextStyle(
-              color: isSelected ? Colors.black : AppColors.grey[50],
-              fontSize: 10,
-              fontWeight: FontWeight.w600,
+      return GestureDetector(
+        onTap: () => controller.onTapBottomIcon(item),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            isSelected
+                ? item.selectedIcon.svg(width: 24, height: 24)
+                : item.unselectedIcon.svg(width: 24, height: 24),
+            Text(
+              item.pageTitle,
+              style: TextStyle(
+                color: isSelected ? Colors.black : AppColors.grey[50],
+                fontSize: 10,
+                fontWeight: FontWeight.w600,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       );
     }));
   }

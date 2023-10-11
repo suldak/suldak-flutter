@@ -16,6 +16,7 @@ class ProfilePage extends GetView<ProfileController> {
     return Scaffold(
       appBar: BaseAppBar(title: 'my_profile'.tr, showBottomLine: true),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             // Divider(thickness: 1, height: 1, color: Colors.grey[20]),
@@ -248,8 +249,8 @@ class ProfilePage extends GetView<ProfileController> {
         shape: Border.all(color: Colors.transparent),
         title: Row(
           children: [
-            TagWidget(tag: '소주파'),
-            TagWidget(tag: '술과 함께라면 다 좋아요'),
+            TagWidget(tag: '소주파', isSelected: false,),
+            TagWidget(tag: '술과 함께라면 다 좋아요', isSelected: false,),
           ],
         ),
         children: [
@@ -259,9 +260,9 @@ class ProfilePage extends GetView<ProfileController> {
               runSpacing: 12,
               alignment: WrapAlignment.start,
               children: [
-                TagWidget(tag: '술과 함께라면 다 좋아요'),
-                TagWidget(tag: '술과 함께라면 다 좋아요'),
-                TagWidget(tag: '술과 함께라면 다 좋아요'),
+                TagWidget(tag: '술과 함께라면 다 좋아요', isSelected: false,),
+                TagWidget(tag: '술과 함께라면 다 좋아요', isSelected: false,),
+                TagWidget(tag: '술과 함께라면 다 좋아요', isSelected: false,),
               ],
             ),
           )

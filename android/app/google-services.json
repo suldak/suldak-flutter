@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "888768092655",
+    "project_id": "suldak-suldak",
+    "storage_bucket": "suldak-suldak.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888768092655:android:b81d4043633fa4bb453e1a",
+        "android_client_info": {
+          "package_name": "com.example.suldak.suldak_suldak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "888768092655-jfpr2pjcfru31o2529kl3frnlntd8bce.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.suldak.suldak_suldak",
+            "certificate_hash": "58924e8145cad50a5f9bd9076da6d0892e5c5f29"
+          }
+        },
+        {
+          "client_id": "888768092655-un93iurjsolie14b12ovvaou7lr3r5kb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.suldak.suldak_suldak",
+            "certificate_hash": "6c0956c77c510019a9462bcf92090f41b7d753e2"
+          }
+        },
+        {
+          "client_id": "888768092655-vmj9jbum328qp7aqpum5hi6o6lum8bu2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEjerqkF_8gkZgzmyOgfim1QwbU15-diM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "888768092655-o1j76464sjh6t5itcjftd9qin40mbqhh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

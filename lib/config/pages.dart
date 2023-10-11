@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 
 import '../presentation/account_manage/account_manage_controller.dart';
 import '../presentation/account_manage/account_manage_page.dart';
+import '../presentation/email_login/email_login_controller.dart';
+import '../presentation/email_login/email_login_page.dart';
 import '../presentation/home/home_controller.dart';
 import '../presentation/home/home_page.dart';
 import '../presentation/home/profile/profile_controller.dart';
@@ -13,9 +15,12 @@ import '../presentation/onboard/onboard.dart';
 import '../presentation/onboard/onboard_last.dart';
 import '../presentation/profile_setting/profile_setting_controller.dart';
 import '../presentation/profile_setting/profile_setting_page.dart';
+import '../presentation/sign_up_info_input/email_step_1/email_step_1_controller.dart';
 import '../presentation/sign_up_info_input/sign_up_info_input_controller.dart';
 import '../presentation/sign_up_info_input/sign_up_info_input_page.dart';
 import '../presentation/sign_up_info_input/social_step_1/social_step_1_controller.dart';
+import '../presentation/sign_up_info_input/step_2/step_2_controller.dart';
+import '../presentation/sign_up_info_input/step_3/step_3_controller.dart';
 import '../presentation/splash/splash_controller.dart';
 import '../presentation/splash/splash_page.dart';
 import 'routes.dart';
@@ -53,11 +58,19 @@ mixin AppPagesGenerator on StatelessWidget {
           binding: BindingsBuilder.put(() => LoginController()),
         ),
         GetPage(
+          name: Routes.emailLogin,
+          page: () => const EmailLoginPage(),
+          binding: BindingsBuilder.put(() => EmailLoginController()),
+        ),
+        GetPage(
           name: Routes.signUpInfo,
           page: () => const SignUpInfoInputPage(),
           binding: BindingsBuilder(() {
             Get.put(SignUpInfoInputController());
             Get.lazyPut(() => SocialStep1Controller());
+            Get.lazyPut(() => EmailStep1Controller());
+            Get.lazyPut(() => Step2Controller());
+            Get.lazyPut(() => Step3Controller());
           }),
         ),
         GetPage(

@@ -89,11 +89,17 @@ class $AssetsSvgGen {
   /// File path: assets/svg/arrow_back.svg
   SvgGenImage get arrowBack => const SvgGenImage('assets/svg/arrow_back.svg');
 
+  /// File path: assets/svg/arrow_down.svg
+  SvgGenImage get arrowDown => const SvgGenImage('assets/svg/arrow_down.svg');
+
   /// File path: assets/svg/arrow_next.svg
   SvgGenImage get arrowNext => const SvgGenImage('assets/svg/arrow_next.svg');
 
   /// File path: assets/svg/camera.svg
   SvgGenImage get camera => const SvgGenImage('assets/svg/camera.svg');
+
+  /// File path: assets/svg/check.svg
+  SvgGenImage get check => const SvgGenImage('assets/svg/check.svg');
 
   /// File path: assets/svg/find_friend.svg
   SvgGenImage get findFriend => const SvgGenImage('assets/svg/find_friend.svg');
@@ -146,8 +152,10 @@ class $AssetsSvgGen {
   /// List of all assets
   List<SvgGenImage> get values => [
         arrowBack,
+        arrowDown,
         arrowNext,
         camera,
+        check,
         findFriend,
         findFriendTap,
         google,

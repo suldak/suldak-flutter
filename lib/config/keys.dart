@@ -6,21 +6,12 @@ abstract class Keys {
   /// [String] - build 넘버.
   static const buildNo = 'build_no';
 
-  /// [String] - firebase token id
-  static const fbTokenId = 'fb_token_id';
+  /// [String] - 사용자 이메일
+  static const userEmail= 'user_email';
 
-  /// [String] - firebase provider
-  static const fbProvider = 'fb_provider';
+  /// [String] - 사용자 refresh token
+  static const refreshToken = 'refresh_token';
 
-  /// [String] - firebase user email
-  static const fbUserEmail = 'fb_user_email';
-
-  /// [String] - firebase user profile image
-  static const fbUserProfile = 'fb_user_profile';
-
-  /// [String] - fcm token
-  static const fcmToken = 'fb_fcm_token';
-
-  /// [int] - 팝업 24시간 동안 보지 않기를 탭한 순간의 millisecondFromEpoch
-  static const popupNotShowDate = 'popup_not_show_date';
+  /// [String] - 사용자 회원가입 방식
+  static const registration = 'registration';
 }
