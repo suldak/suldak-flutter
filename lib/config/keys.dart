@@ -14,4 +14,7 @@ abstract class Keys {
 
   /// [String] - 사용자 회원가입 방식
   static const registration = 'registration';
+
+  /// [bool] - onboarding 페이지 표시 여부
+  static String onboardShown = 'onboard_shown';
 }

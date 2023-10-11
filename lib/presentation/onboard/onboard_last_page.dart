@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:suldak_suldak/config/colors.dart';
-import 'package:get_storage/get_storage.dart';
 
-import 'onboardController.dart';
+import '../../config/colors.dart';
+import 'onboard_controller.dart';
 
 class OnboardLastPage extends GetView<OnboardController> {
-  OnboardLastPage({super.key});
-
-  final storage = GetStorage();
+  const OnboardLastPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,10 +29,7 @@ class OnboardLastPage extends GetView<OnboardController> {
             padding: const EdgeInsets.only(bottom: 34),
             height: 90,
             child: ElevatedButton(
-              onPressed: () {
-                controller.saveBoolData('onboard', true);
-                controller.navigateLogin();
-              },
+              onPressed: controller.onCompleteOnboarding,
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primary,
                 minimumSize: const Size(327, 48),
@@ -46,9 +40,10 @@ class OnboardLastPage extends GetView<OnboardController> {
               child: Text(
                 'start'.tr,
                 style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white),
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
@@ -56,13 +51,17 @@ class OnboardLastPage extends GetView<OnboardController> {
       ),
     );
   }
-  PageViewModel onboardPage(BuildContext context, String title,
-      String boldTitle, String lastTitle, String imagePath) {
+
+  PageViewModel onboardPage(
+    BuildContext context,
+    String title,
+    String boldTitle,
+    String lastTitle,
+    String imagePath,
+  ) {
     return PageViewModel(
       titleWidget: Container(
-        padding: MediaQuery
-            .of(context)
-            .padding * 2,
+        padding: MediaQuery.of(context).padding * 2,
         child: RichText(
           textAlign: TextAlign.center,
           text: TextSpan(
@@ -75,9 +74,11 @@ class OnboardLastPage extends GetView<OnboardController> {
               TextSpan(text: title.tr),
               TextSpan(
                 text: boldTitle.tr,
-                style: const TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-              TextSpan(text: lastTitle.tr)
+              TextSpan(text: lastTitle.tr),
             ],
           ),
         ),

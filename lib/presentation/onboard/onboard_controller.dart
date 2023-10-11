@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+import '../../config/keys.dart';
 import '../../config/routes.dart';
 import '../../language.dart';
 
@@ -14,9 +15,7 @@ class OnboardController extends GetxController {
   // Functions ▼ ------------------------------------------------------
 
   void navigateOnboardToLastPage() async {
-    Get.offAllNamed(
-      "${Routes.onboarding}/lastpage",
-    );
+    Get.offAllNamed(Routes.onboardingLast);
   }
 
   void saveBoolData(String key, bool value) {
@@ -25,6 +24,11 @@ class OnboardController extends GetxController {
 
   void navigateLogin() async {
     Get.offAllNamed(Routes.login);
+  }
+
+  void onCompleteOnboarding() {
+    saveBoolData(Keys.onboardShown, true);
+    navigateLogin();
   }
 
   // Life Cycle ▼ ------------------------------------------------------

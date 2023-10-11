@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:suldak_suldak/presentation/onboard/onboardController.dart';
+import 'package:suldak_suldak/presentation/onboard/onboard_controller.dart';
 
 import '../../config/colors.dart';
 
-class Onboard extends GetView<OnboardController> {
-  const Onboard({super.key});
+class OnboardPage extends GetView<OnboardController> {
+  const OnboardPage({super.key});
 
   @override
   Widget build(BuildContext context) {

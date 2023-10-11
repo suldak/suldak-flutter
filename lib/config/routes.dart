@@ -8,6 +8,9 @@ abstract class Routes {
   /// 온보딩 화면
   static const onboarding = '/onboarding';
 
+  /// 온보딩 마지막 화면
+  static const onboardingLast = '$onboarding/last';
+
   /// 홈화면
   static const home = '/home';
 

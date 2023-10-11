@@ -10,9 +10,9 @@ import '../presentation/home/home_page.dart';
 import '../presentation/home/profile/profile_controller.dart';
 import '../presentation/login/login_controller.dart';
 import '../presentation/login/login_page.dart';
-import '../presentation/onboard/onboardController.dart';
-import '../presentation/onboard/onboard.dart';
-import '../presentation/onboard/onboard_last.dart';
+import '../presentation/onboard/onboard_controller.dart';
+import '../presentation/onboard/onboard_page.dart';
+import '../presentation/onboard/onboard_last_page.dart';
 import '../presentation/profile_setting/profile_setting_controller.dart';
 import '../presentation/profile_setting/profile_setting_page.dart';
 import '../presentation/sign_up_info_input/email_step_1/email_step_1_controller.dart';
@@ -35,12 +35,12 @@ mixin AppPagesGenerator on StatelessWidget {
         ),
         GetPage(
           name: Routes.onboarding,
-          page: () => Onboard(),
+          page: () => const OnboardPage(),
           binding: BindingsBuilder.put(() => OnboardController()),
         ),
         GetPage(
-          name: "${Routes.onboarding}/lastpage",
-          page: () => OnboardLastPage(),
+          name: Routes.onboardingLast,
+          page: () => const OnboardLastPage(),
           transition: Transition.zoom,
           binding: BindingsBuilder.put(() => OnboardController()),
         ),
