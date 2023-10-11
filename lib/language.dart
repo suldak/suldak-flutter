@@ -15,6 +15,8 @@ class Languages extends Translations {
     'close': '닫기',
     'welcome': '환영합니다.',
     'next': '다음',
+    'skip': '건너뛰기',
+    'start': '시작하기',
     'email': '이메일',
     'password': '비밀번호',
     'password_check': '비밀번호 확인',
@@ -78,6 +80,20 @@ class Languages extends Translations {
     'agree_terms': '(필수)이용약관에 동의',
     'agree_personal_info': '(필수)개인정보 수집 및 이용에 동의',
     'agree_ad_push': '(선택)광고성 정보 수신(알림)에 동의',
+
+    // onboard
+    'onboard_first1': '\n지금 나에게 ',
+    'onboard_first2': '딱맞는 술',
+    'onboard_first3': '을\n추천받을 수 있어요',
+    'onboard_second1': '이야기 주제를 선택하고,\n',
+    'onboard_second2': '비슷한 술 취향을 가진\n',
+    'onboard_second3': '친구와 함께 나눠요',
+    'onboard_third1': '\n내가 ',
+    'onboard_third2': '직접 모임을 만들거나\n',
+    'onboard_third3': '참여할 수 있어요',
+    'onboard_last1': '\n',
+    'onboard_last2': '나의 술취향은 무엇일까요?\n',
+    'onboard_last3': '함께 분석해봐요!\n',
   };
 
   Map<String, String> en = {
@@ -88,6 +104,8 @@ class Languages extends Translations {
     'close': 'close',
     'welcome': 'welcome.',
     'next': 'next',
+    'skip': 'skip',
+    'start': 'start',
     'email': 'email',
     'password': 'password',
     'password_check': 'password check',
@@ -151,5 +169,19 @@ class Languages extends Translations {
     'agree_terms': '(Required) Accept the Terms and Conditions',
     'agree_personal_info': '(Required) Agree to collect and use personal information',
     'agree_ad_push': '(Optional) Agree to receive (notify) advertising information',
+
+    // onboard
+    'onboard_first1': '\nYou can now get the ',
+    'onboard_first2': 'right drink\n',
+    'onboard_first3': 'for me.',
+    'onboard_second1': 'Select a topic and\n',
+    'onboard_second2': 'share it with friends\n',
+    'onboard_second3': 'with similar drinking tastes.',
+    'onboard_third1': '\nI can ',
+    'onboard_third2': 'create or join\n',
+    'onboard_third3': 'a meeting.',
+    'onboard_last1': '\n',
+    'onboard_last2': 'What is my drinking taste?\n',
+    'onboard_last3': 'Let\'s analyze it together!\n',
   };
 }
