@@ -54,6 +54,10 @@ class HomePage extends GetView<HomeController> {
             buildHorizontalScrollDrinkList(),
             const SizedBox(height: 60),
             buildPostList(),
+            const SizedBox(height: 60),
+            buildNoticeList(),
+            const SizedBox(height: 60),
+            buildInfoContainer(),
           ],
         ),
       ),
@@ -465,14 +469,14 @@ class HomePage extends GetView<HomeController> {
         ),
         const SizedBox(height: 20),
         Container(
-          height: 240,
+          height: 250,
           padding: const EdgeInsets.only(left: 20),
           child: ListView.builder(
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             itemCount: 12,
             itemBuilder: (context, index) {
-
+              return buildPostItem();
             },
           ),
         ),
@@ -481,17 +485,185 @@ class HomePage extends GetView<HomeController> {
   }
 
   Widget buildPostItem() {
-    return Column(
-      children: [
-        Container(
-          width: 320,
-          height: 185,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
+    return Padding(
+      padding: const EdgeInsets.only(right: 12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            width: 320,
+            height: 185,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            clipBehavior: Clip.hardEdge,
+            child: Assets.jpg.whiskey.image(fit: BoxFit.cover),
           ),
-          clipBehavior: Clip.hardEdge,
+          const SizedBox(height: 18),
+          Text(
+            '술BTI별 추천 술',
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            '나의 술BTI는 OOOO!',
+            style: TextStyle(
+              color: AppColors.grey[60],
+              fontSize: 16,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildNoticeList() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 20),
+          child: Text(
+            'suldak_story'.tr,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+        const SizedBox(height: 20),
+        Container(
+          height: 185,
+          padding: const EdgeInsets.only(left: 20),
+          child: ListView.builder(
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemCount: 12,
+            itemBuilder: (context, index) {
+              return buildNoticeItem();
+            },
+          ),
         ),
       ],
+    );
+  }
+
+  Widget buildNoticeItem() {
+    return Container(
+      width: 185,
+      height: 185,
+      padding: const EdgeInsets.symmetric(vertical: 28, horizontal: 20),
+      margin: const EdgeInsets.only(right: 12),
+      decoration: BoxDecoration(
+        color: Colors.red,
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            '꼭 확인해야하는\n공지사항!',
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            '#사용하기전 필수 체크 사항',
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 12,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget buildInfoContainer() {
+    final style = TextStyle(
+      color: AppColors.grey[60],
+      fontSize: 14,
+      fontWeight: FontWeight.w500,
+    );
+    final boldStyle = TextStyle(
+      color: AppColors.grey[60],
+      fontSize: 14,
+      fontWeight: FontWeight.w700,
+    );
+
+    final divider = Padding(
+      padding: const EdgeInsets.symmetric(vertical: 2),
+      child: VerticalDivider(
+        width: 12,
+        thickness: 1,
+        color: AppColors.grey[50],
+      ),
+    );
+
+    return Container(
+      color: AppColors.grey[20],
+      padding: const EdgeInsets.only(top: 36, left: 18),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          IntrinsicHeight(
+            child: Row(
+              children: [
+                Text(
+                  'about_suldak'.tr,
+                  style: style,
+                ),
+                divider,
+                Text(
+                  'ad_partner_inquiry'.tr,
+                  style: style,
+                ),
+                divider,
+                Text(
+                  'inquire'.tr,
+                  style: style,
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 12),
+          IntrinsicHeight(
+            child: Row(
+              children: [
+                Text(
+                  'terms_and_conditions'.tr,
+                  style: boldStyle,
+                ),
+                divider,
+                Text(
+                  'privacy_policy'.tr,
+                  style: boldStyle,
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20),
+          Text(
+            'Copyright © 술닥술닥 all rights reserved',
+            style: TextStyle(
+              color: AppColors.grey[60],
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+          const SizedBox(height: 30),
+        ],
+      ),
     );
   }
 }

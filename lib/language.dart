@@ -98,6 +98,11 @@ class Languages extends Translations {
     'similar_drink_recent_search': '최근에 찾아본 술과 비슷한 술이에요!',
     'new_drinks': '요즘 새로나온 핫한 술!',
     'more': '더보기',
+    'suldak_story': '술닥술닥 이야기',
+    'about_suldak': '술닥술닥 소개',
+    'ad_partner_inquiry': '광고/제휴 문의',
+    'inquire': '문의하기',
+    'privacy_policy': '개인정보처리방침',
     // onboard
     'onboard_first1': '\n지금 나에게 ',
     'onboard_first2': '딱맞는 술',
@@ -204,6 +209,11 @@ class Languages extends Translations {
     'similar_drink_recent_search': 'Drinks similar to a recent search',
     'new_drinks': 'New drinks came out recently!',
     'more': 'more',
+    'suldak_story': 'Suldak story',
+    'about_suldak': 'About suldak suldak',
+    'ad_partner_inquiry': 'Ad/Partnership',
+    'inquire': 'Inquire',
+    'privacy_policy': 'Privacy Policy',
     // onboard
     'onboard_first1': '\nYou can now get the ',
     'onboard_first2': 'right drink\n',
