@@ -93,6 +93,8 @@ class Languages extends Translations {
     'login_email': '이메일로 로그인',
     'sign_up_email': '이메일로 회원가입',
     'find_password': '비밀번호 찾기',
+    'connected_account': '연결된 계정',
+    'reset_password': '비밀번호 재설정',
     // onboard
     'onboard_first1': '\n지금 나에게 ',
     'onboard_first2': '딱맞는 술',
@@ -194,6 +196,8 @@ class Languages extends Translations {
     'login_email': 'Login with email',
     'sign_up_email': 'Sign up with email',
     'find_password': 'Find password',
+    'connected_account': 'Connected Account',
+    'reset_password': 'Reset Password',
     // onboard
     'onboard_first1': '\nYou can now get the ',
     'onboard_first2': 'right drink\n',

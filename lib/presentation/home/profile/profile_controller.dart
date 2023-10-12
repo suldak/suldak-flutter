@@ -14,7 +14,7 @@ class ProfileController extends GetxController {
   }
 
   void onTapManageMyAccount() {
-    Get.toNamed(Routes.accountSetting);
+    Get.toNamed(Routes.accountSetting, arguments: {'isEmail': true});
   }
 
   // Life Cycle ▼ ------------------------------------------------------

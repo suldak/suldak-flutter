@@ -7,12 +7,15 @@ class TagWidget extends StatelessWidget {
     super.key,
     required this.tag,
     required this.isSelected,
+    this.isFilled = true,
     this.onTap,
   });
 
   final String tag;
   final bool isSelected;
   final void Function(bool isSelected)? onTap;
+
+  final bool isFilled;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +36,11 @@ class TagWidget extends StatelessWidget {
                 ? AppColors.primary
                 : AppColors.grey[40] ?? AppColors.grey,
           ),
-          color: isSelected ? AppColors.primary[30] : Colors.white,
+          color: isSelected
+              ? isFilled
+                  ? AppColors.primary[30]
+                  : Colors.white
+              : Colors.white,
         ),
         child: Text(
           tag,

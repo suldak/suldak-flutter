@@ -44,6 +44,7 @@ class HomePage extends GetView<HomeController> {
     return Expanded(child: Obx(() {
       final isSelected = item == controller.currentTabItem.value;
       return GestureDetector(
+        behavior: HitTestBehavior.opaque,
         onTap: () => controller.onTapBottomIcon(item),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
