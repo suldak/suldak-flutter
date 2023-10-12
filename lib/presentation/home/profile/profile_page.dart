@@ -40,7 +40,10 @@ class ProfilePage extends GetView<ProfileController> {
               title: 'manage_my_account'.tr,
               onTap: controller.onTapManageMyAccount,
             ),
-            buildMenuItem(title: 'self_certification'.tr, onTap: () {}),
+            buildMenuItem(
+              title: 'identity_verification'.tr,
+              onTap: controller.onTapIdentityVerification,
+            ),
             buildMenuItem(title: 'notification_setting'.tr, onTap: () {}),
             buildMenuItem(title: 'block_manage'.tr, onTap: () {}),
             buildMenuItem(title: 'inquiry'.tr, onTap: () {}),

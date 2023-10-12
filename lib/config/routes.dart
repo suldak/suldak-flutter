@@ -28,4 +28,7 @@ abstract class Routes {
 
   /// 계정 설정 화면
   static const accountSetting = '/account_setting';
+
+  /// 본인 인증 화면
+  static const identityVerification = '/identity_verification';
 }

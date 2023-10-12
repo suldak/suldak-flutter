@@ -8,6 +8,8 @@ import '../presentation/email_login/email_login_page.dart';
 import '../presentation/home/home_controller.dart';
 import '../presentation/home/home_page.dart';
 import '../presentation/home/profile/profile_controller.dart';
+import '../presentation/identity_verification/identity_verification_controller.dart';
+import '../presentation/identity_verification/identity_verification_page.dart';
 import '../presentation/login/login_controller.dart';
 import '../presentation/login/login_page.dart';
 import '../presentation/onboard/onboard_controller.dart';
@@ -82,6 +84,11 @@ mixin AppPagesGenerator on StatelessWidget {
           name: Routes.accountSetting,
           page: () => const AccountManagePage(),
           binding: BindingsBuilder.put(() => AccountManageController()),
+        ),
+        GetPage(
+          name: Routes.identityVerification,
+          page: () => const IdentityVerificationPage(),
+          binding: BindingsBuilder.put(() => IdentityVerificationController()),
         ),
       ];
 }

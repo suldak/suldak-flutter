@@ -17,5 +17,9 @@ class ProfileController extends GetxController {
     Get.toNamed(Routes.accountSetting, arguments: {'isEmail': true});
   }
 
+  void onTapIdentityVerification() {
+    Get.toNamed(Routes.identityVerification);
+  }
+
   // Life Cycle ▼ ------------------------------------------------------
 }
