@@ -31,4 +31,7 @@ abstract class Routes {
 
   /// 본인 인증 화면
   static const identityVerification = '/identity_verification';
+
+  /// iamport pass 인증화면
+  static const iamportPassVerify = '/iamport_pass_verify';
 }
