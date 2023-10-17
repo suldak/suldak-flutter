@@ -10,6 +10,8 @@ import '../presentation/home/home_page.dart';
 import '../presentation/home/profile/profile_controller.dart';
 import '../presentation/login/login_controller.dart';
 import '../presentation/login/login_page.dart';
+import '../presentation/notification_setting/notification_setting_controller.dart';
+import '../presentation/notification_setting/notification_setting_page.dart';
 import '../presentation/onboard/onboard_controller.dart';
 import '../presentation/onboard/onboard_page.dart';
 import '../presentation/onboard/onboard_last_page.dart';
@@ -82,6 +84,11 @@ mixin AppPagesGenerator on StatelessWidget {
           name: Routes.accountSetting,
           page: () => const AccountManagePage(),
           binding: BindingsBuilder.put(() => AccountManageController()),
+        ),
+        GetPage(
+          name: Routes.noticeSetting,
+          page: () => const NotificationSettingPage(),
+          binding: BindingsBuilder.put(() => NotificationSettingController()),
         ),
       ];
 }

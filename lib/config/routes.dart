@@ -28,4 +28,7 @@ abstract class Routes {
 
   /// 계정 설정 화면
   static const accountSetting = '/account_setting';
+
+  /// 알림 설정 화면
+  static const noticeSetting = '/notification_setting';
 }

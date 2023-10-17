@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 import '../../../config/colors.dart';
 import '../../../gen/assets.gen.dart';
 import '../../../widget/base_app_bar.dart';
@@ -42,7 +41,10 @@ class ProfilePage extends GetView<ProfileController> {
               onTap: controller.onTapManageMyAccount,
             ),
             buildMenuItem(title: 'self_certification'.tr, onTap: () {}),
-            buildMenuItem(title: 'notification_setting'.tr, onTap: () {}),
+            buildMenuItem(
+              title: 'notification_setting'.tr,
+              onTap: controller.onTapNoticeSetting,
+            ),
             buildMenuItem(title: 'block_manage'.tr, onTap: () {}),
             buildMenuItem(title: 'inquiry'.tr, onTap: () {}),
             buildMenuItem(title: 'logout'.tr, onTap: () {}),
@@ -249,8 +251,14 @@ class ProfilePage extends GetView<ProfileController> {
         shape: Border.all(color: Colors.transparent),
         title: Row(
           children: [
-            TagWidget(tag: '소주파', isSelected: false,),
-            TagWidget(tag: '술과 함께라면 다 좋아요', isSelected: false,),
+            TagWidget(
+              tag: '소주파',
+              isSelected: false,
+            ),
+            TagWidget(
+              tag: '술과 함께라면 다 좋아요',
+              isSelected: false,
+            ),
           ],
         ),
         children: [
@@ -260,9 +268,18 @@ class ProfilePage extends GetView<ProfileController> {
               runSpacing: 12,
               alignment: WrapAlignment.start,
               children: [
-                TagWidget(tag: '술과 함께라면 다 좋아요', isSelected: false,),
-                TagWidget(tag: '술과 함께라면 다 좋아요', isSelected: false,),
-                TagWidget(tag: '술과 함께라면 다 좋아요', isSelected: false,),
+                TagWidget(
+                  tag: '술과 함께라면 다 좋아요',
+                  isSelected: false,
+                ),
+                TagWidget(
+                  tag: '술과 함께라면 다 좋아요',
+                  isSelected: false,
+                ),
+                TagWidget(
+                  tag: '술과 함께라면 다 좋아요',
+                  isSelected: false,
+                ),
               ],
             ),
           )

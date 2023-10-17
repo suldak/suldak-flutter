@@ -17,5 +17,9 @@ class ProfileController extends GetxController {
     Get.toNamed(Routes.accountSetting);
   }
 
+  void onTapNoticeSetting() {
+    Get.toNamed(Routes.noticeSetting);
+  }
+
   // Life Cycle ▼ ------------------------------------------------------
 }
