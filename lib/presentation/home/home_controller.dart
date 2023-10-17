@@ -27,14 +27,22 @@ class HomeController extends GetxController {
   }
 
   // Life Cycle ▼ ------------------------------------------------------
+
+  @override
+  void onInit() {
+    super.onInit();
+
+    if (Get.arguments != null) {
+      final index = Get.arguments['initial_index'];
+      currentTabItem.value = HomeBottomItem.values[index];
+    }
+  }
 }
 
 /// ## 하단 메뉴 화면의 버튼 종류
 enum HomeBottomItem {
   /// 친구 찾기 화면
   findFriend,
-  /// 아직 미정
-  notDefined,
   /// 홈 화면
   home,
   /// 내 기록 화면
@@ -47,8 +55,6 @@ enum HomeBottomItem {
     switch (this) {
       case HomeBottomItem.findFriend:
         return Assets.svg.findFriend;
-      case HomeBottomItem.notDefined:
-        return Assets.svg.notDefined;
       case HomeBottomItem.home:
         return Assets.svg.home;
       case HomeBottomItem.myHistory:
@@ -63,8 +69,6 @@ enum HomeBottomItem {
     switch (this) {
       case HomeBottomItem.findFriend:
         return Assets.svg.findFriendTap;
-      case HomeBottomItem.notDefined:
-        return Assets.svg.notDefinedTap;
       case HomeBottomItem.home:
         return Assets.svg.homeTap;
       case HomeBottomItem.myHistory:
@@ -78,8 +82,6 @@ enum HomeBottomItem {
     switch (this) {
       case HomeBottomItem.findFriend:
         return 'find_friend'.tr;
-      case HomeBottomItem.notDefined:
-        return 'not_defined'.tr;
       case HomeBottomItem.home:
         return 'home'.tr;
       case HomeBottomItem.myHistory:
@@ -95,9 +97,6 @@ enum HomeBottomItem {
       case HomeBottomItem.findFriend:
       // TODO: Handle this case.
         return const SizedBox();
-      case HomeBottomItem.notDefined:
-      // TODO: Handle this case.
-        return const SizedBox();
       case HomeBottomItem.home:
         return const SizedBox();
       case HomeBottomItem.myHistory:
@@ -110,8 +109,6 @@ enum HomeBottomItem {
   }
 
   bool get isFindFriend => this == HomeBottomItem.findFriend;
-
-  bool get isNotDefined => this == HomeBottomItem.notDefined;
 
   bool get isHome => this == HomeBottomItem.home;
 

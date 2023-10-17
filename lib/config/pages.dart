@@ -24,6 +24,7 @@ import '../presentation/sign_up_info_input/sign_up_info_input_page.dart';
 import '../presentation/sign_up_info_input/social_step_1/social_step_1_controller.dart';
 import '../presentation/sign_up_info_input/step_2/step_2_controller.dart';
 import '../presentation/sign_up_info_input/step_3/step_3_controller.dart';
+import '../presentation/sign_up_info_input/welcome_page.dart';
 import '../presentation/splash/splash_controller.dart';
 import '../presentation/splash/splash_page.dart';
 import 'routes.dart';
@@ -95,6 +96,10 @@ mixin AppPagesGenerator on StatelessWidget {
           name: Routes.iamportPassVerify,
           page: () => const IamportPassVerifyPage(),
           binding: BindingsBuilder.put(() => IdentityVerificationController()),
+        ),
+        GetPage(
+          name: Routes.welcome,
+          page: () => const WelcomePage(),
         ),
       ];
 }

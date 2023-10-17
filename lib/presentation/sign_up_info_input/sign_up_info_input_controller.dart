@@ -31,7 +31,7 @@ class SignUpInfoInputController extends GetxController {
         curve: Curves.ease,
       );
     } else {
-      Get.offAllNamed(Routes.home);
+      Get.offAllNamed(Routes.welcome);
     }
   }
 

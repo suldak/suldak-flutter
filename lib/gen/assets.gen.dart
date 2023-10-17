@@ -169,6 +169,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/user.svg
   SvgGenImage get user => const SvgGenImage('assets/svg/user.svg');
 
+  /// File path: assets/svg/welcome.svg
+  SvgGenImage get welcome => const SvgGenImage('assets/svg/welcome.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
         arrowBack,
@@ -194,7 +197,8 @@ class $AssetsSvgGen {
         naver,
         notDefined,
         notDefinedTap,
-        user
+        user,
+        welcome
       ];
 }
 
