@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../iamport_pass_verify/iamport_pass_verify_page.dart';
 import '../presentation/account_manage/account_manage_controller.dart';
 import '../presentation/account_manage/account_manage_page.dart';
 import '../presentation/email_login/email_login_controller.dart';
@@ -9,6 +8,7 @@ import '../presentation/email_login/email_login_page.dart';
 import '../presentation/home/home_controller.dart';
 import '../presentation/home/home_page.dart';
 import '../presentation/home/profile/profile_controller.dart';
+import '../presentation/iamport_pass_verify/iamport_pass_verify_page.dart';
 import '../presentation/identity_verification/identity_verification_controller.dart';
 import '../presentation/identity_verification/identity_verification_page.dart';
 import '../presentation/login/login_controller.dart';
@@ -93,7 +93,7 @@ mixin AppPagesGenerator on StatelessWidget {
         ),
         GetPage(
           name: Routes.iamportPassVerify,
-          page: () => IamportPassVerifyPage(),
+          page: () => const IamportPassVerifyPage(),
           binding: BindingsBuilder.put(() => IdentityVerificationController()),
         ),
       ];

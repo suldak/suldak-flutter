@@ -2,11 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../config/colors.dart';
+import '../sign_up_info_input_controller.dart';
 
 class SocialStep1Controller extends GetxController {
   static SocialStep1Controller get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
+
+  /// 상위 페이지 컨트롤러, 사용자의 회원가입 정보 입력 객체를 가지고있음
+  SignUpInfoInputController signUpInfoInputController =
+      SignUpInfoInputController.to;
 
   /// 전체 동의 여부
   Rx<bool> isAllAgree = false.obs;
@@ -122,6 +127,13 @@ class SocialStep1Controller extends GetxController {
 
     isAdPushAgree.value = value;
     checkAgreementAllConfirmed();
+  }
+
+  /// 사용자가 정보 입력을 마치고 다음페이지로 넘어가기 전 입력된 정보 저장(전달)
+  void onComplete() {
+    // social login 정보에서 이메일을 가져올 수 있는지가 불확실함
+    // signUpInfoInputController.signupInfo.userEmail = email;
+    signUpInfoInputController.signupInfo.nickname = nickname;
   }
 
   /// 약관등 동의 항목 내용 보여주는 bottomSheet
