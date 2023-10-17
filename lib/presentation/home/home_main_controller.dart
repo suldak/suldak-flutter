@@ -3,10 +3,11 @@ import 'package:get/get.dart';
 
 import '../../gen/assets.gen.dart';
 import '../../global_controller.dart';
+import 'home/home_page.dart';
 import 'profile/profile_page.dart';
 
-class HomeController extends GetxController {
-  static HomeController get to => Get.find();
+class HomeMainController extends GetxController {
+  static HomeMainController get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
 
@@ -17,7 +18,7 @@ class HomeController extends GetxController {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   /// 현재 선택된 바텀 앱바 index
-  final currentTabItem = HomeBottomItem.findFriend.obs;
+  final currentTabItem = HomeBottomItem.home.obs;
 
   // Functions ▼ ------------------------------------------------------
 
@@ -33,8 +34,6 @@ class HomeController extends GetxController {
 enum HomeBottomItem {
   /// 친구 찾기 화면
   findFriend,
-  /// 아직 미정
-  notDefined,
   /// 홈 화면
   home,
   /// 내 기록 화면
@@ -47,8 +46,6 @@ enum HomeBottomItem {
     switch (this) {
       case HomeBottomItem.findFriend:
         return Assets.svg.findFriend;
-      case HomeBottomItem.notDefined:
-        return Assets.svg.notDefined;
       case HomeBottomItem.home:
         return Assets.svg.home;
       case HomeBottomItem.myHistory:
@@ -63,8 +60,6 @@ enum HomeBottomItem {
     switch (this) {
       case HomeBottomItem.findFriend:
         return Assets.svg.findFriendTap;
-      case HomeBottomItem.notDefined:
-        return Assets.svg.notDefinedTap;
       case HomeBottomItem.home:
         return Assets.svg.homeTap;
       case HomeBottomItem.myHistory:
@@ -78,8 +73,6 @@ enum HomeBottomItem {
     switch (this) {
       case HomeBottomItem.findFriend:
         return 'find_friend'.tr;
-      case HomeBottomItem.notDefined:
-        return 'not_defined'.tr;
       case HomeBottomItem.home:
         return 'home'.tr;
       case HomeBottomItem.myHistory:
@@ -95,11 +88,8 @@ enum HomeBottomItem {
       case HomeBottomItem.findFriend:
       // TODO: Handle this case.
         return const SizedBox();
-      case HomeBottomItem.notDefined:
-      // TODO: Handle this case.
-        return const SizedBox();
       case HomeBottomItem.home:
-        return const SizedBox();
+        return const HomePage();
       case HomeBottomItem.myHistory:
       // TODO: Handle this case.
         return const SizedBox();
@@ -110,8 +100,6 @@ enum HomeBottomItem {
   }
 
   bool get isFindFriend => this == HomeBottomItem.findFriend;
-
-  bool get isNotDefined => this == HomeBottomItem.notDefined;
 
   bool get isHome => this == HomeBottomItem.home;
 
