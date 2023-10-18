@@ -101,6 +101,7 @@ class Languages extends Translations {
     'marketing_info_notification': '마케팅 정보 알림',
     'marketing_info_notification_desc': '이벤트, 쿠폰, 프로모션 등 혜택 소식 알림',
     'unblock': '해제',
+    'want_to_logout': '로그아웃 하시겠어요?',
     // onboard
     'onboard_first1': '\n지금 나에게 ',
     'onboard_first2': '딱맞는 술',
@@ -211,6 +212,7 @@ class Languages extends Translations {
     'marketing_info_notification': 'Marketing Info Notification',
     'marketing_info_notification_desc': 'Notification of benefits such as events, coupons, and promotions',
     'unblock': 'Unblock',
+    'want_to_logout': 'Would you like to log out?',
     // onboard
     'onboard_first1': '\nYou can now get the ',
     'onboard_first2': 'right drink\n',

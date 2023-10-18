@@ -50,7 +50,10 @@ class ProfilePage extends GetView<ProfileController> {
               onTap: controller.onTapBlockedUser,
             ),
             buildMenuItem(title: 'inquiry'.tr, onTap: () {}),
-            buildMenuItem(title: 'logout'.tr, onTap: () {}),
+            buildMenuItem(
+              title: 'logout'.tr,
+              onTap: controller.globalController.showLogoutDialog,
+            ),
             buildMenuItem(title: 'withdraw'.tr, onTap: () {}),
             buildMenuItem(
               title: 'app_version'.tr,
