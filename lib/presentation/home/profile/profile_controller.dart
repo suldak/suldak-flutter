@@ -21,5 +21,9 @@ class ProfileController extends GetxController {
     Get.toNamed(Routes.noticeSetting);
   }
 
+  void onTapBlockedUser() {
+    Get.toNamed(Routes.blockedUser);
+  }
+
   // Life Cycle ▼ ------------------------------------------------------
 }

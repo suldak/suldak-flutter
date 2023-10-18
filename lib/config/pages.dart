@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 
 import '../presentation/account_manage/account_manage_controller.dart';
 import '../presentation/account_manage/account_manage_page.dart';
+import '../presentation/blocked_user/blocked_user_controller.dart';
+import '../presentation/blocked_user/blocked_user_page.dart';
 import '../presentation/email_login/email_login_controller.dart';
 import '../presentation/email_login/email_login_page.dart';
 import '../presentation/home/home_controller.dart';
@@ -89,6 +91,11 @@ mixin AppPagesGenerator on StatelessWidget {
           name: Routes.noticeSetting,
           page: () => const NotificationSettingPage(),
           binding: BindingsBuilder.put(() => NotificationSettingController()),
+        ),
+        GetPage(
+          name: Routes.blockedUser,
+          page: () => const BlockedUserPage(),
+          binding: BindingsBuilder.put(() => BlockedUserController()),
         ),
       ];
 }

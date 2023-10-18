@@ -45,7 +45,10 @@ class ProfilePage extends GetView<ProfileController> {
               title: 'notification_setting'.tr,
               onTap: controller.onTapNoticeSetting,
             ),
-            buildMenuItem(title: 'block_manage'.tr, onTap: () {}),
+            buildMenuItem(
+              title: 'block_manage'.tr,
+              onTap: controller.onTapBlockedUser,
+            ),
             buildMenuItem(title: 'inquiry'.tr, onTap: () {}),
             buildMenuItem(title: 'logout'.tr, onTap: () {}),
             buildMenuItem(title: 'withdraw'.tr, onTap: () {}),

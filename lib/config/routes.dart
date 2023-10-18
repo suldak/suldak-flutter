@@ -31,4 +31,7 @@ abstract class Routes {
 
   /// 알림 설정 화면
   static const noticeSetting = '/notification_setting';
+
+  /// 차단 사용자 관리 화면
+  static const blockedUser = '/blocked_user';
 }
