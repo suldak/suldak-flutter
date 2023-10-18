@@ -28,5 +28,9 @@ class ProfileController extends GetxController {
     Get.toNamed(Routes.blockedUser);
   }
 
+  void onTapWithdraw() {
+    Get.toNamed(Routes.withdraw);
+  }
+
   // Life Cycle ▼ ------------------------------------------------------
 }

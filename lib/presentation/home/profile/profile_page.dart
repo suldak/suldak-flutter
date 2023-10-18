@@ -54,7 +54,10 @@ class ProfilePage extends GetView<ProfileController> {
               title: 'logout'.tr,
               onTap: controller.globalController.showLogoutDialog,
             ),
-            buildMenuItem(title: 'withdraw'.tr, onTap: () {}),
+            buildMenuItem(
+              title: 'withdraw'.tr,
+              onTap: controller.onTapWithdraw,
+            ),
             buildMenuItem(
               title: 'app_version'.tr,
               rightWidget: const Text(

@@ -27,6 +27,8 @@ import '../presentation/sign_up_info_input/step_2/step_2_controller.dart';
 import '../presentation/sign_up_info_input/step_3/step_3_controller.dart';
 import '../presentation/splash/splash_controller.dart';
 import '../presentation/splash/splash_page.dart';
+import '../presentation/withdraw/withdraw_controller.dart';
+import '../presentation/withdraw/withdraw_page.dart';
 import 'routes.dart';
 
 mixin AppPagesGenerator on StatelessWidget {
@@ -96,6 +98,11 @@ mixin AppPagesGenerator on StatelessWidget {
           name: Routes.blockedUser,
           page: () => const BlockedUserPage(),
           binding: BindingsBuilder.put(() => BlockedUserController()),
+        ),
+        GetPage(
+          name: Routes.withdraw,
+          page: () => const WithdrawPage(),
+          binding: BindingsBuilder.put(() => WithdrawController()),
         ),
       ];
 }
