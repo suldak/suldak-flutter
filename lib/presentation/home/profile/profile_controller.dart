@@ -29,7 +29,7 @@ class ProfileController extends GetxController {
   }
 
   void onTapWithdraw() {
-    Get.toNamed(Routes.withdraw);
+    Get.toNamed(Routes.withdrawAgree);
   }
 
   // Life Cycle ▼ ------------------------------------------------------

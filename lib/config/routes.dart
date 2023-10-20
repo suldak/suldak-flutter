@@ -35,6 +35,9 @@ abstract class Routes {
   /// 차단 사용자 관리 화면
   static const blockedUser = '/blocked_user';
 
-  /// 탈퇴 페이지
-  static const withdraw = '/withdraw';
+  /// 탈퇴 동의 페이지
+  static const withdrawAgree = '/withdraw_agree';
+
+  /// 탈퇴 설문 페이지
+  static const withdrawSurvey = '/withdraw_survey';
 }

@@ -1,7 +1,9 @@
 import 'package:get/get.dart';
 
-class WithdrawController extends GetxController {
-  static WithdrawController get to => Get.find();
+import '../../../config/routes.dart';
+
+class WithdrawAgreeController extends GetxController {
+  static WithdrawAgreeController get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
 
@@ -16,6 +18,10 @@ class WithdrawController extends GetxController {
 
   void onTapWithdrawAgreeValueRow() {
     isWithdrawAgree.value = !isWithdrawAgree.value;
+  }
+
+  void onTapNext() {
+    Get.toNamed(Routes.withdrawSurvey);
   }
 
   // Life Cycle ▼ ------------------------------------------------------

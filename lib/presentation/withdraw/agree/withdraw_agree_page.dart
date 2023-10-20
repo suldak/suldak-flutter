@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../config/colors.dart';
-import '../../widget/base_app_bar.dart';
-import '../../widget/unordered_text_list.dart';
-import 'withdraw_controller.dart';
+import '../../../config/colors.dart';
+import '../../../widget/base_app_bar.dart';
+import '../../../widget/unordered_text_list.dart';
+import 'withdraw_agree_controller.dart';
 
-class WithdrawPage extends GetView<WithdrawController> {
-  const WithdrawPage({super.key});
+class WithdrawAgreePage extends GetView<WithdrawAgreeController> {
+  const WithdrawAgreePage({super.key});
 
   static const textStyle = TextStyle(
     color: Colors.black,
@@ -114,9 +114,7 @@ class WithdrawPage extends GetView<WithdrawController> {
             Obx(
               () => GestureDetector(
                 onTap: controller.isWithdrawAgree.value
-                    ? () {
-                        print('object');
-                      }
+                    ? controller.onTapNext
                     : null,
                 child: Container(
                   decoration: BoxDecoration(
