@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:suldak_suldak/widget/common_dialog.dart';
 
 import 'config/colors.dart';
 import 'config/keys.dart';
@@ -55,83 +56,10 @@ class GlobalController extends GetxController {
 
   void showLogoutDialog() {
     Get.dialog(
-      Dialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-        clipBehavior: Clip.hardEdge,
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 20),
-          decoration: const BoxDecoration(color: Colors.white),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const SizedBox(height: 10),
-              Text(
-                'want_to_logout'.tr,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              const SizedBox(height: 30),
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      height: 50,
-                      width: 125,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        border: Border.all(
-                          width: 1,
-                          color: AppColors.grey[40] ?? AppColors.grey,
-                        ),
-                        color: Colors.white,
-                      ),
-                      child: Center(
-                        child: Text(
-                          'cancel'.tr,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 4),
-                  GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      height: 50,
-                      width: 125,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        border: Border.all(
-                          width: 1,
-                          color: AppColors.primary,
-                        ),
-                        color: AppColors.primary,
-                      ),
-                      child: Center(
-                        child: Text(
-                          'logout'.tr,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
+      CommonDialog(
+        content: 'want_to_logout'.tr,
+        positiveText: 'logout'.tr,
+        onTapPositive: () {},
       ),
     );
   }

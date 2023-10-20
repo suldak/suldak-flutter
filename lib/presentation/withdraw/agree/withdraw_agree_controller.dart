@@ -20,8 +20,11 @@ class WithdrawAgreeController extends GetxController {
     isWithdrawAgree.value = !isWithdrawAgree.value;
   }
 
-  void onTapNext() {
-    Get.toNamed(Routes.withdrawSurvey);
+  void onTapNext() async {
+    final isCanceled = await Get.toNamed(Routes.withdrawSurvey);
+    if (isCanceled) {
+      Get.back();
+    }
   }
 
   // Life Cycle ▼ ------------------------------------------------------

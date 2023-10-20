@@ -121,6 +121,7 @@ class Languages extends Translations {
     'withdraw_survey_not_satisfied_service': '서비스 운영에 아쉬운 부분이 있어요',
     'withdraw_survey_complain_hint': '기타 불만사항이나 바라는 점이 있으시면 알려주세요.',
     'withdraw_cancel': '아직 이별은 이른 것 같아요! 다음에 할게요',
+    'withdraw_final_question': '&&님, 정말 이별인가요?🥺',
     // onboard
     'onboard_first1': '\n지금 나에게 ',
     'onboard_first2': '딱맞는 술',
@@ -251,6 +252,7 @@ class Languages extends Translations {
     'withdraw_survey_not_satisfied_service': 'There\'s something missing about the service operation',
     'withdraw_survey_complain_hint': 'Please let us know if you have any other complaints or requests.',
     'withdraw_cancel': 'I think it\'s too early to say goodbye! I\'ll do it next time.',
+    'withdraw_final_question': '&&, is this really a breakup? 🥺',
     // onboard
     'onboard_first1': '\nYou can now get the ',
     'onboard_first2': 'right drink\n',

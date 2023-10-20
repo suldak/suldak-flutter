@@ -113,26 +113,29 @@ class WithdrawSurveyPage extends GetView<WithdrawSurveyController> {
                     ),
                   ),
                   const SizedBox(height: 52),
-                  Center(
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(width: 1, color: AppColors.primary),
+                  GestureDetector(
+                    onTap: controller.onTapCancelWithdraw,
+                    child: Center(
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          border: Border(
+                            bottom: BorderSide(width: 1, color: AppColors.primary),
+                          ),
                         ),
-                      ),
-                      child: Text(
-                        'withdraw_cancel'.tr,
-                        style: const TextStyle(
-                          color: AppColors.primary,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
+                        child: Text(
+                          'withdraw_cancel'.tr,
+                          style: const TextStyle(
+                            color: AppColors.primary,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
                     ),
                   ),
                   const SizedBox(height: 18),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: controller.onTapWithdraw,
                     child: Container(
                       height: 60,
                       decoration: BoxDecoration(
