@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../config/colors.dart';
-import 'home_controller.dart';
+import 'home_main_controller.dart';
 
-class HomePage extends GetView<HomeController> {
-  const HomePage({super.key});
+class HomeMainPage extends GetView<HomeMainController> {
+  const HomeMainPage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -55,6 +55,25 @@ class $AssetsFontGen {
       ];
 }
 
+class $AssetsJpgGen {
+  const $AssetsJpgGen();
+
+  /// File path: assets/jpg/beer.jpg
+  AssetGenImage get beer => const AssetGenImage('assets/jpg/beer.jpg');
+
+  /// File path: assets/jpg/soju.jpg
+  AssetGenImage get soju => const AssetGenImage('assets/jpg/soju.jpg');
+
+  /// File path: assets/jpg/whiskey.jpg
+  AssetGenImage get whiskey => const AssetGenImage('assets/jpg/whiskey.jpg');
+
+  /// File path: assets/jpg/wine.jpg
+  AssetGenImage get wine => const AssetGenImage('assets/jpg/wine.jpg');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [beer, soju, whiskey, wine];
+}
+
 class $AssetsPngGen {
   const $AssetsPngGen();
 
@@ -78,13 +97,17 @@ class $AssetsPngGen {
   /// File path: assets/png/pot.png
   AssetGenImage get pot => const AssetGenImage('assets/png/pot.png');
 
+  /// File path: assets/png/suldak_text_logo.png
+  AssetGenImage get suldakTextLogo =>
+      const AssetGenImage('assets/png/suldak_text_logo.png');
+
   /// File path: assets/png/thinking_face.png
   AssetGenImage get thinkingFace =>
       const AssetGenImage('assets/png/thinking_face.png');
 
   /// List of all assets
   List<AssetGenImage> get values =>
-      [beer, certification, cocktail, logo, nightBridge, pot, thinkingFace];
+      [beer, certification, cocktail, logo, nightBridge, pot, suldakTextLogo, thinkingFace];
 }
 
 class $AssetsSvgGen {
@@ -159,13 +182,6 @@ class $AssetsSvgGen {
   /// File path: assets/svg/naver.svg
   SvgGenImage get naver => const SvgGenImage('assets/svg/naver.svg');
 
-  /// File path: assets/svg/not_defined.svg
-  SvgGenImage get notDefined => const SvgGenImage('assets/svg/not_defined.svg');
-
-  /// File path: assets/svg/not_defined_tap.svg
-  SvgGenImage get notDefinedTap =>
-      const SvgGenImage('assets/svg/not_defined_tap.svg');
-
   /// File path: assets/svg/user.svg
   SvgGenImage get user => const SvgGenImage('assets/svg/user.svg');
 
@@ -195,10 +211,8 @@ class $AssetsSvgGen {
         myPage,
         myPageTap,
         naver,
-        notDefined,
-        notDefinedTap,
         user,
-        welcome
+        welcome,
       ];
 }
 
@@ -206,6 +220,7 @@ class Assets {
   Assets._();
 
   static const $AssetsFontGen font = $AssetsFontGen();
+  static const $AssetsJpgGen jpg = $AssetsJpgGen();
   static const $AssetsPngGen png = $AssetsPngGen();
   static const $AssetsSvgGen svg = $AssetsSvgGen();
 }

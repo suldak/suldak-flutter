@@ -3,10 +3,11 @@ import 'package:get/get.dart';
 
 import '../../gen/assets.gen.dart';
 import '../../global_controller.dart';
+import 'home/home_page.dart';
 import 'profile/profile_page.dart';
 
-class HomeController extends GetxController {
-  static HomeController get to => Get.find();
+class HomeMainController extends GetxController {
+  static HomeMainController get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
 
@@ -17,7 +18,7 @@ class HomeController extends GetxController {
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   /// 현재 선택된 바텀 앱바 index
-  final currentTabItem = HomeBottomItem.findFriend.obs;
+  final currentTabItem = HomeBottomItem.home.obs;
 
   // Functions ▼ ------------------------------------------------------
 
@@ -98,7 +99,7 @@ enum HomeBottomItem {
       // TODO: Handle this case.
         return const SizedBox();
       case HomeBottomItem.home:
-        return const SizedBox();
+        return const HomePage();
       case HomeBottomItem.myHistory:
       // TODO: Handle this case.
         return const SizedBox();
