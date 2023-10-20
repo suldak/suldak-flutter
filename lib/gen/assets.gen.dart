@@ -106,8 +106,16 @@ class $AssetsPngGen {
       const AssetGenImage('assets/png/thinking_face.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [beer, certification, cocktail, logo, nightBridge, pot, suldakTextLogo, thinkingFace];
+  List<AssetGenImage> get values => [
+        beer,
+        certification,
+        cocktail,
+        logo,
+        nightBridge,
+        pot,
+        suldakTextLogo,
+        thinkingFace
+      ];
 }
 
 class $AssetsSvgGen {
@@ -212,7 +220,7 @@ class $AssetsSvgGen {
         myPageTap,
         naver,
         user,
-        welcome,
+        welcome
       ];
 }
 
