@@ -130,6 +130,27 @@ class WithdrawSurveyPage extends GetView<WithdrawSurveyController> {
                       ),
                     ),
                   ),
+                  const SizedBox(height: 18),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      height: 60,
+                      decoration: BoxDecoration(
+                        color: AppColors.primary,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'withdraw'.tr,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -143,17 +164,9 @@ class WithdrawSurveyPage extends GetView<WithdrawSurveyController> {
     required String title,
     required WithdrawReason value,
   }) {
-    // return RadioListTile<WithdrawReason>(
-    //   title: Text(
-    //     title,
-    //     style: textStyle,
-    //   ),
-    //   value: value,
-    //   groupValue: controller.currentSelection.value,
-    //   onChanged: controller.onRadioValueChanged,
-    // );
     return GestureDetector(
       onTap: () => controller.onRadioValueChanged(value),
+      behavior: HitTestBehavior.opaque,
       child: Padding(
         padding: const EdgeInsets.only(bottom: 14),
         child: Row(
@@ -172,6 +185,7 @@ class WithdrawSurveyPage extends GetView<WithdrawSurveyController> {
               title,
               style: textStyle,
             ),
+            const Expanded(child: SizedBox()),
           ],
         ),
       ),
