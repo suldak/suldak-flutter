@@ -12,36 +12,39 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: BaseAppBar(
-        title: 'profile_setting'.tr,
-        showBackButton: true,
-        showBottomLine: true,
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.only(
-            top: 40,
-            left: 20,
-            right: 20,
-          ),
-          child: Column(
-            children: [
-              buildMyIntro(),
-              const SizedBox(height: 55),
-              buildMyDrinkTaste(),
-              const SizedBox(height: 44),
-              buildPreferMood(),
-              const SizedBox(height: 44),
-              buildMySnackTaste(),
-              const SizedBox(height: 40),
-              buildMyDrinkFlavor(),
-              const SizedBox(height: 40),
-              buildMyDrinkCapacity(),
-              const SizedBox(height: 40),
-              buildSaveButton(),
-              const SizedBox(height: 42),
-            ],
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Scaffold(
+        appBar: BaseAppBar(
+          title: 'profile_setting'.tr,
+          showBackButton: true,
+          showBottomLine: true,
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(
+              top: 40,
+              left: 20,
+              right: 20,
+            ),
+            child: Column(
+              children: [
+                buildMyIntro(),
+                const SizedBox(height: 55),
+                buildMyDrinkTaste(),
+                const SizedBox(height: 44),
+                buildPreferMood(),
+                const SizedBox(height: 44),
+                buildMySnackTaste(),
+                const SizedBox(height: 40),
+                buildMyDrinkFlavor(),
+                const SizedBox(height: 40),
+                buildMyDrinkCapacity(),
+                const SizedBox(height: 40),
+                buildSaveButton(),
+                const SizedBox(height: 42),
+              ],
+            ),
           ),
         ),
       ),
@@ -66,6 +69,7 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
             TextField(
               maxLines: 3,
               maxLength: 100,
+              textAlignVertical: TextAlignVertical.top,
               scrollPhysics: const NeverScrollableScrollPhysics(),
               style: const TextStyle(
                 color: Colors.black,
@@ -73,6 +77,12 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
                 fontWeight: FontWeight.w500,
               ),
               decoration: InputDecoration(
+                contentPadding: const EdgeInsets.only(
+                  top: 24,
+                  left: 20,
+                  right: 20,
+                  bottom: 54,
+                ),
                 counterText: '',
                 hintText: 'introduce_me_hint'.tr,
                 hintStyle: TextStyle(
@@ -97,8 +107,8 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
               ),
             ),
             Positioned(
-              right: 10,
-              bottom: 10,
+              right: 20,
+              bottom: 20,
               child: Text(
                 '0/100자',
                 style: TextStyle(
@@ -120,13 +130,34 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
       image: Assets.png.cocktail.image(width: 18),
       activeEveryThing: true,
       tags: [
-        TagWidget(tag: '소주', isSelected: false,),
-        TagWidget(tag: '맥주', isSelected: false,),
-        TagWidget(tag: '칵테일', isSelected: false,),
-        TagWidget(tag: '하이볼', isSelected: false,),
-        TagWidget(tag: '와인', isSelected: false,),
-        TagWidget(tag: '양주', isSelected: false,),
-        TagWidget(tag: '전통주', isSelected: false,),
+        TagWidget(
+          tag: '소주',
+          isSelected: false,
+        ),
+        TagWidget(
+          tag: '맥주',
+          isSelected: false,
+        ),
+        TagWidget(
+          tag: '칵테일',
+          isSelected: false,
+        ),
+        TagWidget(
+          tag: '하이볼',
+          isSelected: false,
+        ),
+        TagWidget(
+          tag: '와인',
+          isSelected: false,
+        ),
+        TagWidget(
+          tag: '양주',
+          isSelected: false,
+        ),
+        TagWidget(
+          tag: '전통주',
+          isSelected: false,
+        ),
       ],
     );
   }
@@ -137,10 +168,22 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
       image: Assets.png.nightBridge.image(width: 18),
       activeEveryThing: true,
       tags: [
-        TagWidget(tag: '왁자지껄 회식 분위기', isSelected: false,),
-        TagWidget(tag: '도란도란 조용한 분위기', isSelected: false,),
-        TagWidget(tag: '감성넘치는 펍', isSelected: false,),
-        TagWidget(tag: '술게임과 함께', isSelected: false,),
+        TagWidget(
+          tag: '왁자지껄 회식 분위기',
+          isSelected: false,
+        ),
+        TagWidget(
+          tag: '도란도란 조용한 분위기',
+          isSelected: false,
+        ),
+        TagWidget(
+          tag: '감성넘치는 펍',
+          isSelected: false,
+        ),
+        TagWidget(
+          tag: '술게임과 함께',
+          isSelected: false,
+        ),
       ],
     );
   }
@@ -151,11 +194,26 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
       image: Assets.png.pot.image(width: 18),
       activeEveryThing: true,
       tags: [
-        TagWidget(tag: '계속 들어가는 마른안주', isSelected: false,),
-        TagWidget(tag: '새콤달콤 과일안주', isSelected: false,),
-        TagWidget(tag: '해장도 함께하는 국물안주', isSelected: false,),
-        TagWidget(tag: '고소+짭조름 치즈안주', isSelected: false,),
-        TagWidget(tag: '바삭한 튀김안주', isSelected: false,),
+        TagWidget(
+          tag: '계속 들어가는 마른안주',
+          isSelected: false,
+        ),
+        TagWidget(
+          tag: '새콤달콤 과일안주',
+          isSelected: false,
+        ),
+        TagWidget(
+          tag: '해장도 함께하는 국물안주',
+          isSelected: false,
+        ),
+        TagWidget(
+          tag: '고소+짭조름 치즈안주',
+          isSelected: false,
+        ),
+        TagWidget(
+          tag: '바삭한 튀김안주',
+          isSelected: false,
+        ),
       ],
     );
   }
@@ -165,13 +223,34 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
       title: 'prefer_alcohol_flavor'.tr,
       image: Assets.png.beer.image(width: 18),
       tags: [
-        TagWidget(tag: '술맛 나는 술', isSelected: false,),
-        TagWidget(tag: '달달한 술', isSelected: false,),
-        TagWidget(tag: '상큼한 술', isSelected: false,),
-        TagWidget(tag: '끝맛이 깔끔한 술', isSelected: false,),
-        TagWidget(tag: '여운이 오래가는 술', isSelected: false,),
-        TagWidget(tag: '탄산이 들어간 술', isSelected: false,),
-        TagWidget(tag: '부드러운 술', isSelected: false,),
+        TagWidget(
+          tag: '술맛 나는 술',
+          isSelected: false,
+        ),
+        TagWidget(
+          tag: '달달한 술',
+          isSelected: false,
+        ),
+        TagWidget(
+          tag: '상큼한 술',
+          isSelected: false,
+        ),
+        TagWidget(
+          tag: '끝맛이 깔끔한 술',
+          isSelected: false,
+        ),
+        TagWidget(
+          tag: '여운이 오래가는 술',
+          isSelected: false,
+        ),
+        TagWidget(
+          tag: '탄산이 들어간 술',
+          isSelected: false,
+        ),
+        TagWidget(
+          tag: '부드러운 술',
+          isSelected: false,
+        ),
       ],
     );
   }
@@ -181,11 +260,26 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
       title: 'alcohol_capacity'.tr,
       image: Assets.png.thinkingFace.image(width: 18),
       tags: [
-        TagWidget(tag: '잘 못 마셔요', isSelected: false,),
-        TagWidget(tag: '반 병 ~ 1병', isSelected: false,),
-        TagWidget(tag: '1병 ~ 2병', isSelected: false,),
-        TagWidget(tag: '2병 이상', isSelected: false,),
-        TagWidget(tag: '잘 모르겠어요', isSelected: false,),
+        TagWidget(
+          tag: '잘 못 마셔요',
+          isSelected: false,
+        ),
+        TagWidget(
+          tag: '반 병 ~ 1병',
+          isSelected: false,
+        ),
+        TagWidget(
+          tag: '1병 ~ 2병',
+          isSelected: false,
+        ),
+        TagWidget(
+          tag: '2병 이상',
+          isSelected: false,
+        ),
+        TagWidget(
+          tag: '잘 모르겠어요',
+          isSelected: false,
+        ),
       ],
     );
   }

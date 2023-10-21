@@ -335,7 +335,12 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
             isPasswordCheckMatches;
 
         return GestureDetector(
-          onTap: isActive ? onNextPage : null,
+          onTap: isActive
+              ? () {
+                  controller.onComplete();
+                  onNextPage.call();
+                }
+              : null,
           child: Container(
             padding: const EdgeInsets.symmetric(vertical: 20),
             decoration: BoxDecoration(

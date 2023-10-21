@@ -160,7 +160,12 @@ class Step2Page extends GetView<Step2Controller> {
   Widget buildNextButton() {
     return Obx(
       () => GestureDetector(
-        onTap: controller.isActive.value ? onNextPage : null,
+        onTap: controller.isActive.value
+            ? () {
+                controller.onComplete();
+                onNextPage.call();
+              }
+            : null,
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 20),
           decoration: BoxDecoration(

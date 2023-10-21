@@ -7,9 +7,13 @@ import '../presentation/blocked_user/blocked_user_controller.dart';
 import '../presentation/blocked_user/blocked_user_page.dart';
 import '../presentation/email_login/email_login_controller.dart';
 import '../presentation/email_login/email_login_page.dart';
-import '../presentation/home/home_controller.dart';
-import '../presentation/home/home_page.dart';
+import '../presentation/home/home/home_controller.dart';
+import '../presentation/home/home_main_controller.dart';
+import '../presentation/home/home_main_page.dart';
 import '../presentation/home/profile/profile_controller.dart';
+import '../presentation/iamport_pass_verify/iamport_pass_verify_page.dart';
+import '../presentation/identity_verification/identity_verification_controller.dart';
+import '../presentation/identity_verification/identity_verification_page.dart';
 import '../presentation/login/login_controller.dart';
 import '../presentation/login/login_page.dart';
 import '../presentation/notification_setting/notification_setting_controller.dart';
@@ -25,6 +29,7 @@ import '../presentation/sign_up_info_input/sign_up_info_input_page.dart';
 import '../presentation/sign_up_info_input/social_step_1/social_step_1_controller.dart';
 import '../presentation/sign_up_info_input/step_2/step_2_controller.dart';
 import '../presentation/sign_up_info_input/step_3/step_3_controller.dart';
+import '../presentation/sign_up_info_input/welcome_page.dart';
 import '../presentation/splash/splash_controller.dart';
 import '../presentation/splash/splash_page.dart';
 import '../presentation/withdraw/agree/withdraw_agree_controller.dart';
@@ -54,10 +59,11 @@ mixin AppPagesGenerator on StatelessWidget {
         ),
         GetPage(
           name: Routes.home,
-          page: () => const HomePage(),
+          page: () => const HomeMainPage(),
           binding: BindingsBuilder(() {
-            Get.put(HomeController());
+            Get.put(HomeMainController());
             Get.lazyPut(() => ProfileController());
+            Get.lazyPut(() => HomeController());
           }),
         ),
         GetPage(
@@ -110,6 +116,20 @@ mixin AppPagesGenerator on StatelessWidget {
           name: Routes.withdrawSurvey,
           page: () => const WithdrawSurveyPage(),
           binding: BindingsBuilder.put(() => WithdrawSurveyController()),
+        ),
+        GetPage(
+          name: Routes.identityVerification,
+          page: () => const IdentityVerificationPage(),
+          binding: BindingsBuilder.put(() => IdentityVerificationController()),
+        ),
+        GetPage(
+          name: Routes.iamportPassVerify,
+          page: () => const IamportPassVerifyPage(),
+          binding: BindingsBuilder.put(() => IdentityVerificationController()),
+        ),
+        GetPage(
+          name: Routes.welcome,
+          page: () => const WelcomePage(),
         ),
       ];
 }

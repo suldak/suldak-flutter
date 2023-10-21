@@ -222,7 +222,12 @@ class SocialStep1Page extends GetView<SocialStep1Controller> {
         bool isActive = isAllAgree && isNicknameAvailable;
 
         return GestureDetector(
-          onTap: isActive ? onNextPage : null,
+          onTap: isActive
+              ? () {
+                  controller.onComplete();
+                  onNextPage.call();
+                }
+              : null,
           child: Container(
             padding: const EdgeInsets.symmetric(vertical: 20),
             decoration: BoxDecoration(

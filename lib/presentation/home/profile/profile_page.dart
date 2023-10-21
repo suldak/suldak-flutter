@@ -27,9 +27,9 @@ class ProfilePage extends GetView<ProfileController> {
                   Divider(thickness: 1, height: 1, color: Colors.grey.shade200),
                   buildProfileCompleteCard(),
                   buildTagDropdownWidget(),
-                  const SizedBox(height: 36),
+                  const SizedBox(height: 14),
                   buildMyIntro(),
-                  const SizedBox(height: 60),
+                  const SizedBox(height: 14),
                   buildProfileSettingButton(),
                   const SizedBox(height: 36),
                 ],
@@ -40,6 +40,12 @@ class ProfilePage extends GetView<ProfileController> {
               title: 'manage_my_account'.tr,
               onTap: controller.onTapManageMyAccount,
             ),
+            buildMenuItem(
+              title: 'identity_verification'.tr,
+              onTap: controller.onTapIdentityVerification,
+            ),
+            buildMenuItem(title: 'notification_setting'.tr, onTap: () {}),
+            buildMenuItem(title: 'block_manage'.tr, onTap: () {}),
             buildMenuItem(title: 'self_certification'.tr, onTap: () {}),
             buildMenuItem(
               title: 'notification_setting'.tr,
@@ -69,7 +75,7 @@ class ProfilePage extends GetView<ProfileController> {
                 ),
               ),
             ),
-            const SizedBox(height: 42),
+            const SizedBox(height: 26),
             Padding(
               padding: const EdgeInsets.only(left: 20),
               child: Column(
@@ -88,7 +94,7 @@ class ProfilePage extends GetView<ProfileController> {
                 ],
               ),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 25),
           ],
         ),
       ),
@@ -100,16 +106,26 @@ class ProfilePage extends GetView<ProfileController> {
       padding: const EdgeInsets.only(top: 20, bottom: 30),
       child: Row(
         children: [
-          Container(
-            width: 72,
-            height: 72,
-            decoration: BoxDecoration(
-              color: AppColors.grey[20],
-              borderRadius: BorderRadius.circular(60),
-            ),
-            child: Center(
-              child: Assets.svg.user.svg(width: 30),
-            ),
+          Stack(
+            children: [
+              Container(
+                width: 72,
+                height: 72,
+                margin: const EdgeInsets.only(bottom: 6, right: 6),
+                decoration: BoxDecoration(
+                  color: AppColors.grey[20],
+                  borderRadius: BorderRadius.circular(60),
+                ),
+                child: Center(
+                  child: Assets.svg.user.svg(width: 30),
+                ),
+              ),
+              Positioned(
+                bottom: 0,
+                right: 0,
+                child: Assets.svg.camera.svg(),
+              ),
+            ],
           ),
           const Expanded(child: SizedBox()),
           Expanded(
@@ -172,19 +188,20 @@ class ProfilePage extends GetView<ProfileController> {
 
   Widget buildProfileCompleteCard() {
     return Container(
-      margin: const EdgeInsets.only(top: 30, bottom: 36),
-      padding: const EdgeInsets.only(left: 20, right: 10),
+      margin: const EdgeInsets.only(top: 30, bottom: 24),
+      padding: const EdgeInsets.only(left: 20, right: 10, top: 17, bottom: 17),
       height: 74,
       decoration: BoxDecoration(
         color: AppColors.secondary[30],
         borderRadius: BorderRadius.circular(15),
       ),
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Stack(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 14, bottom: 14, right: 22),
+                padding: const EdgeInsets.only(right: 12),
                 child: SizedBox(
                   width: 40,
                   height: 40,
@@ -208,11 +225,6 @@ class ProfilePage extends GetView<ProfileController> {
                   ),
                 ),
               ),
-              Positioned(
-                top: 0,
-                right: 0,
-                child: Assets.svg.camera.svg(width: 32),
-              ),
             ],
           ),
           Expanded(
@@ -228,6 +240,7 @@ class ProfilePage extends GetView<ProfileController> {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
+                const SizedBox(height: 6),
                 Text(
                   'self_certification_recommend'.tr,
                   style: const TextStyle(
@@ -260,14 +273,8 @@ class ProfilePage extends GetView<ProfileController> {
         shape: Border.all(color: Colors.transparent),
         title: Row(
           children: [
-            TagWidget(
-              tag: '소주파',
-              isSelected: false,
-            ),
-            TagWidget(
-              tag: '술과 함께라면 다 좋아요',
-              isSelected: false,
-            ),
+            TagWidget(tag: '소주파', isFilled: false, isSelected: true),
+            TagWidget(tag: '술과 함께라면 다 좋아요', isFilled: false, isSelected: true),
           ],
         ),
         children: [
@@ -279,15 +286,18 @@ class ProfilePage extends GetView<ProfileController> {
               children: [
                 TagWidget(
                   tag: '술과 함께라면 다 좋아요',
-                  isSelected: false,
+                  isFilled: false,
+                  isSelected: true,
                 ),
                 TagWidget(
                   tag: '술과 함께라면 다 좋아요',
-                  isSelected: false,
+                  isFilled: false,
+                  isSelected: true,
                 ),
                 TagWidget(
                   tag: '술과 함께라면 다 좋아요',
-                  isSelected: false,
+                  isFilled: false,
+                  isSelected: true,
                 ),
               ],
             ),
@@ -311,7 +321,7 @@ class ProfilePage extends GetView<ProfileController> {
         ),
         const SizedBox(height: 12),
         Container(
-          padding: const EdgeInsets.all(14),
+          padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 20),
           decoration: BoxDecoration(
             border: Border.all(
               width: 1,
@@ -422,7 +432,7 @@ class ProfilePage extends GetView<ProfileController> {
         text,
         style: TextStyle(
           color: AppColors.grey[70],
-          fontSize: 11,
+          fontSize: 12,
           fontWeight: FontWeight.w400,
         ),
       ),

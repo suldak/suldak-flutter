@@ -23,6 +23,9 @@ abstract class Routes {
   /// 회원 정보 입력 화면
   static const signUpInfo = '/sign_up_info';
 
+  /// 회원가입 환영 화면
+  static const welcome = '/welcome';
+
   /// 프로필 설정 화면
   static const profileSetting = '/profile_setting';
 
@@ -40,4 +43,10 @@ abstract class Routes {
 
   /// 탈퇴 설문 페이지
   static const withdrawSurvey = '/withdraw_survey';
+
+  /// 본인 인증 화면
+  static const identityVerification = '/identity_verification';
+
+  /// iamport pass 인증화면
+  static const iamportPassVerify = '/iamport_pass_verify';
 }

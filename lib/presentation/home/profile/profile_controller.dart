@@ -17,7 +17,11 @@ class ProfileController extends GetxController {
   }
 
   void onTapManageMyAccount() {
-    Get.toNamed(Routes.accountSetting);
+    Get.toNamed(Routes.accountSetting, arguments: {'isEmail': true});
+  }
+
+  void onTapIdentityVerification() {
+    Get.toNamed(Routes.identityVerification);
   }
 
   void onTapNoticeSetting() {
