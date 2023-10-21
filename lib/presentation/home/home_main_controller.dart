@@ -28,6 +28,16 @@ class HomeMainController extends GetxController {
   }
 
   // Life Cycle ▼ ------------------------------------------------------
+
+  @override
+  void onInit() {
+    super.onInit();
+
+    if (Get.arguments != null) {
+      final index = Get.arguments['initial_index'];
+      currentTabItem.value = HomeBottomItem.values[index];
+    }
+  }
 }
 
 /// ## 하단 메뉴 화면의 버튼 종류

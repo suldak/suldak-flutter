@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:suldak_suldak/model/user_signup_info.dart';
 
 import '../../config/routes.dart';
 import 'email_step_1/email_step_1_page.dart';
@@ -19,6 +20,8 @@ class SignUpInfoInputController extends GetxController {
 
   final pageViewController = PageController(initialPage: 0);
 
+  final UserSignupInfo signupInfo = UserSignupInfo();
+
   // Functions ▼ ------------------------------------------------------
 
   void onNextPage() {
@@ -28,7 +31,7 @@ class SignUpInfoInputController extends GetxController {
         curve: Curves.ease,
       );
     } else {
-      Get.offAllNamed(Routes.home);
+      Get.offAllNamed(Routes.welcome);
     }
   }
 

@@ -80,6 +80,10 @@ class $AssetsPngGen {
   /// File path: assets/png/beer.png
   AssetGenImage get beer => const AssetGenImage('assets/png/beer.png');
 
+  /// File path: assets/png/certification.png
+  AssetGenImage get certification =>
+      const AssetGenImage('assets/png/certification.png');
+
   /// File path: assets/png/cocktail.png
   AssetGenImage get cocktail => const AssetGenImage('assets/png/cocktail.png');
 
@@ -102,8 +106,16 @@ class $AssetsPngGen {
       const AssetGenImage('assets/png/thinking_face.png');
 
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [beer, cocktail, logo, nightBridge, pot, suldakTextLogo, thinkingFace];
+  List<AssetGenImage> get values => [
+        beer,
+        certification,
+        cocktail,
+        logo,
+        nightBridge,
+        pot,
+        suldakTextLogo,
+        thinkingFace
+      ];
 }
 
 class $AssetsSvgGen {
@@ -117,6 +129,18 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/arrow_next.svg
   SvgGenImage get arrowNext => const SvgGenImage('assets/svg/arrow_next.svg');
+
+  /// File path: assets/svg/beer_friend_illustrator.svg
+  SvgGenImage get beerFriendIllustrator =>
+      const SvgGenImage('assets/svg/beer_friend_illustrator.svg');
+
+  /// File path: assets/svg/beer_illustrator.svg
+  SvgGenImage get beerIllustrator =>
+      const SvgGenImage('assets/svg/beer_illustrator.svg');
+
+  /// File path: assets/svg/bird_illustrator.svg
+  SvgGenImage get birdIllustrator =>
+      const SvgGenImage('assets/svg/bird_illustrator.svg');
 
   /// File path: assets/svg/camera.svg
   SvgGenImage get camera => const SvgGenImage('assets/svg/camera.svg');
@@ -143,6 +167,10 @@ class $AssetsSvgGen {
   /// File path: assets/svg/info.svg
   SvgGenImage get info => const SvgGenImage('assets/svg/info.svg');
 
+  /// File path: assets/svg/invite_illustrator.svg
+  SvgGenImage get inviteIllustrator =>
+      const SvgGenImage('assets/svg/invite_illustrator.svg');
+
   /// File path: assets/svg/kakao.svg
   SvgGenImage get kakao => const SvgGenImage('assets/svg/kakao.svg');
 
@@ -165,11 +193,17 @@ class $AssetsSvgGen {
   /// File path: assets/svg/user.svg
   SvgGenImage get user => const SvgGenImage('assets/svg/user.svg');
 
+  /// File path: assets/svg/welcome.svg
+  SvgGenImage get welcome => const SvgGenImage('assets/svg/welcome.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
         arrowBack,
         arrowDown,
         arrowNext,
+        beerFriendIllustrator,
+        beerIllustrator,
+        birdIllustrator,
         camera,
         check,
         findFriend,
@@ -178,13 +212,15 @@ class $AssetsSvgGen {
         home,
         homeTap,
         info,
+        inviteIllustrator,
         kakao,
         myHistory,
         myHistoryTap,
         myPage,
         myPageTap,
         naver,
-        user
+        user,
+        welcome
       ];
 }
 

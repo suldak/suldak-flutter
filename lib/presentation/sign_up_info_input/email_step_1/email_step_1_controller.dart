@@ -2,11 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../config/colors.dart';
+import '../sign_up_info_input_controller.dart';
 
 class EmailStep1Controller extends GetxController {
   static EmailStep1Controller get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
+
+  /// 상위 페이지 컨트롤러, 사용자의 회원가입 정보 입력 객체를 가지고있음
+  SignUpInfoInputController signUpInfoInputController =
+      SignUpInfoInputController.to;
 
   /// 전체 동의 여부
   Rx<bool> isAllAgree = false.obs;
@@ -81,7 +86,13 @@ class EmailStep1Controller extends GetxController {
   /// 비밀번호 입력창 focus node
   FocusNode passwordFocusNode = FocusNode();
 
-  /// 비밀번호 문자열
+  /// 사용자 이메일 문자열
+  String email = '';
+
+  /// 사용자 닉네임 문자열
+  String nickname = '';
+
+  /// 사용자 비밀번호 문자열
   String password = '';
 
   final InputBorder textFieldBorder = OutlineInputBorder(
@@ -99,7 +110,7 @@ class EmailStep1Controller extends GetxController {
   /// email text input 문자열 변경시 호출 함수
   void onEmailTextChanged(String text) {
     bool res = RegExp(
-        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(text);
     if (res) {
       isEmailAvailable.value = true;
@@ -178,6 +189,13 @@ class EmailStep1Controller extends GetxController {
     } else {
       isAllAgree.value = false;
     }
+  }
+
+  /// 사용자가 정보 입력을 마치고 다음페이지로 넘어가기 전 입력된 정보 저장(전달)
+  void onComplete() {
+    signUpInfoInputController.signupInfo.userEmail = email;
+    signUpInfoInputController.signupInfo.nickname = nickname;
+    signUpInfoInputController.signupInfo.userPw = password;
   }
 
   /// 이메일 입력 위젯 색상

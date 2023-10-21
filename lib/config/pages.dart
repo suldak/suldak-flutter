@@ -9,6 +9,9 @@ import '../presentation/home/home/home_controller.dart';
 import '../presentation/home/home_main_controller.dart';
 import '../presentation/home/home_main_page.dart';
 import '../presentation/home/profile/profile_controller.dart';
+import '../presentation/iamport_pass_verify/iamport_pass_verify_page.dart';
+import '../presentation/identity_verification/identity_verification_controller.dart';
+import '../presentation/identity_verification/identity_verification_page.dart';
 import '../presentation/login/login_controller.dart';
 import '../presentation/login/login_page.dart';
 import '../presentation/onboard/onboard_controller.dart';
@@ -22,6 +25,7 @@ import '../presentation/sign_up_info_input/sign_up_info_input_page.dart';
 import '../presentation/sign_up_info_input/social_step_1/social_step_1_controller.dart';
 import '../presentation/sign_up_info_input/step_2/step_2_controller.dart';
 import '../presentation/sign_up_info_input/step_3/step_3_controller.dart';
+import '../presentation/sign_up_info_input/welcome_page.dart';
 import '../presentation/splash/splash_controller.dart';
 import '../presentation/splash/splash_page.dart';
 import 'routes.dart';
@@ -84,6 +88,20 @@ mixin AppPagesGenerator on StatelessWidget {
           name: Routes.accountSetting,
           page: () => const AccountManagePage(),
           binding: BindingsBuilder.put(() => AccountManageController()),
+        ),
+        GetPage(
+          name: Routes.identityVerification,
+          page: () => const IdentityVerificationPage(),
+          binding: BindingsBuilder.put(() => IdentityVerificationController()),
+        ),
+        GetPage(
+          name: Routes.iamportPassVerify,
+          page: () => const IamportPassVerifyPage(),
+          binding: BindingsBuilder.put(() => IdentityVerificationController()),
+        ),
+        GetPage(
+          name: Routes.welcome,
+          page: () => const WelcomePage(),
         ),
       ];
 }

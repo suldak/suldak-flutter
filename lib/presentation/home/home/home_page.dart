@@ -350,23 +350,21 @@ class HomePage extends GetView<HomeController> {
   }
 
   Widget buildHorizontalScrollDrinkList() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 20, left: 20),
-      child: SizedBox(
-        height: 250,
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          shrinkWrap: true,
-          itemCount: 14,
-          itemBuilder: (context, index) {
-            return buildHorizontalScrollDrinkItem(
-              image: Assets.jpg.beer.image(fit: BoxFit.cover),
-              alc: "2.3",
-              name: "예거 라들러",
-              tags: ['과일맥주', '달달한', '탄산감'],
-            );
-          },
-        ),
+    return SizedBox(
+      height: 268,
+      child: ListView.builder(
+        padding: const EdgeInsets.only(top: 20, left: 20),
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        itemCount: 14,
+        itemBuilder: (context, index) {
+          return buildHorizontalScrollDrinkItem(
+            image: Assets.jpg.beer.image(fit: BoxFit.cover),
+            alc: "2.3",
+            name: "예거 라들러",
+            tags: ['과일맥주', '달달한', '탄산감'],
+          );
+        },
       ),
     );
   }
@@ -468,10 +466,10 @@ class HomePage extends GetView<HomeController> {
           ),
         ),
         const SizedBox(height: 20),
-        Container(
+        SizedBox(
           height: 250,
-          padding: const EdgeInsets.only(left: 20),
           child: ListView.builder(
+            padding: const EdgeInsets.only(left: 20),
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             itemCount: 12,
@@ -538,10 +536,10 @@ class HomePage extends GetView<HomeController> {
           ),
         ),
         const SizedBox(height: 20),
-        Container(
+        SizedBox(
           height: 185,
-          padding: const EdgeInsets.only(left: 20),
           child: ListView.builder(
+            padding: const EdgeInsets.only(left: 20),
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
             itemCount: 12,
