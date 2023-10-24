@@ -44,9 +44,6 @@ class ProfilePage extends GetView<ProfileController> {
               title: 'identity_verification'.tr,
               onTap: controller.onTapIdentityVerification,
             ),
-            buildMenuItem(title: 'notification_setting'.tr, onTap: () {}),
-            buildMenuItem(title: 'block_manage'.tr, onTap: () {}),
-            buildMenuItem(title: 'self_certification'.tr, onTap: () {}),
             buildMenuItem(
               title: 'notification_setting'.tr,
               onTap: controller.onTapNoticeSetting,

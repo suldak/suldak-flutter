@@ -190,6 +190,10 @@ class $AssetsSvgGen {
   /// File path: assets/svg/naver.svg
   SvgGenImage get naver => const SvgGenImage('assets/svg/naver.svg');
 
+  /// File path: assets/svg/notification.svg
+  SvgGenImage get notification =>
+      const SvgGenImage('assets/svg/notification.svg');
+
   /// File path: assets/svg/user.svg
   SvgGenImage get user => const SvgGenImage('assets/svg/user.svg');
 
@@ -219,6 +223,7 @@ class $AssetsSvgGen {
         myPage,
         myPageTap,
         naver,
+        notification,
         user,
         welcome
       ];

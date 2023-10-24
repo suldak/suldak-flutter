@@ -71,13 +71,37 @@ class HomePage extends GetView<HomeController> {
         child: Assets.png.suldakTextLogo.image(),
       ),
       leadingWidth: 80,
-      actions: const [
-        Icon(
-          Icons.notifications_none_outlined,
-          color: Colors.black,
-          size: 24,
+      actions: [
+        Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Expanded(
+              child: Center(
+                child: Stack(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 2, right: 6),
+                      child: Assets.svg.notification.svg(width: 20),
+                    ),
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(99),
+                          color: AppColors.alertPrimary,
+                        ),
+                        width: 6,
+                        height: 6,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
-        SizedBox(width: 20),
+        const SizedBox(width: 20),
       ],
     );
   }
@@ -252,7 +276,7 @@ class HomePage extends GetView<HomeController> {
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.6),
+            color: Colors.grey.withOpacity(0.2),
             spreadRadius: 1,
             blurRadius: 8,
             offset: const Offset(0, 4), // changes position of shadow

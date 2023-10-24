@@ -53,6 +53,7 @@ class HomeMainPage extends GetView<HomeMainController> {
             isSelected
                 ? item.selectedIcon.svg(width: 24, height: 24)
                 : item.unselectedIcon.svg(width: 24, height: 24),
+            const SizedBox(height: 2),
             Text(
               item.pageTitle,
               style: TextStyle(
