@@ -95,6 +95,20 @@ class EmailStep1Controller extends GetxController {
   /// 사용자 비밀번호 문자열
   String password = '';
 
+  /// 공용 text field style
+  final textStyle = TextStyle(
+    color: AppColors.grey[50],
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
+
+  /// 공용 text field hint style
+  final hintStyle = TextStyle(
+    color: AppColors.grey[50],
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
+
   final InputBorder textFieldBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(15),
     borderSide: BorderSide(color: AppColors.grey[40] ?? AppColors.grey),
@@ -159,7 +173,7 @@ class EmailStep1Controller extends GetxController {
     hasDigits.value = password.contains(RegExp(r'[0-9]'));
     hasEnglish.value = password.contains(RegExp(r'[A-Za-z]'));
     hasMaxMinLength.value =
-        password.length > minLength && password.length < maxLength;
+        password.length >= minLength && password.length <= maxLength;
 
     return hasDigits.value & hasEnglish.value & hasMaxMinLength.value;
   }

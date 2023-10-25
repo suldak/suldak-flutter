@@ -83,7 +83,7 @@ class Languages extends Translations {
     'include_number': '숫자 포함',
     'between_8_20': '8~20자',
     'input_email': '이메일을 입력해주세요',
-    'input_password': '비밀번호 재입력',
+    'input_password': '비밀번호를 입력해주세요',
     'input_password_check': '비밀번호 재입력',
     'required': '필수',
     'option': '선택',
