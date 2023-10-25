@@ -26,12 +26,19 @@ class NotificationSettingPage extends GetView<NotificationSettingController> {
           ),
           Obx(
             () => AnimatedOpacity(
-              duration: const Duration(milliseconds: 100),
-              curve: Curves.easeInOut,
+              duration: Duration(
+                  milliseconds: controller.isNotificationOn.value ? 450 : 300),
+              curve: controller.isNotificationOn.value
+                  ? Curves.easeInExpo
+                  : Curves.easeInOut,
               opacity: (controller.yOffset.value + 2) * 0.5,
               child: AnimatedSlide(
-                duration: const Duration(milliseconds: 500),
-                curve: Curves.easeInOut,
+                duration: Duration(
+                    milliseconds:
+                        controller.isNotificationOn.value ? 300 : 800),
+                curve: controller.isNotificationOn.value
+                    ? Curves.easeInOut
+                    : Curves.easeInExpo,
                 offset: Offset(0, controller.yOffset.value),
                 child: Column(
                   children: [

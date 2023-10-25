@@ -174,7 +174,7 @@ class AccountManagePage extends GetView<AccountManageController> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'nickname'.tr,
+          'gender'.tr,
           style: TextStyle(
             color: AppColors.grey[50],
             fontSize: 13,
@@ -371,7 +371,7 @@ class AccountManagePage extends GetView<AccountManageController> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'nickname'.tr,
+          'age'.tr,
           style: TextStyle(
             color: AppColors.grey[50],
             fontSize: 13,

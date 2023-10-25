@@ -239,7 +239,7 @@ class ProfilePage extends GetView<ProfileController> {
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  'self_certification_recommend'.tr,
+                  'identity_verification_recommend'.tr,
                   style: const TextStyle(
                     color: Colors.black,
                     fontSize: 14,
