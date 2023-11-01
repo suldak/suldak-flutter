@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget with AppPagesGenerator {
       translations: Languages(),
       locale: Get.deviceLocale,
       fallbackLocale: const Locale('en', 'US'),
-      initialRoute: Routes.splash,
+      initialRoute: Routes.notify,
       getPages: appPages,
       theme: _theme,
       initialBinding: _InitialBinding(),

@@ -6,30 +6,31 @@ class NotifyController extends GetxController {
   static NotifyController get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
-  Rx<NotifyData> notifyData = Rx<NotifyData>(
-    NotifyData(
-      type: 'type',
-      image: 'image',
-      title: 'title',
-      date: DateTime.now(),
-    ),
-  );
 
   // Functions ▼ ------------------------------------------------------
-  void setNotifyData(NotifyData data) {
-    notifyData.value = data;
-  }
 
-  Map<String, dynamic> getNotifyDataMap() {
-    final notifyDataValue = notifyData.value;
-    return {
-      'type': notifyDataValue.type,
-      'image': notifyDataValue.image,
-      'title': notifyDataValue.title,
-      'date': notifyDataValue.date.toIso8601String(),
-    };
+  RxList<NotifyData> sampleData() {
+    RxList<NotifyData> notifyData = RxList<NotifyData>(
+      [
+        NotifyData(
+            type: 'Notice',
+            image: 'assets/png/speaker.png',
+            title: '공지사항공지공지공지사항공지공지 술닥술닥에 오신걸 환영환영',
+            date: DateTime.now()),
+        NotifyData(
+            type: 'Push',
+            image: 'assets/png/check.png',
+            title: '앱 푸시 알림-마케팅',
+            date: DateTime.now()),
+        NotifyData(
+            type: 'meet',
+            image: 'assets/png/beer_small.png',
+            title: '술친구(모임) 관련 알림',
+            date: DateTime.now()),
+      ],
+    );
+    return notifyData;
   }
-
 
   // Life Cycle ▼ ------------------------------------------------------
 }
