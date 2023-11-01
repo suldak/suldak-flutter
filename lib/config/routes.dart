@@ -32,6 +32,18 @@ abstract class Routes {
   /// 계정 설정 화면
   static const accountSetting = '/account_setting';
 
+  /// 알림 설정 화면
+  static const noticeSetting = '/notification_setting';
+
+  /// 차단 사용자 관리 화면
+  static const blockedUser = '/blocked_user';
+
+  /// 탈퇴 동의 페이지
+  static const withdrawAgree = '/withdraw_agree';
+
+  /// 탈퇴 설문 페이지
+  static const withdrawSurvey = '/withdraw_survey';
+
   /// 본인 인증 화면
   static const identityVerification = '/identity_verification';
 

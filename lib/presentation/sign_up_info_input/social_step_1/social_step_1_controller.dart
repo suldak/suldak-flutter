@@ -58,6 +58,20 @@ class SocialStep1Controller extends GetxController {
     borderSide: const BorderSide(color: AppColors.primary),
   );
 
+  /// 공용 text field style
+  final textStyle = TextStyle(
+    color: AppColors.grey[50],
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
+
+  /// 공용 text field hint style
+  final hintStyle = TextStyle(
+    color: AppColors.grey[50],
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
+
   // Functions ▼ ------------------------------------------------------
 
   /// nickname text input 문자열 변경시 호출 함수

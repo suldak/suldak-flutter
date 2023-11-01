@@ -86,7 +86,7 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
                 counterText: '',
                 hintText: 'introduce_me_hint'.tr,
                 hintStyle: TextStyle(
-                  color: AppColors.grey[30],
+                  color: AppColors.grey[50],
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                 ),

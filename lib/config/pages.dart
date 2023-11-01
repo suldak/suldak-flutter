@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 
 import '../presentation/account_manage/account_manage_controller.dart';
 import '../presentation/account_manage/account_manage_page.dart';
+import '../presentation/blocked_user/blocked_user_controller.dart';
+import '../presentation/blocked_user/blocked_user_page.dart';
 import '../presentation/email_login/email_login_controller.dart';
 import '../presentation/email_login/email_login_page.dart';
 import '../presentation/home/home/home_controller.dart';
@@ -14,6 +16,8 @@ import '../presentation/identity_verification/identity_verification_controller.d
 import '../presentation/identity_verification/identity_verification_page.dart';
 import '../presentation/login/login_controller.dart';
 import '../presentation/login/login_page.dart';
+import '../presentation/notification_setting/notification_setting_controller.dart';
+import '../presentation/notification_setting/notification_setting_page.dart';
 import '../presentation/onboard/onboard_controller.dart';
 import '../presentation/onboard/onboard_page.dart';
 import '../presentation/onboard/onboard_last_page.dart';
@@ -28,6 +32,10 @@ import '../presentation/sign_up_info_input/step_3/step_3_controller.dart';
 import '../presentation/sign_up_info_input/welcome_page.dart';
 import '../presentation/splash/splash_controller.dart';
 import '../presentation/splash/splash_page.dart';
+import '../presentation/withdraw/agree/withdraw_agree_controller.dart';
+import '../presentation/withdraw/agree/withdraw_agree_page.dart';
+import '../presentation/withdraw/survey/withdraw_survey_controller.dart';
+import '../presentation/withdraw/survey/withdraw_survey_page.dart';
 import 'routes.dart';
 
 mixin AppPagesGenerator on StatelessWidget {
@@ -88,6 +96,26 @@ mixin AppPagesGenerator on StatelessWidget {
           name: Routes.accountSetting,
           page: () => const AccountManagePage(),
           binding: BindingsBuilder.put(() => AccountManageController()),
+        ),
+        GetPage(
+          name: Routes.noticeSetting,
+          page: () => const NotificationSettingPage(),
+          binding: BindingsBuilder.put(() => NotificationSettingController()),
+        ),
+        GetPage(
+          name: Routes.blockedUser,
+          page: () => const BlockedUserPage(),
+          binding: BindingsBuilder.put(() => BlockedUserController()),
+        ),
+        GetPage(
+          name: Routes.withdrawAgree,
+          page: () => const WithdrawAgreePage(),
+          binding: BindingsBuilder.put(() => WithdrawAgreeController()),
+        ),
+        GetPage(
+          name: Routes.withdrawSurvey,
+          page: () => const WithdrawSurveyPage(),
+          binding: BindingsBuilder.put(() => WithdrawSurveyController()),
         ),
         GetPage(
           name: Routes.identityVerification,

@@ -1,6 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:suldak_suldak/widget/common_dialog.dart';
 
+import 'config/colors.dart';
 import 'config/keys.dart';
 import 'model/user.dart';
 
@@ -49,6 +52,16 @@ class GlobalController extends GetxController {
       //   // not signed
       // }
     }
+  }
+
+  void showLogoutDialog() {
+    Get.dialog(
+      CommonDialog(
+        content: 'want_to_logout'.tr,
+        positiveText: 'logout'.tr,
+        onTapPositive: () {},
+      ),
+    );
   }
 
   Future<void> saveUserInfo(UserModel userModel) async {

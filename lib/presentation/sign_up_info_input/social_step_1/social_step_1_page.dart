@@ -55,7 +55,7 @@ class SocialStep1Page extends GetView<SocialStep1Controller> {
             ),
             buildCheckboxWidget(
               text: 'agree_ad_push'.tr,
-              showButton: true,
+              showButton: false,
               value: controller.isAdPushAgree.value,
               onChanged: controller.onAdPushSelected,
               onPressButton: () => controller.showTermsInfoBottomSheet(''),
@@ -96,11 +96,7 @@ class SocialStep1Page extends GetView<SocialStep1Controller> {
             children: [
               Text(
                 'sample@sample.com',
-                style: TextStyle(
-                  color: AppColors.grey[50],
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
-                ),
+                style: controller.textStyle,
               ),
               const Expanded(child: SizedBox()),
               Container(height: 24, width: 24, color: Colors.yellow),
@@ -129,17 +125,14 @@ class SocialStep1Page extends GetView<SocialStep1Controller> {
           focusNode: controller.nicknameFocusNode,
           maxLines: 1,
           onChanged: controller.onChangeNickname,
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
-          ),
+          style: controller.textStyle,
           decoration: InputDecoration(
             border: controller.textFieldBorder,
             enabledBorder: controller.textFieldBorder,
             focusedBorder: controller.focusedTextFieldBorder,
             errorText: controller.nicknameErrorMessage.value,
             hintText: 'input_nickname'.tr,
+            hintStyle: controller.hintStyle,
           ),
         ),
       ],
@@ -170,6 +163,14 @@ class SocialStep1Page extends GetView<SocialStep1Controller> {
                   child: IgnorePointer(
                     ignoring: true,
                     child: Checkbox(
+                      activeColor: AppColors.primary,
+                      side: const BorderSide(
+                        color: Colors.grey,
+                        width: 1,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(3),
+                      ),
                       value: value,
                       onChanged: (value) {},
                     ),
@@ -198,7 +199,14 @@ class SocialStep1Page extends GetView<SocialStep1Controller> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Assets.svg.arrowNext.svg(width: 20, height: 20),
+                        Assets.svg.arrowNext.svg(
+                          width: 20,
+                          height: 20,
+                          colorFilter: ColorFilter.mode(
+                            AppColors.grey[50] ?? AppColors.grey,
+                            BlendMode.srcIn,
+                          ),
+                        ),
                         const SizedBox(width: 5),
                       ],
                     ),

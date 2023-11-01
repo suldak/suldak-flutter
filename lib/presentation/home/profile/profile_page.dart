@@ -44,11 +44,23 @@ class ProfilePage extends GetView<ProfileController> {
               title: 'identity_verification'.tr,
               onTap: controller.onTapIdentityVerification,
             ),
-            buildMenuItem(title: 'notification_setting'.tr, onTap: () {}),
-            buildMenuItem(title: 'block_manage'.tr, onTap: () {}),
+            buildMenuItem(
+              title: 'notification_setting'.tr,
+              onTap: controller.onTapNoticeSetting,
+            ),
+            buildMenuItem(
+              title: 'block_manage'.tr,
+              onTap: controller.onTapBlockedUser,
+            ),
             buildMenuItem(title: 'inquiry'.tr, onTap: () {}),
-            buildMenuItem(title: 'logout'.tr, onTap: () {}),
-            buildMenuItem(title: 'withdraw'.tr, onTap: () {}),
+            buildMenuItem(
+              title: 'logout'.tr,
+              onTap: controller.globalController.showLogoutDialog,
+            ),
+            buildMenuItem(
+              title: 'withdraw'.tr,
+              onTap: controller.onTapWithdraw,
+            ),
             buildMenuItem(
               title: 'app_version'.tr,
               rightWidget: const Text(
@@ -227,7 +239,7 @@ class ProfilePage extends GetView<ProfileController> {
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  'self_certification_recommend'.tr,
+                  'identity_verification_recommend'.tr,
                   style: const TextStyle(
                     color: Colors.black,
                     fontSize: 14,

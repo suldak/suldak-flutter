@@ -27,7 +27,7 @@ class HomeController extends GetxController {
     '소주',
     '맥주',
     '칵테일',
-    '하이',
+    '하이볼',
     '양주',
     '와인',
     '전통주',
