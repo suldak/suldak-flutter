@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../../../repository/question_repo.dart';
 import '../../profile_setting/profile_setting_controller.dart';
 import '../sign_up_info_input_controller.dart';
 
@@ -93,7 +94,21 @@ class Step3Controller extends GetxController {
     false,
   ].obs;
 
-// Functions ▼ ------------------------------------------------------
+  // Functions ▼ ------------------------------------------------------
 
-// Life Cycle ▼ ------------------------------------------------------
+  void getQuestionList() async {
+    final questionData = await QuestionRepository.to.getQuestionList();
+    if (questionData != null) {
+      print(questionData);
+    }
+  }
+
+  // Life Cycle ▼ ------------------------------------------------------
+
+  @override
+  void onInit() {
+    getQuestionList();
+
+    super.onInit();
+  }
 }

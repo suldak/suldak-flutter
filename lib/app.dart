@@ -7,6 +7,7 @@ import 'config/routes.dart';
 import 'global_controller.dart';
 import 'language.dart';
 import 'repository/auth_repo.dart';
+import 'repository/question_repo.dart';
 
 class MyApp extends StatelessWidget with AppPagesGenerator {
   const MyApp({super.key});
@@ -68,5 +69,6 @@ class _InitialBinding extends Bindings {
     // 각 레포들은 get service 로서 memory 에 injection.
     Get.lazyPut(() => AuthRepository());
     // Get.lazyPut(() => CouponRepository());
+    Get.lazyPut(() => QuestionRepository());
   }
 }

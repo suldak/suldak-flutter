@@ -74,5 +74,5 @@ class Step2Controller extends GetxController {
     signUpInfoInputController.signupInfo.birthdayYear = selectedYear.value;
   }
 
-// Life Cycle ▼ ------------------------------------------------------
+  // Life Cycle ▼ ------------------------------------------------------
 }
