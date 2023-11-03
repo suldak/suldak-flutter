@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:suldak_suldak/presentation/home/notify/notify_controller.dart';
+import 'package:suldak_suldak/presentation/home/notify/notify_page.dart';
 
 import '../presentation/account_manage/account_manage_controller.dart';
 import '../presentation/account_manage/account_manage_page.dart';
@@ -65,6 +67,12 @@ mixin AppPagesGenerator on StatelessWidget {
             Get.lazyPut(() => ProfileController());
             Get.lazyPut(() => HomeController());
           }),
+        ),
+        GetPage(
+          name: Routes.notify,
+          page: () => const NotifyPage(),
+          transition: Transition.leftToRight,
+          binding: BindingsBuilder.put(() => NotifyController())
         ),
         GetPage(
           name: Routes.login,
