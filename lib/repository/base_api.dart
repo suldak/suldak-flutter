@@ -118,15 +118,15 @@ mixin API on GetxService {
       log('🔑 유저 토큰을 함께 전송합니다. end point: $path', name: apiName);
     }
 
-    return _dio.get<Map<String, dynamic>>(
+    final res = _dio.get<Map<String, dynamic>>(
       path,
       queryParameters: data,
       options: Options(
         headers: header,
       ),
-    )..whenComplete(() {
-        _logTurnaroundTime(path, startTime);
-      });
+    );
+    _logTurnaroundTime(path, startTime);
+    return res;
   }
 
   /// ### [Dio().post]의 wrapper

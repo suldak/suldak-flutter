@@ -9,7 +9,7 @@ class QuestionRepository extends GetxService with API {
 
   static QuestionRepository get to => Get.find<QuestionRepository>();
 
-  static const _getQuestionListEp = '/api/question/view/question-list';
+  static const _getQuestionListEp = '/api/api/question/view/question-list';
 
   Future<List<SignUpQuestion>?> getQuestionList({
     OnServerException? onServerException,
@@ -19,12 +19,14 @@ class QuestionRepository extends GetxService with API {
       final data = res.validateData(onServerException);
 
       if (data != null) {
-        return data['data']
+        List<dynamic> questionList = data['data'];
+        return questionList
             .map((dataJson) => SignUpQuestion.fromJson(dataJson))
             .toList();
       }
       return null;
     } catch(e) {
+      print(e.toString());
       return null;
     }
   }

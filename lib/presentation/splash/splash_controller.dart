@@ -14,7 +14,7 @@ class SplashController extends GetxController {
   // Functions ▼ ------------------------------------------------------
 
   Future<void> initializeApp() async {
-    await API.initialize('http://122.45.203.134:8080/api');
+    await API.initialize('http://122.45.203.134:8080');
     return;
   }
   

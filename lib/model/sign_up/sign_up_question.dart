@@ -6,27 +6,18 @@ class SignUpQuestion {
   String? qtext;
   int? qindex;
 
-  SignUpQuestion._({
+  SignUpQuestion({
     this.questionPriKey,
     this.liquorAnswerRes,
     this.qtext,
     this.qindex,
   });
 
-  factory SignUpQuestion.fromJson(Map<String, dynamic> json) {
-    final arr0 = <SignUpSelection>[];
-    if (json['liquorAnswerRes'] != null) {
-      final v = json['liquorAnswerRes'];
-      v.forEach((v) {
-        arr0.add(SignUpSelection.fromJson(v));
-      });
-    }
-
-    return SignUpQuestion._(
-        questionPriKey: json['questionPriKey']?.toInt(),
-        liquorAnswerRes: arr0,
-        qtext: json['qtext']?.toString(),
-        qindex: json['qindex']?.toInt(),
-    );
+  SignUpQuestion.fromJson(Map<String, dynamic> json) {
+    List<dynamic> selectionList = json['liquorAnswerRes'];
+    liquorAnswerRes = selectionList.map((i) => SignUpSelection.fromJson(i)).toList();
+    questionPriKey = json['questionPriKey']?.toInt();
+    qindex = json['qindex']?.toInt();
+    qtext = json['qtext']?.toString();
   }
 }

@@ -8,7 +8,7 @@ class _DioInterceptor extends Interceptor {
     if (data != null) {
       // success 상태에 따라 error interceptor 로 전달
       if (!data['success']) {
-        handler.reject(DioException(
+        final exception = DioException(
           requestOptions: response.requestOptions,
           message: data['message'],
           response: response,
@@ -18,10 +18,12 @@ class _DioInterceptor extends Interceptor {
             'errorCode': data['errorCode'],
             'msg': data['message'],
           },
-        ));
+        );
+        handler.reject(exception);
       }
+    } else {
+      super.onResponse(response, handler);
     }
-    super.onResponse(response, handler);
   }
 
   @override
@@ -30,6 +32,7 @@ class _DioInterceptor extends Interceptor {
     log('‼️ status code: ${err.response?.statusCode}', name: 'Error Interceptor');
     log('‼️ end ponint: ${err.requestOptions.path}', name: 'Error Interceptor');
     log('‼️ error message: ${err.message}', name: 'Error Interceptor');
+    log('‼️ error: ${err.error.toString()}', name: 'Error Interceptor');
     log(' ------------------------------------️', name: 'Error Interceptor');
 
     handler.resolve(Response(

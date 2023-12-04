@@ -10,11 +10,14 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.title,
     this.showBackButton = false,
     this.showBottomLine = false,
+    this.onTapBackButton,
   });
 
   final String title;
   final bool showBackButton;
   final bool showBottomLine;
+
+  final Function? onTapBackButton;
 
   @override
   PreferredSizeWidget build(BuildContext context) {
@@ -41,7 +44,11 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
           ? IconButton(
               icon: Assets.svg.arrowBack.svg(),
               onPressed: () {
-                Get.back();
+                if (onTapBackButton != null) {
+                  onTapBackButton!.call();
+                } else {
+                  Get.back();
+                }
               },
             )
           : const SizedBox(),

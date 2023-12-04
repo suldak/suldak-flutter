@@ -5,7 +5,7 @@ import '../../profile_setting/profile_setting_controller.dart';
 import '../sign_up_info_input_controller.dart';
 
 class Step3Controller extends GetxController {
-  static ProfileSettingController get to => Get.find();
+  static Step3Controller get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
 
@@ -99,7 +99,7 @@ class Step3Controller extends GetxController {
   void getQuestionList() async {
     final questionData = await QuestionRepository.to.getQuestionList();
     if (questionData != null) {
-      print(questionData);
+      print(questionData[0].qtext);
     }
   }
 
