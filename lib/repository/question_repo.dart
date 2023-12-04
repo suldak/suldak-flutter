@@ -9,7 +9,7 @@ class QuestionRepository extends GetxService with API {
 
   static QuestionRepository get to => Get.find<QuestionRepository>();
 
-  static const _getQuestionListEp = '/api/api/question/view/question-list';
+  static const _getQuestionListEp = '/api/question/view/question-list';
 
   Future<List<SignUpQuestion>?> getQuestionList({
     OnServerException? onServerException,
