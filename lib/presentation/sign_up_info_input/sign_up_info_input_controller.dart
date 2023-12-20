@@ -23,6 +23,8 @@ class SignUpInfoInputController extends GetxController {
 
   final UserSignupInfo signupInfo = UserSignupInfo();
 
+  bool isFirstPageVisited = true;
+
   // Functions ▼ ------------------------------------------------------
 
   void onNextPage() {
@@ -33,8 +35,12 @@ class SignUpInfoInputController extends GetxController {
       );
       switch (pageViewController.page?.round()) {
         case 1:
-          //todo call 2times when first
-          Step3Controller.to.getQuestionList();
+          if (isFirstPageVisited) {
+            isFirstPageVisited = false;
+          } else {
+            //todo call 2times when first
+            Step3Controller.to.getQuestionList();
+          }
           break;
         default:
           break;

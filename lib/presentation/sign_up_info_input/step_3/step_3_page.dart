@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 
 import '../../../config/colors.dart';
 import '../../../gen/assets.gen.dart';
+import '../../../model/sign_up/sign_up_question.dart';
+import '../../../model/sign_up/sign_up_selection.dart';
 import '../../../widget/tag_widget.dart';
 import 'step_3_controller.dart';
 
@@ -19,17 +21,13 @@ class Step3Page extends GetView<Step3Controller> {
         physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
-            buildMyDrinkTaste(),
-            const SizedBox(height: 44),
-            buildPreferMood(),
-            const SizedBox(height: 44),
-            buildMySnackTaste(),
-            const SizedBox(height: 40),
-            buildMyDrinkFlavor(),
-            const SizedBox(height: 40),
-            buildMyDrinkCapacity(),
-            const SizedBox(height: 40),
-            buildSaveButton(),
+            buildQuestionAnswerList(),
+            // buildMyDrinkTaste(),
+            // buildPreferMood(),
+            // buildMySnackTaste(),
+            // buildMyDrinkFlavor(),
+            // buildMyDrinkCapacity(),
+            // buildSaveButton(),
             const SizedBox(height: 42),
           ],
         ),
@@ -37,8 +35,26 @@ class Step3Page extends GetView<Step3Controller> {
     );
   }
 
+  Widget buildQuestionAnswerList() {
+    return Obx(
+      () => ListView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: controller.questionList.length,
+        itemBuilder: (context, index) {
+          SignUpQuestion question = controller.questionList[index];
+          return buildQuestionWidget(
+            title: question.qtext ?? '',
+            image: Assets.png.cocktail.image(width: 18),
+            tags: buildTagList(question.liquorAnswerRes),
+          );
+        },
+      ),
+    );
+  }
+
   Widget buildMyDrinkTaste() {
-    return buildTagSelectionWidget(
+    return buildQuestionWidget(
       title: 'my_drink_taste'.tr,
       image: Assets.png.cocktail.image(width: 18),
       activeEveryThing: true,
@@ -60,7 +76,7 @@ class Step3Page extends GetView<Step3Controller> {
   }
 
   Widget buildPreferMood() {
-    return buildTagSelectionWidget(
+    return buildQuestionWidget(
       title: 'prefer_mood'.tr,
       image: Assets.png.nightBridge.image(width: 18),
       activeEveryThing: true,
@@ -82,7 +98,7 @@ class Step3Page extends GetView<Step3Controller> {
   }
 
   Widget buildMySnackTaste() {
-    return buildTagSelectionWidget(
+    return buildQuestionWidget(
       title: 'my_snack_taste'.tr,
       image: Assets.png.pot.image(width: 18),
       activeEveryThing: true,
@@ -104,7 +120,7 @@ class Step3Page extends GetView<Step3Controller> {
   }
 
   Widget buildMyDrinkFlavor() {
-    return buildTagSelectionWidget(
+    return buildQuestionWidget(
       title: 'prefer_alcohol_flavor'.tr,
       image: Assets.png.beer.image(width: 18),
       tags: List.generate(
@@ -125,7 +141,7 @@ class Step3Page extends GetView<Step3Controller> {
   }
 
   Widget buildMyDrinkCapacity() {
-    return buildTagSelectionWidget(
+    return buildQuestionWidget(
       title: 'alcohol_capacity'.tr,
       image: Assets.png.thinkingFace.image(width: 18),
       tags: List.generate(
@@ -145,7 +161,33 @@ class Step3Page extends GetView<Step3Controller> {
     );
   }
 
-  Widget buildTagSelectionWidget({
+  List<Widget> buildTagList(List<SignUpSelection>? selectionList) {
+    return List.generate(
+      selectionList?.length ?? 0,
+          (index) {
+        return TagWidget(
+          tag: selectionList?[index].atext ?? '',
+          // isSelected: controller.drinkTagsSelection[index],
+          isSelected: true,
+          onTap: (isSelected) {
+            // controller.drinkTagsSelection[index] = isSelected;
+          },
+        );
+        // return Obx(
+        //       () => TagWidget(
+        //     tag: selectionList?[index].atext ?? '',
+        //     // isSelected: controller.drinkTagsSelection[index],
+        //     isSelected: true,
+        //     onTap: (isSelected) {
+        //       // controller.drinkTagsSelection[index] = isSelected;
+        //     },
+        //   ),
+        // );
+      },
+    );
+  }
+
+  Widget buildQuestionWidget({
     required String title,
     required Widget image,
     required List<Widget> tags,
@@ -200,7 +242,8 @@ class Step3Page extends GetView<Step3Controller> {
               ),
             ),
           ),
-        ]
+          const SizedBox(height: 42),
+        ],
       ],
     );
   }

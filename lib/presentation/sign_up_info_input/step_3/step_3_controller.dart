@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
+import '../../../model/sign_up/sign_up_question.dart';
 import '../../../repository/question_repo.dart';
-import '../../profile_setting/profile_setting_controller.dart';
 import '../sign_up_info_input_controller.dart';
 
 class Step3Controller extends GetxController {
@@ -12,6 +12,8 @@ class Step3Controller extends GetxController {
   /// 상위 페이지 컨트롤러, 사용자의 회원가입 정보 입력 객체를 가지고있음
   SignUpInfoInputController signUpInfoInputController =
       SignUpInfoInputController.to;
+
+  RxList<SignUpQuestion> questionList = <SignUpQuestion>[].obs;
 
   List<String> drinkTags = [
     '소주',
@@ -99,7 +101,7 @@ class Step3Controller extends GetxController {
   void getQuestionList() async {
     final questionData = await QuestionRepository.to.getQuestionList();
     if (questionData != null) {
-      print(questionData[0].qtext);
+      questionList.value = questionData;
     }
   }
 

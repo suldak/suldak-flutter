@@ -20,6 +20,8 @@ class _DioInterceptor extends Interceptor {
           },
         );
         handler.reject(exception);
+      } else {
+        handler.resolve(response);
       }
     } else {
       super.onResponse(response, handler);
