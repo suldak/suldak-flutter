@@ -77,6 +77,15 @@ class EmailStep1Controller extends GetxController {
   /// 비밀번호 확인 입력창 에러메세지
   Rxn<String?> passwordCheckErrorMessage = Rxn<String?>();
 
+  /// 이메일 text input controller
+  TextEditingController emailController = TextEditingController();
+
+  /// 닉네임 text input controller
+  TextEditingController nicknameController = TextEditingController();
+
+  /// 비밀번호 text input controller
+  TextEditingController passwordController = TextEditingController();
+
   /// 이메일 입력창 focus node
   FocusNode emailFocusNode = FocusNode();
 
@@ -123,6 +132,7 @@ class EmailStep1Controller extends GetxController {
 
   /// email text input 문자열 변경시 호출 함수
   void onEmailTextChanged(String text) {
+    email = text;
     bool res = RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(text);
@@ -137,6 +147,7 @@ class EmailStep1Controller extends GetxController {
 
   /// nickname text input 문자열 변경시 호출 함수
   void onNickNameTextChanged(String text) {
+    nickname = text;
     bool res = text.length > 3;
     if (res) {
       isNicknameAvailable.value = true;

@@ -93,6 +93,7 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
           const SizedBox(height: 12),
           TextField(
             focusNode: controller.emailFocusNode,
+            controller: controller.emailController,
             maxLines: 1,
             style: controller.textStyle,
             decoration: InputDecoration(
@@ -127,6 +128,7 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
           const SizedBox(height: 12),
           TextField(
             focusNode: controller.nicknameFocusNode,
+            controller: controller.nicknameController,
             maxLines: 1,
             style: controller.textStyle,
             decoration: InputDecoration(
@@ -161,6 +163,7 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
           const SizedBox(height: 12),
           TextField(
             focusNode: controller.passwordFocusNode,
+            controller: controller.passwordController,
             maxLines: 1,
             style: controller.textStyle,
             decoration: InputDecoration(
