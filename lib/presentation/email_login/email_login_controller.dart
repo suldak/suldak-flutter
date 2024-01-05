@@ -34,7 +34,7 @@ class EmailLoginController extends GetxController {
   }
 
   void navigateHome() {
-    Get.toNamed(Routes.home);
+    Get.offAllNamed(Routes.home);
   }
 
   // Life Cycle ▼ ------------------------------------------------------

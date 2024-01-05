@@ -20,4 +20,20 @@ class SignUpQuestion {
     qindex = json['qindex']?.toInt();
     qtext = json['qtext']?.toString();
   }
+
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data['questionPriKey'] = questionPriKey;
+    if (liquorAnswerRes != null) {
+      final v = liquorAnswerRes;
+      final arr0 = [];
+      for (var v in v!) {
+        arr0.add(v.toJson());
+      }
+      data['liquorAnswerRes'] = arr0;
+    }
+    data['qindex'] = qindex;
+    data['qtext'] = qtext;
+    return data;
+  }
 }

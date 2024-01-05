@@ -22,4 +22,13 @@ class SignUpSelection {
     atext = json['atext']?.toString();
     aindex = json['aindex']?.toInt();
   }
+
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data['priKey'] = priKey;
+    data['questionPriKey'] = questionPriKey;
+    data['aindex'] = aindex;
+    data['atext'] = atext;
+    return data;
+  }
 }

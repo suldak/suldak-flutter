@@ -67,4 +67,24 @@ class UserModel {
       warningCnt: json['warningCnt']?.toInt(),
     );
   }
+
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data['alarmActive'] = alarmActive;
+    data['birthdayYear'] = birthdayYear;
+    data['gender'] = gender;
+    data['id'] = id;
+    data['isActive'] = isActive;
+    data['level'] = level;
+    data['marketingActive'] = marketingActive;
+    data['nickname'] = nickname;
+    data['pushActive'] = pushActive;
+    data['registration'] = registration;
+    data['selfIntroduction'] = selfIntroduction;
+    data['soundActive'] = soundActive;
+    data['userEmail'] = userEmail;
+    data['vibrationActive'] = vibrationActive;
+    data['warningCnt'] = warningCnt;
+    return data;
+  }
 }
