@@ -35,7 +35,9 @@ class _DioInterceptor extends Interceptor {
     log('‼️ end ponint: ${err.requestOptions.path}', name: 'Error Interceptor');
     log('‼️ error message: ${err.message}', name: 'Error Interceptor');
     log('‼️ error: ${err.error.toString()}', name: 'Error Interceptor');
-    log(' ------------------------------------️', name: 'Error Interceptor');
+    log('‼️ res code: ${err.response?.data['errorCode']}', name: 'Error Interceptor');
+    log('‼️ res message: ${err.response?.data['message']}', name: 'Error Interceptor');
+    log(' ------------------------------------', name: 'Error Interceptor');
 
     handler.resolve(Response(
       requestOptions: err.requestOptions,

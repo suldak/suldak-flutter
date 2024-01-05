@@ -58,10 +58,8 @@ class Step3Page extends GetView<Step3Controller> {
         return Obx(
           () => TagWidget(
             tag: selectionList?[index].atext ?? '',
-            isSelected: controller.selectedQuestions.contains(selection!.priKey),
-            onTap: (isSelected) {
-              controller.selectedQuestions.add(selection.priKey!);
-            },
+            isSelected: selection!.isSelected.value,
+            onTap: (isSelected) => controller.onTapSelection(selection),
           ),
         );
       },
@@ -104,17 +102,13 @@ class Step3Page extends GetView<Step3Controller> {
         if (activeEveryThing) ...[
           const SizedBox(height: 18),
           GestureDetector(
-            onTap: () {
-              final priKeys = selections.map((e) => e.priKey!);
-              if (controller.selectedQuestions.containsAll(priKeys)) {
-                controller.selectedQuestions.removeAll(priKeys);
-              } else {
-                controller.selectedQuestions.addAll(priKeys);
-              }
-            },
+            onTap: () => controller.onTapSelectAll(selections),
             child: Container(
               width: 100,
-              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+              padding: const EdgeInsets.symmetric(
+                vertical: 12,
+                horizontal: 16,
+              ),
               decoration: BoxDecoration(
                 color: AppColors.grey[20],
                 borderRadius: BorderRadius.circular(6),
@@ -130,7 +124,7 @@ class Step3Page extends GetView<Step3Controller> {
                 ),
               ),
             ),
-          ),
+          )
         ],
         const SizedBox(height: 42),
       ],
@@ -138,25 +132,30 @@ class Step3Page extends GetView<Step3Controller> {
   }
 
   Widget buildSaveButton() {
-    return GestureDetector(
-      onTap: onNextPage,
-      child: Container(
-        height: 60,
-        decoration: BoxDecoration(
-          color: AppColors.grey[20],
-          borderRadius: BorderRadius.circular(15),
-        ),
-        child: Center(
-          child: Text(
-            'save_changes'.tr,
-            style: TextStyle(
-              color: AppColors.grey[40],
-              fontSize: 17,
-              fontWeight: FontWeight.w700,
+    return Obx(() {
+      bool isActive = controller.activeFinish.value;
+      return GestureDetector(
+        onTap: isActive ? onNextPage : null,
+        child: Container(
+          height: 60,
+          decoration: BoxDecoration(
+            color: isActive
+                ? AppColors.primary
+                : AppColors.primary.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Center(
+            child: Text(
+              'next'.tr,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 17,
+                fontWeight: FontWeight.w700,
+              ),
             ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

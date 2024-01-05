@@ -166,6 +166,9 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
             controller: controller.passwordController,
             maxLines: 1,
             style: controller.textStyle,
+            obscureText: true,
+            enableSuggestions: false,
+            autocorrect: false,
             decoration: InputDecoration(
               border: controller.textFieldBorder,
               enabledBorder: controller.textFieldBorder,
@@ -231,8 +234,12 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
   /// 비밀번호 확인 text input 위젯
   Widget buildPasswordCheckWidget() {
     return TextField(
+      focusNode: controller.passwordCheckFocusNode,
       maxLines: 1,
       style: controller.textStyle,
+      obscureText: true,
+      enableSuggestions: false,
+      autocorrect: false,
       decoration: InputDecoration(
         border: controller.textFieldBorder,
         enabledBorder: controller.textFieldBorder,

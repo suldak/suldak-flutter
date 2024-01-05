@@ -153,6 +153,10 @@ class Languages extends Translations {
     'onboard_last1': '\n',
     'onboard_last2': '나의 술취향은 무엇일까요?\n',
     'onboard_last3': '함께 분석해봐요!\n',
+    'password_not_complete': '비밀번호가 조건을 만족하지 못했습니다',
+    'nickname_too_short': '닉네임이 너무 짧습니다',
+    'enter_right_email': '올바른 이메일을 입력해주세요',
+    'password_not_match': '비밀번호가 일치하지 않습니다',
   };
 
   Map<String, String> en = {
@@ -302,5 +306,9 @@ class Languages extends Translations {
     'onboard_last1': '\n',
     'onboard_last2': 'What is my drinking taste?\n',
     'onboard_last3': 'Let\'s analyze it together!\n',
+    'password_not_complete': 'password is not completed',
+    'nickname_too_short': 'nickname is too short',
+    'enter_right_email': 'Enter a valid email',
+    'password_not_match': 'Password does not match',
   };
 }

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../model/base_response.dart';
 import '../model/sign_up/sign_up_question.dart';
 import 'base_api.dart';
 
@@ -10,6 +11,7 @@ class QuestionRepository extends GetxService with API {
   static QuestionRepository get to => Get.find<QuestionRepository>();
 
   static const _getQuestionListEp = '/api/question/view/question-list';
+  static const _userSelectEp = '/api/question/user-select';
 
   Future<List<SignUpQuestion>?> getQuestionList({
     OnServerException? onServerException,
@@ -23,6 +25,31 @@ class QuestionRepository extends GetxService with API {
         return questionList
             .map((dataJson) => SignUpQuestion.fromJson(dataJson))
             .toList();
+      }
+      return null;
+    } catch(e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
+  Future<BaseResponse?> setUserSelect(
+    int userPriKey,
+    List<Map<String, dynamic>> selection, {
+    OnServerException? onServerException,
+  }) async {
+    try {
+      final res = await post(
+        _userSelectEp,
+        data: {
+          'userPriKey': userPriKey,
+          'questionAnswerMap': selection,
+        },
+      );
+      final data = res.validateData(onServerException);
+
+      if (data != null) {
+        return BaseResponse.fromJson(data);
       }
       return null;
     } catch(e) {

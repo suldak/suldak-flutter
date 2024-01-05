@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../model/base_response.dart';
 import '../model/user.dart';
 import 'base_api.dart';
 
@@ -9,13 +10,13 @@ class AuthRepository extends GetxService with API {
 
   static AuthRepository get to => Get.find<AuthRepository>();
 
-  static const _googleLoginEp = '/auth/google';
-  static const _kakaoLoginEp = '/auth/kakao';
-  static const _naverLoginEp = '/auth/naver';
+  static const _googleLoginEp = '/api/auth/google';
+  static const _kakaoLoginEp = '/api/auth/kakao';
+  static const _naverLoginEp = '/api/auth/naver';
 
-  static const _signupEp = '/auth/signup';
-  static const _emailLoginEp = '/auth/login';
-  static const _logoutEp = '/auth/logout';
+  static const _signupEp = '/api/auth/signup';
+  static const _emailLoginEp = '/api/auth/login';
+  static const _logoutEp = '/api/auth/logout';
 
   Future<UserModel?> loginWithGoogle(
     String accessToken, {
@@ -85,10 +86,9 @@ class AuthRepository extends GetxService with API {
     return null;
   }
 
-  Future<void> signUp(
-    String year,
+  Future<BaseResponse?> signUp(
+    int year,
     String gender,
-    int id,
     String nickname,
     String registration,
     String email,
@@ -100,7 +100,6 @@ class AuthRepository extends GetxService with API {
       data: {
         'birthdayYear': year,
         'gender': gender,
-        'id': id,
         'nickname': nickname,
         'registration': registration,
         'userEmail': email,
@@ -110,18 +109,18 @@ class AuthRepository extends GetxService with API {
     final data = res.validateData(onServerException);
 
     if (data != null) {
-      return;
+      return BaseResponse.fromJson(data);
     }
-    return;
+    return null;
   }
 
-  Future<void> logout({OnServerException? onServerException}) async {
+  Future<BaseResponse?> logout({OnServerException? onServerException}) async {
     final res = await post(_logoutEp);
-    final data = res.validateData((msg, code) { });
+    final data = res.validateData(onServerException);
 
     if (data != null) {
-      return;
+      return BaseResponse.fromJson(data);
     }
-    return;
+    return null;
   }
 }

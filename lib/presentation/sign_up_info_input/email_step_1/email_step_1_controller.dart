@@ -95,6 +95,9 @@ class EmailStep1Controller extends GetxController {
   /// 비밀번호 입력창 focus node
   FocusNode passwordFocusNode = FocusNode();
 
+  /// 비밀번호 확인 입력창 focus node
+  FocusNode passwordCheckFocusNode = FocusNode();
+
   /// 사용자 이메일 문자열
   String email = '';
 
@@ -103,6 +106,9 @@ class EmailStep1Controller extends GetxController {
 
   /// 사용자 비밀번호 문자열
   String password = '';
+
+  /// 사용자 비밀번호 확인 문자열
+  String passwordCheck = '';
 
   /// 공용 text field style
   final textStyle = TextStyle(
@@ -141,7 +147,7 @@ class EmailStep1Controller extends GetxController {
       emailErrorMessage.value = null;
     } else {
       isEmailAvailable.value = false;
-      emailErrorMessage.value = '올바른 이메일을 입력해주세요';
+      emailErrorMessage.value = 'enter_right_email'.tr;
     }
   }
 
@@ -154,7 +160,7 @@ class EmailStep1Controller extends GetxController {
       nicknameErrorMessage.value = null;
     } else {
       isNicknameAvailable.value = false;
-      nicknameErrorMessage.value = '닉네임이 너무 짧습니다';
+      nicknameErrorMessage.value = 'nickname_too_short'.tr;
     }
   }
 
@@ -167,7 +173,7 @@ class EmailStep1Controller extends GetxController {
       passwordErrorMessage.value = null;
     } else {
       isPasswordAvailable.value = false;
-      passwordErrorMessage.value = 'sample';
+      passwordErrorMessage.value = 'password_not_complete'.tr;
     }
   }
 
@@ -191,13 +197,14 @@ class EmailStep1Controller extends GetxController {
 
   /// password check text input 문자열 변경시 호출 함수
   void onPasswordCheckTextChanged(String text) {
-    bool res = password == text;
+    passwordCheck = text;
+    bool res = password == passwordCheck;
     if (res) {
       isPasswordCheckMatches.value = true;
       passwordCheckErrorMessage.value = null;
     } else {
-      isPasswordCheckMatches.value = true;
-      passwordCheckErrorMessage.value = '비밀번호가 일치하지 않습니다';
+      isPasswordCheckMatches.value = false;
+      passwordCheckErrorMessage.value = 'password_not_match'.tr;
     }
   }
 
@@ -218,9 +225,30 @@ class EmailStep1Controller extends GetxController {
 
   /// 사용자가 정보 입력을 마치고 다음페이지로 넘어가기 전 입력된 정보 저장(전달)
   void onComplete() {
+    if (emailController.text.isEmpty || !isEmailAvailable.value) {
+      emailFocusNode.requestFocus();
+      return;
+    }
+
+    if (nicknameController.text.isEmpty || !isNicknameAvailable.value) {
+      nicknameFocusNode.requestFocus();
+      return;
+    }
+
+    if (passwordController.text.isEmpty || !isPasswordAvailable.value) {
+      passwordFocusNode.requestFocus();
+      return;
+    }
+
+    if (password != passwordCheck) {
+      passwordCheckFocusNode.requestFocus();
+      return;
+    }
+
     signUpInfoInputController.signupInfo.userEmail = email;
     signUpInfoInputController.signupInfo.nickname = nickname;
     signUpInfoInputController.signupInfo.userPw = password;
+    signUpInfoInputController.signupInfo.registration = 'SULDAKSULDAK';
   }
 
   /// 이메일 입력 위젯 색상
