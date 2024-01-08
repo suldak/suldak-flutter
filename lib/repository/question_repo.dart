@@ -34,7 +34,6 @@ class QuestionRepository extends GetxService with API {
   }
 
   Future<BaseResponse?> setUserSelect(
-    int userPriKey,
     List<Map<String, dynamic>> selection, {
     OnServerException? onServerException,
   }) async {
@@ -42,7 +41,6 @@ class QuestionRepository extends GetxService with API {
       final res = await post(
         _userSelectEp,
         data: {
-          'userPriKey': userPriKey,
           'questionAnswerMap': selection,
         },
       );

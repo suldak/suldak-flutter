@@ -154,8 +154,8 @@ class EmailStep1Controller extends GetxController {
   /// nickname text input 문자열 변경시 호출 함수
   void onNickNameTextChanged(String text) {
     nickname = text;
-    bool res = text.length > 3;
-    if (res) {
+    // if (text.length > 3) {
+    if (text.isNotEmpty) {
       isNicknameAvailable.value = true;
       nicknameErrorMessage.value = null;
     } else {

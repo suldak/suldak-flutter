@@ -92,19 +92,25 @@ class AuthRepository extends GetxService with API {
     String nickname,
     String registration,
     String email,
-    String password, {
+    String? password, {
     OnServerException? onServerException,
   }) async {
+
+    final userData = {
+      'birthdayYear': year,
+      'gender': gender,
+      'nickname': nickname,
+      'registration': registration,
+      'userEmail': email,
+    };
+
+    if (password != null) {
+      userData['userPw'] = password;
+    }
+
     final res = await post(
       _signupEp,
-      data: {
-        'birthdayYear': year,
-        'gender': gender,
-        'nickname': nickname,
-        'registration': registration,
-        'userEmail': email,
-        'userPw': password,
-      },
+      data: userData,
     );
     final data = res.validateData(onServerException);
 

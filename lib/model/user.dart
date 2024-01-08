@@ -17,10 +17,11 @@ class UserModel {
   String? selfIntroduction;
   bool? soundActive;
   String? userEmail;
+  String? userPw;
   bool? vibrationActive;
   int? warningCnt;
 
-  UserModel._({
+  UserModel({
     this.alarmActive,
     this.birthdayYear,
     this.createdAt,
@@ -39,12 +40,13 @@ class UserModel {
     this.selfIntroduction,
     this.soundActive,
     this.userEmail,
+    this.userPw,
     this.vibrationActive,
     this.warningCnt,
   });
 
   factory UserModel.fromJson(Map json) {
-    return UserModel._(
+    return UserModel(
       alarmActive: json['alarmActive'],
       birthdayYear: json['birthdayYear']?.toInt(),
       createdAt: json['createdAt']?.toString(),
@@ -63,6 +65,7 @@ class UserModel {
       selfIntroduction: json['selfIntroduction']?.toString(),
       soundActive: json['soundActive'],
       userEmail: json['userEmail']?.toString(),
+      userPw: json['userPw']?.toString(),
       vibrationActive: json['vibrationActive'],
       warningCnt: json['warningCnt']?.toInt(),
     );
@@ -83,6 +86,7 @@ class UserModel {
     data['selfIntroduction'] = selfIntroduction;
     data['soundActive'] = soundActive;
     data['userEmail'] = userEmail;
+    data['userPw'] = userPw;
     data['vibrationActive'] = vibrationActive;
     data['warningCnt'] = warningCnt;
     return data;

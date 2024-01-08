@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:suldak_suldak/model/user_signup_info.dart';
 
 import '../../config/routes.dart';
 import '../../global_controller.dart';
 import '../../model/sign_up/sign_up_question.dart';
+import '../../model/user.dart';
 import '../../repository/auth_repo.dart';
 import '../../repository/question_repo.dart';
 import 'email_step_1/email_step_1_page.dart';
@@ -21,11 +21,13 @@ class SignUpInfoInputController extends GetxController {
 
   bool isSocial = true;
 
+  String? socialToken;
+
   RxList<Widget> pages = <Widget>[].obs;
 
   final pageViewController = PageController(initialPage: 0);
 
-  final UserSignupInfo signupInfo = UserSignupInfo();
+  UserModel signupInfo = UserModel();
 
   bool isFirstPageVisited = true;
 
@@ -77,7 +79,7 @@ class SignUpInfoInputController extends GetxController {
       signupInfo.nickname!,
       signupInfo.registration!,
       signupInfo.userEmail!,
-      signupInfo.userPw!,
+      isSocial? signupInfo.identity : signupInfo.userPw,
     );
 
     if (res != null && res.success!) {
@@ -87,23 +89,41 @@ class SignUpInfoInputController extends GetxController {
   }
 
   Future<bool> autoLogin() async {
-    final userData = await AuthRepository.to.loginWithEmail(
-      signupInfo.userEmail!,
-      signupInfo.userPw!,
-    );
+    UserModel? userData;
+
+    if (isSocial) {
+      switch (signupInfo.registration) {
+        case 'GOOGLE':
+          userData = await AuthRepository.to.loginWithGoogle(
+            socialToken!,
+          );
+          break;
+        case 'KAKAO':
+          userData = await AuthRepository.to.loginWithKakao(
+            socialToken!,
+          );
+          break;
+        case 'NAVER':
+          userData = await AuthRepository.to.loginWithNaver(
+            socialToken!,
+          );
+          break;
+      }
+    } else {
+      userData = await AuthRepository.to.loginWithEmail(
+        signupInfo.userEmail!,
+        signupInfo.userPw!,
+      );
+    }
 
     if (userData != null) {
       await GlobalController.to.saveUserInfo(userData);
-      return await selectUserQuestion(
-        userData.id!,
-        Step3Controller.to.questionList,
-      );
+      return await selectUserQuestion(Step3Controller.to.questionList);
     }
     return false;
   }
 
-  Future<bool> selectUserQuestion(int userKey,
-      List<SignUpQuestion> questionList) async {
+  Future<bool> selectUserQuestion(List<SignUpQuestion> questionList) async {
     List<Map<String, dynamic>> selectQuestionAnswerList = [];
 
     for (final question in questionList) {
@@ -125,7 +145,6 @@ class SignUpInfoInputController extends GetxController {
     }
 
     final res = await QuestionRepository.to.setUserSelect(
-      userKey,
       selectQuestionAnswerList,
     );
 
@@ -143,6 +162,16 @@ class SignUpInfoInputController extends GetxController {
     super.onInit();
 
     if (Get.arguments != null) {
+      final userData = Get.arguments['userData'];
+      if (userData != null) {
+        signupInfo = userData;
+      }
+
+      final userSocialToken = Get.arguments['socialToken'];
+      if (userSocialToken != null) {
+        socialToken = userSocialToken;
+      }
+
       final isSocial = Get.arguments['isSocial'];
       if (isSocial) {
         pages.add(SocialStep1Page(onNextPage: onNextPage));
