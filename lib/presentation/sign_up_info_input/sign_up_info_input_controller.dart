@@ -54,7 +54,10 @@ class SignUpInfoInputController extends GetxController {
     } else {
       final res = await signUp();
       if (res) {
-        Get.offAllNamed(Routes.welcome);
+        Get.offAllNamed(
+          Routes.welcome,
+          arguments: {'nickname': GlobalController.to.userData!.nickname!},
+        );
       } else {
         // todo: error handling
         // 각 단계별로 구분하려면 여기가 아닌 해당 함수에서 처히
