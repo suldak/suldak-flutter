@@ -82,7 +82,7 @@ class SignUpInfoInputController extends GetxController {
       nickname: signupInfo.nickname!,
       registration: signupInfo.registration!,
       email: signupInfo.userEmail!,
-      password: isSocial? signupInfo.identity : signupInfo.userPw,
+      password: isSocial ? signupInfo.identity : signupInfo.userPw,
     );
 
     if (res != null && res.success!) {
@@ -175,8 +175,9 @@ class SignUpInfoInputController extends GetxController {
         socialToken = userSocialToken;
       }
 
-      final isSocial = Get.arguments['isSocial'];
-      if (isSocial) {
+      final isFromSocial = Get.arguments['isSocial'];
+      isSocial = isFromSocial;
+      if (isFromSocial) {
         pages.add(SocialStep1Page(onNextPage: onNextPage));
       } else {
         pages.add(EmailStep1Page(onNextPage: onNextPage));

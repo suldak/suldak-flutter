@@ -39,10 +39,16 @@ class _DioInterceptor extends Interceptor {
     log('‼️ res message: ${err.response?.data['message']}', name: 'Error Interceptor');
     log(' ------------------------------------', name: 'Error Interceptor');
 
-    handler.resolve(Response(
-      requestOptions: err.requestOptions,
-      statusCode: err.response?.statusCode,
-      data: err.error is Map ? err.error : null,
-    ));
+    // handler.resolve(Response(
+    //   requestOptions: err.requestOptions,
+    //   statusCode: err.response?.statusCode,
+    //   data: err.error is Map ? err.error : null,
+    // ));
+    handler.resolve(err.response ??
+        Response(
+          requestOptions: err.requestOptions,
+          statusCode: err.response?.statusCode,
+          data: err.error is Map ? err.error : null,
+        ));
   }
 }
