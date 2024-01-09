@@ -33,8 +33,8 @@ class QuestionRepository extends GetxService with API {
     }
   }
 
-  Future<BaseResponse?> setUserSelect(
-    List<Map<String, dynamic>> selection, {
+  Future<BaseResponse?> setUserSelect({
+    required List<Map<String, dynamic>> selection,
     OnServerException? onServerException,
   }) async {
     try {

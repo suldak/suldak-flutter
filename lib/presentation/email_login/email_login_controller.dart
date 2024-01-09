@@ -22,7 +22,10 @@ class EmailLoginController extends GetxController {
     String email = emailController.text;
     String password = passwordController.text;
 
-    final userData = await AuthRepository.to.loginWithEmail(email, password);
+    final userData = await AuthRepository.to.loginWithEmail(
+      email: email,
+      password: password,
+    );
     if (userData != null) {
       await GlobalController.to.saveUserInfo(userData);
       navigateHome();

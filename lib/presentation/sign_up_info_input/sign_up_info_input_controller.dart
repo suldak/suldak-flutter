@@ -77,12 +77,12 @@ class SignUpInfoInputController extends GetxController {
 
   Future<bool> signUp() async {
     final res = await AuthRepository.to.signUp(
-      signupInfo.birthdayYear!,
-      signupInfo.gender!,
-      signupInfo.nickname!,
-      signupInfo.registration!,
-      signupInfo.userEmail!,
-      isSocial? signupInfo.identity : signupInfo.userPw,
+      year: signupInfo.birthdayYear!,
+      gender: signupInfo.gender!,
+      nickname: signupInfo.nickname!,
+      registration: signupInfo.registration!,
+      email: signupInfo.userEmail!,
+      password: isSocial? signupInfo.identity : signupInfo.userPw,
     );
 
     if (res != null && res.success!) {
@@ -98,24 +98,24 @@ class SignUpInfoInputController extends GetxController {
       switch (signupInfo.registration) {
         case 'GOOGLE':
           userData = await AuthRepository.to.loginWithGoogle(
-            socialToken!,
+            accessToken: socialToken!,
           );
           break;
         case 'KAKAO':
           userData = await AuthRepository.to.loginWithKakao(
-            socialToken!,
+            accessToken: socialToken!,
           );
           break;
         case 'NAVER':
           userData = await AuthRepository.to.loginWithNaver(
-            socialToken!,
+            accessToken: socialToken!,
           );
           break;
       }
     } else {
       userData = await AuthRepository.to.loginWithEmail(
-        signupInfo.userEmail!,
-        signupInfo.userPw!,
+        email: signupInfo.userEmail!,
+        password: signupInfo.userPw!,
       );
     }
 
@@ -148,7 +148,7 @@ class SignUpInfoInputController extends GetxController {
     }
 
     final res = await QuestionRepository.to.setUserSelect(
-      selectQuestionAnswerList,
+      selection: selectQuestionAnswerList,
     );
 
     if (res != null) {

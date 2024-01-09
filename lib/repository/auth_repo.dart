@@ -4,6 +4,8 @@ import '../model/base_response.dart';
 import '../model/user.dart';
 import 'base_api.dart';
 
+/// ## 사용자 로그인/회원가입 관련 api repository
+/// 사용자의 로그인 및 회원가입과 같은 authorization 관련 api를 처리하는 repo
 class AuthRepository extends GetxService with API {
   @override
   String get apiName => 'Auth API';
@@ -18,8 +20,8 @@ class AuthRepository extends GetxService with API {
   static const _emailLoginEp = '/api/auth/login';
   static const _logoutEp = '/api/auth/logout';
 
-  Future<UserModel?> loginWithGoogle(
-    String accessToken, {
+  Future<UserModel?> loginWithGoogle({
+    required String accessToken,
     OnServerException? onServerException,
   }) async {
     final res = await get(
@@ -34,8 +36,8 @@ class AuthRepository extends GetxService with API {
     return null;
   }
 
-  Future<UserModel?> loginWithKakao(
-    String accessToken, {
+  Future<UserModel?> loginWithKakao({
+    required String accessToken,
     OnServerException? onServerException,
   }) async {
     final res = await get(
@@ -50,8 +52,8 @@ class AuthRepository extends GetxService with API {
     return null;
   }
 
-  Future<UserModel?> loginWithNaver(
-    String accessToken, {
+  Future<UserModel?> loginWithNaver({
+    required String accessToken,
     OnServerException? onServerException,
   }) async {
     final res = await get(
@@ -66,9 +68,9 @@ class AuthRepository extends GetxService with API {
     return null;
   }
 
-  Future<UserModel?> loginWithEmail(
-    String email,
-    String password, {
+  Future<UserModel?> loginWithEmail({
+    required String email,
+    required String password,
     OnServerException? onServerException,
   }) async {
     final res = await post(
@@ -86,13 +88,13 @@ class AuthRepository extends GetxService with API {
     return null;
   }
 
-  Future<BaseResponse?> signUp(
-    int year,
-    String gender,
-    String nickname,
-    String registration,
-    String email,
-    String? password, {
+  Future<BaseResponse?> signUp({
+    required int year,
+    required String gender,
+    required String nickname,
+    required String registration,
+    required String email,
+    required String? password,
     OnServerException? onServerException,
   }) async {
 

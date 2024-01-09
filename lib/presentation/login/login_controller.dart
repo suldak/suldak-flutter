@@ -52,7 +52,8 @@ class LoginController extends GetxController {
   }
 
   void kakaoServerLogin(kakao.OAuthToken userToken) async {
-    final userData = await AuthRepository.to.loginWithKakao(userToken.accessToken);
+    final userData = await AuthRepository.to
+        .loginWithKakao(accessToken: userToken.accessToken);
     if (userData != null) {
       if (userData.identity != null && userData.identity!.isNotEmpty) {
         navigateSignUpInfo(true, userData, userToken.accessToken);
@@ -68,8 +69,8 @@ class LoginController extends GetxController {
     if (result.status == NaverLoginStatus.loggedIn) {
       NaverAccessToken token = await FlutterNaverLogin.currentAccessToken;
 
-      final userData =
-          await AuthRepository.to.loginWithNaver(token.accessToken);
+      final userData = await AuthRepository.to
+          .loginWithNaver(accessToken: token.accessToken);
       if (userData != null) {
         if (userData.identity != null && userData.identity!.isNotEmpty) {
           navigateSignUpInfo(true, userData, token.accessToken);
@@ -102,8 +103,8 @@ class LoginController extends GetxController {
     //     await FirebaseAuth.instance.signInWithCredential(credential);
 
     if (credential.accessToken != null) {
-      final userData =
-          await AuthRepository.to.loginWithGoogle(credential.accessToken!);
+      final userData = await AuthRepository.to
+          .loginWithGoogle(accessToken: credential.accessToken!);
       if (userData != null) {
         if (userData.identity != null && userData.identity!.isNotEmpty) {
           navigateSignUpInfo(true, userData, credential.accessToken!);
