@@ -43,6 +43,12 @@ class SocialStep1Controller extends GetxController {
   /// 닉네임 입력 텍스트
   String nickname = '';
 
+  /// 이메일 텍스트
+  RxString email = 'sample@sample.com'.obs;
+
+  /// 닉네임 입력창 controller
+  TextEditingController nickNameController = TextEditingController();
+
   /// 닉네임 입력창 focus node
   FocusNode nicknameFocusNode = FocusNode();
 
@@ -77,7 +83,8 @@ class SocialStep1Controller extends GetxController {
   /// nickname text input 문자열 변경시 호출 함수
   void onChangeNickname(String text) {
     nickname = text;
-    if (nickname.length > 3) {
+    // if (nickname.length > 3) {
+    if (nickname.isNotEmpty) {
       isNicknameAvailable.value = true;
       nicknameErrorMessage.value = null;
     } else {
@@ -145,8 +152,6 @@ class SocialStep1Controller extends GetxController {
 
   /// 사용자가 정보 입력을 마치고 다음페이지로 넘어가기 전 입력된 정보 저장(전달)
   void onComplete() {
-    // social login 정보에서 이메일을 가져올 수 있는지가 불확실함
-    // signUpInfoInputController.signupInfo.userEmail = email;
     signUpInfoInputController.signupInfo.nickname = nickname;
   }
 
@@ -204,5 +209,17 @@ class SocialStep1Controller extends GetxController {
         isNicknameInputFocused.value = false;
       }
     });
+
+    final nickname = SignUpInfoInputController.to.signupInfo.nickname;
+    if (nickname != null && nickname.isNotEmpty) {
+      nickNameController.text = nickname;
+
+      onChangeNickname(nickname);
+    }
+
+    final userEmail = SignUpInfoInputController.to.signupInfo.userEmail;
+    if (userEmail != null && userEmail.isNotEmpty) {
+      email.value = userEmail;
+    }
   }
 }

@@ -9,6 +9,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../config/keys.dart';
+import '../utils/toast.dart';
 
 part './api_interceptor.dart';
 
@@ -118,15 +119,15 @@ mixin API on GetxService {
       log('🔑 유저 토큰을 함께 전송합니다. end point: $path', name: apiName);
     }
 
-    return _dio.get<Map<String, dynamic>>(
+    final res = _dio.get<Map<String, dynamic>>(
       path,
       queryParameters: data,
       options: Options(
         headers: header,
       ),
-    )..whenComplete(() {
-        _logTurnaroundTime(path, startTime);
-      });
+    );
+    _logTurnaroundTime(path, startTime);
+    return res;
   }
 
   /// ### [Dio().post]의 wrapper
@@ -214,13 +215,19 @@ extension ResponseValidator on Response<Map> {
   ///
   /// 만약 통신에는 문제가 없고, result 값이 1이 아닌 경우, [onServerException]을 실행시킨다.
   /// 아무런 문제가 없는 경우에만 response의 data를 반환한다.
-  Map? validateData(OnServerException? onServerException) {
+  Map? validateData(OnServerException? onServerException, {bool showToast = true}) {
     if (statusCode == 200 && data != null) {
       if (data?['success']) {
         return data;
       }
-      onServerException?.call(data?['message'], data?['errorCode']);
     }
+
+    if (onServerException != null) {
+      onServerException.call(data?['message'], data?['errorCode']);
+    } else {
+      if (showToast) Toast.show(msg: data?['message'] ?? '');
+    }
+
     return null;
   }
 }

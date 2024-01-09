@@ -10,6 +10,13 @@ class WelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String nickname = 'nickname';
+    final userNickname = Get.arguments['nickname'];
+
+    if (userNickname != null) {
+      nickname = userNickname;
+    }
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -26,7 +33,7 @@ class WelcomePage extends StatelessWidget {
             ),
             const SizedBox(height: 4),
             Text(
-              'nickname${'welcome_nickname_tail'.tr}',
+              '$nickname${'welcome_nickname_tail'.tr}',
               style: const TextStyle(
                 color: Colors.black,
                 fontSize: 36,

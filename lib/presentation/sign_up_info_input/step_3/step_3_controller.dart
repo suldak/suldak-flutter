@@ -1,10 +1,12 @@
 import 'package:get/get.dart';
 
-import '../../profile_setting/profile_setting_controller.dart';
+import '../../../model/sign_up/sign_up_question.dart';
+import '../../../model/sign_up/sign_up_selection.dart';
+import '../../../repository/question_repo.dart';
 import '../sign_up_info_input_controller.dart';
 
 class Step3Controller extends GetxController {
-  static ProfileSettingController get to => Get.find();
+  static Step3Controller get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
 
@@ -12,88 +14,65 @@ class Step3Controller extends GetxController {
   SignUpInfoInputController signUpInfoInputController =
       SignUpInfoInputController.to;
 
-  List<String> drinkTags = [
-    '소주',
-    '맥주',
-    '칵테일',
-    '하이볼',
-    '와인',
-    '양주',
-    '전통주',
-  ];
-  RxList<bool> drinkTagsSelection = [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ].obs;
+  RxList<SignUpQuestion> questionList = <SignUpQuestion>[].obs;
 
-  List<String> moodTags = [
-    '왁자지껄 회식 분위기',
-    '도란도란 조용한 분위기',
-    '감성넘치는 펍',
-    '술게임과 함께',
-  ];
-  RxList<bool> moodTagsSelection = [
-    false,
-    false,
-    false,
-    false,
-  ].obs;
+  /// 회원가입 완료 버튼 활성화 여부
+  Rx<bool> activeFinish = false.obs;
 
-  List<String> snackTags = [
-    '계속 들어가는 마른안주',
-    '새콤달콤 과일안주',
-    '해장도 함께하는 국물안주',
-    '고소+짭조름 치즈안주',
-    '바삭한 튀김안주',
-  ];
-  RxList<bool> snackTagsSelection = [
-    false,
-    false,
-    false,
-    false,
-    false,
-  ].obs;
+  // Functions ▼ ------------------------------------------------------
 
-  List<String> flavorTags = [
-    '술맛 나는 술',
-    '달달한 술',
-    '상큼한 술',
-    '끝맛이 깔끔한 술',
-    '여운이 오래가는 술',
-    '탄산이 들어간 술',
-    '부드러운 술',
-  ];
-  RxList<bool> flavorTagsSelection = [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ].obs;
+  void getQuestionList() async {
+    final questionData = await QuestionRepository.to.getQuestionList();
+    if (questionData != null) {
+      questionList.value = questionData;
+    }
+  }
 
-  List<String> capacityTags = [
-    '잘 못 마셔요',
-    '반 병 ~ 1병',
-    '1병 ~ 2병',
-    '2병 이상',
-    '잘 모르겠어요',
-  ];
-  RxList<bool> capacityTagsSelection = [
-    false,
-    false,
-    false,
-    false,
-    false,
-  ].obs;
+  void onTapSelection(SignUpSelection selection) {
+    selection.isSelected.value = !selection.isSelected.value;
+    checkFinishActive();
+  }
 
-// Functions ▼ ------------------------------------------------------
+  void onTapSelectAll(List<SignUpSelection> selections) {
+    bool isAllSelected = true;
 
-// Life Cycle ▼ ------------------------------------------------------
+    // check if all selected
+    for (var element in selections) {
+      if (!element.isSelected.value) {
+        isAllSelected = false;
+        break;
+      }
+    }
+
+    // change value
+    for (var element in selections) {
+      if (isAllSelected) {
+        element.isSelected.value = false;
+      } else {
+        element.isSelected.value = true;
+      }
+    }
+
+    checkFinishActive();
+  }
+
+  void checkFinishActive() {
+    for (var element in questionList) {
+      if (!element.liquorAnswerRes!
+          .any((element) => element.isSelected.value == true)) {
+        activeFinish.value = false;
+        return;
+      }
+    }
+    activeFinish.value = true;
+  }
+
+  // Life Cycle ▼ ------------------------------------------------------
+
+  @override
+  void onInit() {
+    getQuestionList();
+
+    super.onInit();
+  }
 }
