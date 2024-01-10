@@ -5,6 +5,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:suldak_suldak/widget/common_dialog.dart';
 
 import 'config/keys.dart';
+import 'config/routes.dart';
 import 'model/user.dart';
 
 class GlobalController extends GetxController {
@@ -61,7 +62,10 @@ class GlobalController extends GetxController {
       CommonDialog(
         content: 'want_to_logout'.tr,
         positiveText: 'logout'.tr,
-        onTapPositive: () {},
+        onTapPositive: () {
+          clearUserInfo();
+          Get.offAllNamed(Routes.login);
+        },
       ),
     );
   }
@@ -81,6 +85,19 @@ class GlobalController extends GetxController {
       // dynamic jsonData = jsonDecode(result);
       // data = UserModel.fromJson(jsonData);
       storage.write(Keys.userData, jsonEncode(userModel.toJson())),
+    ]);
+    return;
+  }
+
+  Future<void> clearUserInfo() async {
+    final storage = GetStorage();
+    await Future.wait([
+      storage.write(Keys.refreshToken, ''),
+      storage.write(Keys.userEmail, ''),
+      storage.write(Keys.registration, ''),
+      // dynamic jsonData = jsonDecode(result);
+      // data = UserModel.fromJson(jsonData);
+      storage.write(Keys.userData, ''),
     ]);
     return;
   }
