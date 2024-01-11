@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../config/colors.dart';
+import '../../../repository/user_repo.dart';
 import '../sign_up_info_input_controller.dart';
 
 class SocialStep1Controller extends GetxController {
@@ -148,6 +149,21 @@ class SocialStep1Controller extends GetxController {
 
     isAdPushAgree.value = value;
     checkAgreementAllConfirmed();
+  }
+
+  Future<bool> checkNickname() async {
+    final res = await UserRepository.to
+        .checkNickname(nickname: nickNameController.text);
+
+    final isAvailable = res?.data ?? false;
+
+    if (!isAvailable) {
+      nicknameErrorMessage.value = 'duplicated_nickname'.tr;
+    } else {
+      nicknameErrorMessage.value = null;
+    }
+
+    return isAvailable;
   }
 
   /// 사용자가 정보 입력을 마치고 다음페이지로 넘어가기 전 입력된 정보 저장(전달)

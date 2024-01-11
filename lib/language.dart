@@ -159,7 +159,8 @@ class Languages extends Translations {
     'password_not_match': '비밀번호가 일치하지 않습니다',
     // notify
     'notify': '알림',
-    'notify_no_notification': '아직 받은 알림이 없어요👀\n조금만 기다려주세요!'
+    'notify_no_notification': '아직 받은 알림이 없어요👀\n조금만 기다려주세요!',
+    'duplicated_nickname': '중복된 닉네임입니다',
   };
 
   Map<String, String> en = {
@@ -315,6 +316,7 @@ class Languages extends Translations {
     'password_not_match': 'Password does not match',
     // notify
     'notify': 'Notify',
-    'notify_no_notification': 'There are no notifications yet👀\nPlease wait a little longer!'
+    'notify_no_notification': 'There are no notifications yet👀\nPlease wait a little longer!',
+    'duplicated_nickname': 'duplicated nickname',
   };
 }

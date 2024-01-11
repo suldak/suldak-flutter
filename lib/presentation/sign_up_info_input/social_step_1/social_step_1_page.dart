@@ -234,9 +234,12 @@ class SocialStep1Page extends GetView<SocialStep1Controller> {
 
         return GestureDetector(
           onTap: isActive
-              ? () {
-                  controller.onComplete();
-                  onNextPage.call();
+              ? () async {
+                  final res = await controller.checkNickname();
+                  if (res) {
+                    controller.onComplete();
+                    onNextPage.call();
+                  }
                 }
               : null,
           child: Container(
