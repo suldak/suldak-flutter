@@ -161,6 +161,7 @@ class Languages extends Translations {
     'notify': '알림',
     'notify_no_notification': '아직 받은 알림이 없어요👀\n조금만 기다려주세요!',
     'duplicated_nickname': '중복된 닉네임입니다',
+    'login_again': '다시 로그인해주세요',
   };
 
   Map<String, String> en = {
@@ -318,5 +319,6 @@ class Languages extends Translations {
     'notify': 'Notify',
     'notify_no_notification': 'There are no notifications yet👀\nPlease wait a little longer!',
     'duplicated_nickname': 'duplicated nickname',
+    'login_again': 'Please log in again',
   };
 }

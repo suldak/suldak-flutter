@@ -11,14 +11,14 @@ class UserRepository extends GetxService with API {
 
   static UserRepository get to => Get.find<UserRepository>();
 
-  static const _googleLoginEp = '/api/user/user-nickname';
+  static const _nicknameEp = '/api/user/user-nickname';
 
   Future<BaseResponse?> checkNickname({
     required String nickname,
     OnServerException? onServerException,
   }) async {
     final res = await get(
-      _googleLoginEp,
+      _nicknameEp,
       data: {'nickname': nickname},
     );
     final data = res.validateData(onServerException);

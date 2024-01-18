@@ -19,6 +19,7 @@ class AuthRepository extends GetxService with API {
   static const _signupEp = '/api/auth/signup';
   static const _emailLoginEp = '/api/auth/login';
   static const _logoutEp = '/api/auth/logout';
+  static const _refreshTokenEp = '/api/auth/reissue-token';
 
   Future<UserModel?> loginWithGoogle({
     required String accessToken,
@@ -128,6 +129,19 @@ class AuthRepository extends GetxService with API {
 
     if (data != null) {
       return BaseResponse.fromJson(data);
+    }
+    return null;
+  }
+
+  // 현재 미사용
+  Future<UserModel?> reissueToken(
+      {OnServerException? onServerException}) async {
+    final res = await get(_refreshTokenEp);
+
+    final data = res.validateData(onServerException);
+
+    if (data != null) {
+      return UserModel.fromJson(data['data']);
     }
     return null;
   }
