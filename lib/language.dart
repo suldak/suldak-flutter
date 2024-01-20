@@ -153,9 +153,13 @@ class Languages extends Translations {
     'onboard_last1': '\n',
     'onboard_last2': '나의 술취향은 무엇일까요?\n',
     'onboard_last3': '함께 분석해봐요!\n',
+
     // notify
     'notify': '알림',
-    'notify_no_notification': '아직 받은 알림이 없어요👀\n조금만 기다려주세요!'
+    'notify_no_notification': '아직 받은 알림이 없어요👀\n조금만 기다려주세요!',
+
+    //banner
+    'banner_title' : '공지사항'
   };
 
   Map<String, String> en = {
@@ -305,8 +309,12 @@ class Languages extends Translations {
     'onboard_last1': '\n',
     'onboard_last2': 'What is my drinking taste?\n',
     'onboard_last3': 'Let\'s analyze it together!\n',
+
     // notify
     'notify': 'Notify',
-    'notify_no_notification': 'There are no notifications yet👀\nPlease wait a little longer!'
+    'notify_no_notification': 'There are no notifications yet👀\nPlease wait a little longer!',
+
+    //banner
+    'banner_title' : 'Notice'
   };
 }

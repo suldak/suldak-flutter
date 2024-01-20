@@ -29,6 +29,9 @@ abstract class Routes {
   /// 회원가입 환영 화면
   static const welcome = '/welcome';
 
+  /// 배너 화면
+  static const banner = '/banner';
+
   /// 프로필 설정 화면
   static const profileSetting = '/profile_setting';
 
