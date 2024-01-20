@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../config/routes.dart';
 import '../../../gen/assets.gen.dart';
 import '../../../global_controller.dart';
 
@@ -36,6 +37,14 @@ class HomeController extends GetxController {
   ];
 
 // Functions ▼ ------------------------------------------------------
+
+  void navigateNotify() async {
+    Get.offAllNamed(Routes.notify);
+  }
+
+  void navigateBanner() async {
+    Get.offAllNamed(Routes.banner);
+  }
 
 // Life Cycle ▼ ------------------------------------------------------
 }
