@@ -153,6 +153,7 @@ class Languages extends Translations {
     'onboard_last1': '\n',
     'onboard_last2': '나의 술취향은 무엇일까요?\n',
     'onboard_last3': '함께 분석해봐요!\n',
+<<<<<<< HEAD
 
     // notify
     'notify': '알림',
@@ -160,6 +161,17 @@ class Languages extends Translations {
 
     //banner
     'banner_title' : '공지사항'
+=======
+    'password_not_complete': '비밀번호가 조건을 만족하지 못했습니다',
+    'nickname_too_short': '닉네임이 너무 짧습니다',
+    'enter_right_email': '올바른 이메일을 입력해주세요',
+    'password_not_match': '비밀번호가 일치하지 않습니다',
+    // notify
+    'notify': '알림',
+    'notify_no_notification': '아직 받은 알림이 없어요👀\n조금만 기다려주세요!',
+    'duplicated_nickname': '중복된 닉네임입니다',
+    'login_again': '다시 로그인해주세요',
+>>>>>>> 505eb7203b045b645a824d42bf27bb731d56dd72
   };
 
   Map<String, String> en = {
@@ -309,6 +321,7 @@ class Languages extends Translations {
     'onboard_last1': '\n',
     'onboard_last2': 'What is my drinking taste?\n',
     'onboard_last3': 'Let\'s analyze it together!\n',
+<<<<<<< HEAD
 
     // notify
     'notify': 'Notify',
@@ -316,5 +329,16 @@ class Languages extends Translations {
 
     //banner
     'banner_title' : 'Notice'
+=======
+    'password_not_complete': 'password is not completed',
+    'nickname_too_short': 'nickname is too short',
+    'enter_right_email': 'Enter a valid email',
+    'password_not_match': 'Password does not match',
+    // notify
+    'notify': 'Notify',
+    'notify_no_notification': 'There are no notifications yet👀\nPlease wait a little longer!',
+    'duplicated_nickname': 'duplicated nickname',
+    'login_again': 'Please log in again',
+>>>>>>> 505eb7203b045b645a824d42bf27bb731d56dd72
   };
 }

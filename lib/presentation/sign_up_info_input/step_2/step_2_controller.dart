@@ -70,9 +70,9 @@ class Step2Controller extends GetxController {
   }
 
   void onComplete() {
-    signUpInfoInputController.signupInfo.gender = isMale.value ? 'M' : 'F';
+    signUpInfoInputController.signupInfo.gender = isMale.value ? 'M' : 'W';
     signUpInfoInputController.signupInfo.birthdayYear = selectedYear.value;
   }
 
-// Life Cycle ▼ ------------------------------------------------------
+  // Life Cycle ▼ ------------------------------------------------------
 }
