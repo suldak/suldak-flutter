@@ -3,6 +3,10 @@ import 'package:get/get.dart';
 
 import '../../../gen/assets.gen.dart';
 import '../../../global_controller.dart';
+import '../../../model/liquor.dart';
+import '../../../model/liquor_tag.dart';
+import '../../../repository/liquor_repo.dart';
+import '../../../repository/tag_repo.dart';
 
 class HomeController extends GetxController {
   static HomeController get to => Get.find();
@@ -35,7 +39,33 @@ class HomeController extends GetxController {
     '무알콜',
   ];
 
-// Functions ▼ ------------------------------------------------------
+  RxList<LiquorTagModel> liquorTagList = <LiquorTagModel>[].obs;
 
-// Life Cycle ▼ ------------------------------------------------------
+  RxList<LiquorModel> userSearchLiquorList = <LiquorModel>[].obs;
+
+  // Functions ▼ ------------------------------------------------------
+
+  void getLiquorNameTagList() async {
+    final tagData = await TagRepository.to.getLiquorNameTagList();
+    if (tagData != null) {
+      liquorTagList.value = tagData;
+    }
+  }
+
+  void getUserSearchedLiquorList() async {
+    final liquorData = await LiquorRepository.to.getUserSearchLiquorList();
+    if (liquorData != null) {
+      userSearchLiquorList.value = liquorData;
+    }
+  }
+
+  // Life Cycle ▼ ------------------------------------------------------
+
+  @override
+  void onInit() {
+    super.onInit();
+
+    getLiquorNameTagList();
+    getUserSearchedLiquorList();
+  }
 }
