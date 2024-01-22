@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:suldak_suldak/config/const.dart';
 
 import '../../../gen/assets.gen.dart';
 import '../../../global_controller.dart';
@@ -53,9 +54,13 @@ class HomeController extends GetxController {
   }
 
   void getUserSearchedLiquorList() async {
-    final liquorData = await LiquorRepository.to.getUserSearchLiquorList();
+    final liquorData = await LiquorRepository.to
+        .getUserLiquorList(type: SearchLiquorType.liquor);
     if (liquorData != null) {
-      userSearchLiquorList.value = liquorData;
+      // pageable 사용시 rxlist.addAll(pageble.list)를
+      // 사용해 이전 데이터에 새로 추가된 요소들이 계속해서 더해지도록 한다
+      // 이 코드에서는 고정된 갯수의 리스트만 받아오기 때문에 addAll을 사용하지 않는다
+      userSearchLiquorList.value = liquorData.list;
     }
   }
 

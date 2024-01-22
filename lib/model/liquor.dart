@@ -43,103 +43,56 @@ class LiquorModel {
     createdAt = json['createdAt']?.toString();
     detailAbv = json['detailAbv']?.toInt();
     detailExplanation = json['detailExplanation']?.toString();
-    drinkingCapacity = (json['drinkingCapacityDto'] != null) ? LiquorTagModel.fromJson(json['drinkingCapacityDto']) : null;
+    drinkingCapacity = (json['drinkingCapacityDto'] != null)
+        ? LiquorTagModel.fromJson(json['drinkingCapacityDto'])
+        : null;
     id = json['id']?.toInt();
-    liquorAbv = (json['liquorAbvDto'] != null) ? LiquorTagModel.fromJson(json['liquorAbvDto']) : null;
-    liquorDetail = (json['liquorDetailDto'] != null) ? LiquorTagModel.fromJson(json['liquorDetailDto']) : null;
-    if (json['liquorMaterialDtos'] != null) {
-      final v = json['liquorMaterialDtos'];
-      final arr0 = <LiquorTagModel>[];
-      v.forEach((v) {
-        arr0.add(LiquorTagModel.fromJson(v));
-      });
-      liquorMaterial = arr0;
-    }
-    liquorName = (json['liquorNameDto'] != null) ? LiquorTagModel.fromJson(json['liquorNameDto']) : null;
+    liquorAbv = (json['liquorAbvDto'] != null)
+        ? LiquorTagModel.fromJson(json['liquorAbvDto'])
+        : null;
+    liquorDetail = (json['liquorDetailDto'] != null)
+        ? LiquorTagModel.fromJson(json['liquorDetailDto'])
+        : null;
+    liquorMaterial = jsonToLiquorTag(json['liquorMaterialDtos']);
+    liquorName = (json['liquorNameDto'] != null)
+        ? LiquorTagModel.fromJson(json['liquorNameDto'])
+        : null;
     liquorRecipe = json['liquorRecipe']?.toString();
-    if (json['liquorSellDtos'] != null) {
-      final v = json['liquorSellDtos'];
-      final arr0 = <LiquorTagModel>[];
-      v.forEach((v) {
-        arr0.add(LiquorTagModel.fromJson(v));
-      });
-      liquorSell = arr0;
-    }
-    if (json['liquorSnackRes'] != null) {
-      final v = json['liquorSnackRes'];
-      final arr0 = <LiquorTagModel>[];
-      v.forEach((v) {
-        arr0.add(LiquorTagModel.fromJson(v));
-      });
-      liquorSnackRes = arr0;
-    }
+    liquorSell = jsonToLiquorTag(json['liquorSellDtos']);
+    liquorSnackRes = jsonToLiquorTag(json['liquorSnackRes']);
     modifiedAt = json['modifiedAt']?.toString();
     name = json['name']?.toString();
-    if (json['stateTypeDtos'] != null) {
-      final v = json['stateTypeDtos'];
-      final arr0 = <LiquorTagModel>[];
-      v.forEach((v) {
-        arr0.add(LiquorTagModel.fromJson(v));
-      });
-      stateType = arr0;
-    }
+    stateType = jsonToLiquorTag(json['stateTypeDtos']);
     summaryExplanation = json['summaryExplanation']?.toString();
-    if (json['tasteTypeDtos'] != null) {
-      final v = json['tasteTypeDtos'];
-      final arr0 = <LiquorTagModel>[];
-      v.forEach((v) {
-        arr0.add(LiquorTagModel.fromJson(v));
-      });
-      tasteType = arr0;
-    }
+    tasteType = jsonToLiquorTag(json['tasteTypeDtos']);
   }
+
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['createdAt'] = createdAt;
     data['detailAbv'] = detailAbv;
     data['detailExplanation'] = detailExplanation;
-    if (drinkingCapacity != null) {
-      data['drinkingCapacityDto'] = drinkingCapacity!.toJson();
-    }
+    data['drinkingCapacityDto'] = drinkingCapacity?.toJson();
     data['id'] = id;
-    if (liquorAbv != null) {
-      data['liquorAbvDto'] = liquorAbv!.toJson();
-    }
-    if (liquorDetail != null) {
-      data['liquorDetailDto'] = liquorDetail!.toJson();
-    }
-    if (liquorMaterial != null) {
-      data['liquorMaterialDtos'] = listToJson(liquorMaterial!);
-    }
-    if (liquorName != null) {
-      data['liquorNameDto'] = liquorName!.toJson();
-    }
+    data['liquorAbvDto'] = liquorAbv?.toJson();
+    data['liquorDetailDto'] = liquorDetail?.toJson();
+    data['liquorMaterialDtos'] = liquorMaterial?.map((e) => e.toJson()).toList();
+    data['liquorNameDto'] = liquorName?.toJson();
     data['liquorRecipe'] = liquorRecipe;
-    if (liquorSell != null) {
-      data['liquorSellDtos'] = listToJson(liquorSell!);
-    }
-    if (liquorSnackRes != null) {
-      data['liquorSnackRes'] = listToJson(liquorSnackRes!);
-    }
+    data['liquorSellDtos'] = liquorSell?.map((e) => e.toJson()).toList();
+    data['liquorSnackRes'] = liquorSnackRes?.map((e) => e.toJson()).toList();
     data['modifiedAt'] = modifiedAt;
     data['name'] = name;
-    if (stateType != null) {
-      data['stateTypeDtos'] = listToJson(stateType!);
-    }
+    data['stateTypeDtos'] = stateType?.map((e) => e.toJson()).toList();
     data['summaryExplanation'] = summaryExplanation;
-    if (tasteType != null) {
-      data['tasteTypeDtos'] = listToJson(tasteType!);
-    }
+    data['tasteTypeDtos'] = tasteType?.map((e) => e.toJson()).toList();
     return data;
   }
 
-  List<dynamic> listToJson(List<dynamic> list) {
-    // return list.map((e) => e.toJson()).toList();
-    final result = [];
-    for (var item in list) {
-      result.add(item.toJson());
-    }
-    return result;
+  List<LiquorTagModel> jsonToLiquorTag(dynamic data) {
+    return data
+        ?.map<LiquorTagModel>((e) => LiquorTagModel.fromJson(e))
+        .toList();
   }
 
   List<String> getAllTagsTitle() {

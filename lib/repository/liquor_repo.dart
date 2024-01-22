@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 
+import '../config/const.dart';
 import '../model/liquor.dart';
+import '../model/liquor_list.dart';
 import 'base_api.dart';
 
 class LiquorRepository extends GetxService with API {
@@ -10,11 +12,12 @@ class LiquorRepository extends GetxService with API {
 
   static LiquorRepository get to => Get.find<LiquorRepository>();
 
-  static const _userSearchedLiquorEp = '/liquor/user-liquor';
+  static const _userSearchedLiquorEp = '/api/liquor/user';
 
-  Future<List<LiquorModel>?> getUserSearchLiquorList({
+  Future<LiquorList?> getUserLiquorList({
     int page = 0,
     int size = 10,
+    required SearchLiquorType type,
     OnServerException? onServerException,
 }) async {
     final res = await get(
@@ -22,15 +25,14 @@ class LiquorRepository extends GetxService with API {
       data: {
         'pageNum': page,
         'recordSize': size,
+        'searchType': type.name.toUpperCase(),
       },
     );
     final data = res.validateData(onServerException);
 
     if (data != null) {
-      List<dynamic> liquorList = data['data'];
-      return liquorList
-          .map((dataJson) => LiquorModel.fromJson(dataJson))
-          .toList();
+      LiquorList liquorList = LiquorList(data['data']);
+      return liquorList;
     }
     return null;
   }

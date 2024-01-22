@@ -14,8 +14,9 @@ class SignUpQuestion {
   });
 
   SignUpQuestion.fromJson(Map<String, dynamic> json) {
-    List<dynamic> selectionList = json['liquorAnswerRes'];
-    liquorAnswerRes = selectionList.map((i) => SignUpSelection.fromJson(i)).toList();
+    liquorAnswerRes = json['liquorAnswerRes']
+        ?.map<SignUpSelection>((i) => SignUpSelection.fromJson(i))
+        .toList();
     questionPriKey = json['questionPriKey']?.toInt();
     qindex = json['qindex']?.toInt();
     qtext = json['qtext']?.toString();
@@ -24,14 +25,7 @@ class SignUpQuestion {
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['questionPriKey'] = questionPriKey;
-    if (liquorAnswerRes != null) {
-      final v = liquorAnswerRes;
-      final arr0 = [];
-      for (var v in v!) {
-        arr0.add(v.toJson());
-      }
-      data['liquorAnswerRes'] = arr0;
-    }
+    data['liquorAnswerRes'] = liquorAnswerRes?.map((e) => e.toJson()).toList();
     data['qindex'] = qindex;
     data['qtext'] = qtext;
     return data;

@@ -10,7 +10,7 @@ class TagRepository extends GetxService with API {
 
   static TagRepository get to => Get.find<TagRepository>();
 
-  static const _liquorNameEp = '/tag/view/liquor-name';
+  static const _liquorNameEp = '/api/tag/view/liquor-name';
 
   Future<List<LiquorTagModel>?> getLiquorNameTagList({
     OnServerException? onServerException,

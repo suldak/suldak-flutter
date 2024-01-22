@@ -38,7 +38,7 @@ class HomePage extends GetView<HomeController> {
                 ),
               ),
             ),
-            buildHorizontalScrollDrinkList(),
+            buildSearchLiquorList(),
             const SizedBox(height: 60),
             Padding(
               padding: const EdgeInsets.only(left: 20),
@@ -383,14 +383,15 @@ class HomePage extends GetView<HomeController> {
           padding: const EdgeInsets.only(top: 20, left: 20),
           scrollDirection: Axis.horizontal,
           shrinkWrap: true,
-          itemCount: 14,
+          itemCount: controller.userSearchLiquorList.length,
           itemBuilder: (context, index) {
             final liquor = controller.userSearchLiquorList[index];
             return buildHorizontalScrollDrinkItem(
               image: Assets.jpg.beer.image(fit: BoxFit.cover),
-              alc: 'ALC ${liquor.liquorAbv?.name ?? '???'}',
+              alc: liquor.liquorAbv?.name ?? '???',
               name: liquor.name ?? '',
-              tags: ['과일맥주', '달달한', '탄산감'],
+              // tags: ['과일맥주', '달달한', '탄산감'],
+              tags: liquor.getAllTagsTitle(),
             );
           },
         ),
@@ -446,7 +447,7 @@ class HomePage extends GetView<HomeController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'ALC $alc%',
+                  'ALC $alc',
                   style: const TextStyle(
                     color: AppColors.secondary,
                     fontSize: 12,
