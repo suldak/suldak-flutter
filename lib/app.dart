@@ -8,6 +8,9 @@ import 'global_controller.dart';
 import 'language.dart';
 import 'repository/auth_repo.dart';
 import 'repository/tag_repo.dart';
+import 'repository/block_repo.dart';
+import 'repository/question_repo.dart';
+import 'repository/user_repo.dart';
 
 class MyApp extends StatelessWidget with AppPagesGenerator {
   const MyApp({super.key});
@@ -70,5 +73,8 @@ class _InitialBinding extends Bindings {
     Get.lazyPut(() => AuthRepository());
     Get.lazyPut(() => TagRepository());
     // Get.lazyPut(() => CouponRepository());
+    Get.lazyPut(() => QuestionRepository());
+    Get.lazyPut(() => UserRepository());
+    Get.lazyPut(() => BlockRepository());
   }
 }

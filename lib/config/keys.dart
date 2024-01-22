@@ -17,4 +17,7 @@ abstract class Keys {
 
   /// [bool] - onboarding 페이지 표시 여부
   static String onboardShown = 'onboard_shown';
+
+  /// [string] - user model 객체의 json string (서버에서 주는 사용자 객체)
+  static String userData = 'user_data';
 }

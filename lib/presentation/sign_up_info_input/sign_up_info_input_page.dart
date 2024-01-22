@@ -13,9 +13,10 @@ class SignUpInfoInputPage extends GetView<SignUpInfoInputController> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: const BaseAppBar(
+      appBar: BaseAppBar(
         title: '',
         showBackButton: true,
+        onTapBackButton: controller.onTapBackButton,
       ),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
