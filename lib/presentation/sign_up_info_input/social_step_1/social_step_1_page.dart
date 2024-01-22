@@ -94,9 +94,11 @@ class SocialStep1Page extends GetView<SocialStep1Controller> {
           ),
           child: Row(
             children: [
-              Text(
-                'sample@sample.com',
-                style: controller.textStyle,
+              Obx(
+                () => Text(
+                  controller.email.value,
+                  style: controller.textStyle,
+                ),
               ),
               const Expanded(child: SizedBox()),
               Container(height: 24, width: 24, color: Colors.yellow),
@@ -122,6 +124,7 @@ class SocialStep1Page extends GetView<SocialStep1Controller> {
         ),
         const SizedBox(height: 12),
         TextField(
+          controller: controller.nickNameController,
           focusNode: controller.nicknameFocusNode,
           maxLines: 1,
           onChanged: controller.onChangeNickname,
@@ -231,9 +234,12 @@ class SocialStep1Page extends GetView<SocialStep1Controller> {
 
         return GestureDetector(
           onTap: isActive
-              ? () {
-                  controller.onComplete();
-                  onNextPage.call();
+              ? () async {
+                  final res = await controller.checkNickname();
+                  if (res) {
+                    controller.onComplete();
+                    onNextPage.call();
+                  }
                 }
               : null,
           child: Container(

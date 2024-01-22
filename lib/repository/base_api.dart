@@ -1,4 +1,4 @@
-library painterus_api;
+library suldak_api;
 
 import 'dart:async';
 import 'dart:developer';
@@ -9,6 +9,7 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get_storage/get_storage.dart';
 
 import '../config/keys.dart';
+import '../utils/toast.dart';
 
 part './api_interceptor.dart';
 
@@ -118,15 +119,15 @@ mixin API on GetxService {
       log('🔑 유저 토큰을 함께 전송합니다. end point: $path', name: apiName);
     }
 
-    return _dio.get<Map<String, dynamic>>(
+    final res = _dio.get<Map<String, dynamic>>(
       path,
       queryParameters: data,
       options: Options(
         headers: header,
       ),
-    )..whenComplete(() {
-        _logTurnaroundTime(path, startTime);
-      });
+    );
+    _logTurnaroundTime(path, startTime);
+    return res;
   }
 
   /// ### [Dio().post]의 wrapper
@@ -205,6 +206,106 @@ mixin API on GetxService {
         _logTurnaroundTime(path, startTime);
       });
   }
+
+  /// ### [Dio().delete]의 wrapper
+  /// delete 의 데이터는 모두 [data]로 전달한다
+  ///   소요시간을 확인하기 위해서는 [checkDuration]을 [true]로 하면 콘솔에 소요시간을 표시한다.
+  ///
+  /// 또한 [printQuery]에 [true]를 전달하면, 쿼리로 전달되는 데이터를 log에 표시한다.
+  @nonVirtual
+  Future<Response<Map<String, dynamic>>> delete(
+      String path, {
+        Map<String, dynamic>? data,
+        bool checkDuration = false,
+        bool printQuery = kDebugMode,
+      }) async {
+    if (!_isInitialized.isCompleted) {
+      await _isInitialized.future;
+    }
+
+    // null인 값 제거
+    data?.removeWhere((k, v) => v == null);
+
+    // 디버깅용 세팅
+    DateTime? startTime;
+    if (kDebugMode) {
+      startTime = checkDuration ? DateTime.now() : null;
+      if (printQuery) {
+        debugPrintParams(path, data);
+      }
+    }
+
+    final Map<String, dynamic> header = {
+      'Content-Type': 'Application/json',
+    };
+
+    // user token 추가
+    final token = GetStorage().read<String>(Keys.refreshToken);
+    if (token != null) {
+      header['Authorization'] = token;
+      log('🔑 유저 토큰을 함께 전송합니다. end point: $path', name: apiName);
+    }
+
+    final res = _dio.delete<Map<String, dynamic>>(
+      path,
+      queryParameters: data,
+      options: Options(
+        headers: header,
+      ),
+    );
+    _logTurnaroundTime(path, startTime);
+    return res;
+  }
+
+  /// ### [Dio().put]의 wrapper
+  /// put 의 데이터는 모두 [data]로 전달한다
+  ///   소요시간을 확인하기 위해서는 [checkDuration]을 [true]로 하면 콘솔에 소요시간을 표시한다.
+  ///
+  /// 또한 [printQuery]에 [true]를 전달하면, 쿼리로 전달되는 데이터를 log에 표시한다.
+  @nonVirtual
+  Future<Response<Map<String, dynamic>>> put(
+      String path, {
+        Map<String, dynamic>? data,
+        bool checkDuration = false,
+        bool printQuery = kDebugMode,
+      }) async {
+    if (!_isInitialized.isCompleted) {
+      await _isInitialized.future;
+    }
+
+    // null인 값 제거
+    data?.removeWhere((k, v) => v == null);
+
+    // 디버깅용 세팅
+    DateTime? startTime;
+    if (kDebugMode) {
+      startTime = checkDuration ? DateTime.now() : null;
+      if (printQuery) {
+        debugPrintParams(path, data);
+      }
+    }
+
+    final Map<String, dynamic> header = {
+      'Content-Type': 'Application/json',
+    };
+
+    // user token 추가
+    final token = GetStorage().read<String>(Keys.refreshToken);
+    if (token != null) {
+      header['Authorization'] = token;
+      log('🔑 유저 토큰을 함께 전송합니다. end point: $path', name: apiName);
+    }
+
+    final res = _dio.put<Map<String, dynamic>>(
+      path,
+      queryParameters: data,
+      options: Options(
+        headers: header,
+      ),
+    );
+    _logTurnaroundTime(path, startTime);
+    return res;
+  }
 }
 
 extension ResponseValidator on Response<Map> {
@@ -214,13 +315,19 @@ extension ResponseValidator on Response<Map> {
   ///
   /// 만약 통신에는 문제가 없고, result 값이 1이 아닌 경우, [onServerException]을 실행시킨다.
   /// 아무런 문제가 없는 경우에만 response의 data를 반환한다.
-  Map? validateData(OnServerException? onServerException) {
+  Map? validateData(OnServerException? onServerException, {bool showToast = true}) {
     if (statusCode == 200 && data != null) {
       if (data?['success']) {
         return data;
       }
-      onServerException?.call(data?['message'], data?['errorCode']);
     }
+
+    if (onServerException != null) {
+      onServerException.call(data?['message'], data?['errorCode']);
+    } else {
+      if (showToast) Toast.show(msg: data?['message'] ?? '');
+    }
+
     return null;
   }
 }

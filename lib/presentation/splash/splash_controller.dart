@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:suldak_suldak/model/user.dart';
 
 import '../../config/keys.dart';
 import '../../config/routes.dart';
+import '../../global_controller.dart';
 import '../../repository/base_api.dart';
 
 class SplashController extends GetxController {
@@ -14,7 +18,7 @@ class SplashController extends GetxController {
   // Functions ▼ ------------------------------------------------------
 
   Future<void> initializeApp() async {
-    await API.initialize('http://122.45.203.134:8080/api');
+    await API.initialize('http://122.45.203.134:8080');
     return;
   }
   
@@ -23,15 +27,32 @@ class SplashController extends GetxController {
     await Future.delayed(const Duration(milliseconds: 3000));
     var onboardKey = getBoolData(Keys.onboardShown);
 
-    if (onboardKey == false) {
-      Get.offAllNamed(Routes.onboarding);
+    final userData = getStringData(Keys.userData);
+
+    if (userData != null && userData.isNotEmpty) {
+      UserModel userModel = UserModel.fromJson(jsonDecode(userData));
+
+      if (userModel.refreshToken == null) {
+        GlobalController.to.clearUserInfo();
+        Get.offAllNamed(Routes.login);
+      } else {
+        Get.offAllNamed(Routes.home);
+      }
     } else {
-      Get.offAllNamed(Routes.login);
+      if (onboardKey == false) {
+        Get.offAllNamed(Routes.onboarding);
+      } else {
+        Get.offAllNamed(Routes.login);
+      }
     }
   }
-  
+
   bool getBoolData(String key) {
     return storage.read(key) ?? false;
+  }
+
+  String? getStringData(String key) {
+    return storage.read(key);
   }
 
   // Life Cycle ▼ ------------------------------------------------------

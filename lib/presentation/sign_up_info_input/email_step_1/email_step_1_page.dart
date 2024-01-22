@@ -93,6 +93,7 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
           const SizedBox(height: 12),
           TextField(
             focusNode: controller.emailFocusNode,
+            controller: controller.emailController,
             maxLines: 1,
             style: controller.textStyle,
             decoration: InputDecoration(
@@ -127,6 +128,7 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
           const SizedBox(height: 12),
           TextField(
             focusNode: controller.nicknameFocusNode,
+            controller: controller.nicknameController,
             maxLines: 1,
             style: controller.textStyle,
             decoration: InputDecoration(
@@ -161,8 +163,12 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
           const SizedBox(height: 12),
           TextField(
             focusNode: controller.passwordFocusNode,
+            controller: controller.passwordController,
             maxLines: 1,
             style: controller.textStyle,
+            obscureText: true,
+            enableSuggestions: false,
+            autocorrect: false,
             decoration: InputDecoration(
               border: controller.textFieldBorder,
               enabledBorder: controller.textFieldBorder,
@@ -228,8 +234,12 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
   /// 비밀번호 확인 text input 위젯
   Widget buildPasswordCheckWidget() {
     return TextField(
+      focusNode: controller.passwordCheckFocusNode,
       maxLines: 1,
       style: controller.textStyle,
+      obscureText: true,
+      enableSuggestions: false,
+      autocorrect: false,
       decoration: InputDecoration(
         border: controller.textFieldBorder,
         enabledBorder: controller.textFieldBorder,
@@ -339,9 +349,12 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
 
         return GestureDetector(
           onTap: isActive
-              ? () {
-                  controller.onComplete();
-                  onNextPage.call();
+              ? () async {
+                  final res = await controller.checkNickname();
+                  if (res) {
+                    controller.onComplete();
+                    onNextPage.call();
+                  }
                 }
               : null,
           child: Container(
