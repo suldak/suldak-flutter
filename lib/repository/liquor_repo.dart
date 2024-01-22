@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 
 import '../config/const.dart';
-import '../model/liquor.dart';
 import '../model/liquor_list.dart';
 import 'base_api.dart';
 
