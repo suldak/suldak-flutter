@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 
 class NotificationSettingController extends GetxController {
-  static NotificationSettingController get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
 

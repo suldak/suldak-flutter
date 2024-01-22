@@ -14,7 +14,6 @@ enum WithdrawReason {
 }
 
 class WithdrawSurveyController extends GetxController {
-  static WithdrawSurveyController get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
 

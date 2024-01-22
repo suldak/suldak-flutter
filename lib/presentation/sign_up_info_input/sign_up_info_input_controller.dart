@@ -15,7 +15,7 @@ import 'step_3/step_3_controller.dart';
 import 'step_3/step_3_page.dart';
 
 class SignUpInfoInputController extends GetxController {
-  static SignUpInfoInputController get to => Get.find();
+  static SignUpInfoInputController get to => Get.find<SignUpInfoInputController>();
 
   // Variable ▼ ------------------------------------------------------
 

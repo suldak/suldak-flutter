@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class ProfileSettingController extends GetxController {
+class FindFriendController extends GetxController {
 
   // Variable ▼ ------------------------------------------------------
 

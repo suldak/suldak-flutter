@@ -5,7 +5,6 @@ import '../../../gen/assets.gen.dart';
 import '../../../global_controller.dart';
 
 class HomeController extends GetxController {
-  static HomeController get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
 

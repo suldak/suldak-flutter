@@ -6,7 +6,6 @@ import '../../global_controller.dart';
 import '../../repository/auth_repo.dart';
 
 class EmailLoginController extends GetxController {
-  static EmailLoginController get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
 

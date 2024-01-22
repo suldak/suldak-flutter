@@ -4,7 +4,6 @@ import '../../../config/routes.dart';
 import '../../../global_controller.dart';
 
 class ProfileController extends GetxController {
-  static ProfileController get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
 

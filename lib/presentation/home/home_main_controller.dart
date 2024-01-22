@@ -7,7 +7,7 @@ import 'home/home_page.dart';
 import 'profile/profile_page.dart';
 
 class HomeMainController extends GetxController {
-  static HomeMainController get to => Get.find();
+  static HomeMainController get to => Get.find<HomeMainController>();
 
   // Variable ▼ ------------------------------------------------------
 

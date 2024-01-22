@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import '../../repository/block_repo.dart';
 
 class BlockedUserController extends GetxController {
-  static BlockedUserController get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
 

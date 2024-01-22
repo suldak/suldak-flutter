@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import '../../../config/routes.dart';
 
 class WithdrawAgreeController extends GetxController {
-  static WithdrawAgreeController get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
 

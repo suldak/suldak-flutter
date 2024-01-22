@@ -6,7 +6,6 @@ import '../../../repository/user_repo.dart';
 import '../sign_up_info_input_controller.dart';
 
 class SocialStep1Controller extends GetxController {
-  static SocialStep1Controller get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
 

@@ -6,7 +6,6 @@ import '../../config/routes.dart';
 import '../../language.dart';
 
 class OnboardController extends GetxController {
-  static OnboardController get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
   final storage = GetStorage();

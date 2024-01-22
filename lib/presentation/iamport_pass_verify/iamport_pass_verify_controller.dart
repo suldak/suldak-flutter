@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 
 class IamportPassVerifyController extends GetxController {
-  static IamportPassVerifyController get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
 
