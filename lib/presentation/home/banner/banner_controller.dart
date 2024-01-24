@@ -1,10 +1,9 @@
 import 'package:get/get.dart';
 
 class BannerController extends GetxController {
-  static BannerController get to => Get.find();
 
 // Variable ▼ ------------------------------------------------------
-  var selectedIndexes = <int>{}.obs;
+  RxSet<int> selectedIndexes = RxSet<int>();
 
 // Functions ▼ ------------------------------------------------------
   String getStatusForIndex(int index) {
