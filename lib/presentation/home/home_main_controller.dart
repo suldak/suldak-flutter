@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../gen/assets.gen.dart';
 import '../../global_controller.dart';
+import 'find_friend/find_friend_page.dart';
 import 'home/home_page.dart';
 import 'profile/profile_page.dart';
 
@@ -96,15 +97,12 @@ enum HomeBottomItem {
   Widget get page {
     switch (this) {
       case HomeBottomItem.findFriend:
-      // TODO: Handle this case.
-        return const SizedBox();
+        return const FindFriendPage();
       case HomeBottomItem.home:
         return const HomePage();
       case HomeBottomItem.myHistory:
-      // TODO: Handle this case.
         return const SizedBox();
       case HomeBottomItem.myPage:
-      // TODO: Handle this case.
         return const ProfilePage();
     }
   }
