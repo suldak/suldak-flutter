@@ -47,36 +47,40 @@ class BannerPage extends GetView<BannerController> {
             },
           ),
           if (controller.showDetail(index))
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 24, 20, 24),
-              child: Container(
-                width: 335,
-                height: 252,
-                color: Colors.grey[200],
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.fromLTRB(18, 30, 18, 30),
-                      child: Text(
-                        '공지사항 내용',
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(18, 0, 18, 0),
-                      child: Assets.svg.notification.svg(width: 100, height: 50),
-                    ),
-                  ],
+            bannerDetail(index: index),
+        ],
+      ),
+    );
+  }
+
+  Widget bannerDetail({required int index}) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(20, 24, 20, 24),
+      child: Container(
+        width: 335,
+        height: 252,
+        color: Colors.grey[200],
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Padding(
+              padding: EdgeInsets.fromLTRB(18, 30, 18, 30),
+              child: Text(
+                '공지사항 내용',
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 14,
                 ),
               ),
             ),
-        ],
+            const SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(18, 0, 18, 0),
+              child: Assets.svg.notification.svg(width: 100, height: 50),
+            ),
+          ],
+        ),
       ),
     );
   }
