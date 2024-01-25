@@ -15,18 +15,16 @@ class IamportPassVerifyPage extends GetView<IamportPassVerifyController> {
         title:  Text('아임포트 본인인증'),
       ),
       /* 웹뷰 로딩 컴포넌트 */
-      initialChild: Container(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset('assets/images/iamport-logo.png'),
-              Container(
-                padding: EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
-                child: Text('잠시만 기다려주세요...', style: TextStyle(fontSize: 20.0)),
-              ),
-            ],
-          ),
+      initialChild: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset('assets/images/iamport-logo.png'),
+            Container(
+              padding: EdgeInsets.fromLTRB(0.0, 30.0, 0.0, 0.0),
+              child: Text('잠시만 기다려주세요...', style: TextStyle(fontSize: 20.0)),
+            ),
+          ],
         ),
       ),
       /* [필수입력] 가맹점 식별코드 */
