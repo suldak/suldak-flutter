@@ -88,6 +88,9 @@ class $AssetsPngGen {
   AssetGenImage get blueHeart =>
       const AssetGenImage('assets/png/blue_heart.png');
 
+  /// File path: assets/png/calednar.png
+  AssetGenImage get calednar => const AssetGenImage('assets/png/calednar.png');
+
   /// File path: assets/png/certification.png
   AssetGenImage get certification =>
       const AssetGenImage('assets/png/certification.png');
@@ -97,6 +100,9 @@ class $AssetsPngGen {
 
   /// File path: assets/png/cocktail.png
   AssetGenImage get cocktail => const AssetGenImage('assets/png/cocktail.png');
+
+  /// File path: assets/png/drum.png
+  AssetGenImage get drum => const AssetGenImage('assets/png/drum.png');
 
   /// File path: assets/png/great.png
   AssetGenImage get great => const AssetGenImage('assets/png/great.png');
@@ -142,9 +148,11 @@ class $AssetsPngGen {
         beer,
         beerSmall,
         blueHeart,
+        calednar,
         certification,
         check,
         cocktail,
+        drum,
         great,
         group,
         heart,

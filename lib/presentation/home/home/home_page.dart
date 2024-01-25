@@ -4,7 +4,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../config/colors.dart';
 import '../../../gen/assets.gen.dart';
-import '../../../widget/logo_profile_app_bar.dart';
+import '../../../widget/logo_app_bar.dart';
 import '../../../widget/top_search_bar.dart';
 import 'home_controller.dart';
 
@@ -14,7 +14,7 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const LogoProfileAppBar(),
+      appBar: const LogoAppBar(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

@@ -17,7 +17,8 @@ class HomeMainPage extends GetView<HomeMainController> {
     return Scaffold(
       floatingActionButtonLocation: ExpandableFab.location,
       floatingActionButton: Obx(
-        () => controller.currentTabItem.value.index == 0
+        () => controller.currentTabItem.value.index == 0 &&
+                controller.isFabVisible.value
             ? ExpandableFab(
                 type: ExpandableFabType.up,
                 distance: 76,

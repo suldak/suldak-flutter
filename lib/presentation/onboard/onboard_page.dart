@@ -15,50 +15,48 @@ class OnboardPage extends GetView<OnboardController> {
       body: Container(
         padding: const EdgeInsets.all(18.0),
         height: double.infinity,
-        child: Obx(
-          () => IntroductionScreen(
-            pages: [
-              // page 1
-              onboardPage(context, 'onboard_first1', 'onboard_first2',
-                  'onboard_first3', "assets/svg/beer_illustrator.svg"),
+        child: IntroductionScreen(
+          pages: [
+            // page 1
+            onboardPage(context, 'onboard_first1', 'onboard_first2',
+                'onboard_first3', "assets/svg/beer_illustrator.svg"),
 
-              // page 2
-              onboardPage(context, 'onboard_second1', 'onboard_second2',
-                  'onboard_second3', "assets/svg/beer_friend_illustrator.svg"),
+            // page 2
+            onboardPage(context, 'onboard_second1', 'onboard_second2',
+                'onboard_second3', "assets/svg/beer_friend_illustrator.svg"),
 
-              // page 3
-              onboardPage(context, 'onboard_third1', 'onboard_third2',
-                  'onboard_third3', "assets/svg/invite_illustrator.svg"),
-            ],
-            animationDuration: 300,
-            showSkipButton: true,
-            skip: Text(
-              'skip'.tr,
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: AppColors.grey[70],
-              ),
+            // page 3
+            onboardPage(context, 'onboard_third1', 'onboard_third2',
+                'onboard_third3', "assets/svg/invite_illustrator.svg"),
+          ],
+          animationDuration: 300,
+          showSkipButton: true,
+          skip: Text(
+            'skip'.tr,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: AppColors.grey[70],
             ),
-            onSkip: () => controller.navigateOnboardToLastPage(),
-            next: Text(
-              'next'.tr,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: AppColors.primary,
-              ),
-            ),
-            done: Text(
-              'next'.tr,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: AppColors.primary,
-              ),
-            ),
-            onDone: () => controller.navigateOnboardToLastPage(),
           ),
+          onSkip: () => controller.navigateOnboardToLastPage(),
+          next: Text(
+            'next'.tr,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: AppColors.primary,
+            ),
+          ),
+          done: Text(
+            'next'.tr,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: AppColors.primary,
+            ),
+          ),
+          onDone: () => controller.navigateOnboardToLastPage(),
         ),
       ),
     );

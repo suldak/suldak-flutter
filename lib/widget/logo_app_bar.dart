@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import '../config/colors.dart';
 import '../gen/assets.gen.dart';
 
-class LogoProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const LogoProfileAppBar({super.key});
+class LogoAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const LogoAppBar({super.key});
 
   @override
   AppBar build(BuildContext context) {
