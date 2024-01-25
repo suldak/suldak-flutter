@@ -5,6 +5,7 @@ import 'package:suldak_suldak/config/const.dart';
 import '../../../gen/assets.gen.dart';
 import '../../../global_controller.dart';
 import '../../../model/liquor.dart';
+import '../../../model/liquor_list.dart';
 import '../../../model/liquor_tag.dart';
 import '../../../repository/liquor_repo.dart';
 import '../../../repository/tag_repo.dart';
@@ -47,14 +48,15 @@ class HomeController extends GetxController {
   // Functions ▼ ------------------------------------------------------
 
   void getLiquorNameTagList() async {
-    final tagData = await TagRepository.to.getLiquorNameTagList();
+    final List<LiquorTagModel>? tagData =
+        await TagRepository.to.getLiquorNameTagList();
     if (tagData != null) {
       liquorTagList.value = tagData;
     }
   }
 
   void getUserSearchedLiquorList() async {
-    final liquorData = await LiquorRepository.to
+    final LiquorList? liquorData = await LiquorRepository.to
         .getUserLiquorList(type: SearchLiquorType.liquor);
     if (liquorData != null) {
       // pageable 사용시 rxlist.addAll(pageble.list)를
