@@ -7,6 +7,8 @@ import 'config/routes.dart';
 import 'global_controller.dart';
 import 'language.dart';
 import 'repository/auth_repo.dart';
+import 'repository/liquor_repo.dart';
+import 'repository/tag_repo.dart';
 import 'repository/block_repo.dart';
 import 'repository/question_repo.dart';
 import 'repository/user_repo.dart';
@@ -70,9 +72,11 @@ class _InitialBinding extends Bindings {
     Get.put(GlobalController());
     // 각 레포들은 get service 로서 memory 에 injection.
     Get.lazyPut(() => AuthRepository());
+    Get.lazyPut(() => TagRepository());
     // Get.lazyPut(() => CouponRepository());
     Get.lazyPut(() => QuestionRepository());
     Get.lazyPut(() => UserRepository());
     Get.lazyPut(() => BlockRepository());
+    Get.lazyPut(() => LiquorRepository());
   }
 }
