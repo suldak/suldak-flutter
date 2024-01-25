@@ -81,7 +81,12 @@ class HomePage extends GetView<HomeController> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(top: 2, right: 6),
-                      child: Assets.svg.notification.svg(width: 20),
+                      child: InkWell(
+                        onTap: () {
+                          controller.navigateNotify();
+                        },
+                        child: Assets.svg.notification.svg(width: 20),
+                      ),
                     ),
                     Positioned(
                       top: 0,
@@ -603,39 +608,45 @@ class HomePage extends GetView<HomeController> {
   }
 
   Widget buildNoticeItem() {
-    return Container(
-      width: 185,
-      height: 185,
-      padding: const EdgeInsets.symmetric(vertical: 28, horizontal: 20),
-      margin: const EdgeInsets.only(right: 12),
-      decoration: BoxDecoration(
-        color: Colors.red,
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            '꼭 확인해야하는\n공지사항!',
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
+    return GestureDetector(
+      onTap: () {
+        controller.navigateBanner();
+      },
+      child: Container(
+        width: 185,
+        height: 185,
+        padding: const EdgeInsets.symmetric(vertical: 28, horizontal: 20),
+        margin: const EdgeInsets.only(right: 12),
+        decoration: BoxDecoration(
+          color: Colors.red,
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '꼭 확인해야하는\n공지사항!',
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+              ),
             ),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            '#사용하기전 필수 체크 사항',
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
+            const SizedBox(height: 4),
+            Text(
+              '#사용하기전 필수 체크 사항',
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
+
 
   Widget buildInfoContainer() {
     final style = TextStyle(

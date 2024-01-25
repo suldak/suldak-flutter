@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:suldak_suldak/config/const.dart';
 
+import '../../../config/routes.dart';
 import '../../../gen/assets.gen.dart';
 import '../../../global_controller.dart';
 import '../../../model/liquor.dart';
@@ -43,6 +44,16 @@ class HomeController extends GetxController {
 
   RxList<LiquorTagModel> liquorTagList = <LiquorTagModel>[].obs;
 
+  void navigateNotify() async {
+    Get.offAllNamed(Routes.notify);
+  }
+
+  void navigateBanner() async {
+    Get.offAllNamed(Routes.banner);
+  }
+
+// Life Cycle ▼ ------------------------------------------------------
+=======
   RxList<LiquorModel> userSearchLiquorList = <LiquorModel>[].obs;
 
   // Functions ▼ ------------------------------------------------------
