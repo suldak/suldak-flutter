@@ -1,0 +1,3 @@
+enum SearchLiquorType {
+  tag, liquor
+}

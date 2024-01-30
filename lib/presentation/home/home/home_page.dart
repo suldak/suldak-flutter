@@ -40,7 +40,7 @@ class HomePage extends GetView<HomeController> {
                 ),
               ),
             ),
-            buildHorizontalScrollDrinkList(),
+            buildSearchLiquorList(),
             const SizedBox(height: 60),
             Padding(
               padding: const EdgeInsets.only(left: 20),
@@ -100,19 +100,21 @@ class HomePage extends GetView<HomeController> {
   Widget buildDrinkCategory() {
     return SizedBox(
       height: 78,
-      child: ListView.builder(
-        padding: const EdgeInsets.only(left: 20),
-        scrollDirection: Axis.horizontal,
-        itemCount: controller.sampleCategoryList.length,
-        itemBuilder: (context, index) {
-          return buildDrinkCategoryItem(
-              text: controller.sampleCategoryList[index]);
-        },
+      child: Obx(
+        () => ListView.builder(
+          padding: const EdgeInsets.only(left: 20),
+          scrollDirection: Axis.horizontal,
+          itemCount: controller.liquorTagList.length,
+          itemBuilder: (context, index) {
+            return buildLiquorTagItem(
+                text: controller.liquorTagList[index].name!);
+          },
+        ),
       ),
     );
   }
 
-  Widget buildDrinkCategoryItem({required String text}) {
+  Widget buildLiquorTagItem({required String text}) {
     return Padding(
       padding: const EdgeInsets.only(right: 10),
       child: Column(
@@ -300,6 +302,30 @@ class HomePage extends GetView<HomeController> {
     );
   }
 
+  Widget buildSearchLiquorList() {
+    return SizedBox(
+      height: 268,
+      child: Obx(
+        () => ListView.builder(
+          padding: const EdgeInsets.only(top: 20, left: 20),
+          scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
+          itemCount: controller.userSearchLiquorList.length,
+          itemBuilder: (context, index) {
+            final liquor = controller.userSearchLiquorList[index];
+            return buildHorizontalScrollDrinkItem(
+              image: Assets.jpg.beer.image(fit: BoxFit.cover),
+              alc: liquor.liquorAbv?.name ?? '???',
+              name: liquor.name ?? '',
+              // tags: ['과일맥주', '달달한', '탄산감'],
+              tags: liquor.getAllTagsTitle(),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
   Widget buildHorizontalScrollDrinkList() {
     return SizedBox(
       height: 268,
@@ -348,7 +374,7 @@ class HomePage extends GetView<HomeController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'ALC $alc%',
+                  'ALC $alc',
                   style: const TextStyle(
                     color: AppColors.secondary,
                     fontSize: 12,
@@ -504,36 +530,41 @@ class HomePage extends GetView<HomeController> {
   }
 
   Widget buildNoticeItem() {
-    return Container(
-      width: 185,
-      height: 185,
-      padding: const EdgeInsets.symmetric(vertical: 28, horizontal: 20),
-      margin: const EdgeInsets.only(right: 12),
-      decoration: BoxDecoration(
-        color: Colors.red,
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            '꼭 확인해야하는\n공지사항!',
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
+    return GestureDetector(
+      onTap: () {
+        controller.navigateBanner();
+      },
+      child: Container(
+        width: 185,
+        height: 185,
+        padding: const EdgeInsets.symmetric(vertical: 28, horizontal: 20),
+        margin: const EdgeInsets.only(right: 12),
+        decoration: BoxDecoration(
+          color: Colors.red,
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              '꼭 확인해야하는\n공지사항!',
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+              ),
             ),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            '#사용하기전 필수 체크 사항',
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
+            const SizedBox(height: 4),
+            Text(
+              '#사용하기전 필수 체크 사항',
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

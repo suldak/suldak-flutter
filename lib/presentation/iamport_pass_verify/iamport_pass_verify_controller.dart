@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 
 class IamportPassVerifyController extends GetxController {
@@ -7,7 +9,7 @@ class IamportPassVerifyController extends GetxController {
   // Functions ▼ ------------------------------------------------------
 
   void onCertificationComplete(Map<String, String> result) {
-    print(result);
+    log(result.toString());
   }
 
   // Life Cycle ▼ ------------------------------------------------------

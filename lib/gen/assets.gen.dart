@@ -273,11 +273,14 @@ class $AssetsSvgGen {
   /// File path: assets/svg/welcome.svg
   SvgGenImage get welcome => const SvgGenImage('assets/svg/welcome.svg');
 
+  SvgGenImage get arrowUp => const SvgGenImage('assets/svg/arrow_up.svg');
+
   /// List of all assets
   List<SvgGenImage> get values => [
         arrowBack,
         arrowDown,
         arrowNext,
+        arrowUp,
         beerFriendIllustrator,
         beerIllustrator,
         birdIllustrator,

@@ -16,43 +16,32 @@ class QuestionRepository extends GetxService with API {
   Future<List<SignUpQuestion>?> getQuestionList({
     OnServerException? onServerException,
   }) async {
-    try {
-      final res = await get(_getQuestionListEp);
-      final data = res.validateData(onServerException);
+    final res = await get(_getQuestionListEp);
+    final data = res.validateData(onServerException);
 
-      if (data != null) {
-        List<dynamic> questionList = data['data'];
-        return questionList
-            .map((dataJson) => SignUpQuestion.fromJson(dataJson))
-            .toList();
-      }
-      return null;
-    } catch(e) {
-      print(e.toString());
-      return null;
+    if (data != null) {
+      return data['data']
+          ?.map((dataJson) => SignUpQuestion.fromJson(dataJson))
+          .toList();
     }
+    return null;
   }
 
   Future<BaseResponse?> setUserSelect({
     required List<Map<String, dynamic>> selection,
     OnServerException? onServerException,
   }) async {
-    try {
-      final res = await post(
-        _userSelectEp,
-        data: {
-          'questionAnswerMap': selection,
-        },
-      );
-      final data = res.validateData(onServerException);
+    final res = await post(
+      _userSelectEp,
+      data: {
+        'questionAnswerMap': selection,
+      },
+    );
+    final data = res.validateData(onServerException);
 
-      if (data != null) {
-        return BaseResponse.fromJson(data);
-      }
-      return null;
-    } catch(e) {
-      print(e.toString());
-      return null;
+    if (data != null) {
+      return BaseResponse.fromJson(data);
     }
+    return null;
   }
 }

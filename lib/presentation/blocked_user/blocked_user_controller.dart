@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 
 import '../../repository/block_repo.dart';
@@ -10,7 +12,7 @@ class BlockedUserController extends GetxController {
 
   void getBlockedUser() async {
     final res = await BlockRepository.to.getBlockedUser();
-    print(res.toString());
+    log(res.toString());
   }
 
   // Life Cycle ▼ ------------------------------------------------------
