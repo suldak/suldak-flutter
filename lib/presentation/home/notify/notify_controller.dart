@@ -1,9 +1,8 @@
 import 'package:get/get.dart';
 
-import 'notify_model.dart';
+import '../../../model/notify_model.dart';
 
 class NotifyController extends GetxController {
-  static NotifyController get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
 

@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
 import '../../gen/assets.gen.dart';
 import '../../global_controller.dart';
+import 'find_friend/find_friend_controller.dart';
+import 'find_friend/find_friend_page.dart';
 import 'home/home_page.dart';
 import 'profile/profile_page.dart';
 
 class HomeMainController extends GetxController {
-  static HomeMainController get to => Get.find();
+  static HomeMainController get to => Get.find<HomeMainController>();
 
   // Variable ▼ ------------------------------------------------------
 
@@ -19,6 +22,12 @@ class HomeMainController extends GetxController {
 
   /// 현재 선택된 바텀 앱바 index
   final currentTabItem = HomeBottomItem.home.obs;
+
+  /// [FindFriendController]의 scroll controller
+  ScrollController findFriendScrollController = ScrollController();
+
+  /// fab 표시 여부
+  Rx<bool> isFabVisible = true.obs;
 
   // Functions ▼ ------------------------------------------------------
 
@@ -37,6 +46,22 @@ class HomeMainController extends GetxController {
       final index = Get.arguments['initial_index'];
       currentTabItem.value = HomeBottomItem.values[index];
     }
+
+    findFriendScrollController.addListener(() {
+      if (findFriendScrollController.position.userScrollDirection ==
+          ScrollDirection.reverse) {
+        if (isFabVisible.value == true) {
+          isFabVisible.value = false;
+        }
+      } else {
+        if (findFriendScrollController.position.userScrollDirection ==
+            ScrollDirection.forward) {
+          if (isFabVisible.value == false) {
+            isFabVisible.value = true;
+          }
+        }
+      }
+    });
   }
 }
 
@@ -96,15 +121,12 @@ enum HomeBottomItem {
   Widget get page {
     switch (this) {
       case HomeBottomItem.findFriend:
-      // TODO: Handle this case.
-        return const SizedBox();
+        return const FindFriendPage();
       case HomeBottomItem.home:
         return const HomePage();
       case HomeBottomItem.myHistory:
-      // TODO: Handle this case.
         return const SizedBox();
       case HomeBottomItem.myPage:
-      // TODO: Handle this case.
         return const ProfilePage();
     }
   }

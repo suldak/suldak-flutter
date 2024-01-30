@@ -42,7 +42,7 @@ class _DioInterceptor extends Interceptor {
     handler.resolve(Response(
       requestOptions: err.requestOptions,
       statusCode: err.response?.statusCode,
-      data: err.error is Map ? err.error : null,
+      data: err.response?.data ?? (err.error is Map ? err.error : null),
     ));
 
     // 하단 주석 코드는 accessToken, refreshToken을 사용해 만료된 accessToken을

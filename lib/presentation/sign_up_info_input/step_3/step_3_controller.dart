@@ -6,7 +6,7 @@ import '../../../repository/question_repo.dart';
 import '../sign_up_info_input_controller.dart';
 
 class Step3Controller extends GetxController {
-  static Step3Controller get to => Get.find();
+  static Step3Controller get to => Get.find<Step3Controller>();
 
   // Variable ▼ ------------------------------------------------------
 

@@ -154,16 +154,13 @@ class Languages extends Translations {
     'onboard_last2': '나의 술취향은 무엇일까요?\n',
     'onboard_last3': '함께 분석해봐요!\n',
 
-    // notify
-    'notify': '알림',
-    'notify_no_notification': '아직 받은 알림이 없어요👀\n조금만 기다려주세요!',
-
     //banner
     'banner_title' : '공지사항',
     'password_not_complete': '비밀번호가 조건을 만족하지 못했습니다',
     'nickname_too_short': '닉네임이 너무 짧습니다',
     'enter_right_email': '올바른 이메일을 입력해주세요',
     'password_not_match': '비밀번호가 일치하지 않습니다',
+
     // notify
     'notify': '알림',
     'notify_no_notification': '아직 받은 알림이 없어요👀\n조금만 기다려주세요!',
@@ -319,16 +316,13 @@ class Languages extends Translations {
     'onboard_last2': 'What is my drinking taste?\n',
     'onboard_last3': 'Let\'s analyze it together!\n',
 
-    // notify
-    'notify': 'Notify',
-    'notify_no_notification': 'There are no notifications yet👀\nPlease wait a little longer!',
-
     //banner
     'banner_title' : 'Notice',
     'password_not_complete': 'password is not completed',
     'nickname_too_short': 'nickname is too short',
     'enter_right_email': 'Enter a valid email',
     'password_not_match': 'Password does not match',
+
     // notify
     'notify': 'Notify',
     'notify_no_notification': 'There are no notifications yet👀\nPlease wait a little longer!',

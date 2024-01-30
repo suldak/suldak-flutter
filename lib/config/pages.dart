@@ -5,12 +5,13 @@ import 'package:suldak_suldak/presentation/home/notify/notify_page.dart';
 
 import '../presentation/account_manage/account_manage_controller.dart';
 import '../presentation/account_manage/account_manage_page.dart';
+import '../presentation/announcement/announcement_controller.dart';
+import '../presentation/announcement/announcement_page.dart';
 import '../presentation/blocked_user/blocked_user_controller.dart';
 import '../presentation/blocked_user/blocked_user_page.dart';
 import '../presentation/email_login/email_login_controller.dart';
 import '../presentation/email_login/email_login_page.dart';
-import '../presentation/home/banner/banner_controller.dart';
-import '../presentation/home/banner/banner_page.dart';
+import '../presentation/home/find_friend/find_friend_controller.dart';
 import '../presentation/home/home/home_controller.dart';
 import '../presentation/home/home_main_controller.dart';
 import '../presentation/home/home_main_page.dart';
@@ -68,14 +69,14 @@ mixin AppPagesGenerator on StatelessWidget {
             Get.put(HomeMainController());
             Get.lazyPut(() => ProfileController());
             Get.lazyPut(() => HomeController());
+            Get.lazyPut(() => FindFriendController());
           }),
         ),
         GetPage(
-          name: Routes.notify,
-          page: () => const NotifyPage(),
-          transition: Transition.leftToRight,
-          binding: BindingsBuilder.put(() => NotifyController())
-        ),
+            name: Routes.notify,
+            page: () => const NotifyPage(),
+            transition: Transition.leftToRight,
+            binding: BindingsBuilder.put(() => NotifyController())),
         GetPage(
           name: Routes.login,
           page: () => const LoginPage(),
@@ -143,8 +144,8 @@ mixin AppPagesGenerator on StatelessWidget {
         ),
         GetPage(
           name: Routes.banner,
-          page: () => const BannerPage(),
-          binding: BindingsBuilder.put(() => BannerController()),
+          page: () => const AnnouncementPage(),
+          binding: BindingsBuilder.put(() => AnnouncementController()),
         )
       ];
 }

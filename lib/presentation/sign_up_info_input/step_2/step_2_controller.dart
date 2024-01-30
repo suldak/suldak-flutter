@@ -5,7 +5,6 @@ import 'package:suldak_suldak/widget/custom_cupertino_date_picker.dart';
 import '../sign_up_info_input_controller.dart';
 
 class Step2Controller extends GetxController {
-  static Step2Controller get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
 

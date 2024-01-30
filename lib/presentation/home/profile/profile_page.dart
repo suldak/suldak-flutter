@@ -187,7 +187,7 @@ class ProfilePage extends GetView<ProfileController> {
     return Container(
       margin: const EdgeInsets.only(top: 30, bottom: 24),
       padding: const EdgeInsets.only(left: 20, right: 10, top: 17, bottom: 17),
-      height: 74,
+      // height: 74,
       decoration: BoxDecoration(
         color: AppColors.secondary[30],
         borderRadius: BorderRadius.circular(15),

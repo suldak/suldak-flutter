@@ -12,7 +12,6 @@ import '../../../repository/liquor_repo.dart';
 import '../../../repository/tag_repo.dart';
 
 class HomeController extends GetxController {
-  static HomeController get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
 
@@ -44,19 +43,19 @@ class HomeController extends GetxController {
 
   RxList<LiquorTagModel> liquorTagList = <LiquorTagModel>[].obs;
 
-  void navigateNotify() async {
-    Get.offAllNamed(Routes.notify);
-  }
+  // Life Cycle ▼ ------------------------------------------------------
 
-  void navigateBanner() async {
-    Get.offAllNamed(Routes.banner);
-  }
-
-// Life Cycle ▼ ------------------------------------------------------
-=======
   RxList<LiquorModel> userSearchLiquorList = <LiquorModel>[].obs;
 
   // Functions ▼ ------------------------------------------------------
+
+  void navigateNotify() async {
+    Get.toNamed(Routes.notify);
+  }
+
+  void navigateBanner() async {
+    Get.toNamed(Routes.banner);
+  }
 
   void getLiquorNameTagList() async {
     final List<LiquorTagModel>? tagData =

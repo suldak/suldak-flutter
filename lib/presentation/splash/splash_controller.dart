@@ -10,7 +10,6 @@ import '../../global_controller.dart';
 import '../../repository/base_api.dart';
 
 class SplashController extends GetxController {
-  static SplashController get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
   final storage = GetStorage();

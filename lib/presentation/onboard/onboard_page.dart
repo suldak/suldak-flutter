@@ -22,12 +22,8 @@ class OnboardPage extends GetView<OnboardController> {
                 'onboard_first3', "assets/svg/beer_illustrator.svg"),
 
             // page 2
-            onboardPage(
-                context,
-                'onboard_second1',
-                'onboard_second2',
-                'onboard_second3',
-                "assets/svg/beer_friend_illustrator.svg"),
+            onboardPage(context, 'onboard_second1', 'onboard_second2',
+                'onboard_second3', "assets/svg/beer_friend_illustrator.svg"),
 
             // page 3
             onboardPage(context, 'onboard_third1', 'onboard_third2',
@@ -38,30 +34,29 @@ class OnboardPage extends GetView<OnboardController> {
           skip: Text(
             'skip'.tr,
             style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: AppColors.grey[70]),
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: AppColors.grey[70],
+            ),
           ),
-          onSkip: () {
-            OnboardController.to.navigateOnboardToLastPage();
-          },
+          onSkip: () => controller.navigateOnboardToLastPage(),
           next: Text(
             'next'.tr,
             style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: AppColors.primary),
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: AppColors.primary,
+            ),
           ),
           done: Text(
             'next'.tr,
             style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-                color: AppColors.primary),
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+              color: AppColors.primary,
+            ),
           ),
-          onDone: () {
-            OnboardController.to.navigateOnboardToLastPage();
-          },
+          onDone: () => controller.navigateOnboardToLastPage(),
         ),
       ),
     );

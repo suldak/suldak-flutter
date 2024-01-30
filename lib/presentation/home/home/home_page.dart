@@ -4,6 +4,8 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../config/colors.dart';
 import '../../../gen/assets.gen.dart';
+import '../../../widget/logo_app_bar.dart';
+import '../../../widget/top_search_bar.dart';
 import 'home_controller.dart';
 
 class HomePage extends GetView<HomeController> {
@@ -12,13 +14,13 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
+      appBar: const LogoAppBar(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 10),
-            buildSearchBar(),
+            const TopSearchBar(),
             const SizedBox(height: 16),
             buildBanner(),
             const SizedBox(height: 16),
@@ -60,86 +62,6 @@ class HomePage extends GetView<HomeController> {
             buildInfoContainer(),
           ],
         ),
-      ),
-    );
-  }
-
-  PreferredSizeWidget buildAppBar() {
-    return AppBar(
-      leading: Padding(
-        padding: const EdgeInsets.only(left: 10),
-        child: Assets.png.suldakTextLogo.image(),
-      ),
-      leadingWidth: 80,
-      actions: [
-        Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Expanded(
-              child: Center(
-                child: Stack(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 2, right: 6),
-                      child: InkWell(
-                        onTap: () {
-                          controller.navigateNotify();
-                        },
-                        child: Assets.svg.notification.svg(width: 20),
-                      ),
-                    ),
-                    Positioned(
-                      top: 0,
-                      right: 0,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(99),
-                          color: AppColors.alertPrimary,
-                        ),
-                        width: 6,
-                        height: 6,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(width: 20),
-      ],
-    );
-  }
-
-  Widget buildSearchBar() {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20),
-      padding: const EdgeInsets.symmetric(vertical: 11, horizontal: 18),
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: AppColors.grey[30] ?? AppColors.grey,
-          width: 1,
-        ),
-        borderRadius: BorderRadius.circular(999),
-        color: AppColors.grey[20],
-      ),
-      child: Row(
-        children: [
-          Icon(
-            Icons.search,
-            color: AppColors.grey[60],
-            size: 14,
-          ),
-          const SizedBox(width: 8),
-          Text(
-            'search_your_drink'.tr,
-            style: TextStyle(
-              color: AppColors.grey[50],
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ],
       ),
     );
   }
@@ -646,7 +568,6 @@ class HomePage extends GetView<HomeController> {
       ),
     );
   }
-
 
   Widget buildInfoContainer() {
     final style = TextStyle(

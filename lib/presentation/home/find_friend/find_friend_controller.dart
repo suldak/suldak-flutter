@@ -1,8 +1,17 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-class ProfileSettingController extends GetxController {
+import '../../../gen/assets.gen.dart';
+
+class FindFriendController extends GetxController {
 
   // Variable ▼ ------------------------------------------------------
+
+  final sampleProfile = [
+    Assets.sample.jerry,
+    Assets.sample.pepe,
+    Assets.sample.squidward,
+  ];
 
   // Functions ▼ ------------------------------------------------------
 

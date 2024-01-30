@@ -5,10 +5,11 @@ import 'package:get/get.dart';
 import 'package:suldak_suldak/widget/base_app_bar.dart';
 
 import '../../../gen/assets.gen.dart';
-import 'banner_controller.dart';
+import 'announcement_controller.dart';
 
-class BannerPage extends GetView<BannerController> {
-  const BannerPage({Key? key});
+class AnnouncementPage extends GetView<AnnouncementController> {
+
+  const AnnouncementPage({super.key});
 
   @override
   Widget build(BuildContext context) {

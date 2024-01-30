@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class BannerController extends GetxController {
+class AnnouncementController extends GetxController {
 
 // Variable ▼ ------------------------------------------------------
   RxSet<int> selectedIndexes = RxSet<int>();

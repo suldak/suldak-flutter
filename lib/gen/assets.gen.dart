@@ -80,12 +80,38 @@ class $AssetsPngGen {
   /// File path: assets/png/beer.png
   AssetGenImage get beer => const AssetGenImage('assets/png/beer.png');
 
+  /// File path: assets/png/beer_small.png
+  AssetGenImage get beerSmall =>
+      const AssetGenImage('assets/png/beer_small.png');
+
+  /// File path: assets/png/blue_heart.png
+  AssetGenImage get blueHeart =>
+      const AssetGenImage('assets/png/blue_heart.png');
+
+  /// File path: assets/png/calednar.png
+  AssetGenImage get calednar => const AssetGenImage('assets/png/calednar.png');
+
   /// File path: assets/png/certification.png
   AssetGenImage get certification =>
       const AssetGenImage('assets/png/certification.png');
 
+  /// File path: assets/png/check.png
+  AssetGenImage get check => const AssetGenImage('assets/png/check.png');
+
   /// File path: assets/png/cocktail.png
   AssetGenImage get cocktail => const AssetGenImage('assets/png/cocktail.png');
+
+  /// File path: assets/png/drum.png
+  AssetGenImage get drum => const AssetGenImage('assets/png/drum.png');
+
+  /// File path: assets/png/great.png
+  AssetGenImage get great => const AssetGenImage('assets/png/great.png');
+
+  /// File path: assets/png/group.png
+  AssetGenImage get group => const AssetGenImage('assets/png/group.png');
+
+  /// File path: assets/png/heart.png
+  AssetGenImage get heart => const AssetGenImage('assets/png/heart.png');
 
   /// File path: assets/png/logo.png
   AssetGenImage get logo => const AssetGenImage('assets/png/logo.png');
@@ -94,8 +120,20 @@ class $AssetsPngGen {
   AssetGenImage get nightBridge =>
       const AssetGenImage('assets/png/night_bridge.png');
 
+  /// File path: assets/png/notify.png
+  AssetGenImage get notify => const AssetGenImage('assets/png/notify.png');
+
   /// File path: assets/png/pot.png
   AssetGenImage get pot => const AssetGenImage('assets/png/pot.png');
+
+  /// File path: assets/png/siren.png
+  AssetGenImage get siren => const AssetGenImage('assets/png/siren.png');
+
+  /// File path: assets/png/speaker.png
+  AssetGenImage get speaker => const AssetGenImage('assets/png/speaker.png');
+
+  /// File path: assets/png/star.png
+  AssetGenImage get star => const AssetGenImage('assets/png/star.png');
 
   /// File path: assets/png/suldak_text_logo.png
   AssetGenImage get suldakTextLogo =>
@@ -108,14 +146,43 @@ class $AssetsPngGen {
   /// List of all assets
   List<AssetGenImage> get values => [
         beer,
+        beerSmall,
+        blueHeart,
+        calednar,
         certification,
+        check,
         cocktail,
+        drum,
+        great,
+        group,
+        heart,
         logo,
         nightBridge,
+        notify,
         pot,
+        siren,
+        speaker,
+        star,
         suldakTextLogo,
         thinkingFace
       ];
+}
+
+class $AssetsSampleGen {
+  const $AssetsSampleGen();
+
+  /// File path: assets/sample/jerry.jpeg
+  AssetGenImage get jerry => const AssetGenImage('assets/sample/jerry.jpeg');
+
+  /// File path: assets/sample/pepe.jpg
+  AssetGenImage get pepe => const AssetGenImage('assets/sample/pepe.jpg');
+
+  /// File path: assets/sample/squidward.jpg
+  AssetGenImage get squidward =>
+      const AssetGenImage('assets/sample/squidward.jpg');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [jerry, pepe, squidward];
 }
 
 class $AssetsSvgGen {
@@ -174,6 +241,12 @@ class $AssetsSvgGen {
   /// File path: assets/svg/kakao.svg
   SvgGenImage get kakao => const SvgGenImage('assets/svg/kakao.svg');
 
+  /// File path: assets/svg/location.svg
+  SvgGenImage get location => const SvgGenImage('assets/svg/location.svg');
+
+  /// File path: assets/svg/more.svg
+  SvgGenImage get more => const SvgGenImage('assets/svg/more.svg');
+
   /// File path: assets/svg/my_history.svg
   SvgGenImage get myHistory => const SvgGenImage('assets/svg/my_history.svg');
 
@@ -221,6 +294,8 @@ class $AssetsSvgGen {
         info,
         inviteIllustrator,
         kakao,
+        location,
+        more,
         myHistory,
         myHistoryTap,
         myPage,
@@ -238,6 +313,7 @@ class Assets {
   static const $AssetsFontGen font = $AssetsFontGen();
   static const $AssetsJpgGen jpg = $AssetsJpgGen();
   static const $AssetsPngGen png = $AssetsPngGen();
+  static const $AssetsSampleGen sample = $AssetsSampleGen();
   static const $AssetsSvgGen svg = $AssetsSvgGen();
 }
 

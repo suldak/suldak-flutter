@@ -13,7 +13,6 @@ import '../../model/user.dart';
 import '../../repository/auth_repo.dart';
 
 class LoginController extends GetxController {
-  static LoginController get to => Get.find();
 
   // Variable ▼ ------------------------------------------------------
 
