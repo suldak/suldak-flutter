@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../../../config/colors.dart';
 import '../../../repository/user_repo.dart';
@@ -26,6 +27,9 @@ class SocialStep1Controller extends GetxController {
   Rx<bool> isAdPushAgree = false.obs;
 
   // next 버튼 활성화 조건 변수 -------------------------
+  /// 다음 버튼 활성화 여부
+  Rx<bool> isNextAvailable = false.obs;
+
   /// 필수 체크박스 동의 여부
   Rx<bool> isAllReqAgree = false.obs;
 
@@ -150,6 +154,7 @@ class SocialStep1Controller extends GetxController {
     checkAgreementAllConfirmed();
   }
 
+  /// 닉네임 중복 확인 함수
   Future<bool> checkNickname() async {
     final res = await UserRepository.to
         .checkNickname(nickname: nickNameController.text);
@@ -163,6 +168,16 @@ class SocialStep1Controller extends GetxController {
     }
 
     return isAvailable;
+  }
+
+  void onTapNext() async {
+    if (!isNextAvailable.value) return;
+
+    final res = await checkNickname();
+    if (res) {
+      onComplete();
+      SignUpInfoInputController.to.onNextPage();
+    }
   }
 
   /// 사용자가 정보 입력을 마치고 다음페이지로 넘어가기 전 입력된 정보 저장(전달)
@@ -211,6 +226,10 @@ class SocialStep1Controller extends GetxController {
     return AppColors.grey[50] ?? AppColors.grey;
   }
 
+  void updateNextAvailable() {
+    isNextAvailable.value = isAllReqAgree.value && isNicknameAvailable.value;
+  }
+
   // Life Cycle ▼ ------------------------------------------------------
 
   @override
@@ -236,5 +255,8 @@ class SocialStep1Controller extends GetxController {
     if (userEmail != null && userEmail.isNotEmpty) {
       email.value = userEmail;
     }
+
+    isAllReqAgree.listen((_) => updateNextAvailable());
+    isNicknameAvailable.listen((_) => updateNextAvailable());
   }
 }

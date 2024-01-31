@@ -6,9 +6,8 @@ import '../../../gen/assets.gen.dart';
 import 'email_step_1_controller.dart';
 
 class EmailStep1Page extends GetView<EmailStep1Controller> {
-  const EmailStep1Page({required this.onNextPage, super.key});
 
-  final void Function() onNextPage;
+  const EmailStep1Page({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -92,6 +91,7 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
           ),
           const SizedBox(height: 12),
           TextField(
+            key: controller.emailKey,
             focusNode: controller.emailFocusNode,
             controller: controller.emailController,
             maxLines: 1,
@@ -127,6 +127,7 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
           ),
           const SizedBox(height: 12),
           TextField(
+            key: controller.nicknameKey,
             focusNode: controller.nicknameFocusNode,
             controller: controller.nicknameController,
             maxLines: 1,
@@ -162,6 +163,7 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
           ),
           const SizedBox(height: 12),
           TextField(
+            key: controller.passwordKey,
             focusNode: controller.passwordFocusNode,
             controller: controller.passwordController,
             maxLines: 1,
@@ -234,6 +236,7 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
   /// 비밀번호 확인 text input 위젯
   Widget buildPasswordCheckWidget() {
     return TextField(
+      key: controller.passwordCheckKey,
       focusNode: controller.passwordCheckFocusNode,
       maxLines: 1,
       style: controller.textStyle,
@@ -336,48 +339,28 @@ class EmailStep1Page extends GetView<EmailStep1Controller> {
   /// [isNicknameAvailable] 사용 가능 닉네임 여부 확인
   Widget buildNextButton() {
     return Obx(
-      () {
-        final isAllAgree = controller.isAllReqAgree.value;
-        final isNicknameAvailable = controller.isNicknameAvailable.value;
-        final isPasswordAvailable = controller.isPasswordAvailable.value;
-        final isPasswordCheckMatches = controller.isPasswordCheckMatches.value;
-
-        bool isActive = isAllAgree &&
-            isNicknameAvailable &&
-            isPasswordAvailable &&
-            isPasswordCheckMatches;
-
-        return GestureDetector(
-          onTap: isActive
-              ? () async {
-                  final res = await controller.checkNickname();
-                  if (res) {
-                    controller.onComplete();
-                    onNextPage.call();
-                  }
-                }
-              : null,
-          child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            decoration: BoxDecoration(
-              color: isActive
-                  ? AppColors.primary
-                  : AppColors.primary.withOpacity(0.5),
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Center(
-              child: Text(
-                'next'.tr,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                ),
+      () => GestureDetector(
+        onTap: controller.onTapNext,
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 20),
+          decoration: BoxDecoration(
+            color: controller.isNextAvailable.value
+                ? AppColors.primary
+                : AppColors.primary.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Center(
+            child: Text(
+              'next'.tr,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
               ),
             ),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

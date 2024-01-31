@@ -67,6 +67,12 @@ class Step3Controller extends GetxController {
     activeFinish.value = true;
   }
 
+  void onTapNext() {
+    if (!activeFinish.value) return;
+
+    SignUpInfoInputController.to.onNextPage();
+  }
+
   // Life Cycle ▼ ------------------------------------------------------
 
   @override

@@ -3,67 +3,69 @@ import 'package:get/get.dart';
 
 import '../../../config/colors.dart';
 import '../../../gen/assets.gen.dart';
+import '../sign_up_info_input_controller.dart';
 import 'social_step_1_controller.dart';
 
 class SocialStep1Page extends GetView<SocialStep1Controller> {
-  const SocialStep1Page({required this.onNextPage, super.key});
 
-  final void Function() onNextPage;
+  const SocialStep1Page({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Obx(
-        () => Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'step1_title'.tr,
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
+        () => SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'step1_title'.tr,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
-            ),
-            const SizedBox(height: 40),
-            buildAccountWidget(),
-            const SizedBox(height: 40),
-            buildNicknameWidget(),
-            const Expanded(child: SizedBox()),
-            buildCheckboxWidget(
-              text: 'agree_all'.tr,
-              showButton: false,
-              value: controller.isAllAgree.value,
-              onChanged: controller.onAllAgreeSelected,
-            ),
-            Divider(height: 1, thickness: 1, color: AppColors.grey[40]),
-            const SizedBox(height: 16),
-            buildCheckboxWidget(
-              text: 'agree_terms'.tr,
-              showButton: true,
-              value: controller.isTermAgree.value,
-              onChanged: controller.onTermSelected,
-              onPressButton: () => controller.showTermsInfoBottomSheet(''),
-            ),
-            buildCheckboxWidget(
-              text: 'agree_personal_info'.tr,
-              showButton: true,
-              value: controller.isPersonalInfoAgree.value,
-              onChanged: controller.onPersonalInfoSelected,
-              onPressButton: () => controller.showTermsInfoBottomSheet(''),
-            ),
-            buildCheckboxWidget(
-              text: 'agree_ad_push'.tr,
-              showButton: false,
-              value: controller.isAdPushAgree.value,
-              onChanged: controller.onAdPushSelected,
-              onPressButton: () => controller.showTermsInfoBottomSheet(''),
-            ),
-            const SizedBox(height: 34),
-            buildNextButton(),
-            const SizedBox(height: 42),
-          ],
+              const SizedBox(height: 40),
+              buildAccountWidget(),
+              const SizedBox(height: 40),
+              buildNicknameWidget(),
+              const SizedBox(height: 100),
+              buildCheckboxWidget(
+                text: 'agree_all'.tr,
+                showButton: false,
+                value: controller.isAllAgree.value,
+                onChanged: controller.onAllAgreeSelected,
+              ),
+              Divider(height: 1, thickness: 1, color: AppColors.grey[40]),
+              const SizedBox(height: 16),
+              buildCheckboxWidget(
+                text: 'agree_terms'.tr,
+                showButton: true,
+                value: controller.isTermAgree.value,
+                onChanged: controller.onTermSelected,
+                onPressButton: () => controller.showTermsInfoBottomSheet(''),
+              ),
+              buildCheckboxWidget(
+                text: 'agree_personal_info'.tr,
+                showButton: true,
+                value: controller.isPersonalInfoAgree.value,
+                onChanged: controller.onPersonalInfoSelected,
+                onPressButton: () => controller.showTermsInfoBottomSheet(''),
+              ),
+              buildCheckboxWidget(
+                text: 'agree_ad_push'.tr,
+                showButton: false,
+                value: controller.isAdPushAgree.value,
+                onChanged: controller.onAdPushSelected,
+                onPressButton: () => controller.showTermsInfoBottomSheet(''),
+              ),
+              const SizedBox(height: 34),
+              buildNextButton(),
+              const SizedBox(height: 42),
+            ],
+          ),
         ),
       ),
     );
@@ -226,43 +228,28 @@ class SocialStep1Page extends GetView<SocialStep1Controller> {
   /// [isNicknameAvailable] 사용 가능 닉네임 여부 확인
   Widget buildNextButton() {
     return Obx(
-      () {
-        final isAllAgree = controller.isAllReqAgree.value;
-        final isNicknameAvailable = controller.isNicknameAvailable.value;
-
-        bool isActive = isAllAgree && isNicknameAvailable;
-
-        return GestureDetector(
-          onTap: isActive
-              ? () async {
-                  final res = await controller.checkNickname();
-                  if (res) {
-                    controller.onComplete();
-                    onNextPage.call();
-                  }
-                }
-              : null,
-          child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 20),
-            decoration: BoxDecoration(
-              color: isActive
-                  ? AppColors.primary
-                  : AppColors.primary.withOpacity(0.5),
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Center(
-              child: Text(
-                'next'.tr,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                ),
+      () => GestureDetector(
+        onTap: controller.onTapNext,
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 20),
+          decoration: BoxDecoration(
+            color: controller.isNextAvailable.value
+                ? AppColors.primary
+                : AppColors.primary.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(15),
+          ),
+          child: Center(
+            child: Text(
+              'next'.tr,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
               ),
             ),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 }

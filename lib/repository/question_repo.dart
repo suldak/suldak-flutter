@@ -20,9 +20,8 @@ class QuestionRepository extends GetxService with API {
     final data = res.validateData(onServerException);
 
     if (data != null) {
-      return data['data']
-          ?.map((dataJson) => SignUpQuestion.fromJson(dataJson))
-          .toList();
+      return List.from(
+          data['data']?.map((dataJson) => SignUpQuestion.fromJson(dataJson)));
     }
     return null;
   }
