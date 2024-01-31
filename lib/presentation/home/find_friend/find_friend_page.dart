@@ -153,51 +153,54 @@ class FindFriendPage extends GetView<FindFriendController> {
   }
 
   Widget buildNewMeeting() {
-    return Container(
-      height: 88,
-      padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 20),
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Color(0xFF00A7EE), Color(0xFF2864FD)],
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-        )
-      ),
-      child: Row(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                '찾고 있는 이야기가 없다면?',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    '새로운 모임을 직접 만들어봐요!',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                    ),
+    return GestureDetector(
+      onTap: controller.navigateMakeFriend,
+      child: Container(
+        height: 88,
+        padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 20),
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFF00A7EE), Color(0xFF2864FD)],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+          )
+        ),
+        child: Row(
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '찾고 있는 이야기가 없다면?',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
                   ),
-                  Assets.png.drum.image(width: 14),
-                ],
-              ),
-            ],
-          ),
-          const Expanded(child: SizedBox()),
-          const Icon(
-            Icons.arrow_forward_ios_rounded,
-            color: Colors.white,
-          ),
-        ],
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      '새로운 모임을 직접 만들어봐요!',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Assets.png.drum.image(width: 14),
+                  ],
+                ),
+              ],
+            ),
+            const Expanded(child: SizedBox()),
+            const Icon(
+              Icons.arrow_forward_ios_rounded,
+              color: Colors.white,
+            ),
+          ],
+        ),
       ),
     );
   }

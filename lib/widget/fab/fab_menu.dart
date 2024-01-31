@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../config/colors.dart';
+import '../../config/routes.dart';
 import '../../gen/assets.gen.dart';
 
 class FabMenu extends StatelessWidget {
@@ -28,17 +30,20 @@ class FabMenu extends StatelessWidget {
           buildMenuItem(
             image: Assets.png.star.image(width: 16),
             title: '모임 만들기',
+            onTap: () => Get.toNamed(Routes.makeMeeting),
           ),
           const SizedBox(height: 22),
           buildMenuItem(
             image: Assets.png.blueHeart.image(width: 16),
             title: '내 모임',
+            onTap: () {},
           ),
           const SizedBox(height: 22),
           buildMenuItem(
             image: Assets.png.siren.image(width: 16),
             title: '신고/문의하기',
             desc: '카카오톡 문의하기로 연결됩니다',
+            onTap: () {},
           ),
         ],
       ),
@@ -48,38 +53,42 @@ class FabMenu extends StatelessWidget {
   Widget buildMenuItem({
     required Image image,
     required String title,
+    required void Function() onTap,
     String? desc,
   }) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        image,
-        const SizedBox(width: 6),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            if (desc != null) ...[
-              const SizedBox(width: 4),
+    return GestureDetector(
+      onTap: onTap,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          image,
+          const SizedBox(width: 6),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
               Text(
-                desc,
-                style: TextStyle(
-                  color: AppColors.grey[60],
-                  fontSize: 10,
+                title,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
                   fontWeight: FontWeight.w500,
                 ),
               ),
+              if (desc != null) ...[
+                const SizedBox(width: 4),
+                Text(
+                  desc,
+                  style: TextStyle(
+                    color: AppColors.grey[60],
+                    fontSize: 10,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
             ],
-          ],
-        ),
-      ],
+          ),
+        ],
+      ),
     );
   }
 }
