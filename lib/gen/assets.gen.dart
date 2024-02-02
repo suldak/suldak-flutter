@@ -197,6 +197,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/arrow_next.svg
   SvgGenImage get arrowNext => const SvgGenImage('assets/svg/arrow_next.svg');
 
+  /// File path: assets/svg/arrow_up.svg
+  SvgGenImage get arrowUp => const SvgGenImage('assets/svg/arrow_up.svg');
+
   /// File path: assets/svg/beer_friend_illustrator.svg
   SvgGenImage get beerFriendIllustrator =>
       const SvgGenImage('assets/svg/beer_friend_illustrator.svg');
@@ -214,6 +217,9 @@ class $AssetsSvgGen {
 
   /// File path: assets/svg/check.svg
   SvgGenImage get check => const SvgGenImage('assets/svg/check.svg');
+
+  /// File path: assets/svg/empty_list.svg
+  SvgGenImage get emptyList => const SvgGenImage('assets/svg/empty_list.svg');
 
   /// File path: assets/svg/find_friend.svg
   SvgGenImage get findFriend => const SvgGenImage('assets/svg/find_friend.svg');
@@ -273,8 +279,6 @@ class $AssetsSvgGen {
   /// File path: assets/svg/welcome.svg
   SvgGenImage get welcome => const SvgGenImage('assets/svg/welcome.svg');
 
-  SvgGenImage get arrowUp => const SvgGenImage('assets/svg/arrow_up.svg');
-
   /// List of all assets
   List<SvgGenImage> get values => [
         arrowBack,
@@ -286,6 +290,7 @@ class $AssetsSvgGen {
         birdIllustrator,
         camera,
         check,
+        emptyList,
         findFriend,
         findFriendTap,
         google,

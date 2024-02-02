@@ -130,7 +130,7 @@ class FindFriendPage extends GetView<FindFriendController> {
         scrollDirection: Axis.horizontal,
         itemCount: 10,
         itemBuilder: (context, index) {
-          return HorizontalMeetingCard(sampleList: controller.sampleProfile);
+          return HorizontalMeetingCard(list: controller.sampleProfile);
         },
       ),
     );

@@ -58,4 +58,7 @@ abstract class Routes {
 
   /// 모임 만들기 화면
   static const makeMeeting = '/make_meeting';
+
+  /// 나의 모임 화면
+  static const myMeeting = '/my_meeting';
 }

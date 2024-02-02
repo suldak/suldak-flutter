@@ -24,6 +24,9 @@ import '../presentation/login/login_page.dart';
 import '../presentation/make_meeting/make_meeting_main_controller.dart';
 import '../presentation/make_meeting/make_meeting_main_page.dart';
 import '../presentation/make_meeting/make_meeting_step_1/make_meeting_step_1_controller.dart';
+import '../presentation/my_meeting/all_meeting/all_meeting_controller.dart';
+import '../presentation/my_meeting/my_meeting_main_controller.dart';
+import '../presentation/my_meeting/my_meeting_main_page.dart';
 import '../presentation/notification_setting/notification_setting_controller.dart';
 import '../presentation/notification_setting/notification_setting_page.dart';
 import '../presentation/onboard/onboard_controller.dart';
@@ -156,6 +159,17 @@ mixin AppPagesGenerator on StatelessWidget {
           binding: BindingsBuilder(() {
             Get.put(MakeMeetingMainController());
             Get.lazyPut(() => MakeMeetingStep1Controller());
+            // Get.lazyPut(() => EmailStep1Controller());
+            // Get.lazyPut(() => Step2Controller());
+            // Get.lazyPut(() => Step3Controller());
+          }),
+        ),
+        GetPage(
+          name: Routes.myMeeting,
+          page: () => const MyMeetingMainPage(),
+          binding: BindingsBuilder(() {
+            Get.put(MyMeetingMainController());
+            Get.lazyPut(() => AllMeetingController());
             // Get.lazyPut(() => EmailStep1Controller());
             // Get.lazyPut(() => Step2Controller());
             // Get.lazyPut(() => Step3Controller());

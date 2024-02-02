@@ -6,9 +6,9 @@ import 'meeting_tag.dart';
 
 class HorizontalMeetingCard extends StatelessWidget {
 
-  const HorizontalMeetingCard({super.key, required this.sampleList});
+  const HorizontalMeetingCard({super.key, required this.list});
 
-  final List<AssetGenImage> sampleList;
+  final List<AssetGenImage> list;
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +80,7 @@ class HorizontalMeetingCard extends StatelessWidget {
                         child: buildProfileImage(
                           index,
                           10,
-                          sampleList[index % 3].image(fit: BoxFit.cover),
+                          list[index % 3].image(fit: BoxFit.cover),
                         ),
                       );
                     },

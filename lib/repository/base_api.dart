@@ -5,10 +5,12 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get.dart' as get_x;
 import 'package:get_storage/get_storage.dart';
 
 import '../config/keys.dart';
+import '../config/routes.dart';
+import '../global_controller.dart';
 import '../utils/toast.dart';
 
 part './api_interceptor.dart';
@@ -20,7 +22,7 @@ part './api_interceptor.dart';
 /// 이 경우 개별 repo 에서 콜백을 통해 예외처리를 진행한다.
 typedef OnServerException = void Function(String? msg, int? code);
 
-mixin API on GetxService {
+mixin API on get_x.GetxService {
   /// ## 모든 통신에서 기초가 되는 [Dio] instance
   static final _dio = Dio();
 
