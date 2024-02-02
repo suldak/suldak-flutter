@@ -44,7 +44,6 @@ class SignUpInfoInputController extends GetxController {
           if (isFirstPageVisited) {
             isFirstPageVisited = false;
           } else {
-            //todo call 2times when first
             Step3Controller.to.getQuestionList();
           }
           break;
@@ -178,12 +177,12 @@ class SignUpInfoInputController extends GetxController {
       final isFromSocial = Get.arguments['isSocial'];
       isSocial = isFromSocial;
       if (isFromSocial) {
-        pages.add(SocialStep1Page(onNextPage: onNextPage));
+        pages.add(const SocialStep1Page());
       } else {
-        pages.add(EmailStep1Page(onNextPage: onNextPage));
+        pages.add(const EmailStep1Page());
       }
     }
-    pages.add(Step2Page(onNextPage: onNextPage));
-    pages.add(Step3Page(onNextPage: onNextPage));
+    pages.add(const Step2Page());
+    pages.add(const Step3Page());
   }
 }

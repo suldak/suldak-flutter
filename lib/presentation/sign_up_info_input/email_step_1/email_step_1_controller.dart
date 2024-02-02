@@ -39,6 +39,9 @@ class EmailStep1Controller extends GetxController {
 
   // next 버튼 활성화 조건 변수 -------------------------
   // todo: 만약 error message가 null인지 확인하는 조건으로 사용가능하면 삭제 검토
+  /// 다음 버튼 활성화 여부
+  Rx<bool> isNextAvailable = false.obs;
+
   /// 필수 체크박스 동의 여부
   Rx<bool> isAllReqAgree = false.obs;
 
@@ -97,6 +100,18 @@ class EmailStep1Controller extends GetxController {
 
   /// 비밀번호 확인 입력창 focus node
   FocusNode passwordCheckFocusNode = FocusNode();
+
+  /// email text field 의 global key
+  GlobalKey emailKey = GlobalKey();
+
+  /// nickname text field 의 global key
+  GlobalKey nicknameKey = GlobalKey();
+
+  /// password text field 의 global key
+  GlobalKey passwordKey = GlobalKey();
+
+  /// password check text field 의 global key
+  GlobalKey passwordCheckKey = GlobalKey();
 
   /// 사용자 이메일 문자열
   String email = '';
@@ -223,6 +238,7 @@ class EmailStep1Controller extends GetxController {
     }
   }
 
+  /// 닉네임 중복 체크 함수
   Future<bool> checkNickname() async {
     final res = await UserRepository.to
         .checkNickname(nickname: nicknameController.text);
@@ -231,32 +247,47 @@ class EmailStep1Controller extends GetxController {
 
     if (!isAvailable) {
       nicknameErrorMessage.value = 'duplicated_nickname'.tr;
+      isNicknameAvailable.value = false;
     } else {
       nicknameErrorMessage.value = null;
+      isNicknameAvailable.value = true;
     }
 
     return isAvailable;
   }
 
+  /// 다음 버튼 클릭 이벤트 함수
+  void onTapNext() async {
+    if (!isNextAvailable.value) return;
+
+    await checkNickname();
+
+    onComplete();
+  }
+
   /// 사용자가 정보 입력을 마치고 다음페이지로 넘어가기 전 입력된 정보 저장(전달)
   void onComplete() {
     if (emailController.text.isEmpty || !isEmailAvailable.value) {
+      scrollTo(emailKey.currentContext!);
       emailFocusNode.requestFocus();
       return;
     }
 
     if (nicknameController.text.isEmpty || !isNicknameAvailable.value) {
+      scrollTo(nicknameKey.currentContext!);
       nicknameFocusNode.requestFocus();
       return;
     }
 
     if (passwordController.text.isEmpty || !isPasswordAvailable.value) {
+      scrollTo(passwordKey.currentContext!);
       passwordFocusNode.requestFocus();
       return;
     }
 
     if (password != passwordCheck) {
       passwordCheckFocusNode.requestFocus();
+      scrollTo(passwordCheckKey.currentContext!);
       return;
     }
 
@@ -264,6 +295,8 @@ class EmailStep1Controller extends GetxController {
     signUpInfoInputController.signupInfo.nickname = nickname;
     signUpInfoInputController.signupInfo.userPw = password;
     signUpInfoInputController.signupInfo.registration = 'SULDAKSULDAK';
+
+    SignUpInfoInputController.to.onNextPage();
   }
 
   /// 이메일 입력 위젯 색상
@@ -348,6 +381,23 @@ class EmailStep1Controller extends GetxController {
     ));
   }
 
+  /// isNextAvailable 값 업데이트 함수
+  void updateNextAvailable() {
+    isNextAvailable.value = isAllReqAgree.value &&
+        isEmailAvailable.value &&
+        isNicknameAvailable.value &&
+        isPasswordAvailable.value &&
+        isPasswordCheckMatches.value;
+  }
+
+  void scrollTo(BuildContext context) {
+    Scrollable.ensureVisible(
+        context,
+        duration: const Duration(milliseconds: 600),
+        alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtStart
+    );
+  }
+
   // Life Cycle ▼ ------------------------------------------------------
 
   @override
@@ -377,5 +427,10 @@ class EmailStep1Controller extends GetxController {
         isPasswordFocused.value = false;
       }
     });
+
+    isAllReqAgree.listen((_) => updateNextAvailable());
+    isNicknameAvailable.listen((_) => updateNextAvailable());
+    isPasswordAvailable.listen((_) => updateNextAvailable());
+    isPasswordCheckMatches.listen((_) => updateNextAvailable());
   }
 }

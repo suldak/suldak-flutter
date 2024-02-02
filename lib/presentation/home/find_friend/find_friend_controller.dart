@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
+import '../../../config/routes.dart';
 import '../../../gen/assets.gen.dart';
 
 class FindFriendController extends GetxController {
@@ -14,6 +14,10 @@ class FindFriendController extends GetxController {
   ];
 
   // Functions ▼ ------------------------------------------------------
+
+  void navigateMakeFriend() {
+    Get.toNamed(Routes.makeMeeting);
+  }
 
   // Life Cycle ▼ ------------------------------------------------------
 }

@@ -68,9 +68,13 @@ class Step2Controller extends GetxController {
     isYearSelectorFocused.value = false;
   }
 
+  /// 완료시 실행하는 이벤트 함수
   void onComplete() {
+    if (!isActive.value) return;
+
     signUpInfoInputController.signupInfo.gender = isMale.value ? 'M' : 'W';
     signUpInfoInputController.signupInfo.birthdayYear = selectedYear.value;
+    SignUpInfoInputController.to.onNextPage();
   }
 
   // Life Cycle ▼ ------------------------------------------------------

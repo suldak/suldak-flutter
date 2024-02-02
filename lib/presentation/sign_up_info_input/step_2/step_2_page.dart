@@ -6,9 +6,8 @@ import '../../../gen/assets.gen.dart';
 import 'step_2_controller.dart';
 
 class Step2Page extends GetView<Step2Controller> {
-  const Step2Page({required this.onNextPage, super.key});
 
-  final void Function() onNextPage;
+  const Step2Page({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -160,12 +159,7 @@ class Step2Page extends GetView<Step2Controller> {
   Widget buildNextButton() {
     return Obx(
       () => GestureDetector(
-        onTap: controller.isActive.value
-            ? () {
-                controller.onComplete();
-                onNextPage.call();
-              }
-            : null,
+        onTap: controller.onComplete,
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 20),
           decoration: BoxDecoration(

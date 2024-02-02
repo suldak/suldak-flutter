@@ -21,6 +21,9 @@ import '../presentation/identity_verification/identity_verification_controller.d
 import '../presentation/identity_verification/identity_verification_page.dart';
 import '../presentation/login/login_controller.dart';
 import '../presentation/login/login_page.dart';
+import '../presentation/make_meeting/make_meeting_main_controller.dart';
+import '../presentation/make_meeting/make_meeting_main_page.dart';
+import '../presentation/make_meeting/make_meeting_step_1/make_meeting_step_1_controller.dart';
 import '../presentation/notification_setting/notification_setting_controller.dart';
 import '../presentation/notification_setting/notification_setting_page.dart';
 import '../presentation/onboard/onboard_controller.dart';
@@ -146,6 +149,17 @@ mixin AppPagesGenerator on StatelessWidget {
           name: Routes.banner,
           page: () => const AnnouncementPage(),
           binding: BindingsBuilder.put(() => AnnouncementController()),
-        )
+        ),
+        GetPage(
+          name: Routes.makeMeeting,
+          page: () => const MakeMeetingMainPage(),
+          binding: BindingsBuilder(() {
+            Get.put(MakeMeetingMainController());
+            Get.lazyPut(() => MakeMeetingStep1Controller());
+            // Get.lazyPut(() => EmailStep1Controller());
+            // Get.lazyPut(() => Step2Controller());
+            // Get.lazyPut(() => Step3Controller());
+          }),
+        ),
       ];
 }

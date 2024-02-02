@@ -9,9 +9,8 @@ import '../../../widget/tag_widget.dart';
 import 'step_3_controller.dart';
 
 class Step3Page extends GetView<Step3Controller> {
-  const Step3Page({required this.onNextPage, super.key});
 
-  final void Function() onNextPage;
+  const Step3Page({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +21,7 @@ class Step3Page extends GetView<Step3Controller> {
         child: Column(
           children: [
             buildQuestionAnswerList(),
-            buildSaveButton(),
+            buildNextButton(),
             const SizedBox(height: 42),
           ],
         ),
@@ -131,15 +130,14 @@ class Step3Page extends GetView<Step3Controller> {
     );
   }
 
-  Widget buildSaveButton() {
+  Widget buildNextButton() {
     return Obx(() {
-      bool isActive = controller.activeFinish.value;
       return GestureDetector(
-        onTap: isActive ? onNextPage : null,
+        onTap: controller.onTapNext,
         child: Container(
           height: 60,
           decoration: BoxDecoration(
-            color: isActive
+            color: controller.activeFinish.value
                 ? AppColors.primary
                 : AppColors.primary.withOpacity(0.5),
             borderRadius: BorderRadius.circular(15),

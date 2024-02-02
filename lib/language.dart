@@ -140,6 +140,7 @@ class Languages extends Translations {
     'ad_partner_inquiry': '광고/제휴 문의',
     'inquire': '문의하기',
     'privacy_policy': '개인정보처리방침',
+    'back': '이전',
     // onboard
     'onboard_first1': '\n지금 나에게 ',
     'onboard_first2': '딱맞는 술',
@@ -302,6 +303,7 @@ class Languages extends Translations {
     'ad_partner_inquiry': 'Ad/Partnership',
     'inquire': 'Inquire',
     'privacy_policy': 'Privacy Policy',
+    'back': 'Back',
     // onboard
     'onboard_first1': '\nYou can now get the ',
     'onboard_first2': 'right drink\n',

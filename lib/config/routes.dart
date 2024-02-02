@@ -55,4 +55,7 @@ abstract class Routes {
 
   /// iamport pass 인증화면
   static const iamportPassVerify = '/iamport_pass_verify';
+
+  /// 모임 만들기 화면
+  static const makeMeeting = '/make_meeting';
 }
