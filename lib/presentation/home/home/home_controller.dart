@@ -43,18 +43,23 @@ class HomeController extends GetxController {
 
   RxList<LiquorTagModel> liquorTagList = <LiquorTagModel>[].obs;
 
+  RxString selectedCategory = '와인'.obs;
+
   // Life Cycle ▼ ------------------------------------------------------
 
   RxList<LiquorModel> userSearchLiquorList = <LiquorModel>[].obs;
 
   // Functions ▼ ------------------------------------------------------
-
-  void navigateNotify() async {
-    Get.toNamed(Routes.notify);
-  }
-
   void navigateBanner() async {
     Get.toNamed(Routes.banner);
+  }
+
+  void navigateCategory() async {
+    Get.toNamed(Routes.category);
+  }
+
+  void setSelectedCategory(String category) {
+    selectedCategory.value = category;
   }
 
   void getLiquorNameTagList() async {
@@ -74,6 +79,15 @@ class HomeController extends GetxController {
       // 이 코드에서는 고정된 갯수의 리스트만 받아오기 때문에 addAll을 사용하지 않는다
       userSearchLiquorList.value = liquorData.list;
     }
+  }
+
+  // text: controller.liquorTagList[index].name! 이거만 모아서 리턴
+  RxList<String> getCategoryList() {
+    RxList<String> categoryList = <String>[].obs;
+    for (int i = 0; i < liquorTagList.length; i++) {
+      categoryList.add(liquorTagList[i].name!);
+    }
+    return categoryList;
   }
 
   // Life Cycle ▼ ------------------------------------------------------
