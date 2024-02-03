@@ -100,16 +100,21 @@ class HomePage extends GetView<HomeController> {
   Widget buildDrinkCategory() {
     return SizedBox(
       height: 78,
-      child: Obx(
-        () => ListView.builder(
-          padding: const EdgeInsets.only(left: 20),
-          scrollDirection: Axis.horizontal,
-          itemCount: controller.liquorTagList.length,
-          itemBuilder: (context, index) {
-            return buildLiquorTagItem(
-                text: controller.liquorTagList[index].name!);
-          },
-        ),
+      child: ListView.builder(
+        padding: const EdgeInsets.only(left: 20),
+        scrollDirection: Axis.horizontal,
+        itemCount: controller.sampleCategoryList.length,
+        itemBuilder: (context, index) {
+          return InkWell(
+            onTap: () {
+              controller.navigateCategory();
+              controller.selectedCategory.value = controller.sampleCategoryList[index];
+            },
+            child: buildLiquorTagItem(
+              text: controller.sampleCategoryList[index],
+            ),
+          );
+        },
       ),
     );
   }
