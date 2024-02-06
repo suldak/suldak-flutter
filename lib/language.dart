@@ -151,6 +151,11 @@ class Languages extends Translations {
     'no_meetings_i_created': '내가 만든 모임이 없어요\n지금 모임을 만들어볼까요?',
     'no_confirmed_meeting': '참여할 모임이 없어요',
     'no_waiting_meeting': '승인을 기다리고 있는 모임이 없어요',
+    'meeting': '모임',
+    'meeting_confirm': '확정',
+    'meeting_wait': '대기중',
+    'meeting_refuse': '거절됨',
+    'meeting_cancel': '취소',
 
     // onboard
     'onboard_first1': '\n지금 나에게 ',
@@ -325,6 +330,11 @@ class Languages extends Translations {
     'no_meetings_i_created': 'No Meetings I Created\nWant to Create one?',
     'no_confirmed_meeting': 'No Meetings to Go',
     'no_waiting_meeting': 'No Meetings Waiting for confirm',
+    'meeting': 'Meeting',
+    'meeting_confirm': 'Confirmed',
+    'meeting_wait': 'Waiting',
+    'meeting_refuse': 'Refused',
+    'meeting_cancel': 'Canceled',
 
     // onboard
     'onboard_first1': '\nYou can now get the ',

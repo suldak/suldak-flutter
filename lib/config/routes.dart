@@ -61,4 +61,7 @@ abstract class Routes {
 
   /// 나의 모임 화면
   static const myMeeting = '/my_meeting';
+
+  /// 모임 리스트 화면
+  static const meetingList = '/meeting_list';
 }

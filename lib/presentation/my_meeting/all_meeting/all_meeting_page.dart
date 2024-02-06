@@ -17,16 +17,26 @@ class AllMeetingPage extends GetView<AllMeetingController> {
         children: [
           ...buildMeetingSection(
             title: 'meetings_i_created'.tr,
-            onTap: () {},
-            showAddButton: true,
+              onTap: () => controller.goMeetingListPage(
+                  title: 'meetings_i_created'.tr,
+                  meeting: controller.sampleProfile),
+              showAddButton: true,
+            emptyText: 'no_meetings_i_created'.tr
           ),
           ...buildMeetingSection(
             title: 'confirmed_meeting'.tr,
-            onTap: () {},
+            onTap: () => controller.goMeetingListPage(
+                title: 'confirmed_meeting'.tr,
+                meeting: controller.sampleProfile),
+            emptyText: 'no_confirmed_meeting'.tr,
+            isEmpty: true,
           ),
           ...buildMeetingSection(
-            title: 'confirmed_meeting'.tr,
-            onTap: () {},
+            title: 'waiting_meeting'.tr,
+            onTap: () => controller.goMeetingListPage(
+                title: 'waiting_meeting'.tr,
+                meeting: controller.sampleProfile),
+            emptyText: 'no_waiting_meeting'.tr,
             showDivider: false,
           ),
         ],
@@ -83,7 +93,7 @@ class AllMeetingPage extends GetView<AllMeetingController> {
     );
   }
 
-  Widget buildHorizontalMeetingListView() {
+  Widget buildVerticalMeetingListView() {
     return ListView.builder(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       physics: const NeverScrollableScrollPhysics(),
@@ -130,26 +140,33 @@ class AllMeetingPage extends GetView<AllMeetingController> {
     );
   }
 
-  Widget buildEmptyList({required String content}) {
-    return Column(
-      children: [
-        Assets.svg.emptyList.svg(width: 100),
-        const SizedBox(height: 14),
-        Text(
-          content,
-          style: TextStyle(
-            color: AppColors.grey[60],
-            fontSize: 16,
-            fontWeight: FontWeight.w500,
+  Widget buildEmptyList({required String text}) {
+    return Padding(
+      padding: const EdgeInsets.all(40),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Assets.svg.emptyList.svg(width: 100),
+          const SizedBox(height: 14),
+          Text(
+            text,
+            style: TextStyle(
+              color: AppColors.grey[60],
+              fontSize: 16,
+              fontWeight: FontWeight.w500,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
   List<Widget> buildMeetingSection({
     required String title,
     required void Function() onTap,
+    required String emptyText,
+    // sample option, check if list is empty in this function later...
+    bool isEmpty = false,
     bool showAddButton = false,
     bool showDivider = true,
   }) {
@@ -157,15 +174,20 @@ class AllMeetingPage extends GetView<AllMeetingController> {
       const SizedBox(height: 40),
       buildTitleRow(title: title, onTap: onTap),
       const SizedBox(height: 14),
-      buildHorizontalMeetingListView(),
     ];
 
-    if (showAddButton) {
-      list.add(const SizedBox(height: 4));
-      list.add(buildNewMeeting());
-    }
+    if (isEmpty) {
+      list.add(buildEmptyList(text: emptyText));
+    } else {
+      list.add(buildVerticalMeetingListView());
 
-    list.add(const SizedBox(height: 40));
+      if (showAddButton) {
+        list.add(const SizedBox(height: 4));
+        list.add(buildNewMeeting());
+      }
+
+      list.add(const SizedBox(height: 40));
+    }
 
     if (showDivider) {
       list.add(Container(height: 10, color: AppColors.grey[20]));

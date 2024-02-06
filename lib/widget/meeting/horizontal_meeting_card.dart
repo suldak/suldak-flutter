@@ -4,6 +4,7 @@ import '../../config/colors.dart';
 import '../../gen/assets.gen.dart';
 import 'meeting_tag.dart';
 
+/// ## Horizontal ListView 에서 사용하는 모임 카드 위젯
 class HorizontalMeetingCard extends StatelessWidget {
 
   const HorizontalMeetingCard({super.key, required this.list});

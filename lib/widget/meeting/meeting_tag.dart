@@ -8,7 +8,7 @@ class MeetingTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 6),
+      padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 6),
       margin: const EdgeInsets.only(right: 6),
       decoration: BoxDecoration(
         color: AppColors.primary[30],
@@ -22,7 +22,7 @@ class MeetingTag extends StatelessWidget {
           '오프라인',
           style: TextStyle(
             color: AppColors.primary[70],
-            fontSize: 12,
+            fontSize: 10,
             fontWeight: FontWeight.w500,
           ),
         ),

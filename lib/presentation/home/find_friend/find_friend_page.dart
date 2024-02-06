@@ -55,7 +55,7 @@ class FindFriendPage extends GetView<FindFriendController> {
             const SizedBox(height: 45),
             buildTitle(
               image: Assets.png.calednar.image(width: 20),
-              title: '모임 캘린채',
+              title: '모임 캘린더',
               onMore: () {},
             ),
             const SizedBox(height: 14),

@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
 
 import '../../config/colors.dart';
+import '../../config/const.dart';
 import '../../gen/assets.gen.dart';
+import 'meeting_status_chip.dart';
 import 'meeting_tag.dart';
 
+/// ## Vertical ListView 에서 사용하는 모임 카드 위젯
 class VerticalMeetingCard extends StatelessWidget {
 
-  const VerticalMeetingCard({super.key, required this.image});
+  const VerticalMeetingCard({
+    super.key,
+    required this.image,
+    this.status,
+  });
 
   final Image image;
+
+  final MeetingStatus? status;
 
   @override
   Widget build(BuildContext context) {
@@ -28,63 +37,73 @@ class VerticalMeetingCard extends StatelessWidget {
       ),
       padding: const EdgeInsets.all(18),
       margin: const EdgeInsets.only(bottom: 10),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      child: Stack(
         children: [
-          buildProfileImage(image),
-          const SizedBox(width: 14),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Row(
+              buildProfileImage(image),
+              const SizedBox(width: 14),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  MeetingTag(),
-                  MeetingTag(),
-                ],
-              ),
-              const SizedBox(height: 6),
-              Text(
-                '해리포터 얘기하실 분',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              const SizedBox(height: 6),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 1, horizontal: 3),
-                    child: Assets.svg.location.svg(width: 8),
+                  Row(
+                    children: [
+                      MeetingTag(),
+                      MeetingTag(),
+                    ],
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 6),
                   Text(
-                    '홍대입구역 | 8.11(금) 오후 7:00',
+                    '해리포터 얘기하실 분',
                     style: TextStyle(
-                      color: AppColors.grey[60],
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 2),
-              Row(
-                children: [
-                  Assets.png.group.image(width: 14),
-                  Text(
-                    '2/3',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: AppColors.primary,
+                      color: Colors.black,
+                      fontSize: 16,
                       fontWeight: FontWeight.w600,
                     ),
+                  ),
+                  const SizedBox(height: 6),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 1, horizontal: 3),
+                        child: Assets.svg.location.svg(width: 8),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        '홍대입구역 | 8.11(금) 오후 7:00',
+                        style: TextStyle(
+                          color: AppColors.grey[60],
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 2),
+                  Row(
+                    children: [
+                      Assets.png.group.image(width: 14),
+                      Text(
+                        '2/3',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: AppColors.primary,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
             ],
           ),
+          if (status != null)...[
+            Positioned(
+              right: 0,
+              child: MeetingStatusChip(status: status!),
+            ),
+          ],
         ],
       ),
     );
