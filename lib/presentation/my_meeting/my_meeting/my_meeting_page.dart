@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../config/colors.dart';
+import '../../../config/const.dart';
 import '../../../gen/assets.gen.dart';
+import '../../../widget/meeting/vertical_meeting_card.dart';
 import 'my_meeting_controller.dart';
 
 class MyMeetingPage extends GetView<MyMeetingController> {
@@ -13,8 +15,14 @@ class MyMeetingPage extends GetView<MyMeetingController> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          const SizedBox(height: 40),
-          buildTitleRow(title: 'confirmed_finished_meeting'.tr),
+          if (controller.sampleProfile.isNotEmpty)...[
+            const SizedBox(height: 40),
+            buildTitleRow(title: 'confirmed_finished_meeting'.tr),
+            const SizedBox(height: 14),
+            buildMyMeetingListView(),
+          ] else...[
+            buildEmptyList(),
+          ],
         ],
       ),
     );
@@ -35,22 +43,31 @@ class MyMeetingPage extends GetView<MyMeetingController> {
             ),
           ),
           const Expanded(child: SizedBox()),
-          GestureDetector(
-            onTap: () {},
+          PopupMenuButton<String>(
             child: Row(
               children: [
                 Assets.svg.order.svg(width: 12),
                 const SizedBox(width: 4),
-                Text(
-                  'order_new'.tr,
-                  style: TextStyle(
-                    color: AppColors.grey[60],
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
+                Obx(
+                  () => Text(
+                    controller.selectedSort.value == MyMeetingSort.latest
+                        ? 'order_new'.tr
+                        : 'order_old'.tr,
+                    style: TextStyle(
+                      color: AppColors.grey[60],
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
               ],
             ),
+            itemBuilder: (context) {
+              return [
+                buildPopupMenuItem(MyMeetingSort.latest),
+                buildPopupMenuItem(MyMeetingSort.earliest),
+              ];
+            },
           ),
           const SizedBox(width: 14),
           GestureDetector(
@@ -71,6 +88,61 @@ class MyMeetingPage extends GetView<MyMeetingController> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget buildMyMeetingListView() {
+    return ListView.builder(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      physics: const BouncingScrollPhysics(),
+      shrinkWrap: true,
+      clipBehavior: Clip.none,
+      scrollDirection: Axis.vertical,
+      itemCount: 24,
+      itemBuilder: (context, index) {
+        return VerticalMeetingCard(
+          image: controller.sampleProfile[index % 3].image(fit: BoxFit.cover),
+          status: MeetingStatus.values[index % MeetingStatus.values.length],
+        );
+      },
+    );
+  }
+
+  Widget buildEmptyList() {
+    return Column(
+      children: [
+        const SizedBox(height: 100),
+        Assets.svg.emptyList.svg(width: 100),
+        const SizedBox(height: 14),
+        Text(
+          'no_meeting_record'.tr,
+          style: TextStyle(
+            color: AppColors.grey[60],
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        const SizedBox(height: 100),
+      ],
+    );
+  }
+
+  PopupMenuItem<String> buildPopupMenuItem(MyMeetingSort sort) {
+    return PopupMenuItem<String>(
+      onTap: () => controller.onTapSortItem(sort),
+      child: Obx(
+        () {
+          final bool isSelected = controller.selectedSort.value == sort;
+          return Text(
+            sort == MyMeetingSort.latest ? 'order_new'.tr : 'order_old'.tr,
+            style: TextStyle(
+              color: isSelected ? Colors.black : AppColors.grey[60],
+              fontSize: 14,
+              fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
+            ),
+          );
+        },
       ),
     );
   }
