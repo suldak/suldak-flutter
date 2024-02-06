@@ -14,6 +14,8 @@ class MeetingStatusChip extends StatelessWidget {
     MeetingStatus.wait: AppColors.secondary[70],
     MeetingStatus.refuse: AppColors.grey,
     MeetingStatus.cancel: AppColors.grey[50],
+    MeetingStatus.finish: AppColors.grey[50],
+    MeetingStatus.waitFinish: AppColors.primary,
   };
 
   final Map<MeetingStatus, String> statusStringMap = {
@@ -21,6 +23,8 @@ class MeetingStatusChip extends StatelessWidget {
     MeetingStatus.wait: 'meeting_wait'.tr,
     MeetingStatus.refuse: 'meeting_refuse'.tr,
     MeetingStatus.cancel: 'meeting_cancel'.tr,
+    MeetingStatus.finish: 'meeting_finish'.tr,
+    MeetingStatus.waitFinish: 'meeting_wait_finish'.tr,
   };
 
   @override

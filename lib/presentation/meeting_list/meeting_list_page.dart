@@ -27,7 +27,7 @@ class MeetingListPage extends GetView<MeetingListController> {
           itemBuilder: (context, index) {
             return VerticalMeetingCard(
               image: controller.meetingList[index % 3].image(fit: BoxFit.cover),
-              status: MeetingStatus.values[index % 4],
+              status: MeetingStatus.values[index % MeetingStatus.values.length],
             );
           },
         ),

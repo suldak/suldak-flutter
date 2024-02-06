@@ -156,6 +156,10 @@ class Languages extends Translations {
     'meeting_wait': '대기중',
     'meeting_refuse': '거절됨',
     'meeting_cancel': '취소',
+    'order_new': '최신순',
+    'order_old': '오래된순',
+    'filter': '필터',
+    'confirmed_finished_meeting': '참여 완료 모임',
 
     // onboard
     'onboard_first1': '\n지금 나에게 ',
@@ -335,6 +339,12 @@ class Languages extends Translations {
     'meeting_wait': 'Waiting',
     'meeting_refuse': 'Refused',
     'meeting_cancel': 'Canceled',
+    'meeting_finish': 'Finished',
+    'meeting_wait_finish': 'Waiting Finish',
+    'order_new': 'Latest',
+    'order_old': 'Earliest',
+    'filter': 'Filter',
+    'confirmed_finished_meeting': 'Confirmed Finished Meeting',
 
     // onboard
     'onboard_first1': '\nYou can now get the ',

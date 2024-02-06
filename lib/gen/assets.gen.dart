@@ -221,6 +221,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/empty_list.svg
   SvgGenImage get emptyList => const SvgGenImage('assets/svg/empty_list.svg');
 
+  /// File path: assets/svg/filter.svg
+  SvgGenImage get filter => const SvgGenImage('assets/svg/filter.svg');
+
   /// File path: assets/svg/find_friend.svg
   SvgGenImage get findFriend => const SvgGenImage('assets/svg/find_friend.svg');
 
@@ -273,6 +276,9 @@ class $AssetsSvgGen {
   SvgGenImage get notification =>
       const SvgGenImage('assets/svg/notification.svg');
 
+  /// File path: assets/svg/order.svg
+  SvgGenImage get order => const SvgGenImage('assets/svg/order.svg');
+
   /// File path: assets/svg/user.svg
   SvgGenImage get user => const SvgGenImage('assets/svg/user.svg');
 
@@ -291,6 +297,7 @@ class $AssetsSvgGen {
         camera,
         check,
         emptyList,
+        filter,
         findFriend,
         findFriendTap,
         google,
@@ -307,6 +314,7 @@ class $AssetsSvgGen {
         myPageTap,
         naver,
         notification,
+        order,
         user,
         welcome
       ];

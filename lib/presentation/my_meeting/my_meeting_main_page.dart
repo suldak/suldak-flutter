@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../config/colors.dart';
 import '../../widget/base_app_bar.dart';
 import 'all_meeting/all_meeting_page.dart';
+import 'my_meeting/my_meeting_page.dart';
 import 'my_meeting_main_controller.dart';
 
 class MyMeetingMainPage extends GetView<MyMeetingMainController> {
@@ -56,7 +57,7 @@ class MyMeetingMainPage extends GetView<MyMeetingMainController> {
               controller: controller.tabController,
               children: [
                 AllMeetingPage(),
-                Center(child: Text('2')),
+                MyMeetingPage(),
               ],
             ),
           ),

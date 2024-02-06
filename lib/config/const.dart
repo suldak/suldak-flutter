@@ -3,5 +3,5 @@ enum SearchLiquorType {
 }
 
 enum MeetingStatus {
-  confirm, refuse, wait, cancel,
+  confirm, refuse, wait, cancel, finish, waitFinish
 }
