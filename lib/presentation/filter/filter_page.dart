@@ -23,30 +23,7 @@ class FilterPage extends GetView<FilterController> {
                   children: [
                     buildSection(
                       title: 'meeting_date'.tr,
-                      content: Obx(() {
-                        final closed = !controller.isCalendarExpanded.value &&
-                            controller.animationController.isDismissed;
-                        return AnimatedBuilder(
-                          animation: controller.animationController,
-                          builder: (_, __) {
-                            return buildDateSelector();
-                          },
-                          child: !controller.isCalendarExpanded.value
-                              ? null
-                              : Offstage(
-                            offstage: closed,
-                            child: TickerMode(
-                              enabled: !closed,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  buildDateSelector(),
-                                ],
-                              ),
-                            ),
-                          ),
-                        );
-                      }),
+                      content: buildAnimatedExpandWidget(),
                     ),
                     buildSection(
                       title: 'meeting_method'.tr,
@@ -172,66 +149,91 @@ class FilterPage extends GetView<FilterController> {
     );
   }
 
-  Widget buildDateSelector() {
+  Widget buildAnimatedExpandWidget() {
     return Obx(
       () {
+        final closed = !controller.isCalendarExpanded.value &&
+            controller.animationController.isDismissed;
         final isExpanded = controller.isCalendarExpanded.value;
-        return Column(
-          children: [
-            GestureDetector(
-              onTap: controller.onTapExpandCalendar,
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 11,
-                  horizontal: 16,
-                ),
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    width: 1,
-                    color: isExpanded ? AppColors.primary : AppColors.grey[40]!,
+        return AnimatedBuilder(
+          animation: controller.animationController,
+          builder: (_, __) {
+            return buildDateSelector(isExpanded);
+          },
+          child: !controller.isCalendarExpanded.value
+              ? null
+              : Offstage(
+                  offstage: closed,
+                  child: TickerMode(
+                    enabled: !closed,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        buildDateSelector(isExpanded),
+                      ],
+                    ),
                   ),
-                  color: isExpanded ? AppColors.primary[30] : Colors.white,
-                  borderRadius: BorderRadius.circular(10),
                 ),
-                child: Row(
-                  children: [
-                    Assets.svg.calendar.svg(
-                      width: 20,
-                      colorFilter: ColorFilter.mode(
-                        isExpanded ? AppColors.primary : AppColors.grey[40]!,
-                        BlendMode.srcIn,
-                      ),
-                    ),
-                    const Expanded(child: SizedBox()),
-                    Text(
-                      'entire_period'.tr,
-                      style: TextStyle(
-                        color: isExpanded ? AppColors.primary : Colors.black,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    const Expanded(child: SizedBox()),
-                    Icon(
-                      Icons.expand_more,
-                      color:
-                          isExpanded ? AppColors.primary : AppColors.grey[40],
-                      size: 24,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            ClipRRect(
-              child: Align(
-                alignment: Alignment.center,
-                heightFactor: controller.heightFactor.value,
-                child: SfDateRangePicker(),
-              ),
-            ),
-          ],
         );
       },
+    );
+  }
+
+  Widget buildDateSelector(bool isExpanded) {
+    return Column(
+      children: [
+        GestureDetector(
+          onTap: controller.onTapExpandCalendar,
+          child: Container(
+            padding: const EdgeInsets.symmetric(
+              vertical: 11,
+              horizontal: 16,
+            ),
+            decoration: BoxDecoration(
+              border: Border.all(
+                width: 1,
+                color: isExpanded ? AppColors.primary : AppColors.grey[40]!,
+              ),
+              color: isExpanded ? AppColors.primary[30] : Colors.white,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Row(
+              children: [
+                Assets.svg.calendar.svg(
+                  width: 20,
+                  colorFilter: ColorFilter.mode(
+                    isExpanded ? AppColors.primary : AppColors.grey[40]!,
+                    BlendMode.srcIn,
+                  ),
+                ),
+                const Expanded(child: SizedBox()),
+                Text(
+                  'entire_period'.tr,
+                  style: TextStyle(
+                    color: isExpanded ? AppColors.primary : Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                const Expanded(child: SizedBox()),
+                Icon(
+                  Icons.expand_more,
+                  color:
+                  isExpanded ? AppColors.primary : AppColors.grey[40],
+                  size: 24,
+                ),
+              ],
+            ),
+          ),
+        ),
+        ClipRRect(
+          child: Align(
+            alignment: Alignment.center,
+            heightFactor: controller.heightFactor.value,
+            child: SfDateRangePicker(),
+          ),
+        ),
+      ],
     );
   }
 }
