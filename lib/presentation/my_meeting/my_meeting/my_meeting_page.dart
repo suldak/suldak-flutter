@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../config/colors.dart';
 import '../../../config/const.dart';
+import '../../../config/routes.dart';
 import '../../../gen/assets.gen.dart';
 import '../../../widget/meeting/vertical_meeting_card.dart';
 import 'my_meeting_controller.dart';
@@ -20,6 +21,7 @@ class MyMeetingPage extends GetView<MyMeetingController> {
             buildTitleRow(title: 'confirmed_finished_meeting'.tr),
             const SizedBox(height: 14),
             buildMyMeetingListView(),
+            const SizedBox(height: 40),
           ] else...[
             buildEmptyList(),
           ],
@@ -71,7 +73,7 @@ class MyMeetingPage extends GetView<MyMeetingController> {
           ),
           const SizedBox(width: 14),
           GestureDetector(
-            onTap: () {},
+            onTap: () => Get.toNamed(Routes.filter),
             child: Row(
               children: [
                 Assets.svg.filter.svg(width: 12),

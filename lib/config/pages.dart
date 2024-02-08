@@ -11,6 +11,8 @@ import '../presentation/blocked_user/blocked_user_controller.dart';
 import '../presentation/blocked_user/blocked_user_page.dart';
 import '../presentation/email_login/email_login_controller.dart';
 import '../presentation/email_login/email_login_page.dart';
+import '../presentation/filter/filter_controller.dart';
+import '../presentation/filter/filter_page.dart';
 import '../presentation/home/find_friend/find_friend_controller.dart';
 import '../presentation/home/home/home_controller.dart';
 import '../presentation/home/home_main_controller.dart';
@@ -183,6 +185,11 @@ mixin AppPagesGenerator on StatelessWidget {
           name: Routes.meetingList,
           page: () => const MeetingListPage(),
           binding: BindingsBuilder.put(() => MeetingListController()),
+        ),
+        GetPage(
+          name: Routes.filter,
+          page: () => const FilterPage(),
+          binding: BindingsBuilder.put(() => FilterController()),
         ),
       ];
 }

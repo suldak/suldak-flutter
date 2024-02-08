@@ -64,4 +64,7 @@ abstract class Routes {
 
   /// 모임 리스트 화면
   static const meetingList = '/meeting_list';
+
+  /// 필터 화면
+  static const filter = '/filter';
 }

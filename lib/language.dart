@@ -163,6 +163,12 @@ class Languages extends Translations {
     'filter': '필터',
     'confirmed_finished_meeting': '참여 완료 모임',
     'no_meeting_record': '아직 모임 기록이 없어요',
+    'reset': '초기화',
+    'apply_filter': '필터 적용하기',
+    'meeting_date': '모임일',
+    'meeting_method': '모임 방식',
+    'meeting_category': '카테고리',
+    'entire_period': '전체기간',
 
     // onboard
     'onboard_first1': '\n지금 나에게 ',
@@ -349,6 +355,9 @@ class Languages extends Translations {
     'filter': 'Filter',
     'confirmed_finished_meeting': 'Confirmed Finished Meeting',
     'no_meeting_record': 'There\'s no meeting history',
+    'reset': 'Reset',
+    'apply_filter': 'Apply Filter',
+    'entire_period': 'Entire Period',
 
     // onboard
     'onboard_first1': '\nYou can now get the ',
@@ -363,6 +372,9 @@ class Languages extends Translations {
     'onboard_last1': '\n',
     'onboard_last2': 'What is my drinking taste?\n',
     'onboard_last3': 'Let\'s analyze it together!\n',
+    'meeting_date': 'Date',
+    'meeting_method': 'Method',
+    'meeting_category': 'Category',
 
     //banner
     'banner_title' : 'Notice',

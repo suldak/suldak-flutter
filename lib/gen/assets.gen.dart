@@ -212,6 +212,9 @@ class $AssetsSvgGen {
   SvgGenImage get birdIllustrator =>
       const SvgGenImage('assets/svg/bird_illustrator.svg');
 
+  /// File path: assets/svg/calendar.svg
+  SvgGenImage get calendar => const SvgGenImage('assets/svg/calendar.svg');
+
   /// File path: assets/svg/camera.svg
   SvgGenImage get camera => const SvgGenImage('assets/svg/camera.svg');
 
@@ -279,6 +282,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/order.svg
   SvgGenImage get order => const SvgGenImage('assets/svg/order.svg');
 
+  /// File path: assets/svg/reset.svg
+  SvgGenImage get reset => const SvgGenImage('assets/svg/reset.svg');
+
   /// File path: assets/svg/user.svg
   SvgGenImage get user => const SvgGenImage('assets/svg/user.svg');
 
@@ -294,6 +300,7 @@ class $AssetsSvgGen {
         beerFriendIllustrator,
         beerIllustrator,
         birdIllustrator,
+        calendar,
         camera,
         check,
         emptyList,
@@ -315,6 +322,7 @@ class $AssetsSvgGen {
         naver,
         notification,
         order,
+        reset,
         user,
         welcome
       ];

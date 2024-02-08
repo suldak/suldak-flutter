@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget with AppPagesGenerator {
   }
 
   ThemeData get _theme => ThemeData(
+    useMaterial3: false,
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.white,
