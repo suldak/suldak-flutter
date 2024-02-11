@@ -149,6 +149,8 @@ class FilterPage extends GetView<FilterController> {
     );
   }
 
+  // ExpansionTile을 참고해서 제작
+  // title 커스텀이 자유롭지 않아 내부의 애니메이션 작동 부분을 가져와 사용
   Widget buildAnimatedExpandWidget() {
     return Obx(
       () {
@@ -230,7 +232,15 @@ class FilterPage extends GetView<FilterController> {
           child: Align(
             alignment: Alignment.center,
             heightFactor: controller.heightFactor.value,
-            child: SfDateRangePicker(),
+            child: SfDateRangePicker(
+              selectionMode: DateRangePickerSelectionMode.range,
+              monthViewSettings: const DateRangePickerMonthViewSettings(
+                showTrailingAndLeadingDates: true,
+              ),
+              headerStyle: const DateRangePickerHeaderStyle(
+                textAlign: TextAlign.center,
+              ),
+            ),
           ),
         ),
       ],
