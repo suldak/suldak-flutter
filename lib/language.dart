@@ -169,6 +169,17 @@ class Languages extends Translations {
     'meeting_method': '모임 방식',
     'meeting_category': '카테고리',
     'entire_period': '전체기간',
+    'find_my_buddy': '마음 맞는 술친구 찾기',
+    'hot_story_now': '지금 인기있는 이야기',
+    'recommend': '추천합니다!',
+    'new_stories': '새로운 이야기',
+    'meeting_calendar': '모임 캘린더',
+    'if_no_meeting_looking_for': '찾고있는 이야기가 없다면?',
+    'create_your_own': '새로운 모임을 직접 만들어봐요!',
+    'create_meeting': '모임 만들기',
+    'my_meetings': '내 모임',
+    'report_inquiry': '신고/문의하기',
+    'redirect_to_kakao_inquirt': '카카오톡 문의하기로 연결됩니다',
 
     // onboard
     'onboard_first1': '\n지금 나에게 ',
@@ -358,6 +369,15 @@ class Languages extends Translations {
     'reset': 'Reset',
     'apply_filter': 'Apply Filter',
     'entire_period': 'Entire Period',
+    'find_my_buddy': 'Find My Buddy',
+    'hot_story_now': 'Hot Story Now',
+    'recommend': 'Recommend!',
+    'new_stories': 'New Stories',
+    'meeting_calendar': 'Meeting Calendar',
+    'create_meeting': 'Create Meeting',
+    'my_meetings': 'My Meetings',
+    'report_inquiry': 'Report/inquiry',
+    'redirect_to_kakao_inquirt': 'Redirect to kakaotalk inquiry',
 
     // onboard
     'onboard_first1': '\nYou can now get the ',
@@ -375,6 +395,8 @@ class Languages extends Translations {
     'meeting_date': 'Date',
     'meeting_method': 'Method',
     'meeting_category': 'Category',
+    'if_no_meeting_looking_for': 'If there\'s no stories looking for?',
+    'create_your_own': 'Create one by your own!',
 
     //banner
     'banner_title' : 'Notice',

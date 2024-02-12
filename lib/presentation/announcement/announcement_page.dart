@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -32,7 +31,7 @@ class AnnouncementPage extends GetView<AnnouncementController> {
 
   Widget bannerItem({required int index}) {
     return Obx(
-          () => Column(
+      () => Column(
         children: [
           ListTile(
             title: Text('공지사항 제목 - $index'),
@@ -47,8 +46,7 @@ class AnnouncementPage extends GetView<AnnouncementController> {
               controller.toggleImage(index);
             },
           ),
-          if (controller.showDetail(index))
-            bannerDetail(index: index),
+          if (controller.showDetail(index)) bannerDetail(index: index),
         ],
       ),
     );

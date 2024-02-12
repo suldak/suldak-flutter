@@ -55,7 +55,7 @@ class MyMeetingMainPage extends GetView<MyMeetingMainController> {
             child: TabBarView(
               physics: const NeverScrollableScrollPhysics(),
               controller: controller.tabController,
-              children: [
+              children: const [
                 AllMeetingPage(),
                 MyMeetingPage(),
               ],

@@ -21,11 +21,11 @@ class LoginPage extends GetView<LoginController> {
                 child: Stack(
                   alignment: Alignment.topCenter,
                   children: [
-                    const Positioned(
+                    Positioned(
                       top: 20,
                       child: Text(
-                        '마음 맞는 술친구 찾기',
-                        style: TextStyle(
+                        'find_my_buddy'.tr,
+                        style: const TextStyle(
                           color: AppColors.grey,
                           fontSize: 22,
                           fontWeight: FontWeight.w500,

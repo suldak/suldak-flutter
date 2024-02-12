@@ -28,21 +28,21 @@ class FindFriendPage extends GetView<FindFriendController> {
             const SizedBox(height: 26),
             buildTitle(
               image: Assets.png.heart.image(width: 20),
-              title: '지금 인기있는 이야기',
+              title: 'hot_story_now'.tr,
             ),
             const SizedBox(height: 14),
             buildHorizontalMeeting(),
             const SizedBox(height: 60),
             buildTitle(
               image: Assets.png.great.image(width: 20),
-              title: '추천합니다!',
+              title: 'recommend'.tr,
             ),
             const SizedBox(height: 14),
             buildHorizontalMeeting(),
             const SizedBox(height: 60),
             buildTitle(
               image: Assets.png.great.image(width: 20),
-              title: '새로운 이야기',
+              title: 'new_stories'.tr,
               onMore: () {},
             ),
             const SizedBox(height: 14),
@@ -55,7 +55,7 @@ class FindFriendPage extends GetView<FindFriendController> {
             const SizedBox(height: 45),
             buildTitle(
               image: Assets.png.calednar.image(width: 20),
-              title: '모임 캘린더',
+              title: 'meeting_calendar'.tr,
               onMore: () {},
             ),
             const SizedBox(height: 14),
@@ -96,7 +96,7 @@ class FindFriendPage extends GetView<FindFriendController> {
               child: Row(
                 children: [
                   Text(
-                    '더보기',
+                    'more'.tr,
                     style: TextStyle(
                       color: AppColors.grey[50],
                       fontSize: 16,
@@ -171,8 +171,8 @@ class FindFriendPage extends GetView<FindFriendController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '찾고 있는 이야기가 없다면?',
-                  style: TextStyle(
+                  'if_no_meeting_looking_for'.tr,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
@@ -182,8 +182,8 @@ class FindFriendPage extends GetView<FindFriendController> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      '새로운 모임을 직접 만들어봐요!',
-                      style: TextStyle(
+                      'create_your_own'.tr,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 14,
                         fontWeight: FontWeight.w600,

@@ -30,20 +30,20 @@ class FabMenu extends StatelessWidget {
         children: [
           buildMenuItem(
             image: Assets.png.star.image(width: 16),
-            title: '모임 만들기',
+            title: 'create_meeting'.tr,
             onTap: () => Get.toNamed(Routes.makeMeeting),
           ),
           const SizedBox(height: 22),
           buildMenuItem(
             image: Assets.png.blueHeart.image(width: 16),
-            title: '내 모임',
+            title: 'my_meetings'.tr,
             onTap: () => Get.toNamed(Routes.myMeeting),
           ),
           const SizedBox(height: 22),
           buildMenuItem(
             image: Assets.png.siren.image(width: 16),
-            title: '신고/문의하기',
-            desc: '카카오톡 문의하기로 연결됩니다',
+            title: 'report_inquiry'.tr,
+            desc: 'redirect_to_kakao_inquirt'.tr,
             onTap: () {},
           ),
         ],
