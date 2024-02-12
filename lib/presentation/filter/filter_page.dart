@@ -4,6 +4,7 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import '../../config/colors.dart';
 import '../../gen/assets.gen.dart';
+import '../../widget/tag_widget.dart';
 import 'filter_controller.dart';
 
 class FilterPage extends GetView<FilterController> {
@@ -27,11 +28,11 @@ class FilterPage extends GetView<FilterController> {
                     ),
                     buildSection(
                       title: 'meeting_method'.tr,
-                      content: Text('sample'),
+                      content: buildTagListWrap(),
                     ),
                     buildSection(
                       title: 'meeting_category'.tr,
-                      content: Text('sample'),
+                      content: buildTagListWrap(),
                     ),
                   ],
                 ),
@@ -128,6 +129,7 @@ class FilterPage extends GetView<FilterController> {
 
   Widget buildSection({required String title, required Widget content}) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -218,11 +220,14 @@ class FilterPage extends GetView<FilterController> {
                   ),
                 ),
                 const Expanded(child: SizedBox()),
-                Icon(
-                  Icons.expand_more,
-                  color:
-                  isExpanded ? AppColors.primary : AppColors.grey[40],
-                  size: 24,
+                RotationTransition(
+                  turns: Tween(begin: 0.0, end: 0.5)
+                      .animate(controller.animationController),
+                  child: Icon(
+                    Icons.expand_more,
+                    color: isExpanded ? AppColors.primary : AppColors.grey[40],
+                    size: 24,
+                  ),
                 ),
               ],
             ),
@@ -240,10 +245,38 @@ class FilterPage extends GetView<FilterController> {
               headerStyle: const DateRangePickerHeaderStyle(
                 textAlign: TextAlign.center,
               ),
+              selectionTextStyle: const TextStyle(color: Colors.white),
+              selectionColor: AppColors.primary,
+              rangeSelectionColor: AppColors.primary[40],
             ),
           ),
         ),
       ],
+    );
+  }
+
+  Widget buildTagListWrap() {
+    return Wrap(
+      runSpacing: 12,
+      alignment: WrapAlignment.start,
+      children: buildTagList(),
+    );
+  }
+
+  List<Widget> buildTagList() {
+    return List.generate(
+      12,
+      (index) {
+        final tag = controller.sampleTagList[index];
+        return Obx(
+          () => TagWidget(
+            tag: tag,
+            isSelected: controller.sampleSelection[index],
+            onTap: (isSelected) =>
+                controller.sampleSelection[index] = isSelected,
+          ),
+        );
+      },
     );
   }
 }
