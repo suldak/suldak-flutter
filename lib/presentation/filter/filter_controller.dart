@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class FilterController extends GetxController
     with GetSingleTickerProviderStateMixin {
@@ -28,6 +30,8 @@ class FilterController extends GetxController
   late AnimationController animationController;
   late Animation<double> heightFactor;
 
+  Rx<PickerDateRange?> dateSelection = Rx<PickerDateRange?>(null);
+
   // Functions ▼ ------------------------------------------------------
 
   void onTapExpandCalendar() {
@@ -38,6 +42,23 @@ class FilterController extends GetxController
     } else {
       animationController.reverse();
     }
+  }
+
+  void onChangeDateSelection(PickerDateRange selection) {
+    dateSelection.value = selection;
+  }
+
+  String getCalendarString() {
+    if (dateSelection.value == null) return 'entire_period'.tr;
+
+    if (dateSelection.value!.endDate == null) {
+      return DateFormat('yyyy.MM.dd').format(dateSelection.value!.startDate!);
+    }
+
+    final startDate = DateFormat('yyyy.MM.dd').format(dateSelection.value!.startDate!);
+    final endDate = DateFormat('yyyy.MM.dd').format(dateSelection.value!.endDate!);
+
+    return '$startDate ~ $endDate';
   }
 
   // Life Cycle ▼ ------------------------------------------------------

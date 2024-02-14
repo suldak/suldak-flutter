@@ -211,12 +211,14 @@ class FilterPage extends GetView<FilterController> {
                   ),
                 ),
                 const Expanded(child: SizedBox()),
-                Text(
-                  'entire_period'.tr,
-                  style: TextStyle(
-                    color: isExpanded ? AppColors.primary : Colors.black,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
+                Obx(
+                  () => Text(
+                    controller.getCalendarString(),
+                    style: TextStyle(
+                      color: isExpanded ? AppColors.primary : Colors.black,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ),
                 const Expanded(child: SizedBox()),
@@ -248,6 +250,8 @@ class FilterPage extends GetView<FilterController> {
               selectionTextStyle: const TextStyle(color: Colors.white),
               selectionColor: AppColors.primary,
               rangeSelectionColor: AppColors.primary[40],
+              onSelectionChanged: (selection) =>
+                  controller.onChangeDateSelection(selection.value),
             ),
           ),
         ),

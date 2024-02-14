@@ -57,7 +57,7 @@ class AllMeetingController extends GetxController {
     final List<Meeting>? hostMeetingList = await MeetingRepo.to.getUserMeetingList(
       userPk: userPk,
       isLatest: true,
-      confirm: MeetingGuestType.confirm.serverCode,
+      confirm: MeetingGuestType.confirm,
     );
 
     if (hostMeetingList != null) {
@@ -70,7 +70,7 @@ class AllMeetingController extends GetxController {
     final List<Meeting>? hostMeetingList = await MeetingRepo.to.getUserMeetingList(
       userPk: userPk,
       isLatest: true,
-      confirm: MeetingGuestType.wait.serverCode,
+      confirm: MeetingGuestType.wait,
     );
 
     if (hostMeetingList != null) {

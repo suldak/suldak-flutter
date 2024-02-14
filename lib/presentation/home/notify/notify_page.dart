@@ -74,7 +74,7 @@ class NotifyPage extends GetView<NotifyController> {
             ),
           ),
           subtitle: Text(
-            DateFormat().formatDate(item.date),
+            CustomDateFormat().formatDate(item.date),
             style: const TextStyle(
               fontFamily: 'Pretendard-Regular',
               fontSize: 12,

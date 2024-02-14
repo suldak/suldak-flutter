@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 
+import '../config/const.dart';
 import '../model/meeting.dart';
 import 'base_api.dart';
 
@@ -44,14 +45,18 @@ class MeetingRepo extends GetxService with API {
   Future<List<Meeting>?> getUserMeetingList({
     required int userPk,
     required bool isLatest,
-    String? confirm, // COMPLETE, COMPLETE_WAIT, CONFIRM, REFUSE, WAIT
+    MeetingGuestType? confirm,
+    MeetingType? type,
+    int? partTagKey,
+    String? searchStartTime,
+    String? searchEndTime,
     OnServerException? onServerException,
   }) async {
     final res = await get(
         '$_getUserMeetingEp/$userPk',
         data: {
           'isLatest': isLatest,
-          'confirm': confirm,
+          'confirm': confirm?.serverCode,
         }
     );
     final data = res.validateData(onServerException);
