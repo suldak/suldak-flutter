@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../config/const.dart';
+import '../../model/meeting.dart';
 import '../../widget/base_app_bar.dart';
 import '../../widget/meeting/vertical_meeting_card.dart';
 import 'meeting_list_controller.dart';
@@ -23,11 +24,11 @@ class MeetingListPage extends GetView<MeetingListController> {
           shrinkWrap: true,
           clipBehavior: Clip.none,
           scrollDirection: Axis.vertical,
-          itemCount: controller.meetingList.length * 4,
+          itemCount: sampleMeetingList.length * 4,
           itemBuilder: (context, index) {
+            final Meeting meeting = sampleMeetingList[index % sampleMeetingList.length];
             return VerticalMeetingCard(
-              image: controller.meetingList[index % 3].image(fit: BoxFit.cover),
-              status: MeetingStatus.values[index % MeetingStatus.values.length],
+              meeting: meeting,
             );
           },
         ),

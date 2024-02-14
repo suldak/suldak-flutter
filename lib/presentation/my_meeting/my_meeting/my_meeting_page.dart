@@ -5,6 +5,7 @@ import '../../../config/colors.dart';
 import '../../../config/const.dart';
 import '../../../config/routes.dart';
 import '../../../gen/assets.gen.dart';
+import '../../../model/meeting.dart';
 import '../../../widget/meeting/vertical_meeting_card.dart';
 import 'my_meeting_controller.dart';
 
@@ -103,9 +104,9 @@ class MyMeetingPage extends GetView<MyMeetingController> {
       scrollDirection: Axis.vertical,
       itemCount: 24,
       itemBuilder: (context, index) {
+        final Meeting meeting = sampleMeetingList[index % sampleMeetingList.length];
         return VerticalMeetingCard(
-          image: controller.sampleProfile[index % 3].image(fit: BoxFit.cover),
-          status: MeetingStatus.values[index % MeetingStatus.values.length],
+          meeting: meeting,
         );
       },
     );

@@ -8,6 +8,7 @@ import 'global_controller.dart';
 import 'language.dart';
 import 'repository/auth_repo.dart';
 import 'repository/liquor_repo.dart';
+import 'repository/meeting_repo.dart';
 import 'repository/tag_repo.dart';
 import 'repository/block_repo.dart';
 import 'repository/question_repo.dart';
@@ -79,5 +80,6 @@ class _InitialBinding extends Bindings {
     Get.lazyPut(() => UserRepository());
     Get.lazyPut(() => BlockRepository());
     Get.lazyPut(() => LiquorRepository());
+    Get.lazyPut(() => MeetingRepo());
   }
 }

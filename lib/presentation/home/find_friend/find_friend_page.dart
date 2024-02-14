@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import 'package:suldak_suldak/widget/horizontal_date_picker.dart';
 
 import '../../../config/colors.dart';
+import '../../../config/const.dart';
 import '../../../gen/assets.gen.dart';
+import '../../../model/meeting.dart';
 import '../../../widget/logo_app_bar.dart';
 import '../../../widget/meeting/horizontal_meeting_card.dart';
 import '../../../widget/meeting/vertical_meeting_card.dart';
@@ -145,8 +147,9 @@ class FindFriendPage extends GetView<FindFriendController> {
       scrollDirection: Axis.vertical,
       itemCount: length,
       itemBuilder: (context, index) {
+        final Meeting meeting = sampleMeetingList[index];
         return VerticalMeetingCard(
-          image: controller.sampleProfile[index % (length-1)].image(fit: BoxFit.cover),
+          meeting: meeting,
         );
       },
     );

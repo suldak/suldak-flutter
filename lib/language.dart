@@ -180,6 +180,8 @@ class Languages extends Translations {
     'my_meetings': '내 모임',
     'report_inquiry': '신고/문의하기',
     'redirect_to_kakao_inquirt': '카카오톡 문의하기로 연결됩니다',
+    'offline': '오프라인',
+    'online': '온라인',
 
     // onboard
     'onboard_first1': '\n지금 나에게 ',
@@ -378,6 +380,8 @@ class Languages extends Translations {
     'my_meetings': 'My Meetings',
     'report_inquiry': 'Report/inquiry',
     'redirect_to_kakao_inquirt': 'Redirect to kakaotalk inquiry',
+    'offline': 'Offline',
+    'online': 'Online',
 
     // onboard
     'onboard_first1': '\nYou can now get the ',

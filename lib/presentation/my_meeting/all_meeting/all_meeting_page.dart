@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 
 import '../../../config/colors.dart';
 import '../../../gen/assets.gen.dart';
+import '../../../model/meeting.dart';
 import '../../../widget/meeting/vertical_meeting_card.dart';
 import 'all_meeting_controller.dart';
 
@@ -13,33 +14,40 @@ class AllMeetingPage extends GetView<AllMeetingController> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        children: [
-          ...buildMeetingSection(
-            title: 'meetings_i_created'.tr,
+      child: Obx(
+        () => Column(
+          children: [
+            ...buildMeetingSection(
+              title: 'meetings_i_created'.tr,
               onTap: () => controller.goMeetingListPage(
-                  title: 'meetings_i_created'.tr,
-                  meeting: controller.sampleProfile),
+                title: 'meetings_i_created'.tr,
+                meeting: controller.sampleProfile,
+              ),
+              meetingList: controller.myHostMeetingList,
               showAddButton: true,
-            emptyText: 'no_meetings_i_created'.tr
-          ),
-          ...buildMeetingSection(
-            title: 'confirmed_meeting'.tr,
-            onTap: () => controller.goMeetingListPage(
+              emptyText: 'no_meetings_i_created'.tr,
+            ),
+            ...buildMeetingSection(
+              title: 'confirmed_meeting'.tr,
+              onTap: () => controller.goMeetingListPage(
                 title: 'confirmed_meeting'.tr,
-                meeting: controller.sampleProfile),
-            emptyText: 'no_confirmed_meeting'.tr,
-            isEmpty: true,
-          ),
-          ...buildMeetingSection(
-            title: 'waiting_meeting'.tr,
-            onTap: () => controller.goMeetingListPage(
+                meeting: controller.sampleProfile,
+              ),
+              meetingList: controller.myConfirmMeetingList,
+              emptyText: 'no_confirmed_meeting'.tr,
+            ),
+            ...buildMeetingSection(
+              title: 'waiting_meeting'.tr,
+              onTap: () => controller.goMeetingListPage(
                 title: 'waiting_meeting'.tr,
-                meeting: controller.sampleProfile),
-            emptyText: 'no_waiting_meeting'.tr,
-            showDivider: false,
-          ),
-        ],
+                meeting: controller.sampleProfile,
+              ),
+              meetingList: controller.myWaitMeetingList,
+              emptyText: 'no_waiting_meeting'.tr,
+              showDivider: false,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -93,17 +101,21 @@ class AllMeetingPage extends GetView<AllMeetingController> {
     );
   }
 
-  Widget buildVerticalMeetingListView() {
+  Widget buildVerticalMeetingListView(List<Meeting> meetingList) {
     return ListView.builder(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       clipBehavior: Clip.none,
       scrollDirection: Axis.vertical,
-      itemCount: 4,
+      itemCount: meetingList.length > 4
+          ? 4
+          : meetingList.length,
       itemBuilder: (context, index) {
+        final Meeting meeting = meetingList[index];
         return VerticalMeetingCard(
-          image: controller.sampleProfile[index % 3].image(fit: BoxFit.cover),
+          // image: controller.sampleProfile[index % 3].image(fit: BoxFit.cover),
+          meeting: meeting,
         );
       },
     );
@@ -165,8 +177,7 @@ class AllMeetingPage extends GetView<AllMeetingController> {
     required String title,
     required void Function() onTap,
     required String emptyText,
-    // sample option, check if list is empty in this function later...
-    bool isEmpty = false,
+    required RxList<Meeting> meetingList,
     bool showAddButton = false,
     bool showDivider = true,
   }) {
@@ -176,10 +187,10 @@ class AllMeetingPage extends GetView<AllMeetingController> {
       const SizedBox(height: 14),
     ];
 
-    if (isEmpty) {
+    if (meetingList.isEmpty) {
       list.add(buildEmptyList(text: emptyText));
     } else {
-      list.add(buildVerticalMeetingListView());
+      list.add(buildVerticalMeetingListView(meetingList));
 
       if (showAddButton) {
         list.add(const SizedBox(height: 4));

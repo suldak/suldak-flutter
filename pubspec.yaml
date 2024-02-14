@@ -53,6 +53,7 @@ dependencies:
   iamport_flutter: ^0.10.12
   intl: ^0.19.0
   syncfusion_flutter_calendar: ^24.2.4
+  cached_network_image: ^3.3.1
 
   # firebase
   firebase_core: ^2.17.0

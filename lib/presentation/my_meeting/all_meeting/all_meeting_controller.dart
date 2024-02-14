@@ -1,7 +1,11 @@
 import 'package:get/get.dart';
 
+import '../../../config/const.dart';
 import '../../../config/routes.dart';
 import '../../../gen/assets.gen.dart';
+import '../../../global_controller.dart';
+import '../../../model/meeting.dart';
+import '../../../repository/meeting_repo.dart';
 
 class AllMeetingController extends GetxController {
 
@@ -12,6 +16,10 @@ class AllMeetingController extends GetxController {
     Assets.sample.pepe,
     Assets.sample.squidward,
   ];
+
+  RxList<Meeting> myHostMeetingList = <Meeting>[].obs;
+  RxList<Meeting> myConfirmMeetingList = <Meeting>[].obs;
+  RxList<Meeting> myWaitMeetingList = <Meeting>[].obs;
 
   // Functions ▼ ------------------------------------------------------
 
@@ -30,5 +38,52 @@ class AllMeetingController extends GetxController {
     );
   }
 
+  void getMyHostMeeting() async {
+    final int userPk = GlobalController.to.userData!.id!;
+    final List<Meeting>? hostMeetingList = await MeetingRepo.to.getUserHostMeetingList(
+      userPk: userPk,
+      isLatest: true,
+    );
+
+    if (hostMeetingList != null) {
+      myHostMeetingList.value = hostMeetingList;
+    }
+  }
+
+  void getConfirmedMeeting() async {
+    final int userPk = GlobalController.to.userData!.id!;
+    final List<Meeting>? hostMeetingList = await MeetingRepo.to.getUserMeetingList(
+      userPk: userPk,
+      isLatest: true,
+      confirm: MeetingGuestType.confirm.serverCode,
+    );
+
+    if (hostMeetingList != null) {
+      myConfirmMeetingList.value = hostMeetingList;
+    }
+  }
+
+  void getWaitingMeeting() async {
+    final int userPk = GlobalController.to.userData!.id!;
+    final List<Meeting>? hostMeetingList = await MeetingRepo.to.getUserMeetingList(
+      userPk: userPk,
+      isLatest: true,
+      confirm: MeetingGuestType.wait.serverCode,
+    );
+
+    if (hostMeetingList != null) {
+      myWaitMeetingList.value = hostMeetingList;
+    }
+  }
+
   // Life Cycle ▼ ------------------------------------------------------
+
+  @override
+  void onInit() {
+    super.onInit();
+
+    getMyHostMeeting();
+    getConfirmedMeeting();
+    getWaitingMeeting();
+  }
 }

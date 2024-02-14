@@ -133,4 +133,12 @@ class GlobalController extends GetxController {
     isLogin.value = false;
     userData = null;
   }
+
+  @override
+  void onInit() {
+    super.onInit();
+
+    final storage = GetStorage();
+    userData = UserModel.fromJson(jsonDecode(storage.read(Keys.userData)));
+  }
 }

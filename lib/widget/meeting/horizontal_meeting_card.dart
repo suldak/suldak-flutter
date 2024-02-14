@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:suldak_suldak/config/const.dart';
 
 import '../../config/colors.dart';
 import '../../gen/assets.gen.dart';
@@ -34,8 +35,8 @@ class HorizontalMeetingCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              MeetingTag(),
-              MeetingTag(),
+              MeetingTag(name: '', type: MeetingType.onLine,),
+              MeetingTag(name: 'sample'),
             ],
           ),
           const SizedBox(height: 14),
