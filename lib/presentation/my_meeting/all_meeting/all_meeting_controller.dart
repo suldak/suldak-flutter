@@ -27,12 +27,14 @@ class AllMeetingController extends GetxController {
   // - 이미 이전 페이지에서 보여질 리스트를 로딩했기 때문에 이렇게 작성했음
   void goMeetingListPage({
     required String title,
-    required List<AssetGenImage> meeting,
+    required String emptyText,
+    required List<Meeting> meeting,
   }) {
     Get.toNamed(
       Routes.meetingList,
       arguments: {
         'title': title,
+        'emptyText': emptyText,
         'meeting': meeting,
       },
     );

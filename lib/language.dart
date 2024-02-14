@@ -182,6 +182,7 @@ class Languages extends Translations {
     'redirect_to_kakao_inquirt': '카카오톡 문의하기로 연결됩니다',
     'offline': '오프라인',
     'online': '온라인',
+    'empty': '비어있습니다',
 
     // onboard
     'onboard_first1': '\n지금 나에게 ',
@@ -382,6 +383,7 @@ class Languages extends Translations {
     'redirect_to_kakao_inquirt': 'Redirect to kakaotalk inquiry',
     'offline': 'Offline',
     'online': 'Online',
+    'empty': 'Empty',
 
     // onboard
     'onboard_first1': '\nYou can now get the ',

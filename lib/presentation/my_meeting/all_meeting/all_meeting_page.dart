@@ -19,29 +19,17 @@ class AllMeetingPage extends GetView<AllMeetingController> {
           children: [
             ...buildMeetingSection(
               title: 'meetings_i_created'.tr,
-              onTap: () => controller.goMeetingListPage(
-                title: 'meetings_i_created'.tr,
-                meeting: controller.sampleProfile,
-              ),
               meetingList: controller.myHostMeetingList,
               showAddButton: true,
               emptyText: 'no_meetings_i_created'.tr,
             ),
             ...buildMeetingSection(
               title: 'confirmed_meeting'.tr,
-              onTap: () => controller.goMeetingListPage(
-                title: 'confirmed_meeting'.tr,
-                meeting: controller.sampleProfile,
-              ),
               meetingList: controller.myConfirmMeetingList,
               emptyText: 'no_confirmed_meeting'.tr,
             ),
             ...buildMeetingSection(
               title: 'waiting_meeting'.tr,
-              onTap: () => controller.goMeetingListPage(
-                title: 'waiting_meeting'.tr,
-                meeting: controller.sampleProfile,
-              ),
               meetingList: controller.myWaitMeetingList,
               emptyText: 'no_waiting_meeting'.tr,
               showDivider: false,
@@ -175,7 +163,6 @@ class AllMeetingPage extends GetView<AllMeetingController> {
 
   List<Widget> buildMeetingSection({
     required String title,
-    required void Function() onTap,
     required String emptyText,
     required RxList<Meeting> meetingList,
     bool showAddButton = false,
@@ -183,7 +170,14 @@ class AllMeetingPage extends GetView<AllMeetingController> {
   }) {
     final List<Widget> list = [
       const SizedBox(height: 40),
-      buildTitleRow(title: title, onTap: onTap),
+      buildTitleRow(
+        title: title,
+        onTap: () => controller.goMeetingListPage(
+          title: title,
+          emptyText: emptyText,
+          meeting: meetingList,
+        ),
+      ),
       const SizedBox(height: 14),
     ];
 
