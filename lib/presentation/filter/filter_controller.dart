@@ -3,6 +3,10 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
+import '../../config/const.dart';
+import '../../model/tag.dart';
+import '../../repository/tag_repo.dart';
+
 class FilterController extends GetxController
     with GetSingleTickerProviderStateMixin {
   // Variable ▼ ------------------------------------------------------
@@ -25,12 +29,14 @@ class FilterController extends GetxController
     '기타',
   ];
 
-  late RxList<bool> sampleSelection;
-
   late AnimationController animationController;
   late Animation<double> heightFactor;
 
   Rx<PickerDateRange?> dateSelection = Rx<PickerDateRange?>(null);
+
+  RxList<TagModel> meetingTagList = <TagModel>[].obs;
+  RxList<int> selectedTagKeyList = <int>[].obs;
+  Rx<MeetingType?> selectedMeetingType = Rx(null);
 
   // Functions ▼ ------------------------------------------------------
 
@@ -48,6 +54,14 @@ class FilterController extends GetxController
     dateSelection.value = selection;
   }
 
+  void onTapMeetingTagWidget(TagModel tag) {
+    if (selectedTagKeyList.contains(tag.id)) {
+      selectedTagKeyList.remove(tag.id);
+    } else {
+      selectedTagKeyList.add(tag.id!);
+    }
+  }
+
   String getCalendarString() {
     if (dateSelection.value == null) return 'entire_period'.tr;
 
@@ -61,16 +75,23 @@ class FilterController extends GetxController
     return '$startDate ~ $endDate';
   }
 
+  void getMeetingTagList() async {
+    final List<TagModel>? tagList = await TagRepository.to.getMeetingTagList();
+
+    if (tagList != null) {
+      meetingTagList.value = tagList;
+    }
+  }
+
   // Life Cycle ▼ ------------------------------------------------------
 
   @override
   void onInit() {
     super.onInit();
 
-    sampleSelection =
-        RxList.generate(sampleTagList.length, (index) => false);
-
     animationController = AnimationController(duration: const Duration(milliseconds: 200), vsync: this);
     heightFactor = animationController.drive(CurveTween(curve: Curves.easeIn));
+
+    getMeetingTagList();
   }
 }

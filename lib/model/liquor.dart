@@ -1,23 +1,23 @@
-import 'liquor_tag.dart';
+import 'tag.dart';
 
 class LiquorModel {
   String? createdAt;
   int? detailAbv;
   String? detailExplanation;
-  LiquorTagModel? drinkingCapacity;
+  TagModel? drinkingCapacity;
   int? id;
-  LiquorTagModel? liquorAbv;
-  LiquorTagModel? liquorDetail;
-  List<LiquorTagModel>? liquorMaterial;
-  LiquorTagModel? liquorName;
+  TagModel? liquorAbv;
+  TagModel? liquorDetail;
+  List<TagModel>? liquorMaterial;
+  TagModel? liquorName;
   String? liquorRecipe;
-  List<LiquorTagModel>? liquorSell;
-  List<LiquorTagModel>? liquorSnackRes;
+  List<TagModel>? liquorSell;
+  List<TagModel>? liquorSnackRes;
   String? modifiedAt;
   String? name;
-  List<LiquorTagModel>? stateType;
+  List<TagModel>? stateType;
   String? summaryExplanation;
-  List<LiquorTagModel>? tasteType;
+  List<TagModel>? tasteType;
 
   LiquorModel({
     this.createdAt,
@@ -44,18 +44,18 @@ class LiquorModel {
     detailAbv = json['detailAbv']?.toInt();
     detailExplanation = json['detailExplanation']?.toString();
     drinkingCapacity = (json['drinkingCapacityDto'] != null)
-        ? LiquorTagModel.fromJson(json['drinkingCapacityDto'])
+        ? TagModel.fromJson(json['drinkingCapacityDto'])
         : null;
     id = json['id']?.toInt();
     liquorAbv = (json['liquorAbvDto'] != null)
-        ? LiquorTagModel.fromJson(json['liquorAbvDto'])
+        ? TagModel.fromJson(json['liquorAbvDto'])
         : null;
     liquorDetail = (json['liquorDetailDto'] != null)
-        ? LiquorTagModel.fromJson(json['liquorDetailDto'])
+        ? TagModel.fromJson(json['liquorDetailDto'])
         : null;
     liquorMaterial = jsonToLiquorTag(json['liquorMaterialDtos']);
     liquorName = (json['liquorNameDto'] != null)
-        ? LiquorTagModel.fromJson(json['liquorNameDto'])
+        ? TagModel.fromJson(json['liquorNameDto'])
         : null;
     liquorRecipe = json['liquorRecipe']?.toString();
     liquorSell = jsonToLiquorTag(json['liquorSellDtos']);
@@ -89,9 +89,9 @@ class LiquorModel {
     return data;
   }
 
-  List<LiquorTagModel> jsonToLiquorTag(dynamic data) {
+  List<TagModel> jsonToLiquorTag(dynamic data) {
     return data
-        ?.map<LiquorTagModel>((e) => LiquorTagModel.fromJson(e))
+        ?.map<TagModel>((e) => TagModel.fromJson(e))
         .toList();
   }
 

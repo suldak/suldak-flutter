@@ -7,7 +7,7 @@ import '../../../gen/assets.gen.dart';
 import '../../../global_controller.dart';
 import '../../../model/liquor.dart';
 import '../../../model/liquor_list.dart';
-import '../../../model/liquor_tag.dart';
+import '../../../model/tag.dart';
 import '../../../repository/liquor_repo.dart';
 import '../../../repository/tag_repo.dart';
 
@@ -41,7 +41,7 @@ class HomeController extends GetxController {
     '무알콜',
   ];
 
-  RxList<LiquorTagModel> liquorTagList = <LiquorTagModel>[].obs;
+  RxList<TagModel> liquorTagList = <TagModel>[].obs;
 
   // Life Cycle ▼ ------------------------------------------------------
 
@@ -58,7 +58,7 @@ class HomeController extends GetxController {
   }
 
   void getLiquorNameTagList() async {
-    final List<LiquorTagModel>? tagData =
+    final List<TagModel>? tagData =
         await TagRepository.to.getLiquorNameTagList();
     if (tagData != null) {
       liquorTagList.value = tagData;

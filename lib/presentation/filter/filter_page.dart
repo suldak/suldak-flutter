@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import '../../config/colors.dart';
+import '../../config/const.dart';
 import '../../gen/assets.gen.dart';
+import '../../model/tag.dart';
 import '../../widget/tag_widget.dart';
 import 'filter_controller.dart';
 
@@ -28,7 +30,8 @@ class FilterPage extends GetView<FilterController> {
                     ),
                     buildSection(
                       title: 'meeting_method'.tr,
-                      content: buildTagListWrap(),
+                      // content: buildTagListWrap(),
+                      content: buildTypeTagListWrap(),
                     ),
                     buildSection(
                       title: 'meeting_category'.tr,
@@ -260,27 +263,55 @@ class FilterPage extends GetView<FilterController> {
   }
 
   Widget buildTagListWrap() {
-    return Wrap(
-      runSpacing: 12,
-      alignment: WrapAlignment.start,
-      children: buildTagList(),
+    return Obx(
+      () => Wrap(
+        runSpacing: 12,
+        alignment: WrapAlignment.start,
+        children: buildTagList(controller.meetingTagList),
+      ),
     );
   }
 
-  List<Widget> buildTagList() {
+  List<Widget> buildTagList(List<TagModel> tagList) {
     return List.generate(
-      12,
+      tagList.length,
       (index) {
-        final tag = controller.sampleTagList[index];
+        final tag = tagList[index];
         return Obx(
           () => TagWidget(
-            tag: tag,
-            isSelected: controller.sampleSelection[index],
-            onTap: (isSelected) =>
-                controller.sampleSelection[index] = isSelected,
+            tag: tag.name ?? 'no data',
+            isSelected: controller.selectedTagKeyList.contains(tag.id),
+            onTap: (_) => controller.onTapMeetingTagWidget(tag),
           ),
         );
       },
+    );
+  }
+
+  Widget buildTypeTagListWrap() {
+    return Wrap(
+      runSpacing: 12,
+      alignment: WrapAlignment.start,
+      children: [
+        Obx(
+          () => TagWidget(
+            tag: 'online'.tr,
+            isSelected:
+                controller.selectedMeetingType.value == MeetingType.onLine,
+            onTap: (_) =>
+                controller.selectedMeetingType.value = MeetingType.onLine,
+          ),
+        ),
+        Obx(
+          () => TagWidget(
+            tag: 'offline'.tr,
+            isSelected:
+                controller.selectedMeetingType.value == MeetingType.offLine,
+            onTap: (_) =>
+                controller.selectedMeetingType.value = MeetingType.offLine,
+          ),
+        ),
+      ],
     );
   }
 }

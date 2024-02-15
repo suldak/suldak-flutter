@@ -1,11 +1,11 @@
-class LiquorTagModel {
+class TagModel {
   int? id;
   String? name;
 
-  LiquorTagModel._({this.id, this.name});
+  TagModel._({this.id, this.name});
 
-  factory LiquorTagModel.fromJson(Map json) {
-    return LiquorTagModel._(
+  factory TagModel.fromJson(Map json) {
+    return TagModel._(
       id: json['id'].toInt(),
       name: json['name'].toString(),
     );
