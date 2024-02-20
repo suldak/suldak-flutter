@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 
 import '../../../config/colors.dart';
 import '../../../config/const.dart';
-import '../../../config/routes.dart';
 import '../../../gen/assets.gen.dart';
 import '../../../model/meeting.dart';
 import '../../../widget/meeting/vertical_meeting_card.dart';
@@ -74,7 +73,7 @@ class MyMeetingPage extends GetView<MyMeetingController> {
           ),
           const SizedBox(width: 14),
           GestureDetector(
-            onTap: () => Get.toNamed(Routes.filter),
+            onTap: () => controller.onTapFilter(),
             child: Row(
               children: [
                 Assets.svg.filter.svg(width: 12),

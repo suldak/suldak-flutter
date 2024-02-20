@@ -89,7 +89,7 @@ class FilterPage extends GetView<FilterController> {
 
   Widget buildResetButton() {
     return GestureDetector(
-      onTap: () {},
+      onTap: () => controller.onTapResetButton(),
       child: Row(
         children: [
           Assets.svg.reset.svg(width: 20),
@@ -109,7 +109,7 @@ class FilterPage extends GetView<FilterController> {
 
   Widget buildApplyButton() {
     return GestureDetector(
-      onTap: () {},
+      onTap: () => controller.onTapApplyFilter(),
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 20),
         decoration: BoxDecoration(

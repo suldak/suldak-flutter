@@ -139,6 +139,10 @@ class GlobalController extends GetxController {
     super.onInit();
 
     final storage = GetStorage();
-    userData = UserModel.fromJson(jsonDecode(storage.read(Keys.userData)));
+    final userKey = storage.read(Keys.userData);
+
+    if (userKey != null) {
+      userData = UserModel.fromJson(jsonDecode(userKey));
+    }
   }
 }

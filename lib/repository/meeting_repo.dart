@@ -47,7 +47,7 @@ class MeetingRepo extends GetxService with API {
     required bool isLatest,
     MeetingGuestType? confirm,
     MeetingType? type,
-    int? partTagKey,
+    String? partTagKey,
     String? searchStartTime,
     String? searchEndTime,
     OnServerException? onServerException,

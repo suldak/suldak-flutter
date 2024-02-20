@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import '../../../config/const.dart';
+import '../../../config/routes.dart';
 import '../../../gen/assets.gen.dart';
 import '../../../global_controller.dart';
 import '../../../model/meeting.dart';
@@ -41,6 +43,28 @@ class MyMeetingController extends GetxController {
       confirm: MeetingGuestType.complete,
       // type: ,
       // partTagKey: ,
+      // searchStartTime: ,
+      // searchEndTime: ,
+    );
+
+    if (meeting != null) {
+
+    }
+  }
+
+  void onTapFilter() async {
+    final filterRes = await Get.toNamed(Routes.filter);
+    final PickerDateRange dateSelection = filterRes['dateSelection'];
+    final List<int> selectedTagList = filterRes['selectedTagList'];
+    final MeetingType selectedMeetingType = filterRes['selectedMeetingType'];
+
+    final int userPk = GlobalController.to.userData!.id!;
+    final List<Meeting>? meeting = await MeetingRepo.to.getUserMeetingList(
+      userPk: userPk,
+      isLatest: selectedSort.value == MyMeetingSort.latest ? true: false,
+      confirm: MeetingGuestType.complete,
+      type: selectedMeetingType,
+      partTagKey: selectedTagList.join(','),
       // searchStartTime: ,
       // searchEndTime: ,
     );

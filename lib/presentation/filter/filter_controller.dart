@@ -83,6 +83,20 @@ class FilterController extends GetxController
     }
   }
 
+  void onTapResetButton() {
+    dateSelection.value = null;
+    selectedTagKeyList = <int>[].obs;
+    selectedMeetingType.value = null;
+  }
+
+  void onTapApplyFilter() {
+    Get.back(result: {
+      'dateSelection': dateSelection.value,
+      'selectedTagList': selectedTagKeyList,
+      'selectedMeetingType': selectedMeetingType.value,
+    });
+  }
+
   // Life Cycle ▼ ------------------------------------------------------
 
   @override
