@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import '../../../config/const.dart';
@@ -41,10 +42,6 @@ class MyMeetingController extends GetxController {
       userPk: userPk,
       isLatest: selectedSort.value == MyMeetingSort.latest ? true: false,
       confirm: MeetingGuestType.complete,
-      // type: ,
-      // partTagKey: ,
-      // searchStartTime: ,
-      // searchEndTime: ,
     );
 
     if (meeting != null) {
@@ -54,9 +51,17 @@ class MyMeetingController extends GetxController {
 
   void onTapFilter() async {
     final filterRes = await Get.toNamed(Routes.filter);
-    final PickerDateRange dateSelection = filterRes['dateSelection'];
-    final List<int> selectedTagList = filterRes['selectedTagList'];
-    final MeetingType selectedMeetingType = filterRes['selectedMeetingType'];
+    final PickerDateRange? dateSelection = filterRes['dateSelection'];
+    final List<int>? selectedTagList = filterRes['selectedTagList'];
+    final MeetingType? selectedMeetingType = filterRes['selectedMeetingType'];
+
+    final DateFormat dateFormat = DateFormat();
+    final String? startDate = dateSelection?.startDate != null
+        ? dateFormat.format(dateSelection!.startDate!)
+        : null;
+    final String? endDate = dateSelection?.endDate != null
+        ? dateFormat.format(dateSelection!.endDate!)
+        : startDate;
 
     final int userPk = GlobalController.to.userData!.id!;
     final List<Meeting>? meeting = await MeetingRepo.to.getUserMeetingList(
@@ -64,9 +69,9 @@ class MyMeetingController extends GetxController {
       isLatest: selectedSort.value == MyMeetingSort.latest ? true: false,
       confirm: MeetingGuestType.complete,
       type: selectedMeetingType,
-      partTagKey: selectedTagList.join(','),
-      // searchStartTime: ,
-      // searchEndTime: ,
+      partTagKey: selectedTagList,
+      searchStartTime: startDate,
+      searchEndTime: endDate,
     );
 
     if (meeting != null) {

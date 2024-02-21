@@ -47,7 +47,7 @@ class MeetingRepo extends GetxService with API {
     required bool isLatest,
     MeetingGuestType? confirm,
     MeetingType? type,
-    String? partTagKey,
+    List<int>? partTagKey,
     String? searchStartTime,
     String? searchEndTime,
     OnServerException? onServerException,
@@ -55,8 +55,12 @@ class MeetingRepo extends GetxService with API {
     final res = await get(
         '$_getUserMeetingEp/$userPk',
         data: {
-          'isLatest': isLatest,
+          'sortBool': isLatest,
           'confirm': confirm?.serverCode,
+          'partyTagKey': partTagKey?.join(','),
+          'partyType': type?.serverCode,
+          'searchStartTime': searchStartTime,
+          'searchEndTime': searchEndTime,
         }
     );
     final data = res.validateData(onServerException);
