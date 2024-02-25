@@ -43,8 +43,6 @@ class HomeController extends GetxController {
 
   RxList<LiquorTagModel> liquorTagList = <LiquorTagModel>[].obs;
 
-  RxString selectedCategory = '와인'.obs;
-
   // Life Cycle ▼ ------------------------------------------------------
 
   RxList<LiquorModel> userSearchLiquorList = <LiquorModel>[].obs;
@@ -54,12 +52,8 @@ class HomeController extends GetxController {
     Get.toNamed(Routes.banner);
   }
 
-  void navigateCategory() async {
-    Get.toNamed(Routes.category);
-  }
-
-  void setSelectedCategory(String category) {
-    selectedCategory.value = category;
+  void navigateCategory(String selectedName) async {
+    Get.toNamed(Routes.category, arguments: selectedName);
   }
 
   void getLiquorNameTagList() async {
