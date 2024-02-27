@@ -19,10 +19,11 @@ class CategoryPage extends GetView<CategoryController> {
   Widget build(BuildContext context) {
     List<String> categoryList = controller.sampleCategoryList;
     String selectedItem = Get.arguments;
+    controller.selectedCategory.value = selectedItem;
 
-    return Scaffold(
+    return Obx(() => Scaffold(
       appBar: BaseAppBar(
-        title: selectedItem,
+        title: controller.selectedCategory.value,
         showBackButton: true,
         showBottomLine: true,
       ),
@@ -32,8 +33,8 @@ class CategoryPage extends GetView<CategoryController> {
         children: [
           /// 카테고리 리스트
           Padding(
-            padding: const EdgeInsets.fromLTRB(12, 0, 12, 0),
-            child: _buildCategoryList(categoryList, selectedItem),
+            padding: const EdgeInsets.fromLTRB(12, 14, 12, 0),
+            child: _buildCategoryList(categoryList),
           ),
           const SizedBox(height: 12),
           /// 카테고리 개수
@@ -45,42 +46,31 @@ class CategoryPage extends GetView<CategoryController> {
           const RecommendDrinks(paddingSize: 20)
         ],
       ),
+    )
     );
   }
 
 
-  Widget _buildCategoryList(List<String> categoryList, String selectedItem) {
+  Widget _buildCategoryList(List<String> categoryList) {
     return Container(
-      height: 50,
+      height: 33,
+      padding: const EdgeInsets.symmetric(horizontal: 0),
       child: ListView.builder(
         itemCount: categoryList.length,
         itemBuilder: (context, index) {
           final categoryText = categoryList[index];
-          return _buildCategoryItem(categoryText, index, selectedItem);
+          return Obx(() => TagWidget(
+            tag: categoryText,
+            isSelected: categoryText == controller.selectedCategory.value,
+            onTap: (isSelected) {
+              controller.selectedCategory.value = categoryText;
+            },
+          ));
         },
         scrollDirection: Axis.horizontal,
       ),
     );
   }
-
-  Widget _buildCategoryItem(String categoryText, int index, String selectedItem) {
-    return Container(
-      height: 50,
-      padding: const EdgeInsets.symmetric(horizontal: 0),
-      child: Row(
-        children: [
-          TagWidget(
-            tag: categoryText,
-            isSelected: selectedItem == categoryText,
-            onTap: (isSelected) {
-              controller.selectedCategory.value = categoryText;
-            },
-          ),
-        ],
-      ),
-    );
-  }
-
 
   Widget buildCategoryCountText(int count) {
     return Text("전체 $count종",
