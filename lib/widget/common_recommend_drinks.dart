@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import '../config/colors.dart';
 import '../gen/assets.gen.dart';
 
-class RecommendDrinks extends StatefulWidget {
+class RecommendDrinks extends StatelessWidget {
   const RecommendDrinks({
     Key? key,
     required this.paddingSize,
@@ -11,14 +12,9 @@ class RecommendDrinks extends StatefulWidget {
   final double paddingSize;
 
   @override
-  _RecommendDrinksState createState() => _RecommendDrinksState();
-}
-
-class _RecommendDrinksState extends State<RecommendDrinks> {
-  @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(widget.paddingSize, 0, widget.paddingSize, 12),
+      padding: EdgeInsets.fromLTRB(paddingSize, 0, paddingSize, 12),
       child: ListView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
@@ -35,6 +31,7 @@ class _RecommendDrinksState extends State<RecommendDrinks> {
       ),
     );
   }
+}
 
   Widget buildRecommendDrinksItem({
     required Image image,
@@ -147,4 +144,3 @@ class _RecommendDrinksState extends State<RecommendDrinks> {
       ),
     );
   }
-}
