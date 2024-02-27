@@ -32,9 +32,5 @@ class CategoryController extends GetxController {
     }
     return categoryList;
   }
-
-  void setSelectedCategory(String category) {
-    selectedCategory.value = category;
-  }
   // Life Cycle ▼ ------------------------------------------------------
 }
