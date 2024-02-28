@@ -32,6 +32,9 @@ class FilterController extends GetxController
   late AnimationController animationController;
   late Animation<double> heightFactor;
 
+  DateRangePickerController dateRangePickerController =
+      DateRangePickerController();
+
   Rx<PickerDateRange?> dateSelection = Rx<PickerDateRange?>(null);
 
   RxList<TagModel> meetingTagList = <TagModel>[].obs;
@@ -87,6 +90,8 @@ class FilterController extends GetxController
     dateSelection.value = null;
     selectedTagKeyList.value = <int>[].obs;
     selectedMeetingType.value = null;
+    dateRangePickerController.selectedRange =
+        PickerDateRange(DateTime.now(), DateTime.now());
   }
 
   void onTapApplyFilter() {

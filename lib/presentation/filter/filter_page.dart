@@ -243,7 +243,7 @@ class FilterPage extends GetView<FilterController> {
             alignment: Alignment.center,
             heightFactor: controller.heightFactor.value,
             child: SfDateRangePicker(
-              // controller: ,
+              controller: controller.dateRangePickerController,
               selectionMode: DateRangePickerSelectionMode.range,
               monthViewSettings: const DateRangePickerMonthViewSettings(
                 showTrailingAndLeadingDates: true,
@@ -252,7 +252,8 @@ class FilterPage extends GetView<FilterController> {
                 textAlign: TextAlign.center,
               ),
               selectionTextStyle: const TextStyle(color: Colors.white),
-              selectionColor: AppColors.primary,
+              startRangeSelectionColor: AppColors.primary,
+              endRangeSelectionColor: AppColors.primary,
               rangeSelectionColor: AppColors.primary[40],
               onSelectionChanged: (selection) =>
                   controller.onChangeDateSelection(selection.value),
