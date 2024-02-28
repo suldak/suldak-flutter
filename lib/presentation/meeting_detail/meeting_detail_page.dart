@@ -46,7 +46,11 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              buildUrlProfileImage(meeting.value?.hostUserPicture),
+              CircularProfileImage(
+                size: 90,
+                isHighlighted: false,
+                imageUrl: meeting.value?.hostUserPicture,
+              ),
               const SizedBox(width: 18),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

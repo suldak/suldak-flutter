@@ -70,4 +70,7 @@ abstract class Routes {
 
   /// 모임 상세 화면
   static const meetingDetail = '/meeting_detail';
+
+  /// 모임 참가 화면
+  static const meetingApply = '/meeting_apply';
 }

@@ -96,8 +96,8 @@ class AllMeetingPage extends GetView<AllMeetingController> {
       shrinkWrap: true,
       clipBehavior: Clip.none,
       scrollDirection: Axis.vertical,
-      itemCount: meetingList.length > 4
-          ? 4
+      itemCount: meetingList.length > 3
+          ? 3
           : meetingList.length,
       itemBuilder: (context, index) {
         final Meeting meeting = meetingList[index];

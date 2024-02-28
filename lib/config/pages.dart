@@ -26,6 +26,8 @@ import '../presentation/login/login_page.dart';
 import '../presentation/make_meeting/make_meeting_main_controller.dart';
 import '../presentation/make_meeting/make_meeting_main_page.dart';
 import '../presentation/make_meeting/make_meeting_step_1/make_meeting_step_1_controller.dart';
+import '../presentation/meeting_apply/meeting_apply_controller.dart';
+import '../presentation/meeting_apply/meeting_apply_page.dart';
 import '../presentation/meeting_detail/meeting_detail_controller.dart';
 import '../presentation/meeting_detail/meeting_detail_page.dart';
 import '../presentation/meeting_list/meeting_list_controller.dart';
@@ -197,6 +199,11 @@ mixin AppPagesGenerator on StatelessWidget {
           name: Routes.meetingDetail,
           page: () => const MeetingDetailPage(),
           binding: BindingsBuilder.put(() => MeetingDetailController()),
+        ),
+        GetPage(
+          name: Routes.meetingApply,
+          page: () => const MeetingApplyPage(),
+          binding: BindingsBuilder.put(() => MeetingApplyController()),
         ),
       ];
 }
