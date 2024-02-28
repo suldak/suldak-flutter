@@ -413,7 +413,7 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
             },
           ),
           buildCommentEnterWidget(),
-          const SizedBox(width: 18),
+          const SizedBox(height: 18),
           buildApplyMeetingButton(),
         ],
       ),
@@ -550,10 +550,7 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
 
   Widget buildApplyMeetingButton() {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 8,
-        horizontal: 20,
-      ),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: Container(
         height: 60,
         decoration: BoxDecoration(
