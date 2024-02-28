@@ -183,6 +183,17 @@ class Languages extends Translations {
     'offline': '오프라인',
     'online': '온라인',
     'empty': '비어있습니다',
+    'host': '호스트',
+    'introduce_meeting': '모임을 소개합니다!',
+    'participants': '참여 멤버',
+    'host_accept_member_show': '*호스트가 승인한 멤버가 표시됩니다.',
+    'community_guide_violate_report': '부적절한 주제, 과도한 음주 요구, 강요행위 등 커뮤니티 가이드를 위반하는 모임이라면 신고해주세요.',
+    'visit_community_guide': '커뮤니티 가이드 보러가기 >',
+    'comment': '댓글',
+    'reply': '답글쓰기',
+    'register': '등록',
+    'participate': '참가 신청하기',
+    'ask_about_meeting': '모임에 대해 궁금한 것을 물어보세요!',
 
     // onboard
     'onboard_first1': '\n지금 나에게 ',
@@ -384,6 +395,18 @@ class Languages extends Translations {
     'offline': 'Offline',
     'online': 'Online',
     'empty': 'Empty',
+    'host': 'Host',
+    'introduce_meeting': 'Introduce Meeting!',
+    'participants': 'Participants',
+    'host_accept_member_show': '*Shows host accepted members.',
+    'community_guide_violate_report':
+        'Please report any meetings that violate the community guide, such as inappropriate topics, excessive demands for alcohol, and forced acts.',
+    'visit_community_guide': 'Go to the community guide >',
+    'comment': 'Comments',
+    'reply': 'Reply',
+    'register': 'Register',
+    'participate': 'Register for Participation',
+    'ask_about_meeting': 'Ask Anything about Meeting!',
 
     // onboard
     'onboard_first1': '\nYou can now get the ',

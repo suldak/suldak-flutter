@@ -221,6 +221,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/check.svg
   SvgGenImage get check => const SvgGenImage('assets/svg/check.svg');
 
+  /// File path: assets/svg/comment.svg
+  SvgGenImage get comment => const SvgGenImage('assets/svg/comment.svg');
+
   /// File path: assets/svg/empty_list.svg
   SvgGenImage get emptyList => const SvgGenImage('assets/svg/empty_list.svg');
 
@@ -256,8 +259,15 @@ class $AssetsSvgGen {
   /// File path: assets/svg/location.svg
   SvgGenImage get location => const SvgGenImage('assets/svg/location.svg');
 
+  /// File path: assets/svg/members.svg
+  SvgGenImage get members => const SvgGenImage('assets/svg/members.svg');
+
   /// File path: assets/svg/more.svg
   SvgGenImage get more => const SvgGenImage('assets/svg/more.svg');
+
+  /// File path: assets/svg/more_vertical.svg
+  SvgGenImage get moreVertical =>
+      const SvgGenImage('assets/svg/more_vertical.svg');
 
   /// File path: assets/svg/my_history.svg
   SvgGenImage get myHistory => const SvgGenImage('assets/svg/my_history.svg');
@@ -303,6 +313,7 @@ class $AssetsSvgGen {
         calendar,
         camera,
         check,
+        comment,
         emptyList,
         filter,
         findFriend,
@@ -314,7 +325,9 @@ class $AssetsSvgGen {
         inviteIllustrator,
         kakao,
         location,
+        members,
         more,
+        moreVertical,
         myHistory,
         myHistoryTap,
         myPage,

@@ -73,7 +73,7 @@ class MyMeetingPage extends GetView<MyMeetingController> {
           ),
           const SizedBox(width: 14),
           GestureDetector(
-            onTap: () => controller.onTapFilter(),
+            onTap: () => controller.onTapFilter(true),
             child: Row(
               children: [
                 Assets.svg.filter.svg(width: 12),
@@ -95,19 +95,21 @@ class MyMeetingPage extends GetView<MyMeetingController> {
   }
 
   Widget buildMyMeetingListView() {
-    return ListView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      physics: const BouncingScrollPhysics(),
-      shrinkWrap: true,
-      clipBehavior: Clip.none,
-      scrollDirection: Axis.vertical,
-      itemCount: 24,
-      itemBuilder: (context, index) {
-        final Meeting meeting = sampleMeetingList[index % sampleMeetingList.length];
-        return VerticalMeetingCard(
-          meeting: meeting,
-        );
-      },
+    return Obx(
+      () => ListView.builder(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        physics: const BouncingScrollPhysics(),
+        shrinkWrap: true,
+        clipBehavior: Clip.none,
+        scrollDirection: Axis.vertical,
+        itemCount: controller.myMeetingList.length,
+        itemBuilder: (context, index) {
+          final Meeting meeting = controller.myMeetingList[index];
+          return VerticalMeetingCard(
+            meeting: meeting,
+          );
+        },
+      ),
     );
   }
 

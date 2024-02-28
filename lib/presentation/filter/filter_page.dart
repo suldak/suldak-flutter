@@ -243,6 +243,7 @@ class FilterPage extends GetView<FilterController> {
             alignment: Alignment.center,
             heightFactor: controller.heightFactor.value,
             child: SfDateRangePicker(
+              // controller: ,
               selectionMode: DateRangePickerSelectionMode.range,
               monthViewSettings: const DateRangePickerMonthViewSettings(
                 showTrailingAndLeadingDates: true,

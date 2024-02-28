@@ -85,7 +85,7 @@ class FilterController extends GetxController
 
   void onTapResetButton() {
     dateSelection.value = null;
-    selectedTagKeyList = <int>[].obs;
+    selectedTagKeyList.value = <int>[].obs;
     selectedMeetingType.value = null;
   }
 

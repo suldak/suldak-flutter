@@ -67,4 +67,7 @@ abstract class Routes {
 
   /// 필터 화면
   static const filter = '/filter';
+
+  /// 모임 상세 화면
+  static const meetingDetail = '/meeting_detail';
 }

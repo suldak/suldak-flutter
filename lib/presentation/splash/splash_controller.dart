@@ -4,8 +4,10 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:suldak_suldak/model/user.dart';
 
+import '../../config/const.dart';
 import '../../config/keys.dart';
 import '../../config/routes.dart';
+import '../../config/urls.dart';
 import '../../global_controller.dart';
 import '../../repository/base_api.dart';
 
@@ -17,7 +19,7 @@ class SplashController extends GetxController {
   // Functions ▼ ------------------------------------------------------
 
   Future<void> initializeApp() async {
-    await API.initialize('http://122.45.203.134:8080');
+    await API.initialize(AppUrls.baseUrl);
     return;
   }
   

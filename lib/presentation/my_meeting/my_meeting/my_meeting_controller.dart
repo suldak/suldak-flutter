@@ -23,6 +23,8 @@ class MyMeetingController extends GetxController {
     Assets.sample.squidward,
   ];
 
+  RxList<Meeting> myMeetingList = <Meeting>[].obs;
+
   Rx<MyMeetingSort> selectedSort = MyMeetingSort.latest.obs;
 
   Map<String, dynamic> searchFilterMap = {};
@@ -33,24 +35,17 @@ class MyMeetingController extends GetxController {
     selectedSort.value = sort;
 
     // 나중에 바뀐 sort type으로 api 호출 등의 작업 수행
-    getUserCompleteMeeting();
+    onTapFilter(false);
   }
 
-  void getUserCompleteMeeting() async {
-    final int userPk = GlobalController.to.userData!.id!;
-    final List<Meeting>? meeting = await MeetingRepo.to.getUserMeetingList(
-      userPk: userPk,
-      isLatest: selectedSort.value == MyMeetingSort.latest ? true: false,
-      confirm: MeetingGuestType.complete,
-    );
-
-    if (meeting != null) {
-
+  void onTapFilter(bool route) async {
+    Map filterRes;
+    if (route) {
+      filterRes = await Get.toNamed(Routes.filter);
+      searchFilterMap = await Get.toNamed(Routes.filter);
+    } else {
+      filterRes = searchFilterMap;
     }
-  }
-
-  void onTapFilter() async {
-    final filterRes = await Get.toNamed(Routes.filter);
     final PickerDateRange? dateSelection = filterRes['dateSelection'];
     final List<int>? selectedTagList = filterRes['selectedTagList'];
     final MeetingType? selectedMeetingType = filterRes['selectedMeetingType'];
@@ -75,7 +70,7 @@ class MyMeetingController extends GetxController {
     );
 
     if (meeting != null) {
-
+      myMeetingList.value = meeting;
     }
   }
 
@@ -83,5 +78,7 @@ class MyMeetingController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+
+    onTapFilter(false);
   }
 }
