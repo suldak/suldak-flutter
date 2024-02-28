@@ -11,13 +11,15 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.showBackButton = false,
     this.showBottomLine = false,
     this.onTapBackButton,
+    this.onTapMoreButton,
   });
 
   final String title;
   final bool showBackButton;
   final bool showBottomLine;
 
-  final Function? onTapBackButton;
+  final void Function()? onTapBackButton;
+  final void Function()? onTapMoreButton;
 
   @override
   PreferredSizeWidget build(BuildContext context) {
@@ -52,6 +54,21 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
               },
             )
           : const SizedBox(),
+      actions: [
+        if (onTapMoreButton != null)...[
+          GestureDetector(
+            onTap: onTapMoreButton,
+            child: Assets.svg.moreVertical.svg(
+              width: 3,
+              colorFilter: const ColorFilter.mode(
+                Colors.black,
+                BlendMode.srcIn,
+              ),
+            ),
+          ),
+          const SizedBox(width: 16),
+        ],
+      ],
     );
   }
 

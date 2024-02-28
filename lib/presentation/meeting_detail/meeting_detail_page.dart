@@ -15,10 +15,11 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const BaseAppBar(
+      appBar: BaseAppBar(
         title: '',
         showBackButton: true,
         showBottomLine: true,
+        onTapMoreButton: () {},
       ),
       body: SingleChildScrollView(
         child: Column(
