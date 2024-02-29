@@ -56,71 +56,76 @@ class VerticalMeetingCard extends StatelessWidget {
                   imageUrl: meeting.hostUserPicture,
                 ),
                 const SizedBox(width: 14),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        MeetingTag(name: '', type: meeting.partyType),
-                        MeetingTag(name: meeting.tagName!),
-                      ],
-                    ),
-                    const SizedBox(height: 6),
-                    Text(
-                      meeting.name!,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          MeetingTag(name: '', type: meeting.partyType),
+                          MeetingTag(name: meeting.tagName!),
+                        ],
                       ),
-                    ),
-                    const SizedBox(height: 6),
-                    Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 1, horizontal: 3),
-                          child: Assets.svg.location.svg(width: 8),
+                      const SizedBox(height: 6),
+                      Text(
+                        meeting.name!,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
                         ),
-                        const SizedBox(height: 4),
-                        Text(
-                          '홍대입구역 | 8.11(금) 오후 7:00',
-                          style: TextStyle(
-                            color: AppColors.grey[60],
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500,
+                      ),
+                      const SizedBox(height: 6),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 1, horizontal: 3),
+                            child: Assets.svg.location.svg(width: 8),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 2),
-                    Row(
-                      children: [
-                        Assets.png.group.image(width: 14),
-                        RichText(
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: meeting.confirmCnt.toString(),
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  color: AppColors.primary,
-                                  fontWeight: FontWeight.w600,
-                                ),
+                          const SizedBox(height: 4),
+                          Expanded(
+                            child: Text(
+                              '${meeting.partyPlace} | ${meeting.getFormattedMeetingTime()}',
+                              style: TextStyle(
+                                color: AppColors.grey[60],
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                overflow: TextOverflow.ellipsis,
                               ),
-                              TextSpan(
-                                text: '/${meeting.personnel}',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: AppColors.grey[60],
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                      const SizedBox(height: 2),
+                      Row(
+                        children: [
+                          Assets.png.group.image(width: 14),
+                          RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: meeting.confirmCnt.toString(),
+                                  style: const TextStyle(
+                                    fontSize: 14,
+                                    color: AppColors.primary,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: '/${meeting.personnel}',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: AppColors.grey[60],
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

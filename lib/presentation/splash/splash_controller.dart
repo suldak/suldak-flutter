@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:suldak_suldak/model/user.dart';
 
-import '../../config/const.dart';
 import '../../config/keys.dart';
 import '../../config/routes.dart';
 import '../../config/urls.dart';
@@ -57,6 +57,12 @@ class SplashController extends GetxController {
   }
 
   // Life Cycle ▼ ------------------------------------------------------
+
+  @override
+  void onInit() {
+    super.onInit();
+    initializeDateFormatting('es_US', 'ko');
+  }
 
   @override
   void onReady() async {

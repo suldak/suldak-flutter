@@ -39,10 +39,10 @@ class MyMeetingController extends GetxController {
   }
 
   void onTapFilter(bool route) async {
-    Map filterRes;
+    Map<String, dynamic> filterRes;
     if (route) {
       filterRes = await Get.toNamed(Routes.filter);
-      searchFilterMap = await Get.toNamed(Routes.filter);
+      searchFilterMap = filterRes;
     } else {
       filterRes = searchFilterMap;
     }
@@ -50,13 +50,36 @@ class MyMeetingController extends GetxController {
     final List<int>? selectedTagList = filterRes['selectedTagList'];
     final MeetingType? selectedMeetingType = filterRes['selectedMeetingType'];
 
-    final DateFormat dateFormat = DateFormat();
+    final DateFormat dateFormat = DateFormat('yyyy-MM-dd\'T\'HH:mm:ss');
     final String? startDate = dateSelection?.startDate != null
-        ? dateFormat.format(dateSelection!.startDate!)
+        ? dateFormat.format(DateTime(
+            dateSelection!.startDate!.year,
+            dateSelection.startDate!.month,
+            dateSelection.startDate!.day,
+            0,
+            0,
+            0,
+          ))
         : null;
     final String? endDate = dateSelection?.endDate != null
-        ? dateFormat.format(dateSelection!.endDate!)
-        : startDate;
+        ? dateFormat.format(DateTime(
+            dateSelection!.endDate!.year,
+            dateSelection.endDate!.month,
+            dateSelection.endDate!.day,
+            23,
+            59,
+            59,
+          ))
+        : dateSelection?.startDate != null
+            ? dateFormat.format(DateTime(
+                dateSelection!.startDate!.year,
+                dateSelection.startDate!.month,
+                dateSelection.startDate!.day,
+                23,
+                59,
+                59,
+              ))
+            : null;
 
     final int userPk = GlobalController.to.userData!.id!;
     final List<Meeting>? meeting = await MeetingRepo.to.getUserMeetingList(

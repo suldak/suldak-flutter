@@ -14,18 +14,20 @@ class MyMeetingPage extends GetView<MyMeetingController> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        children: [
-          if (controller.sampleProfile.isNotEmpty)...[
+      child: Obx(
+        () => Column(
+          children: [
             const SizedBox(height: 40),
             buildTitleRow(title: 'confirmed_finished_meeting'.tr),
-            const SizedBox(height: 14),
-            buildMyMeetingListView(),
-            const SizedBox(height: 40),
-          ] else...[
-            buildEmptyList(),
+            if (controller.myMeetingList.isNotEmpty) ...[
+              const SizedBox(height: 14),
+              buildMyMeetingListView(),
+              const SizedBox(height: 40),
+            ] else ...[
+              buildEmptyList(),
+            ],
           ],
-        ],
+        ),
       ),
     );
   }
@@ -95,22 +97,38 @@ class MyMeetingPage extends GetView<MyMeetingController> {
   }
 
   Widget buildMyMeetingListView() {
-    return Obx(
-      () => ListView.builder(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        physics: const BouncingScrollPhysics(),
-        shrinkWrap: true,
-        clipBehavior: Clip.none,
-        scrollDirection: Axis.vertical,
-        itemCount: controller.myMeetingList.length,
-        itemBuilder: (context, index) {
-          final Meeting meeting = controller.myMeetingList[index];
-          return VerticalMeetingCard(
-            meeting: meeting,
-          );
-        },
-      ),
+    return ListView.builder(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      physics: const BouncingScrollPhysics(),
+      shrinkWrap: true,
+      clipBehavior: Clip.none,
+      scrollDirection: Axis.vertical,
+      itemCount: controller.myMeetingList.length,
+      itemBuilder: (context, index) {
+        final Meeting meeting = controller.myMeetingList[index];
+        return VerticalMeetingCard(
+          meeting: meeting,
+        );
+      },
     );
+    // return Obx(//no_meeting_record_yet
+    //   () {
+    //     return ListView.builder(
+    //       padding: const EdgeInsets.symmetric(horizontal: 20),
+    //       physics: const BouncingScrollPhysics(),
+    //       shrinkWrap: true,
+    //       clipBehavior: Clip.none,
+    //       scrollDirection: Axis.vertical,
+    //       itemCount: controller.myMeetingList.length,
+    //       itemBuilder: (context, index) {
+    //         final Meeting meeting = controller.myMeetingList[index];
+    //         return VerticalMeetingCard(
+    //           meeting: meeting,
+    //         );
+    //       },
+    //     );
+    //   },
+    // );
   }
 
   Widget buildEmptyList() {

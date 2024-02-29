@@ -1,3 +1,6 @@
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+
 import '../config/const.dart';
 
 class Meeting {
@@ -97,5 +100,14 @@ class Meeting {
     data['useProgram'] = useProgram;
     data['warningCnt'] = warningCnt;
     return data;
+  }
+
+  String getFormattedMeetingTime() {
+    final DateFormat format = DateFormat(
+      'MM.dd(E) a hh:mm',
+      Get.deviceLocale?.languageCode,
+    );
+    final DateTime dateTime = DateTime.parse(meetingDay ?? '');
+    return format.format(dateTime);
   }
 }

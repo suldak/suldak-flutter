@@ -57,7 +57,7 @@ class MeetingRepo extends GetxService with API {
         data: {
           'sortBool': isLatest,
           'confirm': confirm?.serverCode,
-          'partyTagKey': partTagKey?.join(','),
+          'partyTagPriKey': partTagKey?.join(','),
           'partyType': type?.serverCode,
           'searchStartTime': searchStartTime,
           'searchEndTime': searchEndTime,
