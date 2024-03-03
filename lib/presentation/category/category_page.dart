@@ -18,8 +18,6 @@ class CategoryPage extends GetView<CategoryController> {
   @override
   Widget build(BuildContext context) {
     List<String> categoryList = controller.sampleCategoryList;
-    String selectedItem = Get.arguments;
-    controller.selectedCategory.value = selectedItem;
 
     return Obx(() => Scaffold(
       appBar: BaseAppBar(
