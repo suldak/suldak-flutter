@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
@@ -24,13 +26,12 @@ class CategoryController extends GetxController {
 
   // Functions ▼ ------------------------------------------------------
 
-  // text: controller.liquorTagList[index].name! 이거만 모아서 리턴
-  RxList<String> getCategoryList() {
-    RxList<String> categoryList = <String>[].obs;
-    for (int i = 0; i < liquorTagList.length; i++) {
-      categoryList.add(liquorTagList[i].name!);
-    }
-    return categoryList;
-  }
   // Life Cycle ▼ ------------------------------------------------------
+
+  @override
+  void onInit() {
+    super.onInit();
+    String selectedItem = Get.arguments;
+    selectedCategory.value = selectedItem;
+  }
 }
