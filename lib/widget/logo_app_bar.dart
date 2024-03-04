@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../config/colors.dart';
+import '../config/routes.dart';
 import '../gen/assets.gen.dart';
 
 class LogoAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -24,7 +27,12 @@ class LogoAppBar extends StatelessWidget implements PreferredSizeWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(top: 2, right: 6),
-                      child: Assets.svg.notification.svg(width: 20),
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.toNamed(Routes.notify);
+                        },
+                        child: Assets.svg.notification.svg(width: 20),
+                      ),
                     ),
                     Positioned(
                       top: 0,

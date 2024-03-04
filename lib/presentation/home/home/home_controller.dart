@@ -48,13 +48,12 @@ class HomeController extends GetxController {
   RxList<LiquorModel> userSearchLiquorList = <LiquorModel>[].obs;
 
   // Functions ▼ ------------------------------------------------------
-
-  void navigateNotify() async {
-    Get.toNamed(Routes.notify);
-  }
-
   void navigateBanner() async {
     Get.toNamed(Routes.banner);
+  }
+
+  void navigateCategory(String selectedName) async {
+    Get.toNamed(Routes.category, arguments: selectedName);
   }
 
   void getLiquorNameTagList() async {

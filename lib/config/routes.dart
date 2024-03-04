@@ -17,6 +17,9 @@ abstract class Routes {
   /// 알림화면
   static const notify = '/notify';
 
+  /// 카테고리
+  static const category = '/category';
+
   /// 로그인 화면
   static const login = '/login';
 

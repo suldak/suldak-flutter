@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:suldak_suldak/presentation/category/category_controller.dart';
 import 'package:suldak_suldak/presentation/home/notify/notify_controller.dart';
 import 'package:suldak_suldak/presentation/home/notify/notify_page.dart';
 
@@ -9,6 +10,7 @@ import '../presentation/announcement/announcement_controller.dart';
 import '../presentation/announcement/announcement_page.dart';
 import '../presentation/blocked_user/blocked_user_controller.dart';
 import '../presentation/blocked_user/blocked_user_page.dart';
+import '../presentation/category/category_page.dart';
 import '../presentation/email_login/email_login_controller.dart';
 import '../presentation/email_login/email_login_page.dart';
 import '../presentation/home/find_friend/find_friend_controller.dart';
@@ -144,6 +146,11 @@ mixin AppPagesGenerator on StatelessWidget {
         GetPage(
           name: Routes.welcome,
           page: () => const WelcomePage(),
+        ),
+        GetPage(
+          name: Routes.category,
+          page: () => const CategoryPage(),
+          binding: BindingsBuilder.put(() => CategoryController()),
         ),
         GetPage(
           name: Routes.banner,
