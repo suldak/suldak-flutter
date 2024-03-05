@@ -4,9 +4,12 @@ import 'package:get/get.dart';
 
 import '../../config/colors.dart';
 import '../../gen/assets.gen.dart';
+import '../../model/meeting_comment.dart';
+import '../../model/meeting_comment_root.dart';
 import '../../widget/base_app_bar.dart';
 import '../../widget/circular_profile_image.dart';
 import '../../widget/meeting/meeting_tag.dart';
+import '../../widget/meeting_comment_bottom_sheet.dart';
 import 'meeting_detail_controller.dart';
 
 class MeetingDetailPage extends GetView<MeetingDetailController> {
@@ -155,7 +158,7 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
                   ),
                   buildInfoWithIcon(
                     image: Assets.svg.calendar,
-                    info: meeting.value?.meetingDay ?? '',
+                    info: meeting.value?.getFormattedMeetingTime() ?? '',
                   ),
                 ],
               ),
@@ -341,15 +344,21 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
   Widget buildHorizontalMemberList() {
     return SizedBox(
       height: 78,
-      child: ListView.builder(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemCount: 3,
-        itemBuilder: (context, index) {
-          return buildMember(
-            imageUrl: '',
-            nickname: 'sample',
-            isHighlighted: index == 0,
+      child: Obx(
+        () {
+          final meetingMemberList = controller.meeting.value?.partyGuestList;
+          return ListView.builder(
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemCount: meetingMemberList?.length ?? 0,
+            itemBuilder: (context, index) {
+              final member = meetingMemberList![index];
+              return buildMember(
+                imageUrl: member.getGuestFileUrl(),
+                nickname: member.guestNickname ?? '',
+                isHighlighted: member.guestPriKey == member.hostPriKey,
+              );
+            },
           );
         },
       ),
@@ -402,19 +411,24 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
             ],
           ),
           const SizedBox(height: 10),
-          ListView.builder(
-            padding: EdgeInsets.zero,
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: 5,
-            itemBuilder: (context, index) {
-              return buildComment(
-                imageUrl:
-                    'https://cdn.anime-planet.com/characters/primary/elma-miss-kobayashis-dragon-maid-1-285x400.jpg?t=1628382399',
-                isHighlighted: index == 4,
-                hasReply: index == 0,
-              );
-            },
+          Obx(
+            () => ListView.builder(
+              padding: EdgeInsets.zero,
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: controller.meetingCommentList.length,
+              itemBuilder: (context, index) {
+                return Obx(
+                  () => buildComment(
+                    commentRoot: controller.meetingCommentList[index],
+                    isHighlighted: index == 4,
+                    hasReply: controller.meetingCommentList[index]
+                            .childrenComment?.isNotEmpty ??
+                        false,
+                  ),
+                );
+              },
+            ),
           ),
           buildCommentEnterWidget(),
           const SizedBox(height: 18),
@@ -425,18 +439,20 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
   }
 
   Widget buildComment({
-    required String? imageUrl,
+    MeetingCommentRoot? commentRoot,
+    MeetingComment? comment,
     bool isHighlighted = false,
     bool hasReply = false,
     bool isReply = false,
   }) {
+    final isReported = commentRoot?.isReport ?? comment?.isReport ?? false;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CircularProfileImage(
           size: 32,
           isHighlighted: isHighlighted,
-          imageUrl: imageUrl,
+          imageUrl: commentRoot?.getFileUrl() ?? comment?.getFileUrl(),
         ),
         const SizedBox(width: 12),
         Expanded(
@@ -444,8 +460,8 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'nick',
-                style: TextStyle(
+                commentRoot?.userNickname ?? comment?.userNickname ?? '',
+                style: const TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
                   color: Colors.black,
@@ -453,11 +469,13 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
               ),
               const SizedBox(height: 6),
               Text(
-                'commmmmmmeeeeeeennnnnnnnnnnnnnnnnnnttttttttttttttttlllllllllllllllloooooooonnnnnnnnnnngggggggggggggg',
+                isReported
+                    ? 'reported_comment'.tr
+                    : commentRoot?.comment ?? comment?.comment ?? '',
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
-                  color: Colors.black,
+                  color: isReported ? AppColors.grey[60] : Colors.black,
                 ),
               ),
               if (!isReply) ...[
@@ -476,11 +494,10 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
                 ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount: 3,
+                  itemCount: commentRoot!.childrenComment?.length ?? 0,
                   itemBuilder: (context, index) {
                     return buildComment(
-                      imageUrl:
-                          'https://i.pinimg.com/originals/ea/0f/b0/ea0fb00b9f913a5110c157040cb313cd.jpg',
+                      comment: commentRoot.childrenComment![index],
                       hasReply: false,
                       isReply: true,
                     );
@@ -490,7 +507,19 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
             ],
           ),
         ),
-        Assets.svg.moreVertical.svg(width: 3),
+        GestureDetector(
+          onTap: () {
+            Get.bottomSheet(
+              MeetingCommentBottomSheet(
+                commentId: (commentRoot?.id ?? comment?.id)!,
+                isMy: controller.userData?.id ==
+                    (commentRoot?.userPriKey ?? comment?.userPriKey),
+              ),
+              backgroundColor: Colors.transparent,
+            );
+          },
+          child: Assets.svg.moreVertical.svg(width: 3),
+        ),
       ],
     );
   }
@@ -503,12 +532,11 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
           CircularProfileImage(
             size: 32,
             isHighlighted: false,
-            imageUrl: 'https://static.wikia.nocookie.net/maid-dragon/images/5/52/Kobayashi_5.png/revision/latest/scale-to-width/360?cb=20170315190544',
+            imageUrl: controller.userData?.getPictureUrl(),
           ),
           const SizedBox(width: 10),
           Expanded(
             child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
               decoration: BoxDecoration(
                 border: Border.all(color: AppColors.grey[40]!),
                 borderRadius: const BorderRadius.all(Radius.circular(20)),
@@ -516,31 +544,42 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
               child: Row(
                 children: [
                   Flexible(
-                    child: TextField(
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black,
-                      ),
-                      decoration: InputDecoration(
-                        isDense: true,
-                        contentPadding: EdgeInsets.zero,
-                        border: InputBorder.none,
-                        hintText: 'ask_about_meeting'.tr,
-                        hintStyle: TextStyle(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                      child: TextField(
+                        controller: controller.commentController,
+                        style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
-                          color: AppColors.grey[50],
+                          color: Colors.black,
+                        ),
+                        decoration: InputDecoration(
+                          isDense: true,
+                          contentPadding: EdgeInsets.zero,
+                          border: InputBorder.none,
+                          hintText: 'ask_about_meeting'.tr,
+                          hintStyle: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.grey[50],
+                          ),
                         ),
                       ),
                     ),
                   ),
-                  Text(
-                    'register'.tr,
-                    style: const TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                      color: AppColors.primary,
+                  GestureDetector(
+                    onTap: () => controller.onRegisterComment(),
+                    behavior: HitTestBehavior.translucent,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                      child: Text(
+                        'register'.tr,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                          color: AppColors.primary,
+                        ),
+                      ),
                     ),
                   ),
                 ],

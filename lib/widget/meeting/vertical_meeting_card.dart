@@ -27,7 +27,7 @@ class VerticalMeetingCard extends StatelessWidget {
     return GestureDetector(
       onTap: () => Get.toNamed(
         Routes.meetingDetail,
-        arguments: {'meeting': meeting},
+        arguments: {'meetingPk': meeting.id},
       ),
       child: Container(
         height: 124,

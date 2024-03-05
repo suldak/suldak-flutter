@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
+import 'package:suldak_suldak/model/meeting_comment_root_list.dart';
 
 import '../config/const.dart';
+import '../model/base_response.dart';
 import '../model/meeting.dart';
 import 'base_api.dart';
 
@@ -13,6 +15,10 @@ class MeetingRepo extends GetxService with API {
 
   static const _searchMeetingEp = '/api/party/view';
   static const _getUserMeetingEp = '/api/party/view/user-party-list';
+  static const _meetingCommentEp = '/api/party/comment';
+
+  static const _reportMeetingEp = '/api/report/submit/party';
+  static const _reportMeetingCommentEp = '/api/report/submit/party-comment';
 
   Future<List<Meeting>?> searchMeetingList({
     required int page,
@@ -90,6 +96,109 @@ class MeetingRepo extends GetxService with API {
       final List<Meeting> meetingList =
           data['data'].map<Meeting>((e) => Meeting.fromJson(e)).toList();
       return meetingList;
+    }
+    return null;
+  }
+
+  Future<Meeting?> getMeetingInfo({
+    required int meetingPk,
+    OnServerException? onServerException,
+  }) async {
+    final res = await get(
+      '$_searchMeetingEp/$meetingPk',
+    );
+    final data = res.validateData(onServerException);
+
+    if (data != null) {
+      final Meeting meeting = Meeting.fromJson(data['data']);
+      return meeting;
+    }
+    return null;
+  }
+
+  Future<MeetingCommentRootList?> getMeetingComment({
+    required int meetingPk,
+    int? page,
+    int? size,
+    OnServerException? onServerException,
+  }) async {
+    final res = await get(
+        '$_meetingCommentEp/$meetingPk',
+        data: {
+          'pageNum': page,
+          'recordSize': size,
+        }
+    );
+    final data = res.validateData(onServerException);
+
+    if (data != null) {
+      final MeetingCommentRootList meetingCommentRootList =
+          MeetingCommentRootList(data['data']);
+      return meetingCommentRootList;
+    }
+    return null;
+  }
+
+  Future<BaseResponse?> postMeetingComment({
+    required int meetingPk,
+    required String comment,
+    OnServerException? onServerException,
+  }) async {
+    final res = await post(
+        '$_meetingCommentEp/$meetingPk',
+        data: {
+          'comment': comment,
+        }
+    );
+    final data = res.validateData(onServerException);
+
+    if (data != null) {
+      return BaseResponse.fromJson(data);
+    }
+    return null;
+  }
+
+  Future<BaseResponse?> deleteMeetingComment({
+    required int commentPk,
+    OnServerException? onServerException,
+  }) async {
+    final res = await delete(
+        '$_meetingCommentEp/$commentPk',
+    );
+    final data = res.validateData(onServerException);
+
+    if (data != null) {
+      return BaseResponse.fromJson(data);
+    }
+    return null;
+  }
+
+  Future<BaseResponse?> reportMeeting({
+    required int meetingPk,
+    OnServerException? onServerException,
+  }) async {
+    final res = await post(
+      '$_reportMeetingEp/$meetingPk',
+    );
+    final data = res.validateData(onServerException);
+
+    if (data != null) {
+      return BaseResponse.fromJson(data);
+    }
+    return null;
+  }
+
+  Future<BaseResponse?> reportMeetingComment({
+    required int commentPk,
+    OnServerException? onServerException,
+  }) async {
+    final res = await post(
+      '$_reportMeetingCommentEp/$commentPk',
+    );
+    final data = res.validateData(onServerException);
+
+    if (data != null) {
+      return BaseResponse.fromJson(data);
     }
     return null;
   }

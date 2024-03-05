@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../config/const.dart';
+import 'meeting_guest.dart';
 
 class Meeting {
   int? confirmCnt;
@@ -25,6 +26,7 @@ class Meeting {
   int? tagPriKey;
   String? useProgram;
   int? warningCnt;
+  List<MeetingGuest>? partyGuestList;
 
   Meeting({
     this.confirmCnt,
@@ -48,6 +50,7 @@ class Meeting {
     this.tagPriKey,
     this.useProgram,
     this.warningCnt,
+    this.partyGuestList,
   });
 
   Meeting.fromJson(Map<String, dynamic> json) {
@@ -74,6 +77,8 @@ class Meeting {
     tagPriKey = json['tagPriKey']?.toInt();
     useProgram = json['useProgram']?.toString();
     warningCnt = json['warningCnt']?.toInt();
+    partyGuestList = json['partyGuestList']?.map<MeetingGuest>((e) => MeetingGuest.fromJson(e))
+        .toList();
   }
 
   Map<String, dynamic> toJson() {
@@ -99,6 +104,7 @@ class Meeting {
     data['tagPriKey'] = tagPriKey;
     data['useProgram'] = useProgram;
     data['warningCnt'] = warningCnt;
+    data['partyGuestList'] = partyGuestList?.map((e) => e.toJson()).toList();
     return data;
   }
 

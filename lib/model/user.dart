@@ -1,3 +1,5 @@
+import '../config/urls.dart';
+
 class UserModel {
   bool? alarmActive;
   int? birthdayYear;
@@ -95,5 +97,12 @@ class UserModel {
     data['vibrationActive'] = vibrationActive;
     data['warningCnt'] = warningCnt;
     return data;
+  }
+
+  String? getPictureUrl() {
+    if (pictureUrl != null) {
+      return AppUrls.baseUrl + pictureUrl!;
+    }
+    return null;
   }
 }

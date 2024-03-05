@@ -194,6 +194,11 @@ class Languages extends Translations {
     'register': '등록',
     'participate': '참가 신청하기',
     'ask_about_meeting': '모임에 대해 궁금한 것을 물어보세요!',
+    'modify_comment': '수정하기',
+    'delete_comment': '삭제하기',
+    'report_comment': '이 댓글 신고하기',
+    'report_complete': '신고가 완료되었습니다',
+    'reported_comment': '신고된 댓글입니다',
 
     // onboard
     'onboard_first1': '\n지금 나에게 ',
@@ -407,6 +412,11 @@ class Languages extends Translations {
     'register': 'Register',
     'participate': 'Register for Participation',
     'ask_about_meeting': 'Ask Anything about Meeting!',
+    'modify_comment': 'Modify',
+    'delete_comment': 'Delete',
+    'report_comment': 'Report this comment',
+    'report_complete': 'Report Completed',
+    'reported_comment': 'Reported comment',
 
     // onboard
     'onboard_first1': '\nYou can now get the ',
