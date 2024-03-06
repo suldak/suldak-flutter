@@ -16,6 +16,8 @@ class MeetingRepo extends GetxService with API {
   static const _searchMeetingEp = '/api/party/view';
   static const _getUserMeetingEp = '/api/party/view/user-party-list';
   static const _meetingCommentEp = '/api/party/comment';
+  static const _popularMeetingEp = '/api/party/view/popular-list';
+  static const _recommendMeetingEp = '/api/party/view/recommend-list';
 
   static const _reportMeetingEp = '/api/report/submit/party';
   static const _reportMeetingCommentEp = '/api/report/submit/party-comment';
@@ -42,7 +44,7 @@ class MeetingRepo extends GetxService with API {
 
     if (data != null) {
       final List<Meeting> meetingList =
-          data['data'].map<Meeting>((e) => Meeting.fromJson(e)).toList();
+          data['data']['content'].map<Meeting>((e) => Meeting.fromJson(e)).toList();
       return meetingList;
     }
     return null;
@@ -95,6 +97,50 @@ class MeetingRepo extends GetxService with API {
     if (data != null) {
       final List<Meeting> meetingList =
           data['data'].map<Meeting>((e) => Meeting.fromJson(e)).toList();
+      return meetingList;
+    }
+    return null;
+  }
+
+  // isGuest: Guest(참여신청자수):Click(조회수) 정렬 여부
+  Future<List<Meeting>?> getPopularMeetingList({
+    required bool isGuest,
+    OnServerException? onServerException,
+  }) async {
+    final res = await get(
+        _popularMeetingEp,
+        data: {
+          'searchOption': isGuest ? 'GUEST' : 'CLICK',
+        }
+    );
+    final data = res.validateData(onServerException);
+
+    if (data != null) {
+      final List<Meeting> meetingList =
+          data['data'].map<Meeting>((e) => Meeting.fromJson(e)).toList();
+      return meetingList;
+    }
+    return null;
+  }
+
+  // isLevel: Level(호스트 알콜 레벨):User(유저의 최근 모임 카테고리) 정렬 여부
+  Future<List<Meeting>?> getRecommendMeetingList({
+    required bool isLevel,
+    int? limitNum,
+    OnServerException? onServerException,
+  }) async {
+    final res = await get(
+        _recommendMeetingEp,
+        data: {
+          'limitNum': limitNum,
+          'searchOption': isLevel ? 'LEVEL' : 'USER',
+        }
+    );
+    final data = res.validateData(onServerException);
+
+    if (data != null) {
+      final List<Meeting> meetingList =
+      data['data'].map<Meeting>((e) => Meeting.fromJson(e)).toList();
       return meetingList;
     }
     return null;

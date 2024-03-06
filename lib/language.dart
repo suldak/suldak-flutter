@@ -199,6 +199,7 @@ class Languages extends Translations {
     'report_comment': '이 댓글 신고하기',
     'report_complete': '신고가 완료되었습니다',
     'reported_comment': '신고된 댓글입니다',
+    'today': '오늘',
 
     // onboard
     'onboard_first1': '\n지금 나에게 ',
@@ -417,6 +418,7 @@ class Languages extends Translations {
     'report_comment': 'Report this comment',
     'report_complete': 'Report Completed',
     'reported_comment': 'Reported comment',
+    'today': 'TDY',
 
     // onboard
     'onboard_first1': '\nYou can now get the ',

@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:suldak_suldak/widget/horizontal_date_picker.dart';
 
 import '../../../config/colors.dart';
-import '../../../config/const.dart';
 import '../../../gen/assets.gen.dart';
 import '../../../model/meeting.dart';
 import '../../../widget/logo_app_bar.dart';
@@ -33,14 +32,14 @@ class FindFriendPage extends GetView<FindFriendController> {
               title: 'hot_story_now'.tr,
             ),
             const SizedBox(height: 14),
-            buildHorizontalMeeting(),
+            buildPopularMeetingList(),
             const SizedBox(height: 60),
             buildTitle(
               image: Assets.png.great.image(width: 20),
               title: 'recommend'.tr,
             ),
             const SizedBox(height: 14),
-            buildHorizontalMeeting(),
+            buildRecommendMeetingList(),
             const SizedBox(height: 60),
             buildTitle(
               image: Assets.png.great.image(width: 20),
@@ -48,7 +47,7 @@ class FindFriendPage extends GetView<FindFriendController> {
               onMore: () {},
             ),
             const SizedBox(height: 14),
-            buildVerticalMeeting(3),
+            buildNewMeetingList(),
             const SizedBox(height: 40),
             Container(
               height: 10,
@@ -61,11 +60,11 @@ class FindFriendPage extends GetView<FindFriendController> {
               onMore: () {},
             ),
             const SizedBox(height: 14),
-            const HorizontalDatePicker(),
+            HorizontalDatePicker(callback: controller.getDateMeetingList),
             const SizedBox(height: 18),
-            buildVerticalMeeting(4),
+            buildDateMeetingList(),
             const SizedBox(height: 40),
-            buildNewMeeting(),
+            buildNewMeetingButton(),
           ],
         ),
       ),
@@ -123,39 +122,97 @@ class FindFriendPage extends GetView<FindFriendController> {
     );
   }
 
-  Widget buildHorizontalMeeting() {
+  Widget buildPopularMeetingList() {
     return SizedBox(
       height: 172,
-      child: ListView.builder(
-        clipBehavior: Clip.none,
-        padding: const EdgeInsets.only(left: 20),
-        scrollDirection: Axis.horizontal,
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return HorizontalMeetingCard(list: controller.sampleProfile);
+      child: Obx(
+        () {
+          return ListView.builder(
+            clipBehavior: Clip.none,
+            padding: const EdgeInsets.only(left: 20),
+            scrollDirection: Axis.horizontal,
+            itemCount: controller.popularMeetingList.length > 10
+                ? 10
+                : controller.popularMeetingList.length,
+            itemBuilder: (context, index) {
+              return HorizontalMeetingCard(
+                  meeting: controller.popularMeetingList[index]);
+            },
+          );
         },
       ),
     );
   }
 
-  Widget buildVerticalMeeting(int length) {
-    return ListView.builder(
-      physics: const NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      clipBehavior: Clip.none,
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      scrollDirection: Axis.vertical,
-      itemCount: length,
-      itemBuilder: (context, index) {
-        final Meeting meeting = sampleMeetingList[index];
-        return VerticalMeetingCard(
-          meeting: meeting,
+  Widget buildRecommendMeetingList() {
+    return SizedBox(
+      height: 172,
+      child: Obx(
+            () {
+          return ListView.builder(
+            clipBehavior: Clip.none,
+            padding: const EdgeInsets.only(left: 20),
+            scrollDirection: Axis.horizontal,
+            itemCount: controller.recommendMeetingList.length > 10
+                ? 10
+                : controller.recommendMeetingList.length,
+            itemBuilder: (context, index) {
+              return HorizontalMeetingCard(
+                  meeting: controller.recommendMeetingList[index]);
+            },
+          );
+        },
+      ),
+    );
+  }
+
+  Widget buildNewMeetingList() {
+    return Obx(
+      () {
+        return ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          clipBehavior: Clip.none,
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          scrollDirection: Axis.vertical,
+          itemCount: controller.newMeetingList.length > 4
+              ? 4
+              : controller.newMeetingList.length,
+          itemBuilder: (context, index) {
+            final Meeting meeting = controller.newMeetingList[index];
+            return VerticalMeetingCard(
+              meeting: meeting,
+            );
+          },
         );
       },
     );
   }
 
-  Widget buildNewMeeting() {
+  Widget buildDateMeetingList() {
+    return Obx(
+          () {
+        return ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          clipBehavior: Clip.none,
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          scrollDirection: Axis.vertical,
+          itemCount: controller.dateMeetingList.length > 4
+              ? 4
+              : controller.dateMeetingList.length,
+          itemBuilder: (context, index) {
+            final Meeting meeting = controller.dateMeetingList[index];
+            return VerticalMeetingCard(
+              meeting: meeting,
+            );
+          },
+        );
+      },
+    );
+  }
+
+  Widget buildNewMeetingButton() {
     return GestureDetector(
       onTap: controller.navigateMakeFriend,
       child: Container(

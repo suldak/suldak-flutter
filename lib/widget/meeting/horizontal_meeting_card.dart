@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:suldak_suldak/config/const.dart';
 
 import '../../config/colors.dart';
 import '../../gen/assets.gen.dart';
+import '../../model/meeting.dart';
+import '../circular_profile_image.dart';
 import 'meeting_tag.dart';
 
 /// ## Horizontal ListView 에서 사용하는 모임 카드 위젯
 class HorizontalMeetingCard extends StatelessWidget {
 
-  const HorizontalMeetingCard({super.key, required this.list});
+  const HorizontalMeetingCard({super.key, required this.meeting});
 
-  final List<AssetGenImage> list;
+  final Meeting meeting;
 
   @override
   Widget build(BuildContext context) {
@@ -35,14 +36,14 @@ class HorizontalMeetingCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              MeetingTag(name: '', type: MeetingType.onLine,),
-              MeetingTag(name: 'sample'),
+              MeetingTag(name: '', type: meeting.partyType),
+              MeetingTag(name: meeting.tagName!),
             ],
           ),
           const SizedBox(height: 14),
           Text(
-            '취준고민 상담',
-            style: TextStyle(
+            meeting.name!,
+            style: const TextStyle(
               color: Colors.black,
               fontSize: 16,
               fontWeight: FontWeight.w600,
@@ -57,7 +58,7 @@ class HorizontalMeetingCard extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               Text(
-                '구글밋 | 8.11(금) 오후 7:00',
+                '${meeting.partyPlace} | ${meeting.getFormattedMeetingTime()}',
                 style: TextStyle(
                   color: AppColors.grey[60],
                   fontSize: 12,
@@ -69,36 +70,50 @@ class HorizontalMeetingCard extends StatelessWidget {
           const SizedBox(height: 15),
           Row(
             children: [
-              Expanded(
-                child: SizedBox(
-                  height: 34,
-                  child: ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 3,
-                    itemBuilder: (context, index) {
-                      return Align(
-                        widthFactor: 0.8,
-                        child: buildProfileImage(
-                          index,
-                          10,
-                          list[index % 3].image(fit: BoxFit.cover),
-                        ),
-                      );
-                    },
-                  ),
+              SizedBox(
+                height: 34,
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: meeting.partyGuestList?.length ?? 0,
+                  itemBuilder: (context, index) {
+                    final member = meeting.partyGuestList?[index];
+                    return Align(
+                      widthFactor: 0.8,
+                      child: CircularProfileImage(
+                        size: 34,
+                        isHighlighted: member?.guestPriKey == member?.hostPriKey,
+                        imageUrl: member?.getGuestFileUrl(),
+                      ),
+                    );
+                  },
                 ),
               ),
-              // const Expanded(child: SizedBox()),
+              const SizedBox(width: 12),
               Row(
                 children: [
                   Assets.png.group.image(width: 14),
-                  Text(
-                    '2/3',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: AppColors.primary,
-                      fontWeight: FontWeight.w600,
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: meeting.confirmCnt.toString(),
+                          style: const TextStyle(
+                            fontSize: 14,
+                            color: AppColors.primary,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        TextSpan(
+                          text: '/${meeting.personnel}',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: AppColors.grey[60],
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -107,43 +122,6 @@ class HorizontalMeetingCard extends StatelessWidget {
             ],
           ),
         ],
-      ),
-    );
-  }
-
-  Widget buildProfileImage(int index, int length, Image image) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(100),
-        border: index == 0 ? Border.all(color: AppColors.primary) : null,
-      ),
-      child: Container(
-        width: 34,
-        height: 34,
-        clipBehavior: Clip.hardEdge,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(100),
-          color: Colors.grey,
-          border: Border.all(color: Colors.white, width: 1),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(100),
-          clipBehavior: Clip.hardEdge,
-          child: Stack(
-            clipBehavior: Clip.hardEdge,
-            children: [
-              image,
-              if (index == 2 && length > 2)...[
-                Container(
-                  color: const Color(0x80000000),
-                  child: Center(
-                    child: Assets.svg.more.svg(width: 16),
-                  ),
-                ),
-              ],
-            ],
-          ),
-        ),
       ),
     );
   }
