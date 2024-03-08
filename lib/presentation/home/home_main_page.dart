@@ -57,7 +57,7 @@ class HomeMainPage extends GetView<HomeMainController> {
         decoration: BoxDecoration(
           border: Border(
             top: BorderSide(
-                color: AppColors.grey[20] ?? AppColors.grey, width: 1),
+                color: AppColors.grey[200] ?? AppColors.grey, width: 1),
           ),
         ),
         child: BottomAppBar(
@@ -94,7 +94,7 @@ class HomeMainPage extends GetView<HomeMainController> {
                 Text(
                   item.pageTitle,
                   style: TextStyle(
-                    color: isSelected ? Colors.black : AppColors.grey[50],
+                    color: isSelected ? Colors.black : AppColors.grey[500],
                     fontSize: 10,
                     fontWeight: FontWeight.w600,
                   ),

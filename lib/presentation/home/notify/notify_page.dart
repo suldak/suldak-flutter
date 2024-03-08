@@ -45,7 +45,7 @@ class NotifyPage extends GetView<NotifyController> {
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w500,
-              color: AppColors.grey[50],
+              color: AppColors.grey[500],
             ),
             textAlign: TextAlign.center,
           ),
@@ -63,7 +63,7 @@ class NotifyPage extends GetView<NotifyController> {
         return ListTile(
           contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           leading: CircleAvatar(
-            backgroundColor: AppColors.grey[20],
+            backgroundColor: AppColors.grey[200],
             child: Image.asset(item.image),
           ),
           title: Text(

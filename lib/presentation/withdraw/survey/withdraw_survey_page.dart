@@ -91,14 +91,14 @@ class WithdrawSurveyPage extends GetView<WithdrawSurveyController> {
                         ),
                         hintText: 'withdraw_survey_complain_hint'.tr,
                         hintStyle: TextStyle(
-                          color: AppColors.grey[50],
+                          color: AppColors.grey[500],
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
                         ),
                         enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide(
                             width: 1,
-                            color: AppColors.grey[40] ?? AppColors.grey,
+                            color: AppColors.grey[400] ?? AppColors.grey,
                           ),
                           borderRadius: BorderRadius.circular(15),
                         ),

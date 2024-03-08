@@ -89,14 +89,14 @@ class LoginPage extends GetView<LoginController> {
                   border: Border(
                     bottom: BorderSide(
                       width: 1,
-                      color: AppColors.grey[70] ?? AppColors.grey,
+                      color: AppColors.grey[700] ?? AppColors.grey,
                     ),
                   ),
                 ),
                 child: Text(
                   'login_email'.tr,
                   style: TextStyle(
-                    color: AppColors.grey[70],
+                    color: AppColors.grey[700],
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                   ),

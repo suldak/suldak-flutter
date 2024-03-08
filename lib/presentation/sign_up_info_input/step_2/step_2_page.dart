@@ -43,7 +43,7 @@ class Step2Page extends GetView<Step2Controller> {
         Text(
           'gender'.tr,
           style: TextStyle(
-            color: AppColors.grey[50],
+            color: AppColors.grey[500],
             fontSize: 13,
             fontWeight: FontWeight.w500,
           ),
@@ -84,7 +84,7 @@ class Step2Page extends GetView<Step2Controller> {
             border: Border.all(
               color: isSelected
                   ? AppColors.primary
-                  : (AppColors.grey[40] ?? AppColors.grey),
+                  : (AppColors.grey[400] ?? AppColors.grey),
               width: 1,
             ),
             borderRadius: const BorderRadius.all(Radius.circular(15)),
@@ -93,7 +93,7 @@ class Step2Page extends GetView<Step2Controller> {
             child: Text(
               text,
               style: TextStyle(
-                color: isSelected ? AppColors.primary : AppColors.grey[50],
+                color: isSelected ? AppColors.primary : AppColors.grey[500],
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
@@ -114,7 +114,7 @@ class Step2Page extends GetView<Step2Controller> {
             style: TextStyle(
               color: controller.isYearSelectorFocused.value
                   ? AppColors.primary
-                  : AppColors.grey[50],
+                  : AppColors.grey[500],
               fontSize: 13,
               fontWeight: FontWeight.w500,
             ),
@@ -128,7 +128,7 @@ class Step2Page extends GetView<Step2Controller> {
                 border: Border.all(
                     color: controller.isYearSelectorFocused.value
                         ? AppColors.primary
-                        : AppColors.grey[40] ?? AppColors.grey,
+                        : AppColors.grey[400] ?? AppColors.grey,
                     width: 1),
                 borderRadius: const BorderRadius.all(Radius.circular(15)),
               ),
@@ -137,7 +137,7 @@ class Step2Page extends GetView<Step2Controller> {
                   Text(
                     controller.selectedYear.value.toString(),
                     style: TextStyle(
-                      color: AppColors.grey[70],
+                      color: AppColors.grey[700],
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),

@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
-import '../../gen/assets.gen.dart';
 import '../../model/meeting.dart';
 
 class MeetingListController extends GetxController {
@@ -10,9 +10,26 @@ class MeetingListController extends GetxController {
 
   Rx<String> emptyText = ('empty'.tr).obs;
 
-  RxList<Meeting> meetingList = <Meeting>[].obs;
+  final Rx<PagingController<int, Meeting>> pagingController =
+      PagingController<int, Meeting>(firstPageKey: 0).obs;
+
+  Future<List<Meeting>> Function(int pageKey)? pagination;
 
   // Functions ▼ ------------------------------------------------------
+
+  Future<void> fetchPage(int pageKey) async {
+    if (pagination == null) return;
+
+    final list = await pagination!(pageKey);
+    final isLastPage = list.length < 20;
+    if (isLastPage) {
+      pagingController.value.appendLastPage(list);
+    } else {
+      final nextPageKey = pageKey + 1;
+      pagingController.value.appendPage(list, nextPageKey);
+    }
+    pagingController.refresh();
+  }
 
   // Life Cycle ▼ ------------------------------------------------------
 
@@ -22,7 +39,8 @@ class MeetingListController extends GetxController {
 
     final titleArg = Get.arguments['title'];
     final emptyTextArg = Get.arguments['emptyText'];
-    final meetingArg = Get.arguments['meeting'];
+    final Future<List<Meeting>> Function(int pageKey)? paginationArg = Get
+        .arguments['pagination'];
 
     if (titleArg != null && titleArg is String) {
       title.value = titleArg;
@@ -32,9 +50,14 @@ class MeetingListController extends GetxController {
       emptyText.value = emptyTextArg;
     }
 
-    // 바로 위 코드처럼 모임 타입이 정해지면 이 arg가 모임 리스트 타입인지 확인
-    if (meetingArg != null) {
-      meetingList.value = meetingArg;
+    if (paginationArg != null) {
+      pagination = paginationArg;
+
+      pagingController.value.addPageRequestListener((pageKey) async {
+        fetchPage(pageKey);
+      });
+
+      fetchPage(0);
     }
   }
 }

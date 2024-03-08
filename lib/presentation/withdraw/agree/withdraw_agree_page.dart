@@ -101,7 +101,7 @@ class WithdrawAgreePage extends GetView<WithdrawAgreeController> {
                     Text(
                       'withdraw_agree'.tr,
                       style: TextStyle(
-                        color: AppColors.grey[60],
+                        color: AppColors.grey[600],
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
                       ),

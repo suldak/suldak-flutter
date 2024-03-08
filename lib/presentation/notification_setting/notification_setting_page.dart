@@ -97,7 +97,7 @@ class NotificationSettingPage extends GetView<NotificationSettingController> {
                   Text(
                     desc,
                     style: TextStyle(
-                      color: AppColors.grey[60],
+                      color: AppColors.grey[600],
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
                     ),

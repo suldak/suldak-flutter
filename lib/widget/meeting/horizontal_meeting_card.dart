@@ -60,7 +60,7 @@ class HorizontalMeetingCard extends StatelessWidget {
               Text(
                 '${meeting.partyPlace} | ${meeting.getFormattedMeetingTime()}',
                 style: TextStyle(
-                  color: AppColors.grey[60],
+                  color: AppColors.grey[600],
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
                 ),
@@ -109,7 +109,7 @@ class HorizontalMeetingCard extends StatelessWidget {
                           text: '/${meeting.personnel}',
                           style: TextStyle(
                             fontSize: 14,
-                            color: AppColors.grey[60],
+                            color: AppColors.grey[600],
                             fontWeight: FontWeight.w600,
                           ),
                         ),

@@ -32,7 +32,7 @@ class SignUpInfoInputPage extends GetView<SignUpInfoInputController> {
                   count: controller.pages.length,
                   effect: WormEffect(
                     activeDotColor: AppColors.primary,
-                    dotColor: AppColors.grey[30] ?? AppColors.grey,
+                    dotColor: AppColors.grey[300] ?? AppColors.grey,
                     dotWidth: 8,
                     dotHeight: 8,
                     type: WormType.thin,

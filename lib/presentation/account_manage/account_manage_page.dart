@@ -74,7 +74,7 @@ class AccountManagePage extends GetView<AccountManageController> {
         Text(
           'connected_account'.tr,
           style: TextStyle(
-            color: AppColors.grey[50],
+            color: AppColors.grey[500],
             fontSize: 13,
             fontWeight: FontWeight.w500,
           ),
@@ -85,7 +85,7 @@ class AccountManagePage extends GetView<AccountManageController> {
           decoration: BoxDecoration(
             border: Border.all(
               width: 1,
-              color: AppColors.grey[40] ?? AppColors.grey,
+              color: AppColors.grey[400] ?? AppColors.grey,
             ),
             borderRadius: BorderRadius.circular(15),
           ),
@@ -94,7 +94,7 @@ class AccountManagePage extends GetView<AccountManageController> {
               Text(
                 'sample@sample.com',
                 style: TextStyle(
-                  color: AppColors.grey[50],
+                  color: AppColors.grey[500],
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                 ),
@@ -115,7 +115,7 @@ class AccountManagePage extends GetView<AccountManageController> {
         Text(
           'nickname'.tr,
           style: TextStyle(
-            color: AppColors.grey[50],
+            color: AppColors.grey[500],
             fontSize: 13,
             fontWeight: FontWeight.w500,
           ),
@@ -127,7 +127,7 @@ class AccountManagePage extends GetView<AccountManageController> {
             borderRadius: BorderRadius.circular(15),
             border: Border.all(
               width: 1,
-              color: AppColors.grey[40] ?? AppColors.grey,
+              color: AppColors.grey[400] ?? AppColors.grey,
             ),
           ),
           child: Row(
@@ -150,12 +150,12 @@ class AccountManagePage extends GetView<AccountManageController> {
                   padding:
                       const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
                   decoration: BoxDecoration(
-                      color: AppColors.grey[20],
+                      color: AppColors.grey[200],
                       borderRadius: BorderRadius.circular(16)),
                   child: Text(
                     'duplication_check'.tr,
                     style: TextStyle(
-                      color: AppColors.grey[50],
+                      color: AppColors.grey[500],
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
                     ),
@@ -176,7 +176,7 @@ class AccountManagePage extends GetView<AccountManageController> {
         Text(
           'gender'.tr,
           style: TextStyle(
-            color: AppColors.grey[50],
+            color: AppColors.grey[500],
             fontSize: 13,
             fontWeight: FontWeight.w500,
           ),
@@ -226,7 +226,7 @@ class AccountManagePage extends GetView<AccountManageController> {
               borderRadius: BorderRadius.circular(15),
               border: Border.all(
                 width: 1,
-                color: AppColors.grey[40] ?? AppColors.grey,
+                color: AppColors.grey[400] ?? AppColors.grey,
               ),
             ),
             child: TextField(
@@ -239,7 +239,7 @@ class AccountManagePage extends GetView<AccountManageController> {
               decoration: InputDecoration.collapsed(
                 hintText: 'input_password'.tr,
                 hintStyle: TextStyle(
-                  color: AppColors.grey[40],
+                  color: AppColors.grey[400],
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                 ),
@@ -269,8 +269,8 @@ class AccountManagePage extends GetView<AccountManageController> {
               border: Border.all(
                 width: 1,
                 color: controller.isPasswordMatch.value
-                    ? AppColors.grey[40] ?? AppColors.grey
-                    : AppColors.alertPrimary,
+                    ? AppColors.grey[400] ?? AppColors.grey
+                    : AppColors.alertError,
               ),
             ),
             child: TextField(
@@ -283,7 +283,7 @@ class AccountManagePage extends GetView<AccountManageController> {
               decoration: InputDecoration.collapsed(
                 hintText: 'input_password_check'.tr,
                 hintStyle: TextStyle(
-                  color: AppColors.grey[40],
+                  color: AppColors.grey[400],
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                 ),
@@ -295,7 +295,7 @@ class AccountManagePage extends GetView<AccountManageController> {
             const Text(
               'asasdawa',
               style: TextStyle(
-                color: AppColors.alertPrimary,
+                color: AppColors.alertError,
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
               ),
@@ -315,7 +315,7 @@ class AccountManagePage extends GetView<AccountManageController> {
         Assets.svg.check.svg(
           width: 10,
           colorFilter: ColorFilter.mode(
-            isCheck ? AppColors.primary : AppColors.grey[60] ?? AppColors.grey,
+            isCheck ? AppColors.primary : AppColors.grey[600] ?? AppColors.grey,
             BlendMode.srcIn,
           ),
         ),
@@ -323,7 +323,7 @@ class AccountManagePage extends GetView<AccountManageController> {
         Text(
           text,
           style: TextStyle(
-            color: isCheck ? AppColors.primary : AppColors.grey[60],
+            color: isCheck ? AppColors.primary : AppColors.grey[600],
             fontSize: 12,
             fontWeight: FontWeight.w500,
           ),
@@ -344,10 +344,10 @@ class AccountManagePage extends GetView<AccountManageController> {
         child: Container(
           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
           decoration: BoxDecoration(
-            color: selected ? AppColors.grey[20] : Colors.white,
+            color: selected ? AppColors.grey[200] : Colors.white,
             border: Border.all(
               width: 1,
-              color: AppColors.grey[40] ?? AppColors.grey,
+              color: AppColors.grey[400] ?? AppColors.grey,
             ),
             borderRadius: BorderRadius.circular(15),
           ),
@@ -355,7 +355,7 @@ class AccountManagePage extends GetView<AccountManageController> {
             child: Text(
               title,
               style: TextStyle(
-                color: AppColors.grey[50],
+                color: AppColors.grey[500],
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),
@@ -373,7 +373,7 @@ class AccountManagePage extends GetView<AccountManageController> {
         Text(
           'age'.tr,
           style: TextStyle(
-            color: AppColors.grey[50],
+            color: AppColors.grey[500],
             fontSize: 13,
             fontWeight: FontWeight.w500,
           ),
@@ -386,14 +386,14 @@ class AccountManagePage extends GetView<AccountManageController> {
           inputDecoration: InputDecoration(
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                color: AppColors.grey[40] ?? AppColors.grey,
+                color: AppColors.grey[400] ?? AppColors.grey,
                 width: 1.0,
               ),
               borderRadius: BorderRadius.circular(15),
             ),
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(
-                color: AppColors.grey[40] ?? AppColors.grey,
+                color: AppColors.grey[400] ?? AppColors.grey,
                 width: 1.0,
               ),
               borderRadius: BorderRadius.circular(15),

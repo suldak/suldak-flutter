@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 import '../../config/colors.dart';
 import '../../gen/assets.gen.dart';
@@ -22,19 +23,18 @@ class MeetingListPage extends GetView<MeetingListController> {
         padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
         child: Obx(
           () {
-            if (controller.meetingList.isEmpty) {
+            if (controller.pagingController.value.itemList?.isEmpty ?? true) {
               return buildEmptyList(text: controller.emptyText.value);
             } else {
-              return ListView.builder(
+              return PagedListView<int, Meeting>(
                 physics: const BouncingScrollPhysics(),
                 shrinkWrap: true,
                 clipBehavior: Clip.none,
-                scrollDirection: Axis.vertical,
-                itemCount: controller.meetingList.length,
-                itemBuilder: (context, index) {
-                  final Meeting meeting = controller.meetingList[index];
-                  return VerticalMeetingCard(meeting: meeting);
-                },
+                pagingController: controller.pagingController.value,
+                builderDelegate: PagedChildBuilderDelegate(
+                    itemBuilder: (context, item, index) {
+                  return VerticalMeetingCard(meeting: item);
+                }),
               );
             }
           },
@@ -56,7 +56,7 @@ class MeetingListPage extends GetView<MeetingListController> {
             Text(
               text,
               style: TextStyle(
-                color: AppColors.grey[60],
+                color: AppColors.grey[600],
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
               ),

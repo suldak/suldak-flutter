@@ -11,10 +11,10 @@ class MeetingStatusChip extends StatelessWidget {
 
   final Map<MeetingGuestType, Color?> statusColorMap = {
     MeetingGuestType.confirm: AppColors.primary,
-    MeetingGuestType.wait: AppColors.secondary[70],
+    MeetingGuestType.wait: AppColors.secondaryOrange[500],
     MeetingGuestType.refuse: AppColors.grey,
-    MeetingGuestType.cancel: AppColors.grey[50],
-    MeetingGuestType.complete: AppColors.grey[50],
+    MeetingGuestType.cancel: AppColors.grey[500],
+    MeetingGuestType.complete: AppColors.grey[500],
     MeetingGuestType.completeWait: AppColors.primary,
   };
 

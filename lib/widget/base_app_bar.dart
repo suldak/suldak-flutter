@@ -30,7 +30,7 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
               preferredSize: const Size.fromHeight(1),
               child: Container(
                 height: 1,
-                color: AppColors.grey[20],
+                color: AppColors.grey[200],
               ),
             )
           : null,

@@ -57,7 +57,7 @@ class FilterPage extends GetView<FilterController> {
         preferredSize: const Size.fromHeight(1),
         child: Container(
           height: 1,
-          color: AppColors.grey[20],
+          color: AppColors.grey[200],
         ),
       ),
       title: Text(
@@ -97,7 +97,7 @@ class FilterPage extends GetView<FilterController> {
           Text(
             'reset'.tr,
             style: TextStyle(
-              color: AppColors.grey[50],
+              color: AppColors.grey[500],
               fontSize: 18,
               fontWeight: FontWeight.w500,
             ),
@@ -199,9 +199,9 @@ class FilterPage extends GetView<FilterController> {
             decoration: BoxDecoration(
               border: Border.all(
                 width: 1,
-                color: isExpanded ? AppColors.primary : AppColors.grey[40]!,
+                color: isExpanded ? AppColors.primary : AppColors.grey[400]!,
               ),
-              color: isExpanded ? AppColors.primary[30] : Colors.white,
+              color: isExpanded ? AppColors.primary[300] : Colors.white,
               borderRadius: BorderRadius.circular(10),
             ),
             child: Row(
@@ -209,7 +209,7 @@ class FilterPage extends GetView<FilterController> {
                 Assets.svg.calendar.svg(
                   width: 20,
                   colorFilter: ColorFilter.mode(
-                    isExpanded ? AppColors.primary : AppColors.grey[40]!,
+                    isExpanded ? AppColors.primary : AppColors.grey[400]!,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -230,7 +230,7 @@ class FilterPage extends GetView<FilterController> {
                       .animate(controller.animationController),
                   child: Icon(
                     Icons.expand_more,
-                    color: isExpanded ? AppColors.primary : AppColors.grey[40],
+                    color: isExpanded ? AppColors.primary : AppColors.grey[400],
                     size: 24,
                   ),
                 ),
@@ -254,7 +254,7 @@ class FilterPage extends GetView<FilterController> {
               selectionTextStyle: const TextStyle(color: Colors.white),
               startRangeSelectionColor: AppColors.primary,
               endRangeSelectionColor: AppColors.primary,
-              rangeSelectionColor: AppColors.primary[40],
+              rangeSelectionColor: AppColors.primary[400],
               onSelectionChanged: (selection) =>
                   controller.onChangeDateSelection(selection.value),
             ),

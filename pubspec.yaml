@@ -54,6 +54,7 @@ dependencies:
   intl: ^0.19.0
   syncfusion_flutter_datepicker: ^24.2.5
   cached_network_image: ^3.3.1
+  infinite_scroll_pagination: ^4.0.0
 
   # firebase
   firebase_core: ^2.17.0

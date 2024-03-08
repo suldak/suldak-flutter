@@ -80,7 +80,7 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
                         '${'host'.tr} | ${meeting.value?.hostUserName ?? ''}',
                         style: TextStyle(
                           fontSize: 14,
-                          color: AppColors.grey[60],
+                          color: AppColors.grey[600],
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -88,7 +88,7 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
                         '',
                         style: TextStyle(
                           fontSize: 14,
-                          color: AppColors.grey[60],
+                          color: AppColors.grey[600],
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -110,7 +110,7 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100),
-        border: Border.all(color: AppColors.grey[30]!, width: 0.5),
+        border: Border.all(color: AppColors.grey[300]!, width: 0.5),
       ),
       child: imageUrl != null
           ? CachedNetworkImage(
@@ -123,7 +123,7 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
 
   Widget buildDivider() {
     return Container(
-      color: AppColors.grey[20],
+      color: AppColors.grey[200],
       height: 10,
     );
   }
@@ -150,7 +150,7 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
                     child: Text(
                       '|',
                       style: TextStyle(
-                        color: AppColors.grey[50],
+                        color: AppColors.grey[500],
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
                       ),
@@ -168,7 +168,7 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 22, horizontal: 20),
                 decoration: BoxDecoration(
-                  border: Border.all(width: 1, color: AppColors.grey[40]!),
+                  border: Border.all(width: 1, color: AppColors.grey[400]!),
                   borderRadius: const BorderRadius.all(Radius.circular(15)),
                 ),
                 child: Column(
@@ -212,7 +212,7 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
           child: image.svg(
             width: 12,
             colorFilter: ColorFilter.mode(
-              AppColors.grey[70]!,
+              AppColors.grey[700]!,
               BlendMode.srcIn,
             ),
           ),
@@ -221,7 +221,7 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
         Text(
           info,
           style: TextStyle(
-            color: AppColors.grey[70],
+            color: AppColors.grey[700],
             fontSize: 12,
             fontWeight: FontWeight.w500,
           ),
@@ -268,7 +268,7 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
                           text: '/${meeting.value?.personnel}',
                           style: TextStyle(
                             fontSize: 14,
-                            color: AppColors.grey[60],
+                            color: AppColors.grey[600],
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -281,7 +281,7 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
                     style: TextStyle(
                       fontSize: 10,
                       fontWeight: FontWeight.w500,
-                      color: AppColors.grey[60],
+                      color: AppColors.grey[600],
                     ),
                   ),
                 ],
@@ -293,7 +293,7 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 18, horizontal: 14),
                 decoration: BoxDecoration(
-                  color: AppColors.grey[20],
+                  color: AppColors.grey[200],
                   borderRadius: const BorderRadius.all(Radius.circular(15)),
                 ),
                 child: Row(
@@ -302,7 +302,7 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
                     Assets.svg.info.svg(
                       width: 16,
                       colorFilter: ColorFilter.mode(
-                        AppColors.grey[50]!,
+                        AppColors.grey[500]!,
                         BlendMode.srcIn,
                       ),
                     ),
@@ -475,7 +475,7 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
-                  color: isReported ? AppColors.grey[60] : Colors.black,
+                  color: isReported ? AppColors.grey[600] : Colors.black,
                 ),
               ),
               if (!isReply) ...[
@@ -485,7 +485,7 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
-                    color: AppColors.grey[60],
+                    color: AppColors.grey[600],
                   ),
                 ),
               ],
@@ -538,7 +538,7 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                border: Border.all(color: AppColors.grey[40]!),
+                border: Border.all(color: AppColors.grey[400]!),
                 borderRadius: const BorderRadius.all(Radius.circular(20)),
               ),
               child: Row(
@@ -561,7 +561,7 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
                           hintStyle: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
-                            color: AppColors.grey[50],
+                            color: AppColors.grey[500],
                           ),
                         ),
                       ),

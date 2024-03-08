@@ -58,7 +58,7 @@ class MyMeetingPage extends GetView<MyMeetingController> {
                         ? 'order_new'.tr
                         : 'order_old'.tr,
                     style: TextStyle(
-                      color: AppColors.grey[60],
+                      color: AppColors.grey[600],
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
                     ),
@@ -83,7 +83,7 @@ class MyMeetingPage extends GetView<MyMeetingController> {
                 Text(
                   'filter'.tr,
                   style: TextStyle(
-                    color: AppColors.grey[60],
+                    color: AppColors.grey[600],
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                   ),
@@ -140,7 +140,7 @@ class MyMeetingPage extends GetView<MyMeetingController> {
         Text(
           'no_meeting_record'.tr,
           style: TextStyle(
-            color: AppColors.grey[60],
+            color: AppColors.grey[600],
             fontSize: 16,
             fontWeight: FontWeight.w500,
           ),
@@ -159,7 +159,7 @@ class MyMeetingPage extends GetView<MyMeetingController> {
           return Text(
             sort == MyMeetingSort.latest ? 'order_new'.tr : 'order_old'.tr,
             style: TextStyle(
-              color: isSelected ? Colors.black : AppColors.grey[60],
+              color: isSelected ? Colors.black : AppColors.grey[600],
               fontSize: 14,
               fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
             ),

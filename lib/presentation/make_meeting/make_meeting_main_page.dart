@@ -29,7 +29,7 @@ class MakeMeetingMainPage extends GetView<MakeMeetingMainController> {
               minHeight: 2,
               value: 0.33,
               color: Colors.black,
-              backgroundColor: AppColors.grey[30],
+              backgroundColor: AppColors.grey[300],
             ),
             const SizedBox(height: 24),
             Expanded(
@@ -54,7 +54,7 @@ class MakeMeetingMainPage extends GetView<MakeMeetingMainController> {
           child: Container(
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
             decoration: BoxDecoration(
-              color: AppColors.grey[30],
+              color: AppColors.grey[300],
               borderRadius: BorderRadius.circular(15),
             ),
             child: Center(

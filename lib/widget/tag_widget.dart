@@ -34,11 +34,11 @@ class TagWidget extends StatelessWidget {
             width: 1,
             color: isSelected
                 ? AppColors.primary
-                : AppColors.grey[40] ?? AppColors.grey,
+                : AppColors.grey[400] ?? AppColors.grey,
           ),
           color: isSelected
               ? isFilled
-                  ? AppColors.primary[30]
+                  ? AppColors.primary[300]
                   : Colors.white
               : Colors.white,
         ),

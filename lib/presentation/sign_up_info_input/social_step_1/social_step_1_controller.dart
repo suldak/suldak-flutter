@@ -59,7 +59,7 @@ class SocialStep1Controller extends GetxController {
   /// text field decoration
   final InputBorder textFieldBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(15),
-    borderSide: BorderSide(color: AppColors.grey[40] ?? AppColors.grey),
+    borderSide: BorderSide(color: AppColors.grey[400] ?? AppColors.grey),
   );
 
   /// text field focused decoration
@@ -70,14 +70,14 @@ class SocialStep1Controller extends GetxController {
 
   /// 공용 text field style
   final textStyle = TextStyle(
-    color: AppColors.grey[50],
+    color: AppColors.grey[500],
     fontSize: 16,
     fontWeight: FontWeight.w500,
   );
 
   /// 공용 text field hint style
   final hintStyle = TextStyle(
-    color: AppColors.grey[50],
+    color: AppColors.grey[500],
     fontSize: 16,
     fontWeight: FontWeight.w500,
   );
@@ -223,7 +223,7 @@ class SocialStep1Controller extends GetxController {
     if (isNicknameInputFocused.value) {
       return AppColors.primary;
     }
-    return AppColors.grey[50] ?? AppColors.grey;
+    return AppColors.grey[500] ?? AppColors.grey;
   }
 
   void updateNextAvailable() {

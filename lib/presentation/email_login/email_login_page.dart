@@ -11,7 +11,7 @@ class EmailLoginPage extends GetView<EmailLoginController> {
   @override
   Widget build(BuildContext context) {
     final textFieldBorder = OutlineInputBorder(
-      borderSide: BorderSide(color: AppColors.grey[40] ?? AppColors.grey),
+      borderSide: BorderSide(color: AppColors.grey[400] ?? AppColors.grey),
       borderRadius: BorderRadius.circular(15),
     );
 
@@ -58,7 +58,7 @@ class EmailLoginPage extends GetView<EmailLoginController> {
                         hintStyle: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
-                          color: AppColors.grey[50],
+                          color: AppColors.grey[500],
                         ),
                       ),
                       style: const TextStyle(
@@ -86,7 +86,7 @@ class EmailLoginPage extends GetView<EmailLoginController> {
                             hintStyle: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
-                              color: AppColors.grey[50],
+                              color: AppColors.grey[500],
                             ),
                             errorText: controller.loginErrorText.value,
                           ),
@@ -144,14 +144,14 @@ class EmailLoginPage extends GetView<EmailLoginController> {
                 border: Border(
                   bottom: BorderSide(
                     width: 1,
-                    color: AppColors.grey[70] ?? AppColors.grey,
+                    color: AppColors.grey[700] ?? AppColors.grey,
                   ),
                 ),
               ),
               child: Text(
                 'find_password'.tr,
                 style: TextStyle(
-                  color: AppColors.grey[70],
+                  color: AppColors.grey[700],
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
                 ),
@@ -163,7 +163,7 @@ class EmailLoginPage extends GetView<EmailLoginController> {
             child: SizedBox(
               height: 14,
               child: VerticalDivider(
-                color: AppColors.grey[50],
+                color: AppColors.grey[500],
                 thickness: 1,
               ),
             ),
@@ -175,14 +175,14 @@ class EmailLoginPage extends GetView<EmailLoginController> {
                 border: Border(
                   bottom: BorderSide(
                     width: 1,
-                    color: AppColors.grey[70] ?? AppColors.grey,
+                    color: AppColors.grey[700] ?? AppColors.grey,
                   ),
                 ),
               ),
               child: Text(
                 'sign_up_email'.tr,
                 style: TextStyle(
-                  color: AppColors.grey[70],
+                  color: AppColors.grey[700],
                   fontSize: 14,
                   fontWeight: FontWeight.w500,
                 ),

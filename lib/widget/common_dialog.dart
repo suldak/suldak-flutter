@@ -49,7 +49,7 @@ class CommonDialog extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15),
                       border: Border.all(
                         width: 1,
-                        color: AppColors.grey[40] ?? AppColors.grey,
+                        color: AppColors.grey[400] ?? AppColors.grey,
                       ),
                       color: Colors.white,
                     ),

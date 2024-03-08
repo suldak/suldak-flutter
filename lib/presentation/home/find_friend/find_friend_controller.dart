@@ -21,10 +21,29 @@ class FindFriendController extends GetxController {
   RxList<Meeting> newMeetingList = <Meeting>[].obs;
   RxList<Meeting> dateMeetingList = <Meeting>[].obs;
 
+  DateTime selectedDate = DateTime.now();
+
   // Functions ▼ ------------------------------------------------------
 
   void navigateMakeFriend() {
     Get.toNamed(Routes.makeMeeting);
+  }
+
+  void goMeetingListPage({
+    required String title,
+    required String emptyText,
+    required List<Meeting> meeting,
+    required Future<List<Meeting>> Function(int page) pagination,
+  }) {
+    Get.toNamed(
+      Routes.meetingList,
+      arguments: {
+        'title': title,
+        'emptyText': emptyText,
+        'meeting': meeting,
+        'pagination': pagination,
+      },
+    );
   }
 
   void getPopularMeetingList() async {
@@ -43,32 +62,34 @@ class FindFriendController extends GetxController {
     }
   }
 
-  void getNewMeetingList() async {
+  Future<List<Meeting>> getNewMeetingList(int pageKey) async {
     final res = await MeetingRepo.to.searchMeetingList(
-      page: 1,
-      size: 4,
+      page: pageKey,
+      size: 20,
       isLatest: true,
     );
 
     if (res != null) {
       newMeetingList.value = res;
+      return res;
     }
+    return [];
   }
 
-  void getDateMeetingList(DateTime dateTime) async {
+  Future<List<Meeting>> getDateMeetingList(int pageKey) async {
     final DateFormat dateFormat = DateFormat('yyyy-MM-dd\'T\'HH:mm:ss');
     final startDate = DateTime(
-      dateTime.year,
-      dateTime.month,
-      dateTime.day,
+      selectedDate.year,
+      selectedDate.month,
+      selectedDate.day,
       0,
       0,
       0,
     );
     final endDate = DateTime(
-      dateTime.year,
-      dateTime.month,
-      dateTime.day,
+      selectedDate.year,
+      selectedDate.month,
+      selectedDate.day,
       23,
       59,
       59,
@@ -83,7 +104,9 @@ class FindFriendController extends GetxController {
 
     if (res != null) {
       newMeetingList.value = res;
+      return res;
     }
+    return [];
   }
 
   // Life Cycle ▼ ------------------------------------------------------
@@ -94,7 +117,7 @@ class FindFriendController extends GetxController {
 
     getPopularMeetingList();
     getRecommendMeetingList();
-    getNewMeetingList();
-    getDateMeetingList(DateTime.now());
+    getNewMeetingList(0);
+    getDateMeetingList(0);
   }
 }

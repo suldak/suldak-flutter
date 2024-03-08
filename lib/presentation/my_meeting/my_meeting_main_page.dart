@@ -30,7 +30,7 @@ class MyMeetingMainPage extends GetView<MyMeetingMainController> {
                     style: TextStyle(
                       color: controller.selectedTab.value == 0
                           ? AppColors.primary
-                          : AppColors.grey[50],
+                          : AppColors.grey[500],
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                     ),
@@ -42,7 +42,7 @@ class MyMeetingMainPage extends GetView<MyMeetingMainController> {
                     style: TextStyle(
                       color: controller.selectedTab.value == 1
                           ? AppColors.primary
-                          : AppColors.grey[50],
+                          : AppColors.grey[500],
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                     ),

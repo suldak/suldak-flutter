@@ -200,6 +200,8 @@ class Languages extends Translations {
     'report_complete': '신고가 완료되었습니다',
     'reported_comment': '신고된 댓글입니다',
     'today': '오늘',
+    'no_new_meeting': '새로운 모임이 없어요',
+    'no_date_meeting': '선택한 날짜에 모임이 없어요',
 
     // onboard
     'onboard_first1': '\n지금 나에게 ',
@@ -419,6 +421,8 @@ class Languages extends Translations {
     'report_complete': 'Report Completed',
     'reported_comment': 'Reported comment',
     'today': 'TDY',
+    'no_new_meeting': 'There\'s no new meetings',
+    'no_date_meeting': 'There\'s no meetings at selected date',
 
     // onboard
     'onboard_first1': '\nYou can now get the ',

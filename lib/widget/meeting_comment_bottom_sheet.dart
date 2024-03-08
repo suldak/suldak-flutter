@@ -34,7 +34,7 @@ class MeetingCommentBottomSheet extends StatelessWidget {
               },
               text: 'modify_comment'.tr,
             ),
-            Divider(height: 1, thickness: 1, color: AppColors.grey[30]),
+            Divider(height: 1, thickness: 1, color: AppColors.grey[300]),
             buildTextButton(
               onTap: () {
                 controller.deleteComment(int.parse(commentId));
@@ -47,10 +47,10 @@ class MeetingCommentBottomSheet extends StatelessWidget {
                 controller.reportMeetingComment(int.parse(commentId));
               },
               text: 'report_comment'.tr,
-              textColor: AppColors.alertPrimary,
+              textColor: AppColors.alertError,
             ),
           ],
-          Divider(height: 1, thickness: 1, color: AppColors.grey[30]),
+          Divider(height: 1, thickness: 1, color: AppColors.grey[300]),
           buildTextButton(
             onTap: () => Get.back(),
             text: 'cancel'.tr,

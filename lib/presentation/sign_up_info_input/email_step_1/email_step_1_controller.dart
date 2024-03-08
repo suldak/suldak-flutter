@@ -127,21 +127,21 @@ class EmailStep1Controller extends GetxController {
 
   /// 공용 text field style
   final textStyle = TextStyle(
-    color: AppColors.grey[50],
+    color: AppColors.grey[500],
     fontSize: 16,
     fontWeight: FontWeight.w500,
   );
 
   /// 공용 text field hint style
   final hintStyle = TextStyle(
-    color: AppColors.grey[50],
+    color: AppColors.grey[500],
     fontSize: 16,
     fontWeight: FontWeight.w500,
   );
 
   final InputBorder textFieldBorder = OutlineInputBorder(
     borderRadius: BorderRadius.circular(15),
-    borderSide: BorderSide(color: AppColors.grey[40] ?? AppColors.grey),
+    borderSide: BorderSide(color: AppColors.grey[400] ?? AppColors.grey),
   );
 
   final InputBorder focusedTextFieldBorder = OutlineInputBorder(
@@ -307,7 +307,7 @@ class EmailStep1Controller extends GetxController {
     if (isEmailFocused.value) {
       return AppColors.primary;
     }
-    return AppColors.grey[50] ?? AppColors.grey;
+    return AppColors.grey[500] ?? AppColors.grey;
   }
 
   /// 닉네임 입력 위젯 색상
@@ -318,7 +318,7 @@ class EmailStep1Controller extends GetxController {
     if (isNicknameFocused.value) {
       return AppColors.primary;
     }
-    return AppColors.grey[50] ?? AppColors.grey;
+    return AppColors.grey[500] ?? AppColors.grey;
   }
 
   /// 비밀번호 입력 위젯 색상
@@ -329,7 +329,7 @@ class EmailStep1Controller extends GetxController {
     if (isPasswordFocused.value) {
       return AppColors.primary;
     }
-    return AppColors.grey[50] ?? AppColors.grey;
+    return AppColors.grey[500] ?? AppColors.grey;
   }
 
   /// 전체동의 체크박스 선택시 호출 함수

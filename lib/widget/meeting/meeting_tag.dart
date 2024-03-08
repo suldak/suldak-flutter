@@ -18,9 +18,13 @@ class MeetingTag extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 3, horizontal: 6),
       margin: const EdgeInsets.only(right: 6),
       decoration: BoxDecoration(
-        color: type != null ? AppColors.primary[30] : Colors.white,
+        color: Colors.white,
         border: Border.all(
-          color: type != null ? AppColors.primary[70]! : AppColors.grey[30]!,
+          color: type != null
+              ? type == MeetingType.offLine
+                  ? AppColors.secondaryGreen
+                  : AppColors.secondaryOrange
+              : AppColors.grey[300]!,
         ),
         borderRadius: BorderRadius.circular(2),
       ),
@@ -32,7 +36,11 @@ class MeetingTag extends StatelessWidget {
                   : 'online'.tr
               : name,
           style: TextStyle(
-            color: type != null ? AppColors.primary[70] : AppColors.grey[60],
+            color: type != null
+                ? type == MeetingType.offLine
+                    ? AppColors.secondaryGreen
+                    : AppColors.secondaryOrange
+                : AppColors.grey[600],
             fontSize: 10,
             fontWeight: FontWeight.w500,
           ),

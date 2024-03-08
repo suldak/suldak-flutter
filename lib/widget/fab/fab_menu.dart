@@ -81,7 +81,7 @@ class FabMenu extends StatelessWidget {
                 Text(
                   desc,
                   style: TextStyle(
-                    color: AppColors.grey[60],
+                    color: AppColors.grey[600],
                     fontSize: 10,
                     fontWeight: FontWeight.w500,
                   ),

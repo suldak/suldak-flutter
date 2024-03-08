@@ -22,17 +22,20 @@ class AllMeetingPage extends GetView<AllMeetingController> {
               meetingList: controller.myHostMeetingList,
               showAddButton: true,
               emptyText: 'no_meetings_i_created'.tr,
+              pagination: controller.getMyHostMeeting,
             ),
             ...buildMeetingSection(
               title: 'confirmed_meeting'.tr,
               meetingList: controller.myConfirmMeetingList,
               emptyText: 'no_confirmed_meeting'.tr,
+              pagination: controller.getConfirmedMeeting,
             ),
             ...buildMeetingSection(
               title: 'waiting_meeting'.tr,
               meetingList: controller.myWaitMeetingList,
               emptyText: 'no_waiting_meeting'.tr,
               showDivider: false,
+              pagination: controller.getWaitingMeeting,
             ),
           ],
         ),
@@ -65,7 +68,7 @@ class AllMeetingPage extends GetView<AllMeetingController> {
                 Text(
                   'more'.tr,
                   style: TextStyle(
-                    color: AppColors.grey[50],
+                    color: AppColors.grey[500],
                     fontSize: 15,
                     fontWeight: FontWeight.w500,
                   ),
@@ -77,7 +80,7 @@ class AllMeetingPage extends GetView<AllMeetingController> {
                     child: Icon(
                       Icons.arrow_forward_ios_rounded,
                       size: 16,
-                      color: AppColors.grey[50],
+                      color: AppColors.grey[500],
                     ),
                   ),
                 ),
@@ -151,7 +154,7 @@ class AllMeetingPage extends GetView<AllMeetingController> {
           Text(
             text,
             style: TextStyle(
-              color: AppColors.grey[60],
+              color: AppColors.grey[600],
               fontSize: 16,
               fontWeight: FontWeight.w500,
             ),
@@ -165,6 +168,7 @@ class AllMeetingPage extends GetView<AllMeetingController> {
     required String title,
     required String emptyText,
     required RxList<Meeting> meetingList,
+    required Future<List<Meeting>> Function(int pageKey) pagination,
     bool showAddButton = false,
     bool showDivider = true,
   }) {
@@ -175,7 +179,7 @@ class AllMeetingPage extends GetView<AllMeetingController> {
         onTap: () => controller.goMeetingListPage(
           title: title,
           emptyText: emptyText,
-          meeting: meetingList,
+          pagination: pagination,
         ),
       ),
       const SizedBox(height: 14),
@@ -195,7 +199,7 @@ class AllMeetingPage extends GetView<AllMeetingController> {
     }
 
     if (showDivider) {
-      list.add(Container(height: 10, color: AppColors.grey[20]));
+      list.add(Container(height: 10, color: AppColors.grey[200]));
     }
 
     return list;

@@ -44,23 +44,38 @@ class FindFriendPage extends GetView<FindFriendController> {
             buildTitle(
               image: Assets.png.great.image(width: 20),
               title: 'new_stories'.tr,
-              onMore: () {},
+              onMore: () => controller.goMeetingListPage(
+                title: 'new_stories'.tr,
+                emptyText: 'no_new_meeting'.tr,
+                meeting: controller.newMeetingList,
+                pagination: controller.getNewMeetingList,
+              ),
             ),
             const SizedBox(height: 14),
             buildNewMeetingList(),
             const SizedBox(height: 40),
             Container(
               height: 10,
-              color: AppColors.grey[20],
+              color: AppColors.grey[200],
             ),
             const SizedBox(height: 45),
             buildTitle(
               image: Assets.png.calednar.image(width: 20),
               title: 'meeting_calendar'.tr,
-              onMore: () {},
+              onMore: () => controller.goMeetingListPage(
+                title: 'new_stories'.tr,
+                emptyText: 'no_date_meeting'.tr,
+                meeting: controller.newMeetingList,
+                pagination: controller.getDateMeetingList,
+              ),
             ),
             const SizedBox(height: 14),
-            HorizontalDatePicker(callback: controller.getDateMeetingList),
+            HorizontalDatePicker(
+              callback: (dateTime) {
+                controller.selectedDate = dateTime;
+                controller.getDateMeetingList(0);
+              },
+            ),
             const SizedBox(height: 18),
             buildDateMeetingList(),
             const SizedBox(height: 40),
@@ -99,7 +114,7 @@ class FindFriendPage extends GetView<FindFriendController> {
                   Text(
                     'more'.tr,
                     style: TextStyle(
-                      color: AppColors.grey[50],
+                      color: AppColors.grey[500],
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
@@ -110,7 +125,7 @@ class FindFriendPage extends GetView<FindFriendController> {
                     child: Icon(
                       Icons.arrow_forward_ios_rounded,
                       size: 12,
-                      color: AppColors.grey[50],
+                      color: AppColors.grey[500],
                     ),
                   ),
                 ],
