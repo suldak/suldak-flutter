@@ -23,20 +23,20 @@ class MeetingListPage extends GetView<MeetingListController> {
         padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 20),
         child: Obx(
           () {
-            if (controller.pagingController.value.itemList?.isEmpty ?? true) {
-              return buildEmptyList(text: controller.emptyText.value);
-            } else {
-              return PagedListView<int, Meeting>(
-                physics: const BouncingScrollPhysics(),
-                shrinkWrap: true,
-                clipBehavior: Clip.none,
-                pagingController: controller.pagingController.value,
-                builderDelegate: PagedChildBuilderDelegate(
-                    itemBuilder: (context, item, index) {
+            return PagedListView<int, Meeting>(
+              physics: const BouncingScrollPhysics(),
+              shrinkWrap: true,
+              clipBehavior: Clip.none,
+              pagingController: controller.pagingController.value,
+              builderDelegate: PagedChildBuilderDelegate(
+                itemBuilder: (context, item, index) {
                   return VerticalMeetingCard(meeting: item);
-                }),
-              );
-            }
+                },
+                noItemsFoundIndicatorBuilder: (context) {
+                  return buildEmptyList(text: controller.emptyText.value);
+                },
+              ),
+            );
           },
         ),
       ),

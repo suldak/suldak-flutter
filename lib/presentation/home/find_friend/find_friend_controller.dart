@@ -65,7 +65,7 @@ class FindFriendController extends GetxController {
   Future<List<Meeting>> getNewMeetingList(int pageKey) async {
     final res = await MeetingRepo.to.searchMeetingList(
       page: pageKey,
-      size: 20,
+      size: 10,
       isLatest: true,
     );
 
@@ -95,15 +95,15 @@ class FindFriendController extends GetxController {
       59,
     );
     final res = await MeetingRepo.to.searchMeetingList(
-      page: 1,
-      size: 4,
+      page: 0,
+      size: 10,
       isLatest: true,
       searchStartTime: dateFormat.format(startDate),
       searchEndTime: dateFormat.format(endDate),
     );
 
     if (res != null) {
-      newMeetingList.value = res;
+      dateMeetingList.value = res;
       return res;
     }
     return [];

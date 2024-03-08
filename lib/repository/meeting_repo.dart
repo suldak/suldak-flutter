@@ -38,6 +38,9 @@ class MeetingRepo extends GetxService with API {
         'pageNum': page,
         'recordSize': size,
         'name': name,
+        'searchStartTime': searchStartTime,
+        'searchEndTime': searchEndTime,
+        'partyType': meetingType,
       }
     );
     final data = res.validateData(onServerException);

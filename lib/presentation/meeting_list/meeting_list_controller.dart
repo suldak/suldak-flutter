@@ -21,14 +21,13 @@ class MeetingListController extends GetxController {
     if (pagination == null) return;
 
     final list = await pagination!(pageKey);
-    final isLastPage = list.length < 20;
+    final isLastPage = list.length < 10;
     if (isLastPage) {
       pagingController.value.appendLastPage(list);
     } else {
       final nextPageKey = pageKey + 1;
       pagingController.value.appendPage(list, nextPageKey);
     }
-    pagingController.refresh();
   }
 
   // Life Cycle ▼ ------------------------------------------------------
@@ -56,8 +55,6 @@ class MeetingListController extends GetxController {
       pagingController.value.addPageRequestListener((pageKey) async {
         fetchPage(pageKey);
       });
-
-      fetchPage(0);
     }
   }
 }
