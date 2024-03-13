@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 
 import '../../global_controller.dart';
 import '../../model/meeting.dart';
-import '../../model/meeting_comment_root.dart';
-import '../../model/meeting_comment_root_list.dart';
+import '../../model/meeting_comment.dart';
+import '../../model/meeting_comment_list.dart';
 import '../../model/user.dart';
 import '../../repository/meeting_repo.dart';
 import '../../utils/toast.dart';
@@ -19,7 +19,7 @@ class MeetingDetailController extends GetxController {
 
   Rx<Meeting?> meeting = Rx<Meeting?>(null);
 
-  RxList<MeetingCommentRoot> meetingCommentList = <MeetingCommentRoot>[].obs;
+  RxList<MeetingComment> meetingCommentList = <MeetingComment>[].obs;
 
   TextEditingController commentController = TextEditingController();
 

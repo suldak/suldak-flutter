@@ -1,18 +1,30 @@
 import '../config/urls.dart';
 
+/// ## 모임 탐가자 모델
 class MeetingGuest {
-
+  /// ### 확정 여부 [CANCEL, COMPLETE, COMPLETE_WAIT, CONFIRM, ON_GOING, REFUSE, WAIT]
   String? confirmState;
+  /// ### 유저 사진 URL
   String? guestFileNm;
+  /// ### 참석자 레벨
   int? guestLevel;
+  /// ### 참석자 닉네임
   String? guestNickname;
+  /// ### 참석자 기본키
   int? guestPriKey;
+  /// ### 호스트 사진 URL
   String? hostFileNm;
+  /// ### 호스트 레벨
   int? hostLevel;
+  /// ### 호스트 닉네임
   String? hostNickname;
+  /// ### 호스트 기본키
   int? hostPriKey;
+  /// ### 참가원 관리 Table 기본키
   String? id;
+  /// ### 모임 이름
   String? partyName;
+  /// ### 모임 기본키
   int? partyPriKey;
 
   MeetingGuest({

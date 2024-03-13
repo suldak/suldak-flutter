@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:suldak_suldak/model/meeting_comment_root_list.dart';
+import 'package:suldak_suldak/model/meeting_comment_list.dart';
 
 import '../config/const.dart';
 import '../model/base_response.dart';

@@ -1,9 +1,13 @@
 import 'sign_up_selection.dart';
 
 class SignUpQuestion {
+  /// ### 질문 기본 키
   int? questionPriKey;
+  /// ### 프로필 질문의 답변
   List<SignUpSelection>? liquorAnswerRes;
+  /// ### 텍스트
   String? qtext;
+  /// ### 인덱스
   int? qindex;
 
   SignUpQuestion({

@@ -1,9 +1,13 @@
 import 'package:get/get.dart';
 
 class SignUpSelection {
+  /// ### 답변 기본 키
   int? priKey;
+  /// ### 질문의 기본키
   int? questionPriKey;
+  /// ### 텍스트
   String? atext;
+  /// ### 인덱스
   int? aindex;
 
   // 사용자 선택을 위한 변수

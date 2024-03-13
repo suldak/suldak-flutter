@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import '../../config/colors.dart';
 import '../../gen/assets.gen.dart';
 import '../../model/meeting_comment.dart';
-import '../../model/meeting_comment_root.dart';
 import '../../widget/base_app_bar.dart';
 import '../../widget/circular_profile_image.dart';
 import '../../widget/meeting/meeting_tag.dart';
@@ -439,7 +438,7 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
   }
 
   Widget buildComment({
-    MeetingCommentRoot? commentRoot,
+    MeetingComment? commentRoot,
     MeetingComment? comment,
     bool isHighlighted = false,
     bool hasReply = false,

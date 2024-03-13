@@ -1,22 +1,39 @@
 import 'tag.dart';
 
 class LiquorModel {
+  /// ### 술 생성 일자
   String? createdAt;
+  /// ### 술의 정확한 도수
   int? detailAbv;
+  /// ### 술 상세 설명
   String? detailExplanation;
+  /// ### 주량 태그 모델
   TagModel? drinkingCapacity;
+  /// ### 술 기본키
   int? id;
+  /// ### 도수 태그 모델
   TagModel? liquorAbv;
+  /// ### 2차 분류 태그 모델
   TagModel? liquorDetail;
+  /// ### 술 재료 태그 모델 리스트
   List<TagModel>? liquorMaterial;
+  /// ### 1차 분류 태그 모델
   TagModel? liquorName;
+  /// ### 술 레시피
   String? liquorRecipe;
+  /// ### 술 판매처 태그 리스트
   List<TagModel>? liquorSell;
+  /// ### 술 안주 태그 리스트
   List<TagModel>? liquorSnackRes;
+  /// ### 술 수정 일자
   String? modifiedAt;
+  /// ### 술 이름
   String? name;
+  /// ### 술 상태 태그 모델 (ex: 기분 전환, 피곤할 때)
   List<TagModel>? stateType;
+  /// ### 술 요약 설명
   String? summaryExplanation;
+  /// ### 맛 종류 태그 모델
   List<TagModel>? tasteType;
 
   LiquorModel({
@@ -89,12 +106,14 @@ class LiquorModel {
     return data;
   }
 
+  /// fromJson 함수에서 tag list json을 모델로 변환하는 함수
   List<TagModel> jsonToLiquorTag(dynamic data) {
     return data
         ?.map<TagModel>((e) => TagModel.fromJson(e))
         .toList();
   }
 
+  /// 모든 태그의 타이틀을 string list로 반환
   List<String> getAllTagsTitle() {
     final List<String> list = [];
     if (liquorDetail?.name != null) {
