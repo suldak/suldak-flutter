@@ -58,4 +58,19 @@ abstract class Routes {
 
   /// 모임 만들기 화면
   static const makeMeeting = '/make_meeting';
+
+  /// 나의 모임 화면
+  static const myMeeting = '/my_meeting';
+
+  /// 모임 리스트 화면
+  static const meetingList = '/meeting_list';
+
+  /// 필터 화면
+  static const filter = '/filter';
+
+  /// 모임 상세 화면
+  static const meetingDetail = '/meeting_detail';
+
+  /// 모임 참가 화면
+  static const meetingApply = '/meeting_apply';
 }

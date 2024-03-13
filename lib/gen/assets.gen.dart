@@ -197,6 +197,9 @@ class $AssetsSvgGen {
   /// File path: assets/svg/arrow_next.svg
   SvgGenImage get arrowNext => const SvgGenImage('assets/svg/arrow_next.svg');
 
+  /// File path: assets/svg/arrow_up.svg
+  SvgGenImage get arrowUp => const SvgGenImage('assets/svg/arrow_up.svg');
+
   /// File path: assets/svg/beer_friend_illustrator.svg
   SvgGenImage get beerFriendIllustrator =>
       const SvgGenImage('assets/svg/beer_friend_illustrator.svg');
@@ -209,11 +212,23 @@ class $AssetsSvgGen {
   SvgGenImage get birdIllustrator =>
       const SvgGenImage('assets/svg/bird_illustrator.svg');
 
+  /// File path: assets/svg/calendar.svg
+  SvgGenImage get calendar => const SvgGenImage('assets/svg/calendar.svg');
+
   /// File path: assets/svg/camera.svg
   SvgGenImage get camera => const SvgGenImage('assets/svg/camera.svg');
 
   /// File path: assets/svg/check.svg
   SvgGenImage get check => const SvgGenImage('assets/svg/check.svg');
+
+  /// File path: assets/svg/comment.svg
+  SvgGenImage get comment => const SvgGenImage('assets/svg/comment.svg');
+
+  /// File path: assets/svg/empty_list.svg
+  SvgGenImage get emptyList => const SvgGenImage('assets/svg/empty_list.svg');
+
+  /// File path: assets/svg/filter.svg
+  SvgGenImage get filter => const SvgGenImage('assets/svg/filter.svg');
 
   /// File path: assets/svg/find_friend.svg
   SvgGenImage get findFriend => const SvgGenImage('assets/svg/find_friend.svg');
@@ -244,8 +259,15 @@ class $AssetsSvgGen {
   /// File path: assets/svg/location.svg
   SvgGenImage get location => const SvgGenImage('assets/svg/location.svg');
 
+  /// File path: assets/svg/members.svg
+  SvgGenImage get members => const SvgGenImage('assets/svg/members.svg');
+
   /// File path: assets/svg/more.svg
   SvgGenImage get more => const SvgGenImage('assets/svg/more.svg');
+
+  /// File path: assets/svg/more_vertical.svg
+  SvgGenImage get moreVertical =>
+      const SvgGenImage('assets/svg/more_vertical.svg');
 
   /// File path: assets/svg/my_history.svg
   SvgGenImage get myHistory => const SvgGenImage('assets/svg/my_history.svg');
@@ -267,13 +289,17 @@ class $AssetsSvgGen {
   SvgGenImage get notification =>
       const SvgGenImage('assets/svg/notification.svg');
 
+  /// File path: assets/svg/order.svg
+  SvgGenImage get order => const SvgGenImage('assets/svg/order.svg');
+
+  /// File path: assets/svg/reset.svg
+  SvgGenImage get reset => const SvgGenImage('assets/svg/reset.svg');
+
   /// File path: assets/svg/user.svg
   SvgGenImage get user => const SvgGenImage('assets/svg/user.svg');
 
   /// File path: assets/svg/welcome.svg
   SvgGenImage get welcome => const SvgGenImage('assets/svg/welcome.svg');
-
-  SvgGenImage get arrowUp => const SvgGenImage('assets/svg/arrow_up.svg');
 
   /// List of all assets
   List<SvgGenImage> get values => [
@@ -284,8 +310,12 @@ class $AssetsSvgGen {
         beerFriendIllustrator,
         beerIllustrator,
         birdIllustrator,
+        calendar,
         camera,
         check,
+        comment,
+        emptyList,
+        filter,
         findFriend,
         findFriendTap,
         google,
@@ -295,13 +325,17 @@ class $AssetsSvgGen {
         inviteIllustrator,
         kakao,
         location,
+        members,
         more,
+        moreVertical,
         myHistory,
         myHistoryTap,
         myPage,
         myPageTap,
         naver,
         notification,
+        order,
+        reset,
         user,
         welcome
       ];

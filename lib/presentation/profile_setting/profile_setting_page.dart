@@ -86,14 +86,14 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
                 counterText: '',
                 hintText: 'introduce_me_hint'.tr,
                 hintStyle: TextStyle(
-                  color: AppColors.grey[50],
+                  color: AppColors.grey[500],
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
                     width: 1,
-                    color: AppColors.grey[30] ?? AppColors.grey,
+                    color: AppColors.grey[300] ?? AppColors.grey,
                   ),
                   borderRadius: BorderRadius.circular(15),
                 ),
@@ -112,7 +112,7 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
               child: Text(
                 '0/100자',
                 style: TextStyle(
-                  color: AppColors.grey[50],
+                  color: AppColors.grey[500],
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
                 ),
@@ -321,14 +321,14 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
               width: 100,
               padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
               decoration: BoxDecoration(
-                color: AppColors.grey[20],
+                color: AppColors.grey[200],
                 borderRadius: BorderRadius.circular(6),
               ),
               child: Center(
                 child: Text(
                   'like_all'.tr,
                   style: TextStyle(
-                    color: AppColors.grey[70],
+                    color: AppColors.grey[700],
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                   ),
@@ -347,14 +347,14 @@ class ProfileSettingPage extends GetView<ProfileSettingController> {
       child: Container(
         height: 60,
         decoration: BoxDecoration(
-          color: AppColors.grey[20],
+          color: AppColors.grey[200],
           borderRadius: BorderRadius.circular(15),
         ),
         child: Center(
           child: Text(
             'save_changes'.tr,
             style: TextStyle(
-              color: AppColors.grey[40],
+              color: AppColors.grey[400],
               fontSize: 17,
               fontWeight: FontWeight.w700,
             ),

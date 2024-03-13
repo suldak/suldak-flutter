@@ -83,7 +83,7 @@ class ProfilePage extends GetView<ProfileController> {
                   Text(
                     'Copyright © 술닥술닥 all rights reserved',
                     style: TextStyle(
-                      color: AppColors.grey[60],
+                      color: AppColors.grey[600],
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
                     ),
@@ -110,7 +110,7 @@ class ProfilePage extends GetView<ProfileController> {
                 height: 72,
                 margin: const EdgeInsets.only(bottom: 6, right: 6),
                 decoration: BoxDecoration(
-                  color: AppColors.grey[20],
+                  color: AppColors.grey[200],
                   borderRadius: BorderRadius.circular(60),
                 ),
                 child: Center(
@@ -172,7 +172,7 @@ class ProfilePage extends GetView<ProfileController> {
                   child: LinearProgressIndicator(
                     value: 0.5,
                     color: AppColors.primary,
-                    backgroundColor: AppColors.grey[30],
+                    backgroundColor: AppColors.grey[300],
                   ),
                 ),
               ],
@@ -189,7 +189,7 @@ class ProfilePage extends GetView<ProfileController> {
       padding: const EdgeInsets.only(left: 20, right: 10, top: 17, bottom: 17),
       // height: 74,
       decoration: BoxDecoration(
-        color: AppColors.secondary[30],
+        color: AppColors.secondaryOrange[50],
         borderRadius: BorderRadius.circular(15),
       ),
       child: Row(
@@ -207,13 +207,13 @@ class ProfilePage extends GetView<ProfileController> {
                     children: [
                       CircularProgressIndicator(
                         value: 0.8,
-                        color: AppColors.secondary[70],
-                        backgroundColor: AppColors.secondary[40],
+                        color: AppColors.secondaryOrange[500],
+                        backgroundColor: AppColors.secondaryOrange[100],
                       ),
                       Text(
                         '80',
-                        style: const TextStyle(
-                          color: AppColors.secondary,
+                        style: TextStyle(
+                          color: AppColors.secondaryOrange[500],
                           fontSize: 13,
                           fontWeight: FontWeight.w600,
                         ),
@@ -231,8 +231,8 @@ class ProfilePage extends GetView<ProfileController> {
               children: [
                 Text(
                   '${'profile_completion'.tr}80%',
-                  style: const TextStyle(
-                    color: AppColors.secondary,
+                  style: TextStyle(
+                    color: AppColors.secondaryOrange[500],
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                   ),
@@ -322,7 +322,7 @@ class ProfilePage extends GetView<ProfileController> {
           decoration: BoxDecoration(
             border: Border.all(
               width: 1,
-              color: AppColors.grey[30] ?? AppColors.grey,
+              color: AppColors.grey[300] ?? AppColors.grey,
             ),
             borderRadius: BorderRadius.circular(15),
           ),
@@ -347,7 +347,7 @@ class ProfilePage extends GetView<ProfileController> {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 10),
         decoration: BoxDecoration(
-          color: AppColors.grey[20],
+          color: AppColors.grey[200],
           borderRadius: BorderRadius.circular(10),
         ),
         child: Center(
@@ -378,7 +378,7 @@ class ProfilePage extends GetView<ProfileController> {
           border: Border(
             bottom: BorderSide(
               width: 1,
-              color: AppColors.grey[30] ?? AppColors.grey,
+              color: AppColors.grey[300] ?? AppColors.grey,
             ),
           ),
         ),
@@ -428,7 +428,7 @@ class ProfilePage extends GetView<ProfileController> {
       child: Text(
         text,
         style: TextStyle(
-          color: AppColors.grey[70],
+          color: AppColors.grey[700],
           fontSize: 12,
           fontWeight: FontWeight.w400,
         ),

@@ -21,11 +21,11 @@ class LoginPage extends GetView<LoginController> {
                 child: Stack(
                   alignment: Alignment.topCenter,
                   children: [
-                    const Positioned(
+                    Positioned(
                       top: 20,
                       child: Text(
-                        '마음 맞는 술친구 찾기',
-                        style: TextStyle(
+                        'find_my_buddy'.tr,
+                        style: const TextStyle(
                           color: AppColors.grey,
                           fontSize: 22,
                           fontWeight: FontWeight.w500,
@@ -89,14 +89,14 @@ class LoginPage extends GetView<LoginController> {
                   border: Border(
                     bottom: BorderSide(
                       width: 1,
-                      color: AppColors.grey[70] ?? AppColors.grey,
+                      color: AppColors.grey[700] ?? AppColors.grey,
                     ),
                   ),
                 ),
                 child: Text(
                   'login_email'.tr,
                   style: TextStyle(
-                    color: AppColors.grey[70],
+                    color: AppColors.grey[700],
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                   ),

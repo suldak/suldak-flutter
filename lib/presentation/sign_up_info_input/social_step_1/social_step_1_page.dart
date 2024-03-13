@@ -38,7 +38,7 @@ class SocialStep1Page extends GetView<SocialStep1Controller> {
                 value: controller.isAllAgree.value,
                 onChanged: controller.onAllAgreeSelected,
               ),
-              Divider(height: 1, thickness: 1, color: AppColors.grey[40]),
+              Divider(height: 1, thickness: 1, color: AppColors.grey[400]),
               const SizedBox(height: 16),
               buildCheckboxWidget(
                 text: 'agree_terms'.tr,
@@ -79,7 +79,7 @@ class SocialStep1Page extends GetView<SocialStep1Controller> {
         Text(
           'email'.tr,
           style: TextStyle(
-            color: AppColors.grey[50],
+            color: AppColors.grey[500],
             fontSize: 13,
             fontWeight: FontWeight.w500,
           ),
@@ -90,7 +90,7 @@ class SocialStep1Page extends GetView<SocialStep1Controller> {
           decoration: BoxDecoration(
             border: Border.all(
               width: 1,
-              color: AppColors.grey[40] ?? AppColors.grey,
+              color: AppColors.grey[400] ?? AppColors.grey,
             ),
             borderRadius: BorderRadius.circular(15),
           ),
@@ -186,7 +186,7 @@ class SocialStep1Page extends GetView<SocialStep1Controller> {
                   text,
                   maxLines: 2,
                   style: TextStyle(
-                    color: AppColors.grey[60],
+                    color: AppColors.grey[600],
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                   ),
@@ -208,7 +208,7 @@ class SocialStep1Page extends GetView<SocialStep1Controller> {
                           width: 20,
                           height: 20,
                           colorFilter: ColorFilter.mode(
-                            AppColors.grey[50] ?? AppColors.grey,
+                            AppColors.grey[500] ?? AppColors.grey,
                             BlendMode.srcIn,
                           ),
                         ),

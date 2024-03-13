@@ -1,10 +1,17 @@
 class BlockedUser {
+  /// ### 생성 일시
   String? createdAt;
+  /// ### 차단 당한 유저의 기본키
   int? cutUserId;
+  /// ### 차단 당한 유저의 닉네임
   String? cutUserNickname;
+  /// ### 차단 당한 유저의 프로필 사진
   String? cutUserPictureUrl;
+  /// ### 기본키
   int? id;
+  /// ### 수정 일시
   String? modifiedAt;
+  /// ### 해당 유저의 기본키
   int? userId;
 
   BlockedUser({

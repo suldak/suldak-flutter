@@ -124,7 +124,7 @@ class HomePage extends GetView<HomeController> {
             width: 56,
             height: 56,
             decoration: BoxDecoration(
-              color: AppColors.grey[20],
+              color: AppColors.grey[200],
               borderRadius: BorderRadius.circular(99),
             ),
           ),
@@ -232,7 +232,7 @@ class HomePage extends GetView<HomeController> {
                 Text(
                   'ALC $alc%',
                   style: const TextStyle(
-                    color: AppColors.secondary,
+                    color: AppColors.secondaryOrange,
                     fontSize: 10,
                     fontWeight: FontWeight.w500,
                   ),
@@ -249,7 +249,7 @@ class HomePage extends GetView<HomeController> {
                 Text(
                   content,
                   style: TextStyle(
-                    color: AppColors.grey[70],
+                    color: AppColors.grey[700],
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                   ),
@@ -285,13 +285,13 @@ class HomePage extends GetView<HomeController> {
               borderRadius: BorderRadius.circular(2),
               border: Border.all(
                 width: 1,
-                color: AppColors.grey[30] ?? AppColors.grey,
+                color: AppColors.grey[300] ?? AppColors.grey,
               ),
             ),
             child: Text(
               tags[index],
               style: TextStyle(
-                color: AppColors.grey[60],
+                color: AppColors.grey[600],
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
               ),
@@ -362,7 +362,7 @@ class HomePage extends GetView<HomeController> {
             height: 162,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              color: AppColors.grey[20],
+              color: AppColors.grey[200],
             ),
             clipBehavior: Clip.hardEdge,
             child: image,
@@ -376,7 +376,7 @@ class HomePage extends GetView<HomeController> {
                 Text(
                   'ALC $alc',
                   style: const TextStyle(
-                    color: AppColors.secondary,
+                    color: AppColors.secondaryOrange,
                     fontSize: 12,
                     fontWeight: FontWeight.w500,
                   ),
@@ -423,7 +423,7 @@ class HomePage extends GetView<HomeController> {
                     Text(
                       'more'.tr,
                       style: TextStyle(
-                        color: AppColors.grey[60],
+                        color: AppColors.grey[600],
                         fontSize: 17,
                         fontWeight: FontWeight.w400,
                       ),
@@ -433,7 +433,7 @@ class HomePage extends GetView<HomeController> {
                       child: Icon(
                         Icons.arrow_forward_ios_rounded,
                         size: 12,
-                        color: AppColors.grey[60],
+                        color: AppColors.grey[600],
                       ),
                     ),
                   ],
@@ -487,7 +487,7 @@ class HomePage extends GetView<HomeController> {
           Text(
             '나의 술BTI는 OOOO!',
             style: TextStyle(
-              color: AppColors.grey[60],
+              color: AppColors.grey[600],
               fontSize: 16,
               fontWeight: FontWeight.w600,
             ),
@@ -571,12 +571,12 @@ class HomePage extends GetView<HomeController> {
 
   Widget buildInfoContainer() {
     final style = TextStyle(
-      color: AppColors.grey[60],
+      color: AppColors.grey[600],
       fontSize: 14,
       fontWeight: FontWeight.w500,
     );
     final boldStyle = TextStyle(
-      color: AppColors.grey[60],
+      color: AppColors.grey[600],
       fontSize: 14,
       fontWeight: FontWeight.w700,
     );
@@ -586,12 +586,12 @@ class HomePage extends GetView<HomeController> {
       child: VerticalDivider(
         width: 12,
         thickness: 1,
-        color: AppColors.grey[50],
+        color: AppColors.grey[500],
       ),
     );
 
     return Container(
-      color: AppColors.grey[20],
+      color: AppColors.grey[200],
       padding: const EdgeInsets.only(top: 36, left: 18),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -636,7 +636,7 @@ class HomePage extends GetView<HomeController> {
           Text(
             'Copyright © 술닥술닥 all rights reserved',
             style: TextStyle(
-              color: AppColors.grey[60],
+              color: AppColors.grey[600],
               fontSize: 12,
               fontWeight: FontWeight.w400,
             ),

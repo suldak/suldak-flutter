@@ -11,6 +11,7 @@ class FabMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: 185,
       padding: const EdgeInsets.only(top: 22, bottom: 18, left: 18, right: 18),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -29,20 +30,20 @@ class FabMenu extends StatelessWidget {
         children: [
           buildMenuItem(
             image: Assets.png.star.image(width: 16),
-            title: '모임 만들기',
+            title: 'create_meeting'.tr,
             onTap: () => Get.toNamed(Routes.makeMeeting),
           ),
           const SizedBox(height: 22),
           buildMenuItem(
             image: Assets.png.blueHeart.image(width: 16),
-            title: '내 모임',
-            onTap: () {},
+            title: 'my_meetings'.tr,
+            onTap: () => Get.toNamed(Routes.myMeeting),
           ),
           const SizedBox(height: 22),
           buildMenuItem(
             image: Assets.png.siren.image(width: 16),
-            title: '신고/문의하기',
-            desc: '카카오톡 문의하기로 연결됩니다',
+            title: 'report_inquiry'.tr,
+            desc: 'redirect_to_kakao_inquirt'.tr,
             onTap: () {},
           ),
         ],
@@ -57,6 +58,7 @@ class FabMenu extends StatelessWidget {
     String? desc,
   }) {
     return GestureDetector(
+      behavior: HitTestBehavior.opaque,
       onTap: onTap,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,7 +81,7 @@ class FabMenu extends StatelessWidget {
                 Text(
                   desc,
                   style: TextStyle(
-                    color: AppColors.grey[60],
+                    color: AppColors.grey[600],
                     fontSize: 10,
                     fontWeight: FontWeight.w500,
                   ),

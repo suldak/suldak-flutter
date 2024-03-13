@@ -4,6 +4,7 @@ import 'package:suldak_suldak/widget/horizontal_date_picker.dart';
 
 import '../../../config/colors.dart';
 import '../../../gen/assets.gen.dart';
+import '../../../model/meeting.dart';
 import '../../../widget/logo_app_bar.dart';
 import '../../../widget/meeting/horizontal_meeting_card.dart';
 import '../../../widget/meeting/vertical_meeting_card.dart';
@@ -28,42 +29,57 @@ class FindFriendPage extends GetView<FindFriendController> {
             const SizedBox(height: 26),
             buildTitle(
               image: Assets.png.heart.image(width: 20),
-              title: '지금 인기있는 이야기',
+              title: 'hot_story_now'.tr,
             ),
             const SizedBox(height: 14),
-            buildHorizontalMeeting(),
+            buildPopularMeetingList(),
             const SizedBox(height: 60),
             buildTitle(
               image: Assets.png.great.image(width: 20),
-              title: '추천합니다!',
+              title: 'recommend'.tr,
             ),
             const SizedBox(height: 14),
-            buildHorizontalMeeting(),
+            buildRecommendMeetingList(),
             const SizedBox(height: 60),
             buildTitle(
               image: Assets.png.great.image(width: 20),
-              title: '새로운 이야기',
-              onMore: () {},
+              title: 'new_stories'.tr,
+              onMore: () => controller.goMeetingListPage(
+                title: 'new_stories'.tr,
+                emptyText: 'no_new_meeting'.tr,
+                meeting: controller.newMeetingList,
+                pagination: controller.getNewMeetingList,
+              ),
             ),
             const SizedBox(height: 14),
-            buildVerticalMeeting(3),
+            buildNewMeetingList(),
             const SizedBox(height: 40),
             Container(
               height: 10,
-              color: AppColors.grey[20],
+              color: AppColors.grey[200],
             ),
             const SizedBox(height: 45),
             buildTitle(
               image: Assets.png.calednar.image(width: 20),
-              title: '모임 캘린채',
-              onMore: () {},
+              title: 'meeting_calendar'.tr,
+              onMore: () => controller.goMeetingListPage(
+                title: 'new_stories'.tr,
+                emptyText: 'no_date_meeting'.tr,
+                meeting: controller.newMeetingList,
+                pagination: controller.getDateMeetingList,
+              ),
             ),
             const SizedBox(height: 14),
-            const HorizontalDatePicker(),
+            HorizontalDatePicker(
+              callback: (dateTime) {
+                controller.selectedDate = dateTime;
+                controller.getDateMeetingList(0);
+              },
+            ),
             const SizedBox(height: 18),
-            buildVerticalMeeting(4),
+            buildDateMeetingList(),
             const SizedBox(height: 40),
-            buildNewMeeting(),
+            buildNewMeetingButton(),
           ],
         ),
       ),
@@ -96,9 +112,9 @@ class FindFriendPage extends GetView<FindFriendController> {
               child: Row(
                 children: [
                   Text(
-                    '더보기',
+                    'more'.tr,
                     style: TextStyle(
-                      color: AppColors.grey[50],
+                      color: AppColors.grey[500],
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),
@@ -109,7 +125,7 @@ class FindFriendPage extends GetView<FindFriendController> {
                     child: Icon(
                       Icons.arrow_forward_ios_rounded,
                       size: 12,
-                      color: AppColors.grey[50],
+                      color: AppColors.grey[500],
                     ),
                   ),
                 ],
@@ -121,38 +137,97 @@ class FindFriendPage extends GetView<FindFriendController> {
     );
   }
 
-  Widget buildHorizontalMeeting() {
+  Widget buildPopularMeetingList() {
     return SizedBox(
       height: 172,
-      child: ListView.builder(
-        clipBehavior: Clip.none,
-        padding: const EdgeInsets.only(left: 20),
-        scrollDirection: Axis.horizontal,
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return HorizontalMeetingCard(sampleList: controller.sampleProfile);
+      child: Obx(
+        () {
+          return ListView.builder(
+            clipBehavior: Clip.none,
+            padding: const EdgeInsets.only(left: 20),
+            scrollDirection: Axis.horizontal,
+            itemCount: controller.popularMeetingList.length > 10
+                ? 10
+                : controller.popularMeetingList.length,
+            itemBuilder: (context, index) {
+              return HorizontalMeetingCard(
+                  meeting: controller.popularMeetingList[index]);
+            },
+          );
         },
       ),
     );
   }
 
-  Widget buildVerticalMeeting(int length) {
-    return ListView.builder(
-      physics: const NeverScrollableScrollPhysics(),
-      shrinkWrap: true,
-      clipBehavior: Clip.none,
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      scrollDirection: Axis.vertical,
-      itemCount: length,
-      itemBuilder: (context, index) {
-        return VerticalMeetingCard(
-          image: controller.sampleProfile[index % (length-1)].image(fit: BoxFit.cover),
+  Widget buildRecommendMeetingList() {
+    return SizedBox(
+      height: 172,
+      child: Obx(
+            () {
+          return ListView.builder(
+            clipBehavior: Clip.none,
+            padding: const EdgeInsets.only(left: 20),
+            scrollDirection: Axis.horizontal,
+            itemCount: controller.recommendMeetingList.length > 10
+                ? 10
+                : controller.recommendMeetingList.length,
+            itemBuilder: (context, index) {
+              return HorizontalMeetingCard(
+                  meeting: controller.recommendMeetingList[index]);
+            },
+          );
+        },
+      ),
+    );
+  }
+
+  Widget buildNewMeetingList() {
+    return Obx(
+      () {
+        return ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          clipBehavior: Clip.none,
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          scrollDirection: Axis.vertical,
+          itemCount: controller.newMeetingList.length > 4
+              ? 4
+              : controller.newMeetingList.length,
+          itemBuilder: (context, index) {
+            final Meeting meeting = controller.newMeetingList[index];
+            return VerticalMeetingCard(
+              meeting: meeting,
+            );
+          },
         );
       },
     );
   }
 
-  Widget buildNewMeeting() {
+  Widget buildDateMeetingList() {
+    return Obx(
+          () {
+        return ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          clipBehavior: Clip.none,
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          scrollDirection: Axis.vertical,
+          itemCount: controller.dateMeetingList.length > 4
+              ? 4
+              : controller.dateMeetingList.length,
+          itemBuilder: (context, index) {
+            final Meeting meeting = controller.dateMeetingList[index];
+            return VerticalMeetingCard(
+              meeting: meeting,
+            );
+          },
+        );
+      },
+    );
+  }
+
+  Widget buildNewMeetingButton() {
     return GestureDetector(
       onTap: controller.navigateMakeFriend,
       child: Container(
@@ -171,8 +246,8 @@ class FindFriendPage extends GetView<FindFriendController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '찾고 있는 이야기가 없다면?',
-                  style: TextStyle(
+                  'if_no_meeting_looking_for'.tr,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
@@ -182,8 +257,8 @@ class FindFriendPage extends GetView<FindFriendController> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      '새로운 모임을 직접 만들어봐요!',
-                      style: TextStyle(
+                      'create_your_own'.tr,
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 14,
                         fontWeight: FontWeight.w600,

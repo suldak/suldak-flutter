@@ -1,27 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import '../config/colors.dart';
 
 class HorizontalDatePicker extends StatefulWidget {
-  const HorizontalDatePicker({super.key});
+  const HorizontalDatePicker({
+    super.key,
+    required this.callback,
+  });
+
+  final Function(DateTime selectedDate) callback;
 
   @override
   State<HorizontalDatePicker> createState() => _HorizontalDatePickerState();
 }
 
 class _HorizontalDatePickerState extends State<HorizontalDatePicker> {
-  int selectedIndex = 0;
+  late DateTime selectedDate;
   DateTime now = DateTime.now();
-  late DateTime lastDayOfMonth;
 
   ScrollController scrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
-    lastDayOfMonth = DateTime(now.year, now.month + 1, 0);
-    selectedIndex = now.day - 1;
+    selectedDate = now;
   }
 
   @override
@@ -34,27 +38,35 @@ class _HorizontalDatePickerState extends State<HorizontalDatePicker> {
         children: List.generate(
           7,
           (index) {
-            final DateTime currentDate = lastDayOfMonth.add(Duration(days: index + 1));
-            final String dayName = DateFormat('E').format(currentDate);
-            return buildDay(index + now.day - 1, dayName);
+            final DateTime currentDate = now.add(Duration(days: index));
+            final String dayName = index == 0
+                ? 'today'.tr
+                : DateFormat(
+                    'E',
+                    Get.deviceLocale?.languageCode,
+                  ).format(currentDate).substring(0, 1);
+            return buildDay(currentDate, dayName);
           },
         ),
       ),
     );
   }
 
-  Widget buildDay(int index, String dayName) {
+  Widget buildDay(DateTime currentDate, String dayName) {
     return GestureDetector(
-      onTap: () => setState(() {
-        selectedIndex = index;
-      }),
+      onTap: () {
+        setState(() {
+          selectedDate = currentDate;
+        });
+        widget.callback(currentDate);
+      },
       child: Container(
         width: 35,
         padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 7),
         margin: const EdgeInsets.only(right: 15),
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: selectedIndex == index
+          color: selectedDate.difference(currentDate).inDays == 0
               ? AppColors.primary
               : Colors.transparent,
           borderRadius: BorderRadius.circular(8),
@@ -63,10 +75,10 @@ class _HorizontalDatePickerState extends State<HorizontalDatePicker> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              dayName.substring(0, 1),
+              dayName,
               style: TextStyle(
                 fontSize: 12,
-                color: selectedIndex == index
+                color: selectedDate.difference(currentDate).inDays == 0
                     ? Colors.white
                     : Colors.black,
                 fontWeight: FontWeight.w500,
@@ -74,10 +86,10 @@ class _HorizontalDatePickerState extends State<HorizontalDatePicker> {
             ),
             const SizedBox(height: 5),
             Text(
-              "${index + 1}",
+              "${currentDate.day}",
               style: TextStyle(
                 fontSize: 16.0,
-                color: selectedIndex == index
+                color: selectedDate.difference(currentDate).inDays == 0
                     ? Colors.white
                     : Colors.black,
                 fontWeight: FontWeight.w500,

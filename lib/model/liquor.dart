@@ -1,23 +1,40 @@
-import 'liquor_tag.dart';
+import 'tag.dart';
 
 class LiquorModel {
+  /// ### 술 생성 일자
   String? createdAt;
+  /// ### 술의 정확한 도수
   int? detailAbv;
+  /// ### 술 상세 설명
   String? detailExplanation;
-  LiquorTagModel? drinkingCapacity;
+  /// ### 주량 태그 모델
+  TagModel? drinkingCapacity;
+  /// ### 술 기본키
   int? id;
-  LiquorTagModel? liquorAbv;
-  LiquorTagModel? liquorDetail;
-  List<LiquorTagModel>? liquorMaterial;
-  LiquorTagModel? liquorName;
+  /// ### 도수 태그 모델
+  TagModel? liquorAbv;
+  /// ### 2차 분류 태그 모델
+  TagModel? liquorDetail;
+  /// ### 술 재료 태그 모델 리스트
+  List<TagModel>? liquorMaterial;
+  /// ### 1차 분류 태그 모델
+  TagModel? liquorName;
+  /// ### 술 레시피
   String? liquorRecipe;
-  List<LiquorTagModel>? liquorSell;
-  List<LiquorTagModel>? liquorSnackRes;
+  /// ### 술 판매처 태그 리스트
+  List<TagModel>? liquorSell;
+  /// ### 술 안주 태그 리스트
+  List<TagModel>? liquorSnackRes;
+  /// ### 술 수정 일자
   String? modifiedAt;
+  /// ### 술 이름
   String? name;
-  List<LiquorTagModel>? stateType;
+  /// ### 술 상태 태그 모델 (ex: 기분 전환, 피곤할 때)
+  List<TagModel>? stateType;
+  /// ### 술 요약 설명
   String? summaryExplanation;
-  List<LiquorTagModel>? tasteType;
+  /// ### 맛 종류 태그 모델
+  List<TagModel>? tasteType;
 
   LiquorModel({
     this.createdAt,
@@ -44,18 +61,18 @@ class LiquorModel {
     detailAbv = json['detailAbv']?.toInt();
     detailExplanation = json['detailExplanation']?.toString();
     drinkingCapacity = (json['drinkingCapacityDto'] != null)
-        ? LiquorTagModel.fromJson(json['drinkingCapacityDto'])
+        ? TagModel.fromJson(json['drinkingCapacityDto'])
         : null;
     id = json['id']?.toInt();
     liquorAbv = (json['liquorAbvDto'] != null)
-        ? LiquorTagModel.fromJson(json['liquorAbvDto'])
+        ? TagModel.fromJson(json['liquorAbvDto'])
         : null;
     liquorDetail = (json['liquorDetailDto'] != null)
-        ? LiquorTagModel.fromJson(json['liquorDetailDto'])
+        ? TagModel.fromJson(json['liquorDetailDto'])
         : null;
     liquorMaterial = jsonToLiquorTag(json['liquorMaterialDtos']);
     liquorName = (json['liquorNameDto'] != null)
-        ? LiquorTagModel.fromJson(json['liquorNameDto'])
+        ? TagModel.fromJson(json['liquorNameDto'])
         : null;
     liquorRecipe = json['liquorRecipe']?.toString();
     liquorSell = jsonToLiquorTag(json['liquorSellDtos']);
@@ -89,12 +106,14 @@ class LiquorModel {
     return data;
   }
 
-  List<LiquorTagModel> jsonToLiquorTag(dynamic data) {
+  /// fromJson 함수에서 tag list json을 모델로 변환하는 함수
+  List<TagModel> jsonToLiquorTag(dynamic data) {
     return data
-        ?.map<LiquorTagModel>((e) => LiquorTagModel.fromJson(e))
+        ?.map<TagModel>((e) => TagModel.fromJson(e))
         .toList();
   }
 
+  /// 모든 태그의 타이틀을 string list로 반환
   List<String> getAllTagsTitle() {
     final List<String> list = [];
     if (liquorDetail?.name != null) {

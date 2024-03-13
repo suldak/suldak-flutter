@@ -4,57 +4,68 @@ import 'package:flutter/material.dart';
 abstract class AppColors {
   /// 앱 프라이머리 색상
   static const primary = MaterialColor(
-    0xFF27B1C6,
+    0xFF08BECA,
     {
-      70: Color(0xFF4DBECF),
-      60: Color(0xFF7ED0DD),
-      50: Color(0xFFB0E3EB),
-      40: Color(0xFFDFF4F7),
-      30: Color(0xFFF3FBFC),
+      900: Color(0xFF022628),
+      800: Color(0xFF034C51),
+      700: Color(0xFF057279),
+      600: Color(0xFF0698A2),
+      500: Color(0xFF08BECA),
+      400: Color(0xFF39CBD5),
+      300: Color(0xFF6BD8DF),
+      200: Color(0xFF9CE5EA),
+      100: Color(0xFFCEF2F4),
+      50: Color(0xFFF6FDFE),
     },
   );
 
-  /// 앱 세컨더리 색상
-  static const secondary = MaterialColor(
-    0xFFEE7500,
+  /// 앱 세컨더리 오랜지 색상
+  static const secondaryOrange = MaterialColor(
+    0xFFFF9300,
     {
-      70: Color(0xFFF79100),
-      60: Color(0xFFFAB245),
-      50: Color(0xFFFCC87A),
-      40: Color(0xFFFEDEAD),
-      30: Color(0xFFFFF2DD),
+      700: Color(0xFF995800),
+      500: Color(0xFFFF9300),
+      300: Color(0xFFFFBE66),
+      100: Color(0xFFFFE9CC),
+      50: Color(0xFFFFF5E5),
+    },
+  );
+
+  /// 앱 세컨더리 그린 색상
+  static const secondaryGreen = MaterialColor(
+    0xFF20BF27,
+    {
+      700: Color(0xFF137317),
+      500: Color(0xFF20BF27),
+      300: Color(0xFF79D97D),
+      100: Color(0xFFDEF8DF),
+      50: Color(0xFFF0FEF1),
     },
   );
 
   static const grey = MaterialColor(
     0xFF3C3C3C,
     {
-      70: Color(0xFF646464),
-      60: Color(0xFF8E8E8E),
-      50: Color(0xFFBEBEBE),
-      40: Color(0xFFE1E1E1),
-      30: Color(0xFFE8E8E8),
-      20: Color(0xFFF6F6F6),
+      900: Color(0xFF1E1E1E),
+      800: Color(0xFF3C3C3C),
+      700: Color(0xFF646464),
+      600: Color(0xFF8E8E8E),
+      500: Color(0xFFBEBEBE),
+      400: Color(0xFFE1E1E1),
+      300: Color(0xFFE8E8E8),
+      200: Color(0xFFF6F6F6),
     },
   );
 
-  static const alertPrimary = Color(0xFFE45141);
-
-  static const alertSecondary = Color(0xFFF8A8A5);
-
-  static const alertThird = Color(0xFFFFEEF1);
-
-  static const informationPrimary = Color(0xFF0088DA);
-
-  static const informationSecondary = Color(0xFF7DD5FF);
-
-  static const informationThird = Color(0xFFE1F5FF);
-
-  static const veryLightPickColor = Color(0xFFd8d8d8);
-
-  static const whiteGrayColor = Color(0xFFfbfbfb);
-
-  static const paleLilacColor = Color(0xFFe9e9ea);
-
-  static const pageDimLayerColor = Color(0x66000000);
+  /// 앱 경고/에러 색상
+  static const alertError = MaterialColor(
+    0xFFE45141,
+    {
+      700: Color(0xFF893127),
+      500: Color(0xFFE45141),
+      300: Color(0xFFEF978D),
+      100: Color(0xFFFADCD9),
+      50: Color(0xFFFFF2F1),
+    },
+  );
 }

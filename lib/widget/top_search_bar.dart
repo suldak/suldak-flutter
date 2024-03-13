@@ -13,24 +13,24 @@ class TopSearchBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 11, horizontal: 18),
       decoration: BoxDecoration(
         border: Border.all(
-          color: AppColors.grey[30] ?? AppColors.grey,
+          color: AppColors.grey[300] ?? AppColors.grey,
           width: 1,
         ),
         borderRadius: BorderRadius.circular(999),
-        color: AppColors.grey[20],
+        color: AppColors.grey[200],
       ),
       child: Row(
         children: [
           Icon(
             Icons.search,
-            color: AppColors.grey[60],
+            color: AppColors.grey[600],
             size: 14,
           ),
           const SizedBox(width: 8),
           Text(
             'search_your_drink'.tr,
             style: TextStyle(
-              color: AppColors.grey[50],
+              color: AppColors.grey[500],
               fontSize: 16,
               fontWeight: FontWeight.w500,
             ),

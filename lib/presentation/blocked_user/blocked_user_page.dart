@@ -59,7 +59,7 @@ class BlockedUserPage extends GetView<BlockedUserController> {
                 borderRadius: BorderRadius.circular(30),
                 border: Border.all(
                   width: 1,
-                  color: AppColors.grey[40] ?? AppColors.grey,
+                  color: AppColors.grey[400] ?? AppColors.grey,
                 ),
               ),
               child: Text(

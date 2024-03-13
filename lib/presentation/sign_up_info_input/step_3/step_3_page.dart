@@ -109,14 +109,14 @@ class Step3Page extends GetView<Step3Controller> {
                 horizontal: 16,
               ),
               decoration: BoxDecoration(
-                color: AppColors.grey[20],
+                color: AppColors.grey[200],
                 borderRadius: BorderRadius.circular(6),
               ),
               child: Center(
                 child: Text(
                   'like_all'.tr,
                   style: TextStyle(
-                    color: AppColors.grey[70],
+                    color: AppColors.grey[700],
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
                   ),

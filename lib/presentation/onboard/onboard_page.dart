@@ -36,7 +36,7 @@ class OnboardPage extends GetView<OnboardController> {
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w500,
-              color: AppColors.grey[70],
+              color: AppColors.grey[700],
             ),
           ),
           onSkip: () => controller.navigateOnboardToLastPage(),

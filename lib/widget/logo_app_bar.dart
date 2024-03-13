@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../config/colors.dart';
 import '../gen/assets.gen.dart';
+import '../global_controller.dart';
+import 'circular_profile_image.dart';
 
 class LogoAppBar extends StatelessWidget implements PreferredSizeWidget {
   const LogoAppBar({super.key});
@@ -16,31 +17,12 @@ class LogoAppBar extends StatelessWidget implements PreferredSizeWidget {
       leadingWidth: 80,
       actions: [
         Column(
-          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(
-              child: Center(
-                child: Stack(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 2, right: 6),
-                      child: Assets.svg.notification.svg(width: 20),
-                    ),
-                    Positioned(
-                      top: 0,
-                      right: 0,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(99),
-                          color: AppColors.alertPrimary,
-                        ),
-                        width: 6,
-                        height: 6,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+            CircularProfileImage(
+              size: 30,
+              isHighlighted: false,
+              imageUrl: GlobalController.to.userData?.getPictureUrl(),
             ),
           ],
         ),

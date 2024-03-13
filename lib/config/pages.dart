@@ -11,6 +11,8 @@ import '../presentation/blocked_user/blocked_user_controller.dart';
 import '../presentation/blocked_user/blocked_user_page.dart';
 import '../presentation/email_login/email_login_controller.dart';
 import '../presentation/email_login/email_login_page.dart';
+import '../presentation/filter/filter_controller.dart';
+import '../presentation/filter/filter_page.dart';
 import '../presentation/home/find_friend/find_friend_controller.dart';
 import '../presentation/home/home/home_controller.dart';
 import '../presentation/home/home_main_controller.dart';
@@ -24,6 +26,16 @@ import '../presentation/login/login_page.dart';
 import '../presentation/make_meeting/make_meeting_main_controller.dart';
 import '../presentation/make_meeting/make_meeting_main_page.dart';
 import '../presentation/make_meeting/make_meeting_step_1/make_meeting_step_1_controller.dart';
+import '../presentation/meeting_apply/meeting_apply_controller.dart';
+import '../presentation/meeting_apply/meeting_apply_page.dart';
+import '../presentation/meeting_detail/meeting_detail_controller.dart';
+import '../presentation/meeting_detail/meeting_detail_page.dart';
+import '../presentation/meeting_list/meeting_list_controller.dart';
+import '../presentation/meeting_list/meeting_list_page.dart';
+import '../presentation/my_meeting/all_meeting/all_meeting_controller.dart';
+import '../presentation/my_meeting/my_meeting/my_meeting_controller.dart';
+import '../presentation/my_meeting/my_meeting_main_controller.dart';
+import '../presentation/my_meeting/my_meeting_main_page.dart';
 import '../presentation/notification_setting/notification_setting_controller.dart';
 import '../presentation/notification_setting/notification_setting_page.dart';
 import '../presentation/onboard/onboard_controller.dart';
@@ -160,6 +172,38 @@ mixin AppPagesGenerator on StatelessWidget {
             // Get.lazyPut(() => Step2Controller());
             // Get.lazyPut(() => Step3Controller());
           }),
+        ),
+        GetPage(
+          name: Routes.myMeeting,
+          page: () => const MyMeetingMainPage(),
+          binding: BindingsBuilder(() {
+            Get.put(MyMeetingMainController());
+            Get.lazyPut(() => AllMeetingController());
+            Get.lazyPut(() => MyMeetingController());
+            // Get.lazyPut(() => EmailStep1Controller());
+            // Get.lazyPut(() => Step2Controller());
+            // Get.lazyPut(() => Step3Controller());
+          }),
+        ),
+        GetPage(
+          name: Routes.meetingList,
+          page: () => const MeetingListPage(),
+          binding: BindingsBuilder.put(() => MeetingListController()),
+        ),
+        GetPage(
+          name: Routes.filter,
+          page: () => const FilterPage(),
+          binding: BindingsBuilder.put(() => FilterController()),
+        ),
+        GetPage(
+          name: Routes.meetingDetail,
+          page: () => const MeetingDetailPage(),
+          binding: BindingsBuilder.put(() => MeetingDetailController()),
+        ),
+        GetPage(
+          name: Routes.meetingApply,
+          page: () => const MeetingApplyPage(),
+          binding: BindingsBuilder.put(() => MeetingApplyController()),
         ),
       ];
 }

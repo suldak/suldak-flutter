@@ -45,6 +45,15 @@ class _DioInterceptor extends Interceptor {
       data: err.response?.data ?? (err.error is Map ? err.error : null),
     ));
 
+    if (err.response?.data['errorCode'] == 9999) {
+      log('‼️ 9999 token error', name: 'Error Interceptor');
+
+      Toast.show(msg: 'login_again'.tr);
+      GlobalController.to.clearUserInfo();
+      get_x.Get.offAllNamed(Routes.login);
+      return;
+    }
+
     // 하단 주석 코드는 accessToken, refreshToken을 사용해 만료된 accessToken을
     // refreshToken을 사용해 재발급 받고 실패한 request를 재실행하는 과정이다
     // // token error
