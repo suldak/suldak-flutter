@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../config/routes.dart';
 import '../../global_controller.dart';
 import '../../model/meeting.dart';
 import '../../model/meeting_comment.dart';
@@ -82,6 +83,17 @@ class MeetingDetailController extends GetxController {
     if (res != null) {
       Toast.show(msg: 'report_complete'.tr);
       getMeetingComments(meeting.value!.id!);
+    }
+  }
+
+  void onApplyMeeting() async {
+    final res = await Get.toNamed(
+      Routes.meetingApply,
+      arguments: {'meeting': meeting.value},
+    );
+
+    if (res['apply_meeting'] != null) {
+      // 모임을 새로고침 후 guestType 확인, ui 업데이트 필요
     }
   }
 

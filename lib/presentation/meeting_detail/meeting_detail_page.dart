@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../config/colors.dart';
+import '../../config/routes.dart';
 import '../../gen/assets.gen.dart';
 import '../../model/meeting_comment.dart';
 import '../../widget/base_app_bar.dart';
@@ -591,21 +592,24 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
   }
 
   Widget buildApplyMeetingButton() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: Container(
-        height: 60,
-        decoration: BoxDecoration(
-          color: AppColors.primary,
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Center(
-          child: Text(
-            'participate'.tr,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
-              color: Colors.white,
+    return GestureDetector(
+      onTap: () => controller.onApplyMeeting(),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Container(
+          height: 60,
+          decoration: BoxDecoration(
+            color: AppColors.primary,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Center(
+            child: Text(
+              'participate'.tr,
+              style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                color: Colors.white,
+              ),
             ),
           ),
         ),

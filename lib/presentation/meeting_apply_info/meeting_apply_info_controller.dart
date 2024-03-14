@@ -1,19 +1,25 @@
 import 'package:get/get.dart';
 
-import '../../config/routes.dart';
 import '../../model/meeting.dart';
+import '../../repository/meeting_repo.dart';
+import '../../utils/toast.dart';
 
-class MeetingApplyController extends GetxController {
+class MeetingApplyInfoController extends GetxController {
   // Variable ▼ ------------------------------------------------------
 
-  Rx<Meeting?> meeting = Rx<Meeting?>(null);
+  Meeting? meeting;
 
   // Functions ▼ ------------------------------------------------------
 
-  void onNext() async {
-    final res = await Get.toNamed(Routes.meetingApplyInfo);
+  void applyMeeting() async {
+    Get.back(result: {'apply_meeting': true});
+    return;
+    final res = await MeetingRepo.to.applyMeeting(
+      meetingPk: meeting!.id!,
+    );
 
-    if (res['apply_meeting']) {
+    if (res != null) {
+      Toast.show(msg: 'apply_complete'.tr);
       Get.back(result: {'apply_meeting': true});
     }
   }
@@ -26,7 +32,7 @@ class MeetingApplyController extends GetxController {
 
     if (Get.arguments != null) {
       final meetingArg = Get.arguments['meeting'];
-      meeting.value = meetingArg;
+      meeting = meetingArg;
     }
   }
 }

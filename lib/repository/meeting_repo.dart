@@ -19,6 +19,8 @@ class MeetingRepo extends GetxService with API {
   static const _popularMeetingEp = '/api/party/view/popular-list';
   static const _recommendMeetingEp = '/api/party/view/recommend-list';
 
+  static const _meetingEnterEp = '/api/party/guest/enter';
+
   static const _reportMeetingEp = '/api/report/submit/party';
   static const _reportMeetingCommentEp = '/api/report/submit/party-comment';
 
@@ -243,6 +245,21 @@ class MeetingRepo extends GetxService with API {
   }) async {
     final res = await post(
       '$_reportMeetingCommentEp/$commentPk',
+    );
+    final data = res.validateData(onServerException);
+
+    if (data != null) {
+      return BaseResponse.fromJson(data);
+    }
+    return null;
+  }
+
+  Future<BaseResponse?> applyMeeting({
+    required int meetingPk,
+    OnServerException? onServerException,
+  }) async {
+    final res = await post(
+      '$_meetingEnterEp/$meetingPk',
     );
     final data = res.validateData(onServerException);
 
