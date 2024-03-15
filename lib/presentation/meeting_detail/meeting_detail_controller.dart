@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:suldak_suldak/config/const.dart';
 
 import '../../config/routes.dart';
 import '../../global_controller.dart';
@@ -87,6 +88,14 @@ class MeetingDetailController extends GetxController {
   }
 
   void onApplyMeeting() async {
+    if (meeting.value?.guestType == MeetingGuestType.confirm) {
+      // 모임 멤버 만나러가기 페이지 이동
+    }
+
+    if (meeting.value?.guestType != null) {
+      return;
+    }
+
     final res = await Get.toNamed(
       Routes.meetingApply,
       arguments: {'meeting': meeting.value},
@@ -94,6 +103,8 @@ class MeetingDetailController extends GetxController {
 
     if (res['apply_meeting'] != null) {
       // 모임을 새로고침 후 guestType 확인, ui 업데이트 필요
+      getMeetingDetail(meeting.value!.id!);
+      getMeetingComments(meeting.value!.id!);
     }
   }
 

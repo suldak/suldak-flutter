@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:suldak_suldak/config/const.dart';
 
 import '../../config/colors.dart';
 import '../../config/routes.dart';
@@ -596,24 +597,76 @@ class MeetingDetailPage extends GetView<MeetingDetailController> {
       onTap: () => controller.onApplyMeeting(),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8),
-        child: Container(
-          height: 60,
-          decoration: BoxDecoration(
-            color: AppColors.primary,
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: Center(
-            child: Text(
-              'participate'.tr,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-                color: Colors.white,
+        child: Obx(
+          () {
+            final guestType = controller.meeting.value?.guestType;
+            return Container(
+              height: 60,
+              decoration: BoxDecoration(
+                color: getMeetingParticipateButtonColor(guestType),
+                borderRadius: BorderRadius.circular(16),
               ),
-            ),
-          ),
+              child: Center(
+                child: Text(
+                  getMeetingParticipateText(guestType),
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w700,
+                    color: getMeetingParticipateTextColor(guestType),
+                  ),
+                ),
+              ),
+            );
+          },
         ),
       ),
     );
+  }
+
+  String getMeetingParticipateText(MeetingGuestType? type) {
+    switch (type) {
+      case MeetingGuestType.complete:
+        return 'meeting_detail_complete'.tr;
+      case MeetingGuestType.completeWait:
+        return 'meeting_detail_complete_wait'.tr;
+      case MeetingGuestType.confirm:
+        return 'meeting_detail_confirm'.tr;
+      case MeetingGuestType.refuse:
+        return 'meeting_detail_refuse'.tr;
+      case MeetingGuestType.wait:
+        return 'apply_complete'.tr;
+      case MeetingGuestType.cancel:
+        return 'meeting_detail_cancel'.tr;
+      case null:
+        return 'participate'.tr;
+    }
+  }
+
+  Color? getMeetingParticipateButtonColor(MeetingGuestType? type) {
+    switch (type) {
+      case MeetingGuestType.refuse:
+      case MeetingGuestType.complete:
+      case MeetingGuestType.completeWait:
+      case MeetingGuestType.wait:
+      case MeetingGuestType.cancel:
+        return AppColors.grey[200];
+      case MeetingGuestType.confirm:
+      case null:
+        return AppColors.primary;
+    }
+  }
+
+  Color? getMeetingParticipateTextColor(MeetingGuestType? type) {
+    switch (type) {
+      case MeetingGuestType.refuse:
+      case MeetingGuestType.complete:
+      case MeetingGuestType.completeWait:
+      case MeetingGuestType.wait:
+      case MeetingGuestType.cancel:
+        return AppColors.grey[500];
+      case MeetingGuestType.confirm:
+      case null:
+        return Colors.white;
+    }
   }
 }

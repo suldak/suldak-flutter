@@ -227,6 +227,11 @@ class Languages extends Translations {
     'assign_not_contain_privacy': '*신청 멤버의 개인정보는 제공되지 않습니다.',
     '2_hour_rule_broke': '*2시간 전까지 승인/거절이 완료되지 않을 경우, 해당 모임은 자동취소됩니다.',
     'apply_complete': '신청이 완료되었습니다!',
+    'meeting_detail_complete': '완료된 모임입니다',
+    'meeting_detail_complete_wait': '완료 대기중인 모임입니다',
+    'meeting_detail_refuse': '참여 거절된 모임입니다',
+    'meeting_detail_cancel': '취소된 모임입니다',
+    'meeting_detail_confirm': '모임 멤버 만나러 가기',
 
     // onboard
     'onboard_first1': '\n지금 나에게 ',
@@ -473,6 +478,11 @@ class Languages extends Translations {
     'assign_not_contain_privacy': '*The personal information of the applicant is not provided.',
     '2_hour_rule_broke': '*If approval/refusal is not completed before 2 hours, the meeting will be automatically canceled.',
     'apply_complete': 'Apply completed!',
+    'meeting_detail_complete': 'Meeting finished',
+    'meeting_detail_complete_wait': 'Meeting waiting for finished',
+    'meeting_detail_refuse': 'Meeting refused',
+    'meeting_detail_cancel': 'Meeting canceled',
+    'meeting_detail_confirm': 'Contanct meeting members',
 
     // onboard
     'onboard_first1': '\nYou can now get the ',
